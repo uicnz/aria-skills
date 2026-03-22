@@ -13,25 +13,25 @@ Use this file as the routing table for the rest of the skill.
 
 ## Primary References
 
-| File | Open when |
-| --- | --- |
-| `stack-selection.md` | Choose Blazor, Razor Pages, MVC, Minimal APIs, controllers, SignalR, or gRPC |
-| `program-and-pipeline.md` | Structure `Program.cs`, services, configuration, middleware, routing, logging, static files, and app startup |
-| `ui-blazor.md` | Build or review Blazor Web Apps and component-based UI |
-| `ui-razor-pages.md` | Build or review page-focused server-rendered applications |
-| `ui-mvc.md` | Build or review controller/view applications |
-| `apis-minimal-and-controllers.md` | Build or review HTTP APIs |
+| File                              | Open when                                                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `stack-selection.md`              | Choose Blazor, Razor Pages, MVC, Minimal APIs, controllers, SignalR, or gRPC                                 |
+| `program-and-pipeline.md`         | Structure `Program.cs`, services, configuration, middleware, routing, logging, static files, and app startup |
+| `ui-blazor.md`                    | Build or review Blazor Web Apps and component-based UI                                                       |
+| `ui-razor-pages.md`               | Build or review page-focused server-rendered applications                                                    |
+| `ui-mvc.md`                       | Build or review controller/view applications                                                                 |
+| `apis-minimal-and-controllers.md` | Build or review HTTP APIs                                                                                    |
 
 ## Cross-Cutting References
 
-| File | Open when |
-| --- | --- |
-| `data-state-and-services.md` | Register services, use EF Core, handle options/configuration, or manage app state |
-| `security-and-identity.md` | Add Identity, cookies, bearer auth, policies, CORS, CSRF, HTTPS, or secrets handling |
-| `realtime-grpc-and-background-work.md` | Add SignalR, gRPC, streaming, or hosted services |
-| `testing-performance-and-operations.md` | Add tests, caching, compression, health checks, rate limits, deployment, or proxy configuration |
-| `versioning-and-upgrades.md` | Migrate across ASP.NET Core versions, avoid obsolete APIs, or target preview features deliberately |
-| `source-map.md` | Map a task to the official ASP.NET Core documentation tree |
+| File                                    | Open when                                                                                          |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `data-state-and-services.md`            | Register services, use EF Core, handle options/configuration, or manage app state                  |
+| `security-and-identity.md`              | Add Identity, cookies, bearer auth, policies, CORS, CSRF, HTTPS, or secrets handling               |
+| `realtime-grpc-and-background-work.md`  | Add SignalR, gRPC, streaming, or hosted services                                                   |
+| `testing-performance-and-operations.md` | Add tests, caching, compression, health checks, rate limits, deployment, or proxy configuration    |
+| `versioning-and-upgrades.md`            | Migrate across ASP.NET Core versions, avoid obsolete APIs, or target preview features deliberately |
+| `source-map.md`                         | Map a task to the official ASP.NET Core documentation tree                                         |
 
 ## Reading Strategy
 

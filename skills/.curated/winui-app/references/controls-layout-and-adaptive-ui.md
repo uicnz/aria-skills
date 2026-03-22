@@ -3,9 +3,9 @@ title: Controls, Layout, and Adaptive UI
 priority: HIGH
 tags: controls, layout, adaptive-ui, responsive, forms, lists
 sources:
-  - https://learn.microsoft.com/windows/apps/design/layout/responsive-design
-  - https://learn.microsoft.com/windows/apps/design/basics/navigation-basics
-  - https://github.com/microsoft/WinUI-Gallery
+    - https://learn.microsoft.com/windows/apps/design/layout/responsive-design
+    - https://learn.microsoft.com/windows/apps/design/basics/navigation-basics
+    - https://github.com/microsoft/WinUI-Gallery
 ---
 
 ## What This Reference Is For
@@ -35,23 +35,23 @@ Use this file when choosing controls, composing pages, or making a WinUI layout 
 ## Control Selection Guidance
 
 - Forms and settings:
-  - Prefer native controls first; add Toolkit settings controls only if the experience clearly benefits.
+    - Prefer native controls first; add Toolkit settings controls only if the experience clearly benefits.
 - Command surfaces:
-  - Prefer `CommandBar` for grouped document, formatting, view, and page-level actions before composing a custom bar from `Grid`, `StackPanel`, `Border`, and loose buttons.
-  - Prefer the `CommandBar` overflow model for secondary actions before splitting the command surface into multiple custom rows.
-  - Fall back to a custom command layout only when a verified `CommandBar` limitation, an explicit product design requirement, or unusual content composition makes the native surface a poor fit.
+    - Prefer `CommandBar` for grouped document, formatting, view, and page-level actions before composing a custom bar from `Grid`, `StackPanel`, `Border`, and loose buttons.
+    - Prefer the `CommandBar` overflow model for secondary actions before splitting the command surface into multiple custom rows.
+    - Fall back to a custom command layout only when a verified `CommandBar` limitation, an explicit product design requirement, or unusual content composition makes the native surface a poor fit.
 - Large collections:
-  - Prefer controls with virtualization-friendly behavior.
-  - Use `GridView` when it owns the collection surface and its scrolling behavior is part of the intended experience.
-  - For poster rails or other horizontal shelves inside a vertically scrolling page, prefer a horizontal `ScrollViewer` containing an `ItemsControl` or `ItemsRepeater` with a horizontal panel instead of a nested `GridView`.
-  - Consider `ItemsRepeater` when the layout is custom and performance matters.
+    - Prefer controls with virtualization-friendly behavior.
+    - Use `GridView` when it owns the collection surface and its scrolling behavior is part of the intended experience.
+    - For poster rails or other horizontal shelves inside a vertically scrolling page, prefer a horizontal `ScrollViewer` containing an `ItemsControl` or `ItemsRepeater` with a horizontal panel instead of a nested `GridView`.
+    - Consider `ItemsRepeater` when the layout is custom and performance matters.
 - Search and filtering:
-  - Prefer a single search field with live updates for local or otherwise inexpensive filtering.
-  - Add explicit apply, refresh, or mode-selection controls only when the underlying operation is expensive, remote, asynchronous, or semantically different.
+    - Prefer a single search field with live updates for local or otherwise inexpensive filtering.
+    - Add explicit apply, refresh, or mode-selection controls only when the underlying operation is expensive, remote, asynchronous, or semantically different.
 - Dialogs and transient guidance:
-  - Use `ContentDialog` for modal decisions.
-  - Use `InfoBar` for persistent status.
-  - Use `TeachingTip` for contextual onboarding.
+    - Use `ContentDialog` for modal decisions.
+    - Use `InfoBar` for persistent status.
+    - Use `TeachingTip` for contextual onboarding.
 
 ## Adaptive Layout Guidance
 

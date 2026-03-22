@@ -5,6 +5,7 @@ Use these as starting points. Keep user-provided requirements and constraints; d
 For prompting principles (structure, invariants, iteration), see `references/prompting.md`.
 
 ## Contents
+
 - [Product teaser (single shot)](#product-teaser-single-shot)
 - [UI demo (screen recording style)](#ui-demo-screen-recording-style)
 - [Cinematic detail shot](#cinematic-detail-shot)
@@ -16,6 +17,7 @@ For prompting principles (structure, invariants, iteration), see `references/pro
 - [Ambient loop (atmosphere)](#ambient-loop-atmosphere)
 
 ## Product teaser (single shot)
+
 ```
 Use case: product teaser
 Primary request: close-up of a matte black wireless speaker on a stone pedestal
@@ -30,6 +32,7 @@ Avoid: harsh bloom; oversharpening; clutter
 ```
 
 ## UI demo (screen recording style)
+
 ```
 Use case: UI product demo
 Primary request: a clean mobile budgeting app demo showing a weekly spend chart
@@ -44,6 +47,7 @@ Constraints: no brand logos; keep UI text readable; avoid motion blur
 ```
 
 ## Cinematic detail shot
+
 ```
 Use case: cinematic product detail
 Primary request: macro shot of raindrops sliding across a car hood
@@ -58,6 +62,7 @@ Avoid: flicker; unstable reflections; excessive noise
 ```
 
 ## Social ad (6s with beats)
+
 ```
 Use case: social ad
 Primary request: minimal coffee subscription ad with three quick beats
@@ -71,6 +76,7 @@ Constraints: no logos; text must be legible; avoid fast motion
 ```
 
 ## Character continuity shot
+
 ```
 Use case: mascot continuity
 Primary request: Mossy, a moss-covered teapot mascot, rushes through a lantern-lit market at dusk
@@ -85,6 +91,7 @@ Avoid: flicker; warped limbs; identity drift
 ```
 
 ## Edit follow-up
+
 ```
 Primary request: same shot and camera move; change only the palette to teal, sand, and rust with a warmer backlight
 Constraints: keep the subject, framing, and motion unchanged
@@ -92,6 +99,7 @@ Avoid: new objects; reframing; speed changes
 ```
 
 ## Extension follow-up
+
 ```
 Primary request: continue the same shot as the camera rises above the rooftops and reveals sunrise over the city
 Action: maintain the existing motion, then gently tilt upward into the skyline reveal
@@ -101,6 +109,7 @@ Avoid: abrupt cuts; jumpy motion; sudden subject changes
 ```
 
 ## Motion graphics explainer
+
 ```
 Use case: explainer clip
 Primary request: clean motion-graphics animation showing data flowing into a dashboard
@@ -114,6 +123,7 @@ Constraints: no logos; keep shapes simple; avoid heavy texture
 ```
 
 ## Ambient loop (atmosphere)
+
 ```
 Use case: ambient background loop
 Primary request: fog drifting through a pine forest at dawn

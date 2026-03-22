@@ -55,6 +55,7 @@ Only run `open` if the user says yes. Always run `touch` to mark as seen. This o
 ## AskUserQuestion Format
 
 **ALWAYS follow this structure for every AskUserQuestion call:**
+
 1. **Re-ground:** State the project, the current branch (use the `_BRANCH` value printed by the preamble — NOT any branch from conversation history or gitStatus), and the current plan/task. (1-2 sentences)
 2. **Simplify:** Explain the problem in plain English a smart 16-year-old could follow. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
 3. **Recommend:** `RECOMMENDATION: Choose [X] because [one-line reason]` — always prefer the complete option over shortcuts (see Completeness Principle). Include `Completeness: X/10` for each option. Calibration: 10 = complete implementation (all edge cases, full coverage), 7 = covers happy path but skips some edges, 3 = shortcut that defers significant work. If both options are 8+, pick the higher; if one is ≤5, flag it.
@@ -72,18 +73,19 @@ AI-assisted coding makes the marginal cost of completeness near-zero. When you p
 - **Lake vs. ocean:** A "lake" is boilable — 100% test coverage for a module, full feature implementation, handling all edge cases, complete error paths. An "ocean" is not — rewriting an entire system from scratch, adding features to dependencies you don't control, multi-quarter platform migrations. Recommend boiling lakes. Flag oceans as out of scope.
 - **When estimating effort**, always show both scales: human team time and CC+ship time. The compression ratio varies by task type — use this reference:
 
-| Task type | Human team | CC+ship | Compression |
-|-----------|-----------|-----------|-------------|
-| Boilerplate / scaffolding | 2 days | 15 min | ~100x |
-| Test writing | 1 day | 15 min | ~50x |
-| Feature implementation | 1 week | 30 min | ~30x |
-| Bug fix + regression test | 4 hours | 15 min | ~20x |
-| Architecture / design | 2 days | 4 hours | ~5x |
-| Research / exploration | 1 day | 3 hours | ~3x |
+| Task type                 | Human team | CC+ship | Compression |
+| ------------------------- | ---------- | ------- | ----------- |
+| Boilerplate / scaffolding | 2 days     | 15 min  | ~100x       |
+| Test writing              | 1 day      | 15 min  | ~50x        |
+| Feature implementation    | 1 week     | 30 min  | ~30x        |
+| Bug fix + regression test | 4 hours    | 15 min  | ~20x        |
+| Architecture / design     | 2 days     | 4 hours | ~5x         |
+| Research / exploration    | 1 day      | 3 hours | ~3x         |
 
 - This principle applies to test coverage, error handling, documentation, edge cases, and feature completeness. Don't skip the last 10% to "save time" — with AI, that 10% costs seconds.
 
 **Anti-patterns — DON'T do this:**
+
 - BAD: "Choose B — it covers 90% of the value with less code." (If A is only 70 lines more, choose A.)
 - BAD: "We can skip edge case handling to save time." (Edge case handling costs minutes with CC.)
 - BAD: "Let's defer test coverage to a follow-up PR." (Tests are the cheapest lake to boil.)
@@ -117,7 +119,9 @@ Hey ship team — ran into this while using /{skill-name}:
 ## Raw output
 
 ```
+
 {paste the actual error or unexpected output here}
+
 ```
 
 ## What would make this a 10
@@ -178,6 +182,7 @@ fi
 ```
 
 If `NEEDS_SETUP`:
+
 1. Tell the user: "ship browse needs a one-time build (~10 seconds). OK to proceed?" Then STOP and wait.
 2. Run: `cd <SKILL_DIR> && ./setup`
 3. If `bun` is not installed: `curl -fsSL https://bun.sh/install | bash`
@@ -237,16 +242,16 @@ Use WebSearch to find current best practices for the detected runtime:
 
 If WebSearch is unavailable, use this built-in knowledge table:
 
-| Runtime | Primary recommendation | Alternative |
-|---------|----------------------|-------------|
-| Ruby/Rails | minitest + fixtures + capybara | rspec + factory_bot + shoulda-matchers |
-| Node.js | vitest + @testing-library | jest + @testing-library |
-| Next.js | vitest + @testing-library/react + playwright | jest + cypress |
-| Python | pytest + pytest-cov | unittest |
-| Go | stdlib testing + testify | stdlib only |
-| Rust | cargo test (built-in) + mockall | — |
-| PHP | phpunit + mockery | pest |
-| Elixir | ExUnit (built-in) + ex_machina | — |
+| Runtime    | Primary recommendation                       | Alternative                            |
+| ---------- | -------------------------------------------- | -------------------------------------- |
+| Ruby/Rails | minitest + fixtures + capybara               | rspec + factory_bot + shoulda-matchers |
+| Node.js    | vitest + @testing-library                    | jest + @testing-library                |
+| Next.js    | vitest + @testing-library/react + playwright | jest + cypress                         |
+| Python     | pytest + pytest-cov                          | unittest                               |
+| Go         | stdlib testing + testify                     | stdlib only                            |
+| Rust       | cargo test (built-in) + mockall              | —                                      |
+| PHP        | phpunit + mockery                            | pest                                   |
+| Elixir     | ExUnit (built-in) + ex_machina               | —                                      |
 
 ### B3. Framework selection
 
@@ -376,6 +381,7 @@ Comprehensive review: 10-15 pages, every interaction flow, exhaustive checklist.
 ### Diff-aware (automatic when on a feature branch with no URL)
 
 When on a feature branch, scope to pages affected by the branch changes:
+
 1. Analyze the branch diff: `git diff main...HEAD --name-only`
 2. Map changed files to affected pages/routes
 3. Detect running app on common local ports (3000, 4000, 8080)
@@ -431,7 +437,7 @@ Structure findings as an **Inferred Design System**:
 - **Heading Scale:** h1-h6 sizes. Flag skipped levels, non-systematic size jumps.
 - **Spacing Patterns:** sample padding/margin values. Flag non-scale values.
 
-After extraction, offer: *"Want me to save this as your DESIGN.md? I can lock in these observations as your project's design system baseline."*
+After extraction, offer: _"Want me to save this as your DESIGN.md? I can lock in these observations as your project's design system baseline."_
 
 ---
 
@@ -590,7 +596,7 @@ Apply these at each page. Each finding gets an impact rating (high/medium/polish
 
 ## Phase 4: Interaction Flow Review
 
-Walk 2-3 key user flows and evaluate the *feel*, not just the function:
+Walk 2-3 key user flows and evaluate the _feel_, not just the function:
 
 ```sh
 $B snapshot -i
@@ -666,18 +672,18 @@ Write to: `~/.ship/projects/{slug}/{user}-{branch}-design-audit-{datetime}.md`
 
 **Category weights for Design Score:**
 
-| Category | Weight |
-|----------|--------|
-| Visual Hierarchy | 15% |
-| Typography | 15% |
-| Spacing & Layout | 15% |
-| Color & Contrast | 10% |
-| Interaction States | 10% |
-| Responsive | 10% |
-| Content Quality | 10% |
-| AI Slop | 5% |
-| Motion | 5% |
-| Performance Feel | 5% |
+| Category           | Weight |
+| ------------------ | ------ |
+| Visual Hierarchy   | 15%    |
+| Typography         | 15%    |
+| Spacing & Layout   | 15%    |
+| Color & Contrast   | 10%    |
+| Interaction States | 10%    |
+| Responsive         | 10%    |
+| Content Quality    | 10%    |
+| AI Slop            | 5%     |
+| Motion             | 5%     |
+| Performance Feel   | 5%     |
 
 AI Slop is 5% of Design Score but also graded independently as a headline metric.
 
@@ -713,7 +719,7 @@ Tie everything to user goals and product objectives. Always suggest specific imp
 5. **AI Slop detection is your superpower.** Most developers can't evaluate whether their site looks AI-generated. You can. Be direct about it.
 6. **Quick wins matter.** Always include a "Quick Wins" section — the 3-5 highest-impact fixes that take <30 minutes each.
 7. **Use `snapshot -C` for tricky UIs.** Finds clickable divs that the accessibility tree misses.
-8. **Responsive is design, not just "not broken."** A stacked desktop layout on mobile is not responsive design — it's lazy. Evaluate whether the mobile layout makes *design* sense.
+8. **Responsive is design, not just "not broken."** A stacked desktop layout on mobile is not responsive design — it's lazy. Evaluate whether the mobile layout makes _design_ sense.
 9. **Document incrementally.** Write each finding to the report as you find it. Don't batch.
 10. **Depth over breadth.** 5-10 well-documented findings with screenshots and specific suggestions > 20 vague observations.
 11. **Show screenshots to the user.** After every `$B screenshot`, `$B snapshot -a -o`, or `$B responsive` command, use the Read tool on the output file(s) so the user can see them inline. For `responsive` (3 files), Read all three. This is critical — without it, screenshots are invisible to the user.

@@ -17,15 +17,15 @@ Load the smallest set of references that fits the task. Do not load every refere
 2. Open [references/stack-selection.md](references/stack-selection.md) first for new apps or major refactors.
 3. Open [references/program-and-pipeline.md](references/program-and-pipeline.md) next for `Program.cs`, DI, configuration, middleware, routing, logging, and static assets.
 4. Open exactly one primary app-model reference:
-   - [references/ui-blazor.md](references/ui-blazor.md)
-   - [references/ui-razor-pages.md](references/ui-razor-pages.md)
-   - [references/ui-mvc.md](references/ui-mvc.md)
-   - [references/apis-minimal-and-controllers.md](references/apis-minimal-and-controllers.md)
+    - [references/ui-blazor.md](references/ui-blazor.md)
+    - [references/ui-razor-pages.md](references/ui-razor-pages.md)
+    - [references/ui-mvc.md](references/ui-mvc.md)
+    - [references/apis-minimal-and-controllers.md](references/apis-minimal-and-controllers.md)
 5. Add cross-cutting references only as needed:
-   - [references/data-state-and-services.md](references/data-state-and-services.md)
-   - [references/security-and-identity.md](references/security-and-identity.md)
-   - [references/realtime-grpc-and-background-work.md](references/realtime-grpc-and-background-work.md)
-   - [references/testing-performance-and-operations.md](references/testing-performance-and-operations.md)
+    - [references/data-state-and-services.md](references/data-state-and-services.md)
+    - [references/security-and-identity.md](references/security-and-identity.md)
+    - [references/realtime-grpc-and-background-work.md](references/realtime-grpc-and-background-work.md)
+    - [references/testing-performance-and-operations.md](references/testing-performance-and-operations.md)
 6. Open [references/versioning-and-upgrades.md](references/versioning-and-upgrades.md) before introducing new platform APIs into an older solution or when migrating between major versions.
 7. Use [references/source-map.md](references/source-map.md) when you need the Microsoft Learn section that corresponds to a task not already covered by the focused references.
 
@@ -40,7 +40,7 @@ Load the smallest set of references that fits the task. Do not load every refere
 
 ## Reference Guide
 
-- [references/_sections.md](references/_sections.md): Quick index and reading order.
+- [references/\_sections.md](references/_sections.md): Quick index and reading order.
 - [references/stack-selection.md](references/stack-selection.md): Choose the right ASP.NET Core application model and template.
 - [references/program-and-pipeline.md](references/program-and-pipeline.md): Structure `Program.cs`, services, middleware, routing, configuration, logging, and static assets.
 - [references/ui-blazor.md](references/ui-blazor.md): Build Blazor Web Apps, choose render modes, and use components, forms, and JS interop correctly.

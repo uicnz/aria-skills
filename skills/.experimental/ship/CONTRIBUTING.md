@@ -43,11 +43,11 @@ the issue, fix it, and open a PR.
 3. **Fork and clone ship** (if you haven't already)
 4. **Symlink your fork into the project where you hit the bug:**
 
-   ```sh
-   # In your core project (the one where ship annoyed you)
-   ln -sfn /path/to/your/ship-fork .aria/skills/ship
-   cd .aria/skills/ship && bun install && bun run build
-   ```
+    ```sh
+    # In your core project (the one where ship annoyed you)
+    ln -sfn /path/to/your/ship-fork .aria/skills/ship
+    cd .aria/skills/ship && bun install && bun run build
+    ```
 
 5. **Fix the issue** — your changes are live immediately in this project
 6. **Test by actually using ship** — do the thing that annoyed you, verify it's fixed
@@ -123,7 +123,7 @@ Bun auto-loads `.env` — no extra config. Conductor workspaces inherit `.env` f
 | Tier         | Command              | Cost              | What it tests                                                                                            |
 | ------------ | -------------------- | ----------------- | -------------------------------------------------------------------------------------------------------- |
 | 1 — Static   | `bun test`           | Free              | Command validation, snapshot flags, SKILL.md correctness, TODOS-format.md refs, observability unit tests |
-| 2 — E2E      | `bun run test:e2e`   | ~$3.85            | Full skill execution via `aria -p` subprocess                                                          |
+| 2 — E2E      | `bun run test:e2e`   | ~$3.85            | Full skill execution via `aria -p` subprocess                                                            |
 | 3 — LLM eval | `bun run test:evals` | ~$0.15 standalone | LLM-as-judge scoring of generated SKILL.md docs                                                          |
 | 2+3          | `bun run test:evals` | ~$4 combined      | E2E + LLM-as-judge (runs both)                                                                           |
 
@@ -166,7 +166,7 @@ When E2E tests run, they produce machine-readable artifacts in `~/.ship-dev/`:
 | Heartbeat          | `e2e-live.json`                        | Current test status (updated per tool call) |
 | Partial results    | `evals/_partial-e2e.json`              | Completed tests (survives kills)            |
 | Progress log       | `e2e-runs/{runId}/progress.log`        | Append-only text log                        |
-| NDJSON transcripts | `e2e-runs/{runId}/{test}.ndjson`       | Raw `aria -p` output per test             |
+| NDJSON transcripts | `e2e-runs/{runId}/{test}.ndjson`       | Raw `aria -p` output per test               |
 | Failure JSON       | `e2e-runs/{runId}/{test}-failure.json` | Diagnostic data on failure                  |
 
 **Live dashboard:** Run `bun run eval:watch` in a second terminal to see a live dashboard showing completed tests, the currently running test, and cost. Use `--tail` to also show the last 10 lines of progress.log.
@@ -236,7 +236,7 @@ If you're using [Conductor](https://conductor.build) to run multiple Aria sessio
 | Hook      | Script             | What it does                                                     |
 | --------- | ------------------ | ---------------------------------------------------------------- |
 | `setup`   | `bin/dev-setup`    | Copies `.env` from main worktree, installs deps, symlinks skills |
-| `archive` | `bin/dev-teardown` | Removes skill symlinks, cleans up `.aria/` directory           |
+| `archive` | `bin/dev-teardown` | Removes skill symlinks, cleans up `.aria/` directory             |
 
 When Conductor creates a new workspace, `bin/dev-setup` runs automatically. It detects the main worktree (via `git worktree list`), copies your `.env` so API keys carry over, and sets up dev mode — no manual steps needed.
 

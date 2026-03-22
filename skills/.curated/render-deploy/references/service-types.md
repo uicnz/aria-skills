@@ -39,15 +39,17 @@ startCommand: npm start
 ### Best Practices
 
 1. **Bind to environment PORT**:
+
 ```javascript
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0');
 ```
 
 2. **Add health check endpoint**:
+
 ```javascript
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
+    res.status(200).json({ status: 'ok' });
 });
 ```
 
@@ -94,6 +96,7 @@ startCommand: celery -A tasks worker --loglevel=info
 ### Best Practices
 
 1. **Connect to message queue**:
+
 ```python
 import redis
 r = redis.from_url(os.environ['REDIS_URL'])
@@ -110,6 +113,7 @@ r = redis.from_url(os.environ['REDIS_URL'])
 ### Common Patterns
 
 **Node.js with BullMQ:**
+
 ```yaml
 type: worker
 name: job-processor
@@ -117,13 +121,14 @@ runtime: node
 buildCommand: npm ci
 startCommand: node worker.js
 envVars:
-  - key: REDIS_URL
-    fromDatabase:
-      name: redis
-      property: connectionString
+    - key: REDIS_URL
+      fromDatabase:
+          name: redis
+          property: connectionString
 ```
 
 **Python with Celery:**
+
 ```yaml
 type: worker
 name: celery-worker
@@ -131,10 +136,10 @@ runtime: python
 buildCommand: pip install -r requirements.txt
 startCommand: celery -A app.celery worker
 envVars:
-  - key: REDIS_URL
-    fromDatabase:
-      name: redis
-      property: connectionString
+    - key: REDIS_URL
+      fromDatabase:
+          name: redis
+          property: connectionString
 ```
 
 ---
@@ -170,7 +175,7 @@ Cron jobs run scheduled tasks on a repeating schedule. They execute, complete, a
 type: cron
 name: daily-backup
 runtime: node
-schedule: "0 2 * * *"  # Daily at 2 AM UTC
+schedule: '0 2 * * *' # Daily at 2 AM UTC
 buildCommand: npm ci
 startCommand: node scripts/backup.js
 ```
@@ -181,14 +186,14 @@ Standard cron syntax: `minute hour day month weekday`
 
 **Common schedules:**
 
-| Schedule | Description |
-|----------|-------------|
-| `*/5 * * * *` | Every 5 minutes |
-| `0 * * * *` | Every hour |
-| `0 0 * * *` | Daily at midnight UTC |
-| `0 9 * * 1-5` | Weekdays at 9 AM UTC |
-| `0 0 1 * *` | First day of each month |
-| `0 9 * * 1` | Every Monday at 9 AM UTC |
+| Schedule      | Description              |
+| ------------- | ------------------------ |
+| `*/5 * * * *` | Every 5 minutes          |
+| `0 * * * *`   | Every hour               |
+| `0 0 * * *`   | Daily at midnight UTC    |
+| `0 9 * * 1-5` | Weekdays at 9 AM UTC     |
+| `0 0 1 * *`   | First day of each month  |
+| `0 9 * * 1`   | Every Monday at 9 AM UTC |
 
 ### Best Practices
 
@@ -205,28 +210,30 @@ Standard cron syntax: `minute hour day month weekday`
 ### Example Use Cases
 
 **Daily Database Backup:**
+
 ```yaml
 type: cron
 name: db-backup
 runtime: python
-schedule: "0 1 * * *"  # 1 AM UTC daily
+schedule: '0 1 * * *' # 1 AM UTC daily
 buildCommand: pip install -r requirements.txt
 startCommand: python scripts/backup.py
 envVars:
-  - key: DATABASE_URL
-    fromDatabase:
-      name: postgres
-      property: connectionString
-  - key: S3_BUCKET
-    value: my-backups
+    - key: DATABASE_URL
+      fromDatabase:
+          name: postgres
+          property: connectionString
+    - key: S3_BUCKET
+      value: my-backups
 ```
 
 **Hourly Cache Refresh:**
+
 ```yaml
 type: cron
 name: cache-refresh
 runtime: node
-schedule: "0 * * * *"  # Top of every hour
+schedule: '0 * * * *' # Top of every hour
 buildCommand: npm ci
 startCommand: node scripts/refresh-cache.js
 ```
@@ -264,7 +271,7 @@ type: web
 name: frontend
 runtime: static
 buildCommand: npm ci && npm run build
-staticPublishPath: ./dist  # or ./build, ./out, ./public
+staticPublishPath: ./dist # or ./build, ./out, ./public
 ```
 
 ### Routing for SPAs
@@ -278,9 +285,9 @@ runtime: static
 buildCommand: npm ci && npm run build
 staticPublishPath: ./build
 routes:
-  - type: rewrite
-    source: /*
-    destination: /index.html
+    - type: rewrite
+      source: /*
+      destination: /index.html
 ```
 
 ### Custom Headers
@@ -294,18 +301,18 @@ runtime: static
 buildCommand: npm ci && npm run build
 staticPublishPath: ./dist
 headers:
-  # Cache static assets
-  - path: /static/*
-    name: Cache-Control
-    value: public, max-age=31536000, immutable
+    # Cache static assets
+    - path: /static/*
+      name: Cache-Control
+      value: public, max-age=31536000, immutable
 
-  # Security headers
-  - path: /*
-    name: X-Frame-Options
-    value: DENY
-  - path: /*
-    name: X-Content-Type-Options
-    value: nosniff
+    # Security headers
+    - path: /*
+      name: X-Frame-Options
+      value: DENY
+    - path: /*
+      name: X-Content-Type-Options
+      value: nosniff
 ```
 
 ### Build Filters
@@ -319,11 +326,11 @@ runtime: static
 buildCommand: npm ci && npm run build
 staticPublishPath: ./dist
 buildFilter:
-  paths:
-    - frontend/**
-  ignoredPaths:
-    - frontend/**/*.test.js
-    - frontend/README.md
+    paths:
+        - frontend/**
+    ignoredPaths:
+        - frontend/**/*.test.js
+        - frontend/README.md
 ```
 
 ### Best Practices
@@ -387,15 +394,15 @@ Or use service references:
 
 ```yaml
 services:
-  - type: web
-    name: frontend
-    runtime: node
-    envVars:
-      - key: INTERNAL_API_URL
-        fromService:
-          name: internal-api
-          type: pserv
-          property: hostport
+    - type: web
+      name: frontend
+      runtime: node
+      envVars:
+          - key: INTERNAL_API_URL
+            fromService:
+                name: internal-api
+                type: pserv
+                property: hostport
 ```
 
 ### Best Practices
@@ -412,39 +419,44 @@ services:
 
 ## Comparison Table
 
-| Feature | Web | Worker | Cron | Static | Private |
-|---------|-----|--------|------|--------|---------|
-| Public URL | ✅ Yes | ❌ No | ❌ No | ✅ Yes | ❌ No |
-| Port Binding | ✅ Required | ❌ Not needed | ❌ Not needed | ❌ N/A | ✅ Required |
-| Health Checks | ✅ Yes | ❌ No | ❌ No | ❌ N/A | ✅ Yes |
-| Runtime | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes |
-| Persistent | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes |
-| Scaling | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes |
-| Use Case | HTTP servers | Background jobs | Scheduled tasks | Static files | Internal services |
+| Feature       | Web          | Worker          | Cron            | Static       | Private           |
+| ------------- | ------------ | --------------- | --------------- | ------------ | ----------------- |
+| Public URL    | ✅ Yes       | ❌ No           | ❌ No           | ✅ Yes       | ❌ No             |
+| Port Binding  | ✅ Required  | ❌ Not needed   | ❌ Not needed   | ❌ N/A       | ✅ Required       |
+| Health Checks | ✅ Yes       | ❌ No           | ❌ No           | ❌ N/A       | ✅ Yes            |
+| Runtime       | ✅ Yes       | ✅ Yes          | ✅ Yes          | ❌ No        | ✅ Yes            |
+| Persistent    | ✅ Yes       | ✅ Yes          | ❌ No           | ✅ Yes       | ✅ Yes            |
+| Scaling       | ✅ Yes       | ✅ Yes          | ❌ No           | ✅ Yes       | ✅ Yes            |
+| Use Case      | HTTP servers | Background jobs | Scheduled tasks | Static files | Internal services |
 
 ## Choosing the Right Service Type
 
 **Use Web Service when:**
+
 - Your app handles HTTP requests
 - Users need to access it via URL
 - You need load balancing and scaling
 
 **Use Worker Service when:**
+
 - Processing background jobs
 - Consuming from message queues
 - Running long-lived processes without HTTP
 
 **Use Cron Job when:**
+
 - Running scheduled tasks
 - Processing doesn't need to be always-on
 - Tasks run periodically (hourly, daily, weekly)
 
 **Use Static Site when:**
+
 - Serving pre-built HTML/CSS/JS
 - No backend processing needed
 - Want CDN caching and fast delivery
 
 **Use Private Service when:**
+
 - Service only accessed by other services
 - Want internal-only communication
 - Building microservice architectures

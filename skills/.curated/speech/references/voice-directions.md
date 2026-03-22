@@ -1,6 +1,7 @@
 # Voice directions
 
 ## Template
+
 Use only the lines you need. Keep directions concise and aligned to the input text.
 
 ```
@@ -15,6 +16,7 @@ Delivery: <cadence or rhythm notes>
 ```
 
 ## Best practices
+
 - Keep 4 to 8 short lines. Avoid conflicting instructions.
 - Prefer concrete guidance over adjectives alone.
 - Do not rewrite the input text in the instructions; only guide delivery.
@@ -24,6 +26,7 @@ Delivery: <cadence or rhythm notes>
 ## Examples (short)
 
 ### Calm support
+
 ```
 Voice Affect: Calm and composed, reassuring.
 Tone: Sincere and empathetic.
@@ -34,6 +37,7 @@ Pauses: Brief pauses after apologies and before requests.
 ```
 
 ### Dramatic narrator
+
 ```
 Voice Affect: Low and suspenseful.
 Tone: Serious and mysterious.
@@ -44,6 +48,7 @@ Pauses: Add pauses after suspenseful moments.
 ```
 
 ### Fitness instructor
+
 ```
 Voice Affect: High energy and upbeat.
 Tone: Motivational and encouraging.
@@ -53,6 +58,7 @@ Emphasis: Stress action verbs and countdowns.
 ```
 
 ### Serene guide
+
 ```
 Voice Affect: Soft and soothing.
 Tone: Calm and reassuring.
@@ -62,6 +68,7 @@ Pauses: Gentle pauses after breathing cues.
 ```
 
 ### Robot agent
+
 ```
 Voice Affect: Monotone and mechanical.
 Tone: Neutral and formal.
@@ -71,6 +78,7 @@ Pronunciation: Precise and consistent.
 ```
 
 ### Old-time announcer
+
 ```
 Voice Affect: Refined and theatrical.
 Tone: Formal and welcoming.

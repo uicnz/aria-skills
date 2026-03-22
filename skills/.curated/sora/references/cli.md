@@ -3,6 +3,7 @@
 This file contains the command catalog for the bundled Sora CLI. Keep `SKILL.md` overview-first; put verbose CLI details here.
 
 ## What this CLI does
+
 - `create`: create a new video job
 - `create-and-poll`: create a job, poll until complete, optionally download
 - `create-character`: upload a reusable non-human character reference clip
@@ -19,11 +20,13 @@ This file contains the command catalog for the bundled Sora CLI. Keep `SKILL.md`
 Real API calls require network access and `OPENAI_API_KEY`. `--dry-run` does not.
 
 ## Important distinction
+
 - `create-batch` is a local concurrent fan-out helper.
 - It is not the official Batch API.
 - For the official Batch API, prepare a JSONL file for `POST /v1/videos`, upload it with `purpose=batch`, then create a batch via the Files and Batches APIs.
 
 ## Quick start
+
 Set a stable path to the skill CLI (default `ARIA_HOME` is `~/.aria`):
 
 ```bash
@@ -50,6 +53,7 @@ python "$SORA_CLI" create --prompt "Test" --dry-run
 ```
 
 ## Defaults
+
 - Model: `sora-2`
 - Size: `1280x720`
 - Seconds: `4`
@@ -59,10 +63,12 @@ python "$SORA_CLI" create --prompt "Test" --dry-run
 Allowed seconds: `4`, `8`, `12`, `16`, `20`
 
 Allowed sizes:
+
 - `sora-2`: `1280x720`, `720x1280`
 - `sora-2-pro`: `1280x720`, `720x1280`, `1024x1792`, `1792x1024`, `1920x1080`, `1080x1920`
 
 ## Create
+
 Create a job:
 
 ```bash
@@ -135,6 +141,7 @@ uv run --with openai python "$SORA_CLI" create-character \
 Use short non-human MP4 source clips and mention the character name verbatim in later prompts.
 
 ## Edit
+
 Edit an existing generated video by ID:
 
 ```bash
@@ -179,15 +186,18 @@ uv run --with openai python "$SORA_CLI" remix \
 Use `edit` for new workflows. `remix` is retained only for legacy compatibility.
 
 ## JSON output (`--json-out`)
+
 - `create`, `status`, `list`, `delete`, `poll`, `remix`, `edit`, `extend`, and `create-character` write the response to a file.
 - `create-and-poll` writes `{ "create": ..., "final": ... }`.
 - In `--dry-run`, `--json-out` writes the request preview.
 - If the path has no extension, `.json` is added automatically.
 
 ## Local batch JSONL schema (`create-batch`)
+
 Each line is a JSON object (or a raw prompt string). Required key: `prompt`.
 
 Common top-level keys:
+
 - `model`, `size`, `seconds`
 - `characters`: list like `[{"id":"char_123"}]` or `["char_123"]`
 - `character_ids`: alternate list form such as `["char_123"]`
@@ -198,6 +208,7 @@ Common top-level keys:
 - `out`: optional output filename for the job JSON
 
 Prompt augmentation keys:
+
 - `use_case`, `scene`, `subject`, `action`, `camera`, `style`, `lighting`, `palette`, `audio`, `dialogue`, `text`, `timing`, `constraints`, `negative`
 
 Example:
@@ -217,18 +228,21 @@ uv run --with openai python "$SORA_CLI" create-batch \
 ```
 
 Notes:
+
 - `create-batch` writes one JSON response per job under `--out-dir`.
 - Output names default to `NNN-<prompt-slug>.json`.
 - Higher concurrency can hit rate limits.
 - Treat the JSONL file as temporary and clean it up after use.
 
 ## Guardrails
+
 - Use `python "$SORA_CLI" ...` or `uv run --with openai python "$SORA_CLI" ...`.
 - For live API calls, prefer `uv run --with openai ...`.
 - Do not create one-off runners unless the user explicitly asks.
 - `edit` replaces `remix` for new integrations.
 
 ## See also
+
 - API parameter quick reference: `references/video-api.md`
 - Prompt structure and iteration: `references/prompting.md`
 - Sample prompts: `references/sample-prompts.md`

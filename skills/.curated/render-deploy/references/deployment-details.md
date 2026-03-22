@@ -5,23 +5,29 @@ Use this reference for service discovery, configuration patterns, quick commands
 ## Service Discovery
 
 **List all services:**
+
 ```
 list_services()
 ```
+
 Returns all services with IDs, names, types, and status.
 
 **Get specific service details:**
+
 ```
 get_service(serviceId: "<id>")
 ```
+
 Returns full configuration including environment variables and build/start commands.
 
 **List PostgreSQL databases:**
+
 ```
 list_postgres_instances()
 ```
 
 **List Key-Value stores:**
+
 ```
 list_key_value()
 ```
@@ -35,36 +41,39 @@ list_key_value()
 **Three patterns for environment variables:**
 
 1. **Hardcoded values** (non-sensitive configuration):
+
 ```yaml
 envVars:
-  - key: NODE_ENV
-    value: production
-  - key: API_URL
-    value: https://api.example.com
+    - key: NODE_ENV
+      value: production
+    - key: API_URL
+      value: https://api.example.com
 ```
 
 2. **Database connections** (auto-generated):
+
 ```yaml
 envVars:
-  - key: DATABASE_URL
-    fromDatabase:
-      name: postgres
-      property: connectionString
-  - key: REDIS_URL
-    fromDatabase:
-      name: redis
-      property: connectionString
+    - key: DATABASE_URL
+      fromDatabase:
+          name: postgres
+          property: connectionString
+    - key: REDIS_URL
+      fromDatabase:
+          name: redis
+          property: connectionString
 ```
 
 3. **Secrets** (user fills in Dashboard):
+
 ```yaml
 envVars:
-  - key: JWT_SECRET
-    sync: false
-  - key: API_KEY
-    sync: false
-  - key: STRIPE_SECRET_KEY
-    sync: false
+    - key: JWT_SECRET
+      sync: false
+    - key: API_KEY
+      sync: false
+    - key: STRIPE_SECRET_KEY
+      sync: false
 ```
 
 Complete environment variable guide: [configuration-guide.md](configuration-guide.md)
@@ -74,14 +83,16 @@ Complete environment variable guide: [configuration-guide.md](configuration-guid
 **CRITICAL:** Web services must bind to `0.0.0.0:$PORT` (NOT `localhost`). Render sets the `PORT` environment variable.
 
 **Node.js Example:**
+
 ```javascript
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
 ```
 
 **Python Example:**
+
 ```python
 import os
 
@@ -90,6 +101,7 @@ app.run(host='0.0.0.0', port=port)
 ```
 
 **Go Example:**
+
 ```go
 port := os.Getenv("PORT")
 if port == "" {
@@ -105,6 +117,7 @@ http.ListenAndServe(":"+port, handler)
 ### Build Commands
 
 **Use non-interactive flags to prevent build hangs:**
+
 - npm: `npm ci`
 - yarn: `yarn install --frozen-lockfile`
 - pnpm: `pnpm install --frozen-lockfile`
@@ -125,6 +138,7 @@ Optional but recommended: add a `/health` endpoint for faster deployment detecti
 ## Quick Reference
 
 ### MCP Tools (Preferred)
+
 ```
 # Service Discovery
 list_services()
@@ -153,6 +167,7 @@ list_workspaces()
 ```
 
 ### CLI Commands
+
 ```bash
 # Validate Blueprint
 render blueprints validate
@@ -172,6 +187,7 @@ render deploys create <service-id> --wait
 ```
 
 ### Templates by Framework
+
 - Node.js Express: [../assets/node-express.yaml](../assets/node-express.yaml)
 - Next.js + Postgres: [../assets/nextjs-postgres.yaml](../assets/nextjs-postgres.yaml)
 - Django + Worker: [../assets/python-django.yaml](../assets/python-django.yaml)
@@ -180,6 +196,7 @@ render deploys create <service-id> --wait
 - Docker: [../assets/docker.yaml](../assets/docker.yaml)
 
 ### Documentation
+
 - Full Blueprint specification: [blueprint-spec.md](blueprint-spec.md)
 - Service types explained: [service-types.md](service-types.md)
 - Runtime options: [runtimes.md](runtimes.md)
@@ -214,11 +231,12 @@ render deploys create <service-id> --wait
 **Issue:** Static site shows 404 for routes
 
 **Solution:** Add rewrite rules to render.yaml for SPA routing:
+
 ```yaml
 routes:
-  - type: rewrite
-    source: /*
-    destination: /index.html
+    - type: rewrite
+      source: /*
+      destination: /index.html
 ```
 
 For more detailed troubleshooting, see the debug skill or [configuration-guide.md](configuration-guide.md).

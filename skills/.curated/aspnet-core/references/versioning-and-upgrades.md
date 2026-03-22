@@ -1,6 +1,7 @@
 # Versioning And Upgrades
 
 Primary docs:
+
 - https://learn.microsoft.com/aspnet/core/release-notes/
 - https://learn.microsoft.com/aspnet/core/release-notes/aspnetcore-10.0
 - https://learn.microsoft.com/aspnet/core/release-notes/aspnetcore-9.0

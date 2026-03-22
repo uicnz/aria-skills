@@ -77,14 +77,14 @@ Minimal example:
 
 ```json
 {
-  "browser": {
-    "launchOptions": {
-      "headless": false
-    },
-    "contextOptions": {
-      "viewport": { "width": 1280, "height": 720 }
+    "browser": {
+        "launchOptions": {
+            "headless": false
+        },
+        "contextOptions": {
+            "viewport": { "width": 1280, "height": 720 }
+        }
     }
-  }
 }
 ```
 

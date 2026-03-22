@@ -3,8 +3,8 @@ title: CommunityToolkit Controls and Helpers
 priority: MEDIUM
 tags: communitytoolkit, controls, helpers, animations, settingscontrols
 sources:
-  - https://github.com/CommunityToolkit/Windows
-  - https://learn.microsoft.com/dotnet/communitytoolkit/windows/getting-started
+    - https://github.com/CommunityToolkit/Windows
+    - https://learn.microsoft.com/dotnet/communitytoolkit/windows/getting-started
 ---
 
 ## What This Reference Is For
@@ -26,15 +26,15 @@ Use this file when deciding whether the Windows Community Toolkit should be adde
 ## Good Candidate Areas
 
 - `SettingsControls`
-  - useful for settings surfaces and cards
+    - useful for settings surfaces and cards
 - `Segmented`
-  - useful when segmented selection is clearer than a tab or radio cluster
+    - useful when segmented selection is clearer than a tab or radio cluster
 - `HeaderedControls`
-  - useful for labeled control groupings
+    - useful for labeled control groupings
 - `Animations`
-  - useful when built-in transitions are not enough
+    - useful when built-in transitions are not enough
 - helpers and extensions
-  - useful when they reduce repetitive WinUI plumbing cleanly
+    - useful when they reduce repetitive WinUI plumbing cleanly
 
 ## Package Guidance
 

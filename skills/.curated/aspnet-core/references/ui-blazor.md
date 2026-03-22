@@ -1,6 +1,7 @@
 # Blazor
 
 Primary docs:
+
 - https://learn.microsoft.com/aspnet/core/blazor/
 - https://learn.microsoft.com/aspnet/core/blazor/fundamentals/
 - https://learn.microsoft.com/aspnet/core/blazor/security/

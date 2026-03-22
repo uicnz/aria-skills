@@ -51,6 +51,7 @@ Only run `open` if the user says yes. Always run `touch` to mark as seen. This o
 ## AskUserQuestion Format
 
 **ALWAYS follow this structure for every AskUserQuestion call:**
+
 1. **Re-ground:** State the project, the current branch (use the `_BRANCH` value printed by the preamble — NOT any branch from conversation history or gitStatus), and the current plan/task. (1-2 sentences)
 2. **Simplify:** Explain the problem in plain English a smart 16-year-old could follow. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
 3. **Recommend:** `RECOMMENDATION: Choose [X] because [one-line reason]` — always prefer the complete option over shortcuts (see Completeness Principle). Include `Completeness: X/10` for each option. Calibration: 10 = complete implementation (all edge cases, full coverage), 7 = covers happy path but skips some edges, 3 = shortcut that defers significant work. If both options are 8+, pick the higher; if one is ≤5, flag it.
@@ -68,18 +69,19 @@ AI-assisted coding makes the marginal cost of completeness near-zero. When you p
 - **Lake vs. ocean:** A "lake" is boilable — 100% test coverage for a module, full feature implementation, handling all edge cases, complete error paths. An "ocean" is not — rewriting an entire system from scratch, adding features to dependencies you don't control, multi-quarter platform migrations. Recommend boiling lakes. Flag oceans as out of scope.
 - **When estimating effort**, always show both scales: human team time and CC+ship time. The compression ratio varies by task type — use this reference:
 
-| Task type | Human team | CC+ship | Compression |
-|-----------|-----------|-----------|-------------|
-| Boilerplate / scaffolding | 2 days | 15 min | ~100x |
-| Test writing | 1 day | 15 min | ~50x |
-| Feature implementation | 1 week | 30 min | ~30x |
-| Bug fix + regression test | 4 hours | 15 min | ~20x |
-| Architecture / design | 2 days | 4 hours | ~5x |
-| Research / exploration | 1 day | 3 hours | ~3x |
+| Task type                 | Human team | CC+ship | Compression |
+| ------------------------- | ---------- | ------- | ----------- |
+| Boilerplate / scaffolding | 2 days     | 15 min  | ~100x       |
+| Test writing              | 1 day      | 15 min  | ~50x        |
+| Feature implementation    | 1 week     | 30 min  | ~30x        |
+| Bug fix + regression test | 4 hours    | 15 min  | ~20x        |
+| Architecture / design     | 2 days     | 4 hours | ~5x         |
+| Research / exploration    | 1 day      | 3 hours | ~3x         |
 
 - This principle applies to test coverage, error handling, documentation, edge cases, and feature completeness. Don't skip the last 10% to "save time" — with AI, that 10% costs seconds.
 
 **Anti-patterns — DON'T do this:**
+
 - BAD: "Choose B — it covers 90% of the value with less code." (If A is only 70 lines more, choose A.)
 - BAD: "We can skip edge case handling to save time." (Edge case handling costs minutes with CC.)
 - BAD: "Let's defer test coverage to a follow-up PR." (Tests are the cheapest lake to boil.)
@@ -113,7 +115,9 @@ Hey ship team — ran into this while using /{skill-name}:
 ## Raw output
 
 ```
+
 {paste the actual error or unexpected output here}
+
 ```
 
 ## What would make this a 10
@@ -145,6 +149,7 @@ fi
 ```
 
 If `NEEDS_SETUP`:
+
 1. Tell the user: "ship browse needs a one-time build (~10 seconds). OK to proceed?" Then STOP and wait.
 2. Run: `cd <SKILL_DIR> && ./setup`
 3. If `bun` is not installed: `curl -fsSL https://bun.sh/install | bash`
@@ -264,6 +269,7 @@ Example: `$B snapshot -i -a -C -o /tmp/annotated.png`
 @c refs from `-C` are numbered separately (@c1, @c2, ...).
 
 After snapshot, use @refs as selectors in any command:
+
 ```sh
 $B click @e3       $B fill @e4 "value"     $B hover @e1
 $B html @e2        $B css @e5 "color"      $B attrs @e6
@@ -271,6 +277,7 @@ $B click @c1       # cursor-interactive ref (from -C)
 ```
 
 **Output format:** indented accessibility tree with @ref IDs, one element per line.
+
 ```
   @e1 [heading] "Welcome" [level=1]
   @e2 [textbox] "Email"
@@ -282,88 +289,97 @@ Refs are invalidated on navigation — run `snapshot` again after `goto`.
 ## Full Command List
 
 ### Navigation
-| Command | Description |
-|---------|-------------|
-| `back` | History back |
-| `forward` | History forward |
-| `goto <url>` | Navigate to URL |
-| `reload` | Reload page |
-| `url` | Print current URL |
+
+| Command      | Description       |
+| ------------ | ----------------- |
+| `back`       | History back      |
+| `forward`    | History forward   |
+| `goto <url>` | Navigate to URL   |
+| `reload`     | Reload page       |
+| `url`        | Print current URL |
 
 ### Reading
-| Command | Description |
-|---------|-------------|
-| `accessibility` | Full ARIA tree |
-| `forms` | Form fields as JSON |
+
+| Command           | Description                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| `accessibility`   | Full ARIA tree                                                                      |
+| `forms`           | Form fields as JSON                                                                 |
 | `html [selector]` | innerHTML of selector (throws if not found), or full page HTML if no selector given |
-| `links` | All links as "text → href" |
-| `text` | Cleaned page text |
+| `links`           | All links as "text → href"                                                          |
+| `text`            | Cleaned page text                                                                   |
 
 ### Interaction
-| Command | Description |
-|---------|-------------|
-| `click <sel>` | Click element |
-| `cookie <name>=<value>` | Set cookie on current page domain |
-| `cookie-import <json>` | Import cookies from JSON file |
-| `cookie-import-browser [browser] [--domain d]` | Import cookies from Comet, Chrome, Arc, Brave, or Edge (opens picker, or use --domain for direct import) |
-| `dialog-accept [text]` | Auto-accept next alert/confirm/prompt. Optional text is sent as the prompt response |
-| `dialog-dismiss` | Auto-dismiss next dialog |
-| `fill <sel> <val>` | Fill input |
-| `header <name>:<value>` | Set custom request header (colon-separated, sensitive values auto-redacted) |
-| `hover <sel>` | Hover element |
-| `press <key>` | Press key — Enter, Tab, Escape, ArrowUp/Down/Left/Right, Backspace, Delete, Home, End, PageUp, PageDown, or modifiers like Shift+Enter |
-| `scroll [sel]` | Scroll element into view, or scroll to page bottom if no selector |
-| `select <sel> <val>` | Select dropdown option by value, label, or visible text |
-| `type <text>` | Type into focused element |
-| `upload <sel> <file> [file2...]` | Upload file(s) |
-| `useragent <string>` | Set user agent |
-| `viewport <WxH>` | Set viewport size |
-| `wait <sel|--networkidle|--load>` | Wait for element, network idle, or page load (timeout: 15s) |
+
+| Command                                        | Description                                                                                                                            |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------- |
+| `click <sel>`                                  | Click element                                                                                                                          |
+| `cookie <name>=<value>`                        | Set cookie on current page domain                                                                                                      |
+| `cookie-import <json>`                         | Import cookies from JSON file                                                                                                          |
+| `cookie-import-browser [browser] [--domain d]` | Import cookies from Comet, Chrome, Arc, Brave, or Edge (opens picker, or use --domain for direct import)                               |
+| `dialog-accept [text]`                         | Auto-accept next alert/confirm/prompt. Optional text is sent as the prompt response                                                    |
+| `dialog-dismiss`                               | Auto-dismiss next dialog                                                                                                               |
+| `fill <sel> <val>`                             | Fill input                                                                                                                             |
+| `header <name>:<value>`                        | Set custom request header (colon-separated, sensitive values auto-redacted)                                                            |
+| `hover <sel>`                                  | Hover element                                                                                                                          |
+| `press <key>`                                  | Press key — Enter, Tab, Escape, ArrowUp/Down/Left/Right, Backspace, Delete, Home, End, PageUp, PageDown, or modifiers like Shift+Enter |
+| `scroll [sel]`                                 | Scroll element into view, or scroll to page bottom if no selector                                                                      |
+| `select <sel> <val>`                           | Select dropdown option by value, label, or visible text                                                                                |
+| `type <text>`                                  | Type into focused element                                                                                                              |
+| `upload <sel> <file> [file2...]`               | Upload file(s)                                                                                                                         |
+| `useragent <string>`                           | Set user agent                                                                                                                         |
+| `viewport <WxH>`                               | Set viewport size                                                                                                                      |
+| `wait <sel                                     | --networkidle                                                                                                                          | --load>` | Wait for element, network idle, or page load (timeout: 15s) |
 
 ### Inspection
-| Command | Description |
-|---------|-------------|
-| `attrs <sel|@ref>` | Element attributes as JSON |
-| `console [--clear|--errors]` | Console messages (--errors filters to error/warning) |
-| `cookies` | All cookies as JSON |
-| `css <sel> <prop>` | Computed CSS value |
-| `dialog [--clear]` | Dialog messages |
-| `eval <file>` | Run JavaScript from file and return result as string (path must be under /tmp or cwd) |
-| `is <prop> <sel>` | State check (visible/hidden/enabled/disabled/checked/editable/focused) |
-| `js <expr>` | Run JavaScript expression and return result as string |
-| `network [--clear]` | Network requests |
-| `perf` | Page load timings |
+
+| Command             | Description                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| `attrs <sel         | @ref>`                                                                                     | Element attributes as JSON                           |
+| `console [--clear   | --errors]`                                                                                 | Console messages (--errors filters to error/warning) |
+| `cookies`           | All cookies as JSON                                                                        |
+| `css <sel> <prop>`  | Computed CSS value                                                                         |
+| `dialog [--clear]`  | Dialog messages                                                                            |
+| `eval <file>`       | Run JavaScript from file and return result as string (path must be under /tmp or cwd)      |
+| `is <prop> <sel>`   | State check (visible/hidden/enabled/disabled/checked/editable/focused)                     |
+| `js <expr>`         | Run JavaScript expression and return result as string                                      |
+| `network [--clear]` | Network requests                                                                           |
+| `perf`              | Page load timings                                                                          |
 | `storage [set k v]` | Read all localStorage + sessionStorage as JSON, or set <key> <value> to write localStorage |
 
 ### Visual
-| Command | Description |
-|---------|-------------|
-| `diff <url1> <url2>` | Text diff between pages |
-| `pdf [path]` | Save as PDF |
-| `responsive [prefix]` | Screenshots at mobile (375x812), tablet (768x1024), desktop (1280x720). Saves as {prefix}-mobile.png etc. |
-| `screenshot [--viewport] [--clip x,y,w,h] [selector|@ref] [path]` | Save screenshot (supports element crop via CSS/@ref, --clip region, --viewport) |
+
+| Command                                             | Description                                                                                               |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `diff <url1> <url2>`                                | Text diff between pages                                                                                   |
+| `pdf [path]`                                        | Save as PDF                                                                                               |
+| `responsive [prefix]`                               | Screenshots at mobile (375x812), tablet (768x1024), desktop (1280x720). Saves as {prefix}-mobile.png etc. |
+| `screenshot [--viewport] [--clip x,y,w,h] [selector | @ref] [path]`                                                                                             | Save screenshot (supports element crop via CSS/@ref, --clip region, --viewport) |
 
 ### Snapshot
-| Command | Description |
-|---------|-------------|
+
+| Command            | Description                                                                                                                                                                                                                |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `snapshot [flags]` | Accessibility tree with @e refs for element selection. Flags: -i interactive only, -c compact, -d N depth limit, -s sel scope, -D diff vs previous, -a annotated screenshot, -o path output, -C cursor-interactive @c refs |
 
 ### Meta
-| Command | Description |
-|---------|-------------|
+
+| Command | Description                                                    |
+| ------- | -------------------------------------------------------------- |
 | `chain` | Run commands from JSON stdin. Format: [["cmd","arg1",...],...] |
 
 ### Tabs
-| Command | Description |
-|---------|-------------|
-| `closetab [id]` | Close tab |
-| `newtab [url]` | Open new tab |
-| `tab <id>` | Switch to tab |
-| `tabs` | List open tabs |
+
+| Command         | Description    |
+| --------------- | -------------- |
+| `closetab [id]` | Close tab      |
+| `newtab [url]`  | Open new tab   |
+| `tab <id>`      | Switch to tab  |
+| `tabs`          | List open tabs |
 
 ### Server
-| Command | Description |
-|---------|-------------|
-| `restart` | Restart server |
-| `status` | Health check |
-| `stop` | Shutdown server |
+
+| Command   | Description     |
+| --------- | --------------- |
+| `restart` | Restart server  |
+| `status`  | Health check    |
+| `stop`    | Shutdown server |

@@ -3,9 +3,9 @@ title: Motion, Animations, and Polish
 priority: MEDIUM
 tags: motion, animations, transitions, connected-animation, polish
 sources:
-  - https://learn.microsoft.com/windows/apps/design/motion/
-  - https://github.com/microsoft/WinUI-Gallery
-  - https://github.com/CommunityToolkit/Windows
+    - https://learn.microsoft.com/windows/apps/design/motion/
+    - https://github.com/microsoft/WinUI-Gallery
+    - https://github.com/CommunityToolkit/Windows
 ---
 
 ## What This Reference Is For

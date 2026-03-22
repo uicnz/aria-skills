@@ -3,6 +3,7 @@
 This file contains the “command catalog” for the bundled image generation CLI. Keep `SKILL.md` as overview-first; put verbose CLI details here.
 
 ## What this CLI does
+
 - `generate`: generate new images from a prompt
 - `edit`: edit an existing image (optionally with a mask) — inpainting / background replacement / “change only X”
 - `generate-batch`: run many jobs from a JSONL file (one job per line)
@@ -10,6 +11,7 @@ This file contains the “command catalog” for the bundled image generation CL
 Real API calls require **network access** + `OPENAI_API_KEY`. `--dry-run` does not.
 
 ## Quick start (works from any repo)
+
 Set a stable path to the skill CLI (default `ARIA_HOME` is `~/.aria`):
 
 ```
@@ -36,11 +38,13 @@ python "$IMAGE_GEN" generate --prompt "A cozy alpine cabin at dawn" --size 1024x
 ```
 
 ## Guardrails (important)
+
 - Use `python "$IMAGE_GEN" ...` (or equivalent full path) for generations/edits/batch work.
 - Do **not** create one-off runners (e.g. `gen_images.py`) unless the user explicitly asks for a custom wrapper.
 - **Never modify** `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
 
 ## Defaults (unless overridden by flags)
+
 - Model: `gpt-image-1.5`
 - Size: `1024x1024`
 - Quality: `auto`
@@ -48,20 +52,24 @@ python "$IMAGE_GEN" generate --prompt "A cozy alpine cabin at dawn" --size 1024x
 - Background: unspecified (API default). If you set `--background transparent`, also set `--output-format png` or `webp`.
 
 ## Quality + input fidelity
+
 - `--quality` works for `generate`, `edit`, and `generate-batch`: `low|medium|high|auto`.
 - `--input-fidelity` is **edit-only**: `low|high` (use `high` for strict edits like identity or layout lock).
 
 Example:
+
 ```
 python "$IMAGE_GEN" edit --image input.png --prompt "Change only the background" --quality high --input-fidelity high
 ```
 
 ## Masks (edits)
+
 - Use a **PNG** mask; an alpha channel is strongly recommended.
 - The mask should match the input image dimensions.
 - In the edit prompt, repeat invariants (e.g., “change only the background; keep the subject unchanged”) to reduce drift.
 
 ## Optional deps
+
 Prefer `uv run --with ...` for an out-of-the-box run without changing the current project env; otherwise install into your active env:
 
 ```
@@ -80,6 +88,7 @@ uv run --with openai --with pillow python "$IMAGE_GEN" generate \
 ```
 
 Notes:
+
 - Downscaling writes an extra file next to the original (default suffix `-web`, e.g. `output-web.png`).
 - Downscaling requires Pillow (use `uv run --with pillow ...` or install it into your env).
 
@@ -110,6 +119,7 @@ rm -f tmp/imagegen/prompts.jsonl
 ```
 
 Notes:
+
 - Use `--concurrency` to control parallelism (default `5`). Higher concurrency can hit rate limits; the CLI retries on transient errors.
 - Per-job overrides are supported in JSONL (e.g., `size`, `quality`, `background`, `output_format`, `n`, and prompt-augmentation fields).
 - `--n` generates multiple variants for a single prompt; `generate-batch` is for many different prompts.
@@ -122,11 +132,13 @@ python "$IMAGE_GEN" edit --image input.png --mask mask.png --prompt "Replace the
 ```
 
 ## CLI notes
+
 - Supported sizes: `1024x1024`, `1536x1024`, `1024x1536`, or `auto`.
 - Transparent backgrounds require `output_format` to be `png` or `webp`.
 - Default output is `output.png`; multiple images become `output-1.png`, `output-2.png`, etc.
 - Use `--no-augment` to skip prompt augmentation.
 
 ## See also
+
 - API parameter quick reference: `references/image-api.md`
 - Prompt examples: `references/sample-prompts.md`

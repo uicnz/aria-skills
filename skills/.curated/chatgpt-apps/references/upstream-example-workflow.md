@@ -62,12 +62,12 @@ Do not prefer the local scaffold just because it is available. It is the fallbac
 - Remove unrelated demo tools, assets, and routes immediately.
 - Keep the upstream file structure when it is already clean and docs-aligned.
 - Reconcile the copied example with the current docs before finishing:
-  - tool names and descriptions
-  - annotations (`readOnlyHint`, `destructiveHint`, `openWorldHint`, `idempotentHint` when true)
-  - `_meta.ui.resourceUri` and optional `_meta["openai/outputTemplate"]`
-  - resource `_meta.ui.csp`, `_meta.ui.domain`, and `openai/widgetDescription`
-  - URI versioning for template changes
-  - local run/test instructions
+    - tool names and descriptions
+    - annotations (`readOnlyHint`, `destructiveHint`, `openWorldHint`, `idempotentHint` when true)
+    - `_meta.ui.resourceUri` and optional `_meta["openai/outputTemplate"]`
+    - resource `_meta.ui.csp`, `_meta.ui.domain`, and `openai/widgetDescription`
+    - URI versioning for template changes
+    - local run/test instructions
 - State which example you chose and why.
 - If you rely on upstream code, note the source repo and branch/tag/commit when practical; avoid silently depending on a floating example shape for long-lived work.
 

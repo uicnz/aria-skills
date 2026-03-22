@@ -51,6 +51,7 @@ Only run `open` if the user says yes. Always run `touch` to mark as seen. This o
 ## AskUserQuestion Format
 
 **ALWAYS follow this structure for every AskUserQuestion call:**
+
 1. **Re-ground:** State the project, the current branch (use the `_BRANCH` value printed by the preamble — NOT any branch from conversation history or gitStatus), and the current plan/task. (1-2 sentences)
 2. **Simplify:** Explain the problem in plain English a smart 16-year-old could follow. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
 3. **Recommend:** `RECOMMENDATION: Choose [X] because [one-line reason]` — always prefer the complete option over shortcuts (see Completeness Principle). Include `Completeness: X/10` for each option. Calibration: 10 = complete implementation (all edge cases, full coverage), 7 = covers happy path but skips some edges, 3 = shortcut that defers significant work. If both options are 8+, pick the higher; if one is ≤5, flag it.
@@ -68,18 +69,19 @@ AI-assisted coding makes the marginal cost of completeness near-zero. When you p
 - **Lake vs. ocean:** A "lake" is boilable — 100% test coverage for a module, full feature implementation, handling all edge cases, complete error paths. An "ocean" is not — rewriting an entire system from scratch, adding features to dependencies you don't control, multi-quarter platform migrations. Recommend boiling lakes. Flag oceans as out of scope.
 - **When estimating effort**, always show both scales: human team time and CC+ship time. The compression ratio varies by task type — use this reference:
 
-| Task type | Human team | CC+ship | Compression |
-|-----------|-----------|-----------|-------------|
-| Boilerplate / scaffolding | 2 days | 15 min | ~100x |
-| Test writing | 1 day | 15 min | ~50x |
-| Feature implementation | 1 week | 30 min | ~30x |
-| Bug fix + regression test | 4 hours | 15 min | ~20x |
-| Architecture / design | 2 days | 4 hours | ~5x |
-| Research / exploration | 1 day | 3 hours | ~3x |
+| Task type                 | Human team | CC+ship | Compression |
+| ------------------------- | ---------- | ------- | ----------- |
+| Boilerplate / scaffolding | 2 days     | 15 min  | ~100x       |
+| Test writing              | 1 day      | 15 min  | ~50x        |
+| Feature implementation    | 1 week     | 30 min  | ~30x        |
+| Bug fix + regression test | 4 hours    | 15 min  | ~20x        |
+| Architecture / design     | 2 days     | 4 hours | ~5x         |
+| Research / exploration    | 1 day      | 3 hours | ~3x         |
 
 - This principle applies to test coverage, error handling, documentation, edge cases, and feature completeness. Don't skip the last 10% to "save time" — with AI, that 10% costs seconds.
 
 **Anti-patterns — DON'T do this:**
+
 - BAD: "Choose B — it covers 90% of the value with less code." (If A is only 70 lines more, choose A.)
 - BAD: "We can skip edge case handling to save time." (Edge case handling costs minutes with CC.)
 - BAD: "Let's defer test coverage to a follow-up PR." (Tests are the cheapest lake to boil.)
@@ -113,7 +115,9 @@ Hey ship team — ran into this while using /{skill-name}:
 ## Raw output
 
 ```
+
 {paste the actual error or unexpected output here}
+
 ```
 
 ## What would make this a 10
@@ -160,6 +164,7 @@ fi
 ```
 
 If `NEEDS_SETUP`:
+
 1. Tell the user: "ship browse needs a one-time build (~10 seconds). OK to proceed?" Then STOP and wait.
 2. Run: `cd <SKILL_DIR> && ./setup`
 3. If `bun` is not installed: `curl -fsSL https://bun.sh/install | bash`
@@ -227,7 +232,7 @@ This is the **primary mode** for developers verifying their work. When the user 
     - If the change was interactive (forms, buttons, flows), test the interaction end-to-end
     - Use `snapshot -D` before and after actions to verify the change had the expected effect
 
-5. **Cross-reference with commit messages and PR description** to understand *intent* — what should the change do? Verify it actually does that.
+5. **Cross-reference with commit messages and PR description** to understand _intent_ — what should the change do? Verify it actually does that.
 
 6. **Check TODOS.md** (if it exists) for known bugs or issues related to the changed files. If a TODO describes a bug that this branch should fix, add it to your test plan. If you find a new bug during QA that isn't in TODOS.md, note it in the report.
 
@@ -239,12 +244,15 @@ This is the **primary mode** for developers verifying their work. When the user 
 **If the user provides a URL with diff-aware mode:** Use that URL as the base but still scope testing to the changed files.
 
 ### Full (default when URL is provided)
+
 Systematic exploration. Visit every reachable page. Document 5-10 well-evidenced issues. Produce health score. Takes 5-15 minutes depending on app size.
 
 ### Quick (`--quick`)
+
 30-second smoke test. Visit homepage + top 5 navigation targets. Check: page loads? Console errors? Broken links? Produce health score. No detailed issue documentation.
 
 ### Regression (`--regression <baseline>`)
+
 Run full mode, then load `baseline.json` from a previous run. Diff: which issues are fixed? Which are new? What's the score delta? Append regression section to report.
 
 ---
@@ -384,6 +392,7 @@ $B snapshot -i -a -o "$REPORT_DIR/screenshots/issue-002.png"
     ```
 
 **Regression mode:** After writing the report, load the baseline file. Compare:
+
 - Health score delta
 - Issues fixed (in baseline but not current)
 - New issues (in current but not baseline)
@@ -420,16 +429,16 @@ Minimum 0 per category.
 
 ### Weights
 
-| Category | Weight |
-|----------|--------|
-| Console | 15% |
-| Links | 10% |
-| Visual | 10% |
-| Functional | 20% |
-| UX | 15% |
-| Performance | 10% |
-| Content | 5% |
-| Accessibility | 15% |
+| Category      | Weight |
+| ------------- | ------ |
+| Console       | 15%    |
+| Links         | 10%    |
+| Visual        | 10%    |
+| Functional    | 20%    |
+| UX            | 15%    |
+| Performance   | 10%    |
+| Content       | 5%     |
+| Accessibility | 15%    |
 
 ### Final Score
 
@@ -452,7 +461,6 @@ Minimum 0 per category.
 - Verify CSRF token presence in forms
 - Test Turbo/Stimulus integration — do page transitions work smoothly?
 - Check for flash messages appearing and dismissing correctly
-
 
 ### General SPA (React, Vue, Angular)
 

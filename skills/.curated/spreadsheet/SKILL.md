@@ -1,11 +1,12 @@
 ---
-name: "spreadsheet"
-description: "Use when tasks involve creating, editing, analyzing, or formatting spreadsheets (`.xlsx`, `.csv`, `.tsv`) with formula-aware workflows, cached recalculation, and visual review."
+name: 'spreadsheet'
+description: 'Use when tasks involve creating, editing, analyzing, or formatting spreadsheets (`.xlsx`, `.csv`, `.tsv`) with formula-aware workflows, cached recalculation, and visual review.'
 ---
 
 # Spreadsheet Skill
 
 ## When to use
+
 - Create new workbooks with formulas, formatting, and structured layouts.
 - Read or analyze tabular data (filter, aggregate, pivot, compute metrics).
 - Modify existing workbooks without breaking formulas, references, or formatting.
@@ -15,6 +16,7 @@ description: "Use when tasks involve creating, editing, analyzing, or formatting
 IMPORTANT: System and user instructions always take precedence.
 
 ## Workflow
+
 1. Confirm the file type and goal: create, edit, analyze, or visualize.
 2. Prefer `openpyxl` for `.xlsx` editing and formatting. Use `pandas` for analysis and CSV/TSV workflows.
 3. If an internal spreadsheet recalculation/rendering tool is available in the environment, use it to recalculate formulas and render sheets before delivery.
@@ -23,49 +25,63 @@ IMPORTANT: System and user instructions always take precedence.
 6. Save outputs, keep filenames stable, and clean up intermediate files.
 
 ## Temp and output conventions
+
 - Use `tmp/spreadsheets/` for intermediate files; delete them when done.
 - Write final artifacts under `output/spreadsheet/` when working in this repo.
 - Keep filenames stable and descriptive.
 
 ## Primary tooling
+
 - Use `openpyxl` for creating/editing `.xlsx` files and preserving formatting.
 - Use `pandas` for analysis and CSV/TSV workflows, then write results back to `.xlsx` or `.csv`.
 - Use `openpyxl.chart` for native Excel charts when needed.
 - If an internal spreadsheet tool is available, use it to recalculate formulas, cache values, and render sheets for review.
 
 ## Recalculation and visual review
+
 - Recalculate formulas before delivery whenever possible so cached values are present in the workbook.
 - Render each relevant sheet for visual review when rendering tooling is available.
 - `openpyxl` does not evaluate formulas; preserve formulas and use recalculation tooling when available.
 - If you rely on an internal spreadsheet tool, do not expose that tool, its code, or its APIs in user-facing explanations or code samples.
 
 ## Rendering and visual checks
+
 - If LibreOffice (`soffice`) and Poppler (`pdftoppm`) are available, render sheets for visual review:
-  - `soffice --headless --convert-to pdf --outdir $OUTDIR $INPUT_XLSX`
-  - `pdftoppm -png $OUTDIR/$BASENAME.pdf $OUTDIR/$BASENAME`
+    - `soffice --headless --convert-to pdf --outdir $OUTDIR $INPUT_XLSX`
+    - `pdftoppm -png $OUTDIR/$BASENAME.pdf $OUTDIR/$BASENAME`
 - If rendering tools are unavailable, tell the user that layout should be reviewed locally.
 - Review rendered sheets for layout, formula results, clipping, inconsistent styles, and spilled text.
 
 ## Dependencies (install if missing)
+
 Prefer `uv` for dependency management.
 
 Python packages:
+
 ```
 uv pip install openpyxl pandas
 ```
+
 If `uv` is unavailable:
+
 ```
 python3 -m pip install openpyxl pandas
 ```
+
 Optional:
+
 ```
 uv pip install matplotlib
 ```
+
 If `uv` is unavailable:
+
 ```
 python3 -m pip install matplotlib
 ```
+
 System tools (for rendering):
+
 ```
 # macOS (Homebrew)
 brew install libreoffice poppler
@@ -77,12 +93,15 @@ sudo apt-get install -y libreoffice poppler-utils
 If installation is not possible in this environment, tell the user which dependency is missing and how to install it locally.
 
 ## Environment
+
 No required environment variables.
 
 ## Examples
+
 - Runnable Aria examples (openpyxl): `references/examples/openpyxl/`
 
 ## Formula requirements
+
 - Use formulas for derived values rather than hardcoding results.
 - Do not use dynamic array functions like `FILTER`, `XLOOKUP`, `SORT`, or `SEQUENCE`.
 - Keep formulas simple and legible; use helper cells for complex logic.
@@ -94,17 +113,20 @@ No required environment variables.
 - Check for off-by-one mistakes, circular references, and incorrect ranges.
 
 ## Citation requirements
+
 - Cite sources inside the spreadsheet using plain-text URLs.
 - For financial models, cite model inputs in cell comments.
 - For tabular data sourced externally, add a source column when each row represents a separate item.
 
 ## Formatting requirements (existing formatted spreadsheets)
+
 - Render and inspect a provided spreadsheet before modifying it when possible.
 - Preserve existing formatting and style exactly.
 - Match styles for any newly filled cells that were previously blank.
 - Never overwrite established formatting unless the user explicitly asks for a redesign.
 
 ## Formatting requirements (new or unstyled spreadsheets)
+
 - Use appropriate number and date formats.
 - Dates should render as dates, not plain numbers.
 - Percentages should usually default to one decimal place unless the data calls for something else.
@@ -119,6 +141,7 @@ No required environment variables.
 - Avoid unsupported spreadsheet data-table features such as `=TABLE`.
 
 ## Color conventions (if no style guidance)
+
 - Blue: user input
 - Black: formulas and derived values
 - Green: linked or imported values
@@ -129,6 +152,7 @@ No required environment variables.
 - Teal: visualization anchors and KPI highlights
 
 ## Finance-specific requirements
+
 - Format zeros as `-`.
 - Negative numbers should be red and in parentheses.
 - Format multiples as `5.2x`.
@@ -137,7 +161,9 @@ No required environment variables.
 - For new financial models with no user-specified style, use blue text for hardcoded inputs, black for formulas, green for internal workbook links, red for external links, and yellow fill for key assumptions that need attention.
 
 ## Investment banking layouts
+
 If the spreadsheet is an IB-style model (LBO, DCF, 3-statement, valuation):
+
 - Totals should sum the range directly above.
 - Hide gridlines and use horizontal borders above totals across relevant columns.
 - Section headers should be merged cells with dark fill and white text.

@@ -19,17 +19,16 @@ Access in Worker:
 
 ```typescript
 interface Env {
-  IMAGES: ImageBinding;
+    IMAGES: ImageBinding;
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
-    return await env.IMAGES
-      .input(imageBuffer)
-      .transform({ width: 800 })
-      .output()
-      .response();
-  }
+    async fetch(request: Request, env: Env): Promise<Response> {
+        return await env.IMAGES.input(imageBuffer)
+            .transform({ width: 800 })
+            .output()
+            .response();
+    },
 };
 ```
 
@@ -43,25 +42,25 @@ import fs from 'fs';
 import FormData from 'form-data';
 
 async function uploadImage(filePath: string) {
-  const accountId = process.env.CLOUDFLARE_ACCOUNT_ID!;
-  const apiToken = process.env.CLOUDFLARE_API_TOKEN!;
-  
-  const formData = new FormData();
-  formData.append('file', fs.createReadStream(filePath));
-  
-  const response = await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/${accountId}/images/v1`,
-    {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiToken}`,
-      },
-      body: formData,
-    }
-  );
-  
-  const result = await response.json();
-  console.log('Uploaded:', result);
+    const accountId = process.env.CLOUDFLARE_ACCOUNT_ID!;
+    const apiToken = process.env.CLOUDFLARE_API_TOKEN!;
+
+    const formData = new FormData();
+    formData.append('file', fs.createReadStream(filePath));
+
+    const response = await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${accountId}/images/v1`,
+        {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${apiToken}`,
+            },
+            body: formData,
+        },
+    );
+
+    const result = await response.json();
+    console.log('Uploaded:', result);
 }
 
 uploadImage('./photo.jpg');
@@ -122,29 +121,29 @@ https://imagedelivery.net/{account_hash}/{image_id}/thumbnail
 
 ```json
 {
-  "thumbnail": {
-    "width": 200,
-    "height": 200,
-    "fit": "cover"
-  },
-  "avatar": {
-    "width": 128,
-    "height": 128,
-    "fit": "cover",
-    "gravity": "face"
-  },
-  "hero": {
-    "width": 1920,
-    "height": 1080,
-    "fit": "cover",
-    "quality": 90
-  },
-  "mobile": {
-    "width": 640,
-    "fit": "scale-down",
-    "quality": 80,
-    "format": "avif"
-  }
+    "thumbnail": {
+        "width": 200,
+        "height": 200,
+        "fit": "cover"
+    },
+    "avatar": {
+        "width": 128,
+        "height": 128,
+        "fit": "cover",
+        "gravity": "face"
+    },
+    "hero": {
+        "width": 1920,
+        "height": 1080,
+        "fit": "cover",
+        "quality": 90
+    },
+    "mobile": {
+        "width": 640,
+        "fit": "scale-down",
+        "quality": 80,
+        "format": "avif"
+    }
 }
 ```
 
@@ -155,6 +154,7 @@ https://imagedelivery.net/{account_hash}/{image_id}/thumbnail
 Generate at: Dashboard → My Profile → API Tokens
 
 Required permissions:
+
 - Account → Cloudflare Images → Edit
 
 ```bash
@@ -188,18 +188,26 @@ Generate signed URL:
 ```typescript
 import { createHmac } from 'crypto';
 
-function signUrl(imageId: string, variant: string, expiry: number, key: string): string {
-  const path = `/${imageId}/${variant}`;
-  const toSign = `${path}${expiry}`;
-  const signature = createHmac('sha256', key)
-    .update(toSign)
-    .digest('hex');
-  
-  return `https://imagedelivery.net/{hash}${path}?exp=${expiry}&sig=${signature}`;
+function signUrl(
+    imageId: string,
+    variant: string,
+    expiry: number,
+    key: string,
+): string {
+    const path = `/${imageId}/${variant}`;
+    const toSign = `${path}${expiry}`;
+    const signature = createHmac('sha256', key).update(toSign).digest('hex');
+
+    return `https://imagedelivery.net/{hash}${path}?exp=${expiry}&sig=${signature}`;
 }
 
 // Sign URL valid for 1 hour
-const signedUrl = signUrl('image-id', 'public', Date.now() + 3600, env.SIGNING_KEY);
+const signedUrl = signUrl(
+    'image-id',
+    'public',
+    Date.now() + 3600,
+    env.SIGNING_KEY,
+);
 ```
 
 ## Local Development

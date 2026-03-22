@@ -10,20 +10,20 @@ Core sources:
 
 ## Documentation Tree Mapping
 
-| ASP.NET Core docs area | Use this skill reference first |
-| --- | --- |
+| ASP.NET Core docs area            | Use this skill reference first                     |
+| --------------------------------- | -------------------------------------------------- |
 | Overview, Get started, What's new | `stack-selection.md`, `versioning-and-upgrades.md` |
-| Fundamentals | `program-and-pipeline.md` |
-| Web apps | `ui-blazor.md`, `ui-razor-pages.md`, `ui-mvc.md` |
-| APIs | `apis-minimal-and-controllers.md` |
-| Real-time apps | `realtime-grpc-and-background-work.md` |
-| Remote Procedure Call apps | `realtime-grpc-and-background-work.md` |
-| Servers, Host and deploy | `testing-performance-and-operations.md` |
-| Test, Debug, Troubleshoot | `testing-performance-and-operations.md` |
-| Data access | `data-state-and-services.md` |
-| Security and Identity | `security-and-identity.md` |
-| Performance | `testing-performance-and-operations.md` |
-| Migration and updates | `versioning-and-upgrades.md` |
+| Fundamentals                      | `program-and-pipeline.md`                          |
+| Web apps                          | `ui-blazor.md`, `ui-razor-pages.md`, `ui-mvc.md`   |
+| APIs                              | `apis-minimal-and-controllers.md`                  |
+| Real-time apps                    | `realtime-grpc-and-background-work.md`             |
+| Remote Procedure Call apps        | `realtime-grpc-and-background-work.md`             |
+| Servers, Host and deploy          | `testing-performance-and-operations.md`            |
+| Test, Debug, Troubleshoot         | `testing-performance-and-operations.md`            |
+| Data access                       | `data-state-and-services.md`                       |
+| Security and Identity             | `security-and-identity.md`                         |
+| Performance                       | `testing-performance-and-operations.md`            |
+| Migration and updates             | `versioning-and-upgrades.md`                       |
 
 ## Areas To Consult Directly On Microsoft Learn
 

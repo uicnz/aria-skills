@@ -26,8 +26,8 @@ Use the standard by default when the request is about:
 - Takes a single query string
 - Returns exactly one MCP content item with `type: "text"`
 - That text is a JSON-encoded object with:
-  - `results`
-  - each result has `id`, `title`, and `url`
+    - `results`
+    - each result has `id`, `title`, and `url`
 
 ### `fetch`
 
@@ -35,11 +35,11 @@ Use the standard by default when the request is about:
 - Takes a single document/item id string
 - Returns exactly one MCP content item with `type: "text"`
 - That text is a JSON-encoded object with:
-  - `id`
-  - `title`
-  - `text`
-  - `url`
-  - optional `metadata`
+    - `id`
+    - `title`
+    - `text`
+    - `url`
+    - optional `metadata`
 
 ## Implementation Rules
 

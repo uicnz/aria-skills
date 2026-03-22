@@ -1,6 +1,7 @@
 # Program And Pipeline
 
 Primary docs:
+
 - https://learn.microsoft.com/aspnet/core/fundamentals/
 - https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/webapplication
 - https://learn.microsoft.com/aspnet/core/fundamentals/middleware/
@@ -26,9 +27,9 @@ Use older `Startup` patterns only when the repository already uses them or the t
 - Use constructor injection as the default
 - Use options classes for structured configuration
 - Choose lifetimes intentionally:
-  - singleton: stateless or shared infrastructure
-  - scoped: request-bound work such as `DbContext`
-  - transient: lightweight stateless services
+    - singleton: stateless or shared infrastructure
+    - scoped: request-bound work such as `DbContext`
+    - transient: lightweight stateless services
 
 ## Configuration Defaults
 

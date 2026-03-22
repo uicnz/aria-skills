@@ -1,16 +1,15 @@
 ---
-name: "screenshot"
-description: "Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed."
+name: 'screenshot'
+description: 'Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed.'
 ---
-
 
 # Screenshot Capture
 
 Follow these save-location rules every time:
 
-1) If the user specifies a path, save there.
-2) If the user asks for a screenshot without a path, save to the OS default screenshot location.
-3) If Aria needs a screenshot for its own inspection, save to the temp directory.
+1. If the user specifies a path, save there.
+2. If the user asks for a screenshot without a path, save to the OS default screenshot location.
+3. If Aria needs a screenshot for its own inspection, save to the temp directory.
 
 ## Tool priority
 
@@ -134,9 +133,9 @@ python3 <path-to-skill>/scripts/take_screenshot.py --app "<App>" --mode temp
 
 The helper automatically selects the first available tool:
 
-1) `scrot`
-2) `gnome-screenshot`
-3) ImageMagick `import`
+1. `scrot`
+2. `gnome-screenshot`
+3. ImageMagick `import`
 
 If none are available, ask the user to install one of them and retry.
 

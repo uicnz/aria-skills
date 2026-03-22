@@ -1,14 +1,14 @@
 ---
-name: "sora"
-description: "Use when the user asks to generate, edit, extend, poll, list, download, or delete Sora videos, create reusable non-human Sora character references, or run local multi-video queues via the bundled CLI (`scripts/sora.py`); includes requests like: (i) generate AI video, (ii) edit this Sora clip, (iii) extend this video, (iv) create a character reference, (v) download video/thumbnail/spritesheet, and (vi) Sora batch planning; requires `OPENAI_API_KEY` and Sora API access."
+name: 'sora'
+description: 'Use when the user asks to generate, edit, extend, poll, list, download, or delete Sora videos, create reusable non-human Sora character references, or run local multi-video queues via the bundled CLI (`scripts/sora.py`); includes requests like: (i) generate AI video, (ii) edit this Sora clip, (iii) extend this video, (iv) create a character reference, (v) download video/thumbnail/spritesheet, and (vi) Sora batch planning; requires `OPENAI_API_KEY` and Sora API access.'
 ---
-
 
 # Sora Video Generation Skill
 
 Creates or manages Sora video jobs for the current project (product demos, marketing spots, cinematic shots, social clips, UI mocks). Defaults to `sora-2` with structured prompt augmentation and prefers the bundled CLI for deterministic runs. Note: `$sora` is a skill tag in prompts, not a shell command.
 
 ## When to use
+
 - Generate a new video clip from a prompt
 - Create a reusable character reference from a short non-human source clip
 - Edit an existing generated video with a targeted prompt change
@@ -17,6 +17,7 @@ Creates or manages Sora video jobs for the current project (product demos, marke
 - Run a local multi-job queue now, or plan a true Batch API submission for offline rendering
 
 ## Decision tree
+
 - If the user has a short non-human reference clip they want to reuse across shots → `create-character`
 - If the user has a completed video and wants the next beat/continuation → `extend`
 - If the user has a completed video and wants a targeted change while preserving the shot → `edit`
@@ -26,6 +27,7 @@ Creates or manages Sora video jobs for the current project (product demos, marke
 - Otherwise → `create` (or `create-and-poll` if they need a ready asset in one step)
 
 ## Workflow
+
 1. Decide intent: create vs create-character vs edit vs extend vs status/download vs local queue vs official Batch API.
 2. Collect inputs: prompt, model, size, seconds, any image reference, and any character IDs.
 3. Prefer CLI augmentation flags (`--use-case`, `--scene`, `--camera`, etc.) instead of hand-writing a long structured prompt. If you already have a structured prompt file, pass `--no-augment`.
@@ -37,15 +39,19 @@ Creates or manages Sora video jobs for the current project (product demos, marke
 9. Use one targeted change per iteration.
 
 ## Authentication
+
 - `OPENAI_API_KEY` must be set for live API calls.
 
 If the key is missing, give the user these steps:
+
 1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
 2. Set `OPENAI_API_KEY` as an environment variable in their system.
 3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
 - Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
 
 ## Defaults & rules
+
 - Default model: `sora-2` (use `sora-2-pro` for higher fidelity).
 - Default size: `1280x720`.
 - Default seconds: `4` (allowed: `"4"`, `"8"`, `"12"`, `"16"`, `"20"`).
@@ -64,6 +70,7 @@ If the key is missing, give the user these steps:
 - Sora can generate audio; if a user requests voiceover/audio, specify it explicitly in the `Audio:` and `Dialogue:` lines and keep it short.
 
 ## API limitations
+
 - Models are limited to `sora-2` and `sora-2-pro`.
 - API access to Sora models requires an organization-verified account.
 - Duration must be set via the `seconds` parameter and currently supports `4`, `8`, `12`, `16`, and `20`.
@@ -78,6 +85,7 @@ If the key is missing, give the user these steps:
 - Content restrictions are enforced by the API (see Guardrails below).
 
 ## Guardrails (must enforce)
+
 - Only content suitable for audiences under 18.
 - No copyrighted characters or copyrighted music.
 - No real people (including public figures).
@@ -85,9 +93,11 @@ If the key is missing, give the user these steps:
 - Character uploads in this skill are for non-human subjects only.
 
 ## Prompt augmentation
+
 Reformat prompts into a structured, production-oriented spec. Only make implicit details explicit; do not invent new creative requirements.
 
 Template (include only relevant lines):
+
 ```
 Use case: <where the clip will be used>
 Primary request: <user's main prompt>
@@ -110,6 +120,7 @@ Avoid: <negative constraints>
 ```
 
 Augmentation rules:
+
 - Keep it short; add only details the user already implied or provided elsewhere.
 - For edits, explicitly list invariants ("same shot, change only X").
 - For character-based shots, mention the character name verbatim in the prompt.
@@ -119,6 +130,7 @@ Augmentation rules:
 ## Examples
 
 ### Generation example (single shot)
+
 ```
 Use case: product teaser
 Primary request: a close-up of a matte black camera on a pedestal
@@ -129,12 +141,14 @@ Constraints: no logos, no text
 ```
 
 ### Edit example (invariants)
+
 ```
 Primary request: same shot and framing, switch palette to teal/sand/rust with warmer backlight
 Constraints: keep the subject and camera move unchanged
 ```
 
 ### Character consistency example
+
 ```
 Primary request: Mossy, a moss-covered teapot mascot, hurries through a lantern-lit market at dusk
 Camera: cinematic tracking shot, 35mm, shoulder height
@@ -143,6 +157,7 @@ Constraints: keep Mossy’s silhouette and moss texture consistent across the sh
 ```
 
 ## Prompting best practices (short list)
+
 - One main action + one camera move per shot.
 - Use counts or beats for timing ("two steps, pause, turn").
 - Keep text short and the camera locked-off for UI or on-screen text.
@@ -155,11 +170,14 @@ Constraints: keep Mossy’s silhouette and moss texture consistent across the sh
 - Iterate with single-change follow-ups to preserve continuity.
 
 ## Guidance by asset type
+
 Use these modules when the request is for a specific artifact. They provide targeted templates and defaults.
+
 - Cinematic shots: `references/cinematic-shots.md`
 - Social ads: `references/social-ads.md`
 
 ## CLI + environment notes
+
 - CLI commands + examples: `references/cli.md`
 - API parameter quick reference: `references/video-api.md`
 - Prompting guidance: `references/prompting.md`
@@ -168,6 +186,7 @@ Use these modules when the request is for a specific artifact. They provide targ
 - Network/sandbox tips: `references/aria-network.md`
 
 ## Reference map
+
 - **`references/cli.md`**: how to run create/edit/extend/create-character/poll/download/local-queue flows via `scripts/sora.py`.
 - **`references/video-api.md`**: API-level knobs (models, sizes, duration, characters, edits, extensions, official Batch API).
 - **`references/prompting.md`**: prompt structure, character continuity, editing, and extension guidance.

@@ -4,18 +4,14 @@
 
 ```jsonc
 {
-  "name": "my-agents-app",
-  "durable_objects": {
-    "bindings": [
-      {"name": "MyAgent", "class_name": "MyAgent"}
-    ]
-  },
-  "migrations": [
-    {"tag": "v1", "new_sqlite_classes": ["MyAgent"]}
-  ],
-  "ai": {
-    "binding": "AI"
-  }
+    "name": "my-agents-app",
+    "durable_objects": {
+        "bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
+    },
+    "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MyAgent"] }],
+    "ai": {
+        "binding": "AI",
+    },
 }
 ```
 
@@ -25,16 +21,16 @@
 
 ```typescript
 interface Env {
-  AI?: Ai;                              // Workers AI
-  MyAgent?: DurableObjectNamespace<MyAgent>;
-  ChatAgent?: DurableObjectNamespace<ChatAgent>;
-  DB?: D1Database;                      // D1 database
-  KV?: KVNamespace;                     // KV storage
-  R2?: R2Bucket;                        // R2 bucket
-  OPENAI_API_KEY?: string;              // Secrets
-  GITHUB_CLIENT_ID?: string;            // MCP OAuth credentials
-  GITHUB_CLIENT_SECRET?: string;
-  QUEUE?: Queue;                        // Queues
+    AI?: Ai; // Workers AI
+    MyAgent?: DurableObjectNamespace<MyAgent>;
+    ChatAgent?: DurableObjectNamespace<ChatAgent>;
+    DB?: D1Database; // D1 database
+    KV?: KVNamespace; // KV storage
+    R2?: R2Bucket; // R2 bucket
+    OPENAI_API_KEY?: string; // Secrets
+    GITHUB_CLIENT_ID?: string; // MCP OAuth credentials
+    GITHUB_CLIENT_SECRET?: string;
+    QUEUE?: Queue; // Queues
 }
 ```
 
@@ -58,13 +54,13 @@ npx wrangler secret put OPENAI_API_KEY
 **Recommended: Use route helpers**
 
 ```typescript
-import { routeAgent } from "agents";
+import { routeAgent } from 'agents';
 
 export default {
-  fetch(request: Request, env: Env) {
-    return routeAgent(request, env);
-  }
-}
+    fetch(request: Request, env: Env) {
+        return routeAgent(request, env);
+    },
+};
 ```
 
 Helper routes requests to agents automatically based on URL patterns.
@@ -73,41 +69,41 @@ Helper routes requests to agents automatically based on URL patterns.
 
 ```typescript
 export default {
-  async fetch(request: Request, env: Env) {
-    const url = new URL(request.url);
-    
-    // Named ID (deterministic)
-    const id = env.MyAgent.idFromName("user-123");
-    
-    // Random ID (from URL param)
-    // const id = env.MyAgent.idFromString(url.searchParams.get("id"));
-    
-    const stub = env.MyAgent.get(id);
-    return stub.fetch(request);
-  }
-}
+    async fetch(request: Request, env: Env) {
+        const url = new URL(request.url);
+
+        // Named ID (deterministic)
+        const id = env.MyAgent.idFromName('user-123');
+
+        // Random ID (from URL param)
+        // const id = env.MyAgent.idFromString(url.searchParams.get("id"));
+
+        const stub = env.MyAgent.get(id);
+        return stub.fetch(request);
+    },
+};
 ```
 
 **Multi-agent setup:**
 
 ```typescript
-import { routeAgent } from "agents";
+import { routeAgent } from 'agents';
 
 export default {
-  fetch(request: Request, env: Env) {
-    const url = new URL(request.url);
-    
-    // Route by path
-    if (url.pathname.startsWith("/chat")) {
-      return routeAgent(request, env, "ChatAgent");
-    }
-    if (url.pathname.startsWith("/task")) {
-      return routeAgent(request, env, "TaskAgent");
-    }
-    
-    return new Response("Not found", { status: 404 });
-  }
-}
+    fetch(request: Request, env: Env) {
+        const url = new URL(request.url);
+
+        // Route by path
+        if (url.pathname.startsWith('/chat')) {
+            return routeAgent(request, env, 'ChatAgent');
+        }
+        if (url.pathname.startsWith('/task')) {
+            return routeAgent(request, env, 'TaskAgent');
+        }
+
+        return new Response('Not found', { status: 404 });
+    },
+};
 ```
 
 ## Email Routing
@@ -115,14 +111,14 @@ export default {
 **Code setup:**
 
 ```typescript
-import { routeAgentEmail } from "agents";
+import { routeAgentEmail } from 'agents';
 
 export default {
-  fetch: (req: Request, env: Env) => routeAgent(req, env),
-  email: (message: ForwardableEmailMessage, env: Env) => {
-    return routeAgentEmail(message, env);
-  }
-}
+    fetch: (req: Request, env: Env) => routeAgent(req, env),
+    email: (message: ForwardableEmailMessage, env: Env) => {
+        return routeAgentEmail(message, env);
+    },
+};
 ```
 
 **Dashboard setup:**
@@ -138,10 +134,10 @@ Then handle in agent:
 
 ```typescript
 export class EmailAgent extends Agent<Env> {
-  async onEmail(email: AgentEmail) {
-    const text = await email.text();
-    // Process email
-  }
+    async onEmail(email: AgentEmail) {
+        const text = await email.text();
+        // Process email
+    }
 }
 ```
 
@@ -150,15 +146,15 @@ export class EmailAgent extends Agent<Env> {
 ```typescript
 // Enable caching/routing through AI Gateway
 const response = await this.env.AI.run(
-  "@cf/meta/llama-3.1-8b-instruct",
-  { prompt },
-  {
-    gateway: {
-      id: "my-gateway-id",
-      skipCache: false,
-      cacheTtl: 3600
-    }
-  }
+    '@cf/meta/llama-3.1-8b-instruct',
+    { prompt },
+    {
+        gateway: {
+            id: 'my-gateway-id',
+            skipCache: false,
+            cacheTtl: 3600,
+        },
+    },
 );
 ```
 

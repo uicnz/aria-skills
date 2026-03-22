@@ -1,6 +1,6 @@
 ---
-name: "security-ownership-map"
-description: "Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user explicitly wants a security-oriented ownership or bus-factor analysis grounded in git history (for example: orphaned sensitive code, security maintainers, CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters). Do not trigger for general maintainer lists or non-security ownership questions."
+name: 'security-ownership-map'
+description: 'Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user explicitly wants a security-oriented ownership or bus-factor analysis grounded in git history (for example: orphaned sensitive code, security maintainers, CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters). Do not trigger for general maintainer lists or non-security ownership questions.'
 ---
 
 # Security Ownership Map
@@ -165,6 +165,7 @@ python skills/skills/security-ownership-map/scripts/community_maintainers.py \
 ```
 
 Notes:
+
 - Touches default to one authored commit (not per-file). Use `--touch-mode file` to count per-file touches.
 - Use `--window-days 90` or `--weight recency --half-life-days 180` to smooth churn.
 - Filter bots with `--ignore-author-regex '(bot|dependabot)'`.
@@ -179,19 +180,19 @@ Use this structure, add fields if needed:
 
 ```json
 {
-  "orphaned_sensitive_code": [
-    {
-      "path": "crypto/tls/handshake.rs",
-      "last_security_touch": "2023-03-12T18:10:04+00:00",
-      "bus_factor": 1
-    }
-  ],
-  "hidden_owners": [
-    {
-      "person": "alice@corp",
-      "controls": "63% of auth code"
-    }
-  ]
+    "orphaned_sensitive_code": [
+        {
+            "path": "crypto/tls/handshake.rs",
+            "last_security_touch": "2023-03-12T18:10:04+00:00",
+            "bus_factor": 1
+        }
+    ],
+    "hidden_owners": [
+        {
+            "person": "alice@corp",
+            "controls": "63% of auth code"
+        }
+    ]
 }
 ```
 

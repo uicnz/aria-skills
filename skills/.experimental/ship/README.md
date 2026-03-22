@@ -20,7 +20,7 @@ Expect first useful run in under 5 minutes on any repo with tests already set up
 
 Open Aria and paste this. Aria does the rest.
 
-````markdown
+```markdown
 Install ship:
 
 1. Run **`git clone https://github.com/shaneholloman/ship.git ~/.aria/skills/ship && cd ~/.aria/skills/ship && ./setup`**
@@ -44,12 +44,11 @@ Install ship:
         - `/document-release`
 
 3. Ask the user if they also want to add ship to the current project so teammates get it.
-
-````
+```
 
 ### Step 2: Add to your repo so teammates get it (optional)
 
-````markdown
+```markdown
 Add ship to this project:
 
 1. Run **`cp -Rf ~/.aria/skills/ship .aria/skills/ship && rm -rf .aria/skills/ship/.git && cd .aria/skills/ship && ./setup`**
@@ -72,8 +71,7 @@ Add ship to this project:
         - `/retro`
         - `/document-release`
     - if ship skills are not working, run `cd .aria/skills/ship && ./setup` to build the binary and register skills
-
-````
+```
 
 Real files get committed to your repo (not a submodule), so `git clone` just works. Everything lives inside `.aria/`. Nothing touches your PATH or runs in the background.
 
@@ -185,12 +183,12 @@ ship is powerful with one session. It is transformative with ten.
 
 **Aria says it can't see the skills?** Make sure your project's `ARIA.md` has a ship section. Add this:
 
-````markdown
+```markdown
 ## ship
 
 1. Use `/browse` from ship for all web browsing. Never use `mcp__aria-in-chrome__*` tools.
 
-2. Available skills: 
+2. Available skills:
     - `/plan-review-founder`
     - `/plan-review-eng`
     - `/plan-review-design`,
@@ -204,8 +202,7 @@ ship is powerful with one session. It is transformative with ten.
     - `/setup-browser-cookies`
     - `/retro`
     - `/document-release`.
-
-````
+```
 
 ## License
 

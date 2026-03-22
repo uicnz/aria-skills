@@ -17,8 +17,8 @@ const app = new Hono();
 
 app.get('/', (c) => c.text('Hello World!'));
 app.post('/api/users', async (c) => {
-  const body = await c.req.json();
-  return c.json({ id: 1, ...body }, 201);
+    const body = await c.req.json();
+    return c.json({ id: 1, ...body }, 201);
 });
 
 export default app;
@@ -32,8 +32,8 @@ import type { Env } from './.wrangler/types/runtime';
 const app = new Hono<{ Bindings: Env }>();
 
 app.get('/data', async (c) => {
-  const value = await c.env.MY_KV.get('key');  // Fully typed
-  return c.text(value || 'Not found');
+    const value = await c.env.MY_KV.get('key'); // Fully typed
+    return c.text(value || 'Not found');
 });
 ```
 
@@ -48,9 +48,9 @@ app.use('/api/*', cors({ origin: '*' }));
 
 // Custom middleware
 app.use('/protected/*', async (c, next) => {
-  const auth = c.req.header('Authorization');
-  if (!auth?.startsWith('Bearer ')) return c.text('Unauthorized', 401);
-  await next();
+    const auth = c.req.header('Authorization');
+    if (!auth?.startsWith('Bearer ')) return c.text('Unauthorized', 401);
+    await next();
 });
 ```
 
@@ -61,13 +61,13 @@ import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 
 const schema = z.object({
-  name: z.string().min(1),
-  email: z.string().email(),
+    name: z.string().min(1),
+    email: z.string().email(),
 });
 
 app.post('/users', zValidator('json', schema), async (c) => {
-  const validated = c.req.valid('json');  // Type-safe, validated data
-  return c.json({ id: 1, ...validated });
+    const validated = c.req.valid('json'); // Type-safe, validated data
+    return c.json({ id: 1, ...validated });
 });
 ```
 
@@ -81,15 +81,15 @@ const api = new Hono().basePath('/api');
 api.get('/users', (c) => c.json([]));
 api.post('/users', (c) => c.json({ id: 1 }));
 
-app.route('/', api);  // Mounts at /api/*
+app.route('/', api); // Mounts at /api/*
 ```
 
 ### Error Handling
 
 ```typescript
 app.onError((err, c) => {
-  console.error(err);
-  return c.json({ error: err.message }, 500);
+    console.error(err);
+    return c.json({ error: err.message }, 500);
 });
 
 app.notFound((c) => c.json({ error: 'Not Found' }, 404));
@@ -99,15 +99,15 @@ app.notFound((c) => c.json({ error: 'Not Found' }, 404));
 
 ```typescript
 export default {
-  fetch(request: Request, env: Env, ctx: ExecutionContext) {
-    return app.fetch(request, env, ctx);
-  },
+    fetch(request: Request, env: Env, ctx: ExecutionContext) {
+        return app.fetch(request, env, ctx);
+    },
 };
 
 // In route handlers:
 app.get('/log', (c) => {
-  c.executionCtx.waitUntil(logRequest(c.req));
-  return c.text('OK');
+    c.executionCtx.waitUntil(logRequest(c.req));
+    return c.text('OK');
 });
 ```
 
@@ -119,20 +119,28 @@ import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 const app = new OpenAPIHono();
 
 const route = createRoute({
-  method: 'get',
-  path: '/users/{id}',
-  request: { params: z.object({ id: z.string() }) },
-  responses: {
-    200: { description: 'User found', content: { 'application/json': { schema: z.object({ id: z.string() }) } } },
-  },
+    method: 'get',
+    path: '/users/{id}',
+    request: { params: z.object({ id: z.string() }) },
+    responses: {
+        200: {
+            description: 'User found',
+            content: {
+                'application/json': { schema: z.object({ id: z.string() }) },
+            },
+        },
+    },
 });
 
 app.openapi(route, (c) => {
-  const { id } = c.req.valid('param');
-  return c.json({ id });
+    const { id } = c.req.valid('param');
+    return c.json({ id });
 });
 
-app.doc('/openapi.json', { openapi: '3.0.0', info: { version: '1.0.0', title: 'API' } });
+app.doc('/openapi.json', {
+    openapi: '3.0.0',
+    info: { version: '1.0.0', title: 'API' },
+});
 ```
 
 ### Testing with Hono
@@ -142,11 +150,11 @@ import { describe, it, expect } from 'vitest';
 import app from '../src/index';
 
 describe('API', () => {
-  it('GET /', async () => {
-    const res = await app.request('/');
-    expect(res.status).toBe(200);
-    expect(await res.text()).toBe('Hello World!');
-  });
+    it('GET /', async () => {
+        const res = await app.request('/');
+        expect(res.status).toBe(200);
+        expect(await res.text()).toBe('Hello World!');
+    });
 });
 ```
 
@@ -174,7 +182,7 @@ import { Router } from 'worktop';
 const router = new Router();
 
 router.add('GET', '/users/:id', (req, res) => {
-  res.send(200, { id: req.params.id });
+    res.send(200, { id: req.params.id });
 });
 
 router.listen();
@@ -184,11 +192,11 @@ router.listen();
 
 ## Framework Comparison
 
-| Framework | Bundle Size | TypeScript | Middleware | Validation | Best For |
-|-----------|-------------|------------|------------|------------|----------|
-| Hono | ~12KB | Excellent | Rich | Zod | Production apps |
-| itty-router | ~500B | Good | Basic | Manual | Minimal APIs |
-| Worktop | ~8KB | Good | Advanced | Manual | Complex routing |
+| Framework   | Bundle Size | TypeScript | Middleware | Validation | Best For        |
+| ----------- | ----------- | ---------- | ---------- | ---------- | --------------- |
+| Hono        | ~12KB       | Excellent  | Rich       | Zod        | Production apps |
+| itty-router | ~500B       | Good       | Basic      | Manual     | Minimal APIs    |
+| Worktop     | ~8KB        | Good       | Advanced   | Manual     | Complex routing |
 
 ## See Also
 

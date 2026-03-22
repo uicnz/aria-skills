@@ -1,6 +1,7 @@
 # Stack Selection
 
 Primary docs:
+
 - https://learn.microsoft.com/aspnet/core/
 - https://learn.microsoft.com/aspnet/core/blazor/
 - https://learn.microsoft.com/aspnet/core/razor-pages/
@@ -32,15 +33,15 @@ Verify template names with `dotnet new list` if the environment differs.
 
 ## Application Model Matrix
 
-| Model | Prefer when | Watch out for | Typical starting point |
-| --- | --- | --- | --- |
-| Blazor Web App | Build full-stack .NET UI with SSR plus optional interactivity | Interactive server needs a live connection; WebAssembly increases payload size | `dotnet new blazor` |
-| Razor Pages | Build page-focused CRUD, forms, dashboards, and line-of-business apps | Authorization cannot be applied per page handler; use MVC if handler-level control matters | `dotnet new webapp` |
-| MVC | Build large server-rendered apps with clear controller/view separation, filters, and action-based patterns | More ceremony than Razor Pages for simple page flows | `dotnet new mvc` |
-| Minimal APIs | Build focused HTTP APIs, internal services, lightweight backends, and small surface areas | Route handlers can become hard to manage if business logic or metadata grows without structure | `dotnet new webapi` or `dotnet new web` |
-| Controller-based Web API | Build APIs that benefit from `[ApiController]`, content negotiation, filters, formatters, and mature controller conventions | More ceremony than Minimal APIs for small endpoints | `dotnet new webapi` |
-| SignalR | Add server push, live updates, chat, collaborative UI, or notifications | Requires connection lifecycle management and scale-out planning | Add to an existing ASP.NET Core app |
-| gRPC | Build service-to-service or streaming RPC over HTTP/2 | Browser support is different from ordinary JSON APIs; use gRPC-Web only when needed | `dotnet new grpc` |
+| Model                    | Prefer when                                                                                                                 | Watch out for                                                                                  | Typical starting point                  |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Blazor Web App           | Build full-stack .NET UI with SSR plus optional interactivity                                                               | Interactive server needs a live connection; WebAssembly increases payload size                 | `dotnet new blazor`                     |
+| Razor Pages              | Build page-focused CRUD, forms, dashboards, and line-of-business apps                                                       | Authorization cannot be applied per page handler; use MVC if handler-level control matters     | `dotnet new webapp`                     |
+| MVC                      | Build large server-rendered apps with clear controller/view separation, filters, and action-based patterns                  | More ceremony than Razor Pages for simple page flows                                           | `dotnet new mvc`                        |
+| Minimal APIs             | Build focused HTTP APIs, internal services, lightweight backends, and small surface areas                                   | Route handlers can become hard to manage if business logic or metadata grows without structure | `dotnet new webapi` or `dotnet new web` |
+| Controller-based Web API | Build APIs that benefit from `[ApiController]`, content negotiation, filters, formatters, and mature controller conventions | More ceremony than Minimal APIs for small endpoints                                            | `dotnet new webapi`                     |
+| SignalR                  | Add server push, live updates, chat, collaborative UI, or notifications                                                     | Requires connection lifecycle management and scale-out planning                                | Add to an existing ASP.NET Core app     |
+| gRPC                     | Build service-to-service or streaming RPC over HTTP/2                                                                       | Browser support is different from ordinary JSON APIs; use gRPC-Web only when needed            | `dotnet new grpc`                       |
 
 ## Fast Heuristics
 

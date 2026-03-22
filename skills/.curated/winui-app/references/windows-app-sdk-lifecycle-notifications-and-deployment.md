@@ -3,10 +3,10 @@ title: Windows App SDK Lifecycle, Notifications, and Deployment
 priority: HIGH
 tags: windows-app-sdk, lifecycle, activation, notifications, deployment, packaged, unpackaged
 sources:
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-packaged-apps
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
-  - https://github.com/microsoft/WindowsAppSDK-Samples
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-packaged-apps
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
+    - https://github.com/microsoft/WindowsAppSDK-Samples
 ---
 
 ## What This Reference Is For

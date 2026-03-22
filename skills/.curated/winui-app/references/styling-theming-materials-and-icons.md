@@ -3,12 +3,12 @@ title: Styling, Theming, Materials, and Icons
 priority: HIGH
 tags: styling, theme-resources, mica, acrylic, typography, icons
 sources:
-  - https://learn.microsoft.com/windows/apps/design/style/mica
-  - https://learn.microsoft.com/windows/apps/design/style/acrylic
-  - https://learn.microsoft.com/windows/apps/design/signature-experiences/typography
-  - https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography
-  - https://github.com/microsoft/WinUI-Gallery
-  - https://github.com/microsoft/WindowsAppSDK-Samples/tree/main/Samples/Mica
+    - https://learn.microsoft.com/windows/apps/design/style/mica
+    - https://learn.microsoft.com/windows/apps/design/style/acrylic
+    - https://learn.microsoft.com/windows/apps/design/signature-experiences/typography
+    - https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography
+    - https://github.com/microsoft/WinUI-Gallery
+    - https://github.com/microsoft/WindowsAppSDK-Samples/tree/main/Samples/Mica
 ---
 
 ## What This Reference Is For

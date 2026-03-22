@@ -3,9 +3,9 @@ title: Build, Run, and Launch Verification
 priority: CRITICAL
 tags: build, run, launch, verification, packaged, unpackaged, debugging
 sources:
-  - https://learn.microsoft.com/windows/apps/get-started/start-here
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-packaged-apps
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
+    - https://learn.microsoft.com/windows/apps/get-started/start-here
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-packaged-apps
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
 ---
 
 ## What This Reference Is For
@@ -15,20 +15,20 @@ Use this file when the task involves building, running, launch failures, startup
 ## Required Workflow
 
 1. Identify the real build target:
-   - solution or project file
-   - configuration
-   - platform
-   - packaged or unpackaged model
+    - solution or project file
+    - configuration
+    - platform
+    - packaged or unpackaged model
 2. Build after each meaningful code edit and again at task completion.
 3. Run the app after changes when feasible. Always do it when the user asked for it or when startup, navigation, resources, or packaging changed.
 4. Use the launch path that matches the deployment model:
-   - packaged local dev: normally Visual Studio deploy or another package-aware flow
-   - unpackaged local dev: normally the built executable the user will actually run
+    - packaged local dev: normally Visual Studio deploy or another package-aware flow
+    - unpackaged local dev: normally the built executable the user will actually run
 5. Verify real launch with objective evidence such as:
-   - non-zero main window handle
-   - expected window title
-   - responsive process with visible shell
-   - no immediate startup exception or crash
+    - non-zero main window handle
+    - expected window title
+    - responsive process with visible shell
+    - no immediate startup exception or crash
 6. After completing app work, including a first scaffold or a later build-and-fix cycle, leave a successfully verified final app instance running so the user can see that it worked unless they explicitly asked you not to.
 7. If launch fails or verification is ambiguous, debug the failure before saying the app is ready.
 
@@ -52,11 +52,11 @@ Use this file when the task involves building, running, launch failures, startup
 
 - Separate environment problems from app-code startup crashes.
 - If the app exits before showing a window, inspect the startup path first:
-  - `App.xaml`
-  - merged resource dictionaries
-  - converters
-  - `MainWindow`
-  - services used during startup
+    - `App.xaml`
+    - merged resource dictionaries
+    - converters
+    - `MainWindow`
+    - services used during startup
 - For startup or manifest issues, compare the current app against a fresh `dotnet new winui` scaffold for the same packaging model before broader surgery.
 - For opaque `MSB3073` and `XamlCompiler.exe` failures, simplify back toward the template-generated startup and shared-resource shape before making further structural changes.
 - Restore complex startup pieces incrementally when the failure point is unclear. A minimal `App.xaml` plus minimal `MainWindow` is a valid isolation step.

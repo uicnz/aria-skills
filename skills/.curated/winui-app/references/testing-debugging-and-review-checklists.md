@@ -3,9 +3,9 @@ title: Testing, Debugging, and Review Checklists
 priority: HIGH
 tags: testing, debugging, review, hot-reload, live-visual-tree, checklists
 sources:
-  - https://learn.microsoft.com/windows/apps/get-started/start-here
-  - https://learn.microsoft.com/windows/apps/get-started/developer-mode-features-and-debugging
-  - https://learn.microsoft.com/windows/apps/performance/winui-perf
+    - https://learn.microsoft.com/windows/apps/get-started/start-here
+    - https://learn.microsoft.com/windows/apps/get-started/developer-mode-features-and-debugging
+    - https://learn.microsoft.com/windows/apps/performance/winui-perf
 ---
 
 ## What This Reference Is For

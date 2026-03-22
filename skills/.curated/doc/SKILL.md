@@ -1,8 +1,7 @@
 ---
-name: "doc"
-description: "Use when the task involves reading, creating, or editing `.docx` documents, especially when formatting or layout fidelity matters; prefer `python-docx` plus the bundled `scripts/render_docx.py` for visual checks."
+name: 'doc'
+description: 'Use when the task involves reading, creating, or editing `.docx` documents, especially when formatting or layout fidelity matters; prefer `python-docx` plus the bundled `scripts/render_docx.py` for visual checks.'
 ---
-
 
 # DOCX Skill
 
@@ -15,9 +14,9 @@ description: "Use when the task involves reading, creating, or editing `.docx` d
 ## Workflow
 
 1. Prefer visual review (layout, tables, diagrams).
-   - If `soffice` and `pdftoppm` are available, convert DOCX -> PDF -> PNGs.
-   - Or use `scripts/render_docx.py` (requires `pdf2image` and Poppler).
-   - If these tools are missing, install them or ask the user to review rendered pages locally.
+    - If `soffice` and `pdftoppm` are available, convert DOCX -> PDF -> PNGs.
+    - Or use `scripts/render_docx.py` (requires `pdf2image` and Poppler).
+    - If these tools are missing, install them or ask the user to review rendered pages locally.
 2. Use `python-docx` for edits and structured creation (headings, styles, tables, lists).
 3. After each meaningful change, re-render and inspect the pages.
 4. If visual review is not possible, extract text with `python-docx` as a fallback and call out layout risk.

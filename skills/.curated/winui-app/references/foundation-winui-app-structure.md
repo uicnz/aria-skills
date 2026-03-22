@@ -3,8 +3,8 @@ title: WinUI App Structure
 priority: HIGH
 tags: app-structure, xaml, resources, pages, bindings, csharp
 sources:
-  - https://github.com/microsoft/WinUI-Gallery
-  - https://learn.microsoft.com/windows/apps/winui/
+    - https://github.com/microsoft/WinUI-Gallery
+    - https://learn.microsoft.com/windows/apps/winui/
 ---
 
 ## What This Reference Is For
@@ -28,19 +28,19 @@ Use this file when structuring a WinUI 3 app, reviewing project layout, or decid
 ## Recommended Shape
 
 - `App.xaml` / `App.xaml.cs`
-  - global resources, startup, window creation, app-level exceptions
+    - global resources, startup, window creation, app-level exceptions
 - `MainWindow.xaml` / `MainWindow.xaml.cs`
-  - shell, title bar, top-level navigation host
+    - shell, title bar, top-level navigation host
 - `Pages/`
-  - page views and page-specific logic
+    - page views and page-specific logic
 - `Controls/`
-  - reusable WinUI user controls
+    - reusable WinUI user controls
 - `ViewModels/`
-  - state and commands when the app benefits from separation
+    - state and commands when the app benefits from separation
 - `Styles/`
-  - resource dictionaries, theme tokens, shared control styles
+    - resource dictionaries, theme tokens, shared control styles
 - `Helpers/` or `Services/`
-  - windowing, navigation, persistence, OS integration helpers
+    - windowing, navigation, persistence, OS integration helpers
 
 ## Binding Guidance
 

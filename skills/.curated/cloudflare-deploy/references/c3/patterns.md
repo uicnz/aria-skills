@@ -9,7 +9,7 @@ npm create cloudflare@latest my-api -- --type=hello-world --lang=ts --deploy
 # Next.js on Pages
 npm create cloudflare@latest my-app -- --type=web-app --framework=next --platform=pages --ts --deploy
 
-# Astro static site  
+# Astro static site
 npm create cloudflare@latest my-blog -- --type=web-app --framework=astro --platform=pages --ts
 ```
 
@@ -19,11 +19,12 @@ npm create cloudflare@latest my-blog -- --type=web-app --framework=astro --platf
 - name: Deploy
   run: npm run deploy
   env:
-    CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 ```
 
 **Non-interactive requires:**
+
 ```bash
 --type=<value>       # Required
 --no-git             # Recommended (CI already in git)
@@ -53,12 +54,15 @@ npm create cloudflare@latest my-app -- --template=../my-template
 ```
 
 **Template requires `c3.config.json`:**
+
 ```json
 {
-  "name": "my-template",
-  "category": "hello-world",
-  "copies": [{ "path": "src/" }, { "path": "wrangler.jsonc" }],
-  "transforms": [{ "path": "package.json", "jsonc": { "name": "{{projectName}}" }}]
+    "name": "my-template",
+    "category": "hello-world",
+    "copies": [{ "path": "src/" }, { "path": "wrangler.jsonc" }],
+    "transforms": [
+        { "path": "package.json", "jsonc": { "name": "{{projectName}}" } }
+    ]
 }
 ```
 

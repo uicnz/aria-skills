@@ -4,24 +4,24 @@ Common mistakes, security best practices, and troubleshooting for Cloudflare TUR
 
 ## Quick Reference
 
-| Issue | Solution | Details |
-|-------|----------|---------|
-| Credentials not working | Check TTL ≤ 48hrs | [See Troubleshooting](#issue-turn-credentials-not-working) |
-| Connection drops after ~48hrs | Implement credential refresh | [See Connection Drops](#issue-connection-drops-after-48-hours) |
-| Port 53 fails in browser | Filter server-side | [See Port 53](#using-port-53-in-browsers) |
-| High packet loss | Check rate limits | [See Rate Limits](#limits-per-turn-allocation) |
-| Connection fails after maintenance | Implement ICE restart | [See ICE Restart](#ice-restart-required-scenarios) |
+| Issue                              | Solution                     | Details                                                        |
+| ---------------------------------- | ---------------------------- | -------------------------------------------------------------- |
+| Credentials not working            | Check TTL ≤ 48hrs            | [See Troubleshooting](#issue-turn-credentials-not-working)     |
+| Connection drops after ~48hrs      | Implement credential refresh | [See Connection Drops](#issue-connection-drops-after-48-hours) |
+| Port 53 fails in browser           | Filter server-side           | [See Port 53](#using-port-53-in-browsers)                      |
+| High packet loss                   | Check rate limits            | [See Rate Limits](#limits-per-turn-allocation)                 |
+| Connection fails after maintenance | Implement ICE restart        | [See ICE Restart](#ice-restart-required-scenarios)             |
 
 ## Critical Constraints
 
-| Constraint | Value | Consequence if Violated |
-|------------|-------|-------------------------|
-| Max credential TTL | 48 hours (172800s) | API rejects request |
-| Credential revocation delay | ~seconds | Billing stops immediately, connection drops shortly |
-| IP allowlist update window | 14 days (if IPs change) | Connection fails if IPs change |
-| Packet rate | 5-10k pps per allocation | Packet drops |
-| Data rate | 50-100 Mbps per allocation | Packet drops |
-| Unique IP rate | >5 new IPs/sec | Packet drops |
+| Constraint                  | Value                      | Consequence if Violated                             |
+| --------------------------- | -------------------------- | --------------------------------------------------- |
+| Max credential TTL          | 48 hours (172800s)         | API rejects request                                 |
+| Credential revocation delay | ~seconds                   | Billing stops immediately, connection drops shortly |
+| IP allowlist update window  | 14 days (if IPs change)    | Connection fails if IPs change                      |
+| Packet rate                 | 5-10k pps per allocation   | Packet drops                                        |
+| Data rate                   | 50-100 Mbps per allocation | Packet drops                                        |
+| Unique IP rate              | >5 new IPs/sec             | Packet drops                                        |
 
 ## Limits Per TURN Allocation
 
@@ -41,10 +41,10 @@ Exceeding limits results in **packet drops**.
 
 ```typescript
 // ❌ BAD: API will reject
-const creds = await generate({ ttl: 604800 });  // 7 days
+const creds = await generate({ ttl: 604800 }); // 7 days
 
 // ✅ GOOD:
-const creds = await generate({ ttl: 86400 });   // 24 hours
+const creds = await generate({ ttl: 86400 }); // 24 hours
 ```
 
 ### Hardcoding IPs without monitoring
@@ -61,10 +61,10 @@ const iceServers = [{ urls: 'turn:turn.cloudflare.com:3478' }];
 
 ```typescript
 // ❌ BAD: Blocked by Chrome/Firefox
-urls: ['turn:turn.cloudflare.com:53']
+urls: ['turn:turn.cloudflare.com:53'];
 
 // ✅ GOOD: Filter port 53
-urls: urls.filter(url => !url.includes(':53'))
+urls: urls.filter((url) => !url.includes(':53'));
 ```
 
 ### Not handling credential expiry
@@ -75,7 +75,7 @@ const creds = await fetchCreds();
 const pc = new RTCPeerConnection({ iceServers: creds });
 
 // ✅ GOOD: Refresh before expiry
-setInterval(() => refreshCredentials(pc), 3000000);  // 50 min
+setInterval(() => refreshCredentials(pc), 3000000); // 50 min
 ```
 
 ### Missing ICE restart support
@@ -83,15 +83,15 @@ setInterval(() => refreshCredentials(pc), 3000000);  // 50 min
 ```typescript
 // ❌ BAD: No recovery from TURN maintenance
 pc.addEventListener('iceconnectionstatechange', () => {
-  console.log('State changed:', pc.iceConnectionState);
+    console.log('State changed:', pc.iceConnectionState);
 });
 
 // ✅ GOOD: Implement ICE restart
 pc.addEventListener('iceconnectionstatechange', async () => {
-  if (pc.iceConnectionState === 'failed') {
-    await refreshCredentials(pc);
-    pc.restartIce();
-  }
+    if (pc.iceConnectionState === 'failed') {
+        await refreshCredentials(pc);
+        pc.restartIce();
+    }
 });
 ```
 
@@ -101,7 +101,7 @@ pc.addEventListener('iceconnectionstatechange', async () => {
 // ❌ BAD: Secret exposed to client
 const secret = 'your-turn-key-secret';
 const response = await fetch(`https://rtc.live.cloudflare.com/v1/turn/...`, {
-  headers: { 'Authorization': `Bearer ${secret}` }
+    headers: { Authorization: `Bearer ${secret}` },
 });
 
 // ✅ GOOD: Generate credentials server-side
@@ -121,14 +121,16 @@ Implement in all production apps:
 
 ```typescript
 pc.addEventListener('iceconnectionstatechange', async () => {
-  if (pc.iceConnectionState === 'failed' || 
-      pc.iceConnectionState === 'disconnected') {
-    await refreshTURNCredentials(pc);
-    pc.restartIce();
-    const offer = await pc.createOffer({ iceRestart: true });
-    await pc.setLocalDescription(offer);
-    // Send offer to peer via signaling...
-  }
+    if (
+        pc.iceConnectionState === 'failed' ||
+        pc.iceConnectionState === 'disconnected'
+    ) {
+        await refreshTURNCredentials(pc);
+        pc.restartIce();
+        const offer = await pc.createOffer({ iceRestart: true });
+        await pc.setLocalDescription(offer);
+        // Send offer to peer via signaling...
+    }
 });
 ```
 
@@ -150,6 +152,7 @@ Reference: [RFC 8445 Section 2.4](https://datatracker.ietf.org/doc/html/rfc8445#
 ### Issue: TURN credentials not working
 
 **Check:**
+
 - Key ID and secret are correct
 - Credentials haven't expired (check TTL)
 - TTL doesn't exceed 172800 seconds (48 hours)
@@ -157,16 +160,18 @@ Reference: [RFC 8445 Section 2.4](https://datatracker.ietf.org/doc/html/rfc8445#
 - Network allows outbound HTTPS
 
 **Solution:**
+
 ```typescript
 // Validate before using
 if (ttl > 172800) {
-  throw new Error('TTL cannot exceed 48 hours');
+    throw new Error('TTL cannot exceed 48 hours');
 }
 ```
 
 ### Issue: Slow connection establishment
 
 **Solutions:**
+
 - Ensure proper ICE candidate gathering
 - Check network latency to Cloudflare edge
 - Verify firewall allows WebRTC ports (3478, 5349, 443)
@@ -175,6 +180,7 @@ if (ttl > 172800) {
 ### Issue: High packet loss
 
 **Check:**
+
 - Not exceeding rate limits (5-10k pps)
 - Not exceeding bandwidth limits (50-100 Mbps)
 - Not connecting to too many unique IPs (>5/sec)
@@ -184,7 +190,8 @@ if (ttl > 172800) {
 
 **Cause**: Credentials expired (48hr max)
 
-**Solution**: 
+**Solution**:
+
 - Set TTL to expected session duration
 - Implement credential refresh with setConfiguration()
 - Use ICE restart if connection fails
@@ -193,7 +200,7 @@ if (ttl > 172800) {
 // Refresh credentials before expiry
 const refreshInterval = ttl * 1000 - 60000; // 1 min early
 setInterval(async () => {
-  await refreshTURNCredentials(pc);
+    await refreshTURNCredentials(pc);
 }, refreshInterval);
 ```
 
@@ -204,14 +211,15 @@ setInterval(async () => {
 **Solution**: Filter port 53 URLs server-side:
 
 ```typescript
-const filtered = urls.filter(url => !url.includes(':53'));
+const filtered = urls.filter((url) => !url.includes(':53'));
 ```
 
 ### Issue: Hardcoded IPs stop working
 
 **Cause**: Cloudflare changed IP addresses (14-day notice)
 
-**Solution**: 
+**Solution**:
+
 - Use DNS hostnames (`turn.cloudflare.com`)
 - Monitor DNS changes with automated alerts
 - Update allowlists within 14 days if using IP allowlisting

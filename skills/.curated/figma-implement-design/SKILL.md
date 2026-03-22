@@ -1,8 +1,7 @@
 ---
-name: "figma-implement-design"
-description: "Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection."
+name: 'figma-implement-design'
+description: 'Translate Figma nodes into production-ready code with 1:1 visual fidelity using the Figma MCP workflow (design context, screenshots, assets, and project-convention translation). Trigger when the user provides Figma URLs or node IDs, or asks to implement designs or components that must match Figma specs. Requires a working Figma MCP server connection.'
 ---
-
 
 # Implement Design
 
@@ -14,8 +13,8 @@ This skill provides a structured workflow for translating Figma designs into pro
 
 - Figma MCP server must be connected and accessible
 - User must provide a Figma URL in the format: `https://figma.com/design/:fileKey/:fileName?node-id=1-2`
-  - `:fileKey` is the file key
-  - `1-2` is the node ID (the specific component or frame to implement)
+    - `:fileKey` is the file key
+    - `1-2` is the node ID (the specific component or frame to implement)
 - **OR** when using `figma-desktop` MCP: User can select a node directly in the Figma desktop app (no URL required)
 - Project should have an established design system or component library (preferred)
 
@@ -28,11 +27,11 @@ This skill provides a structured workflow for translating Figma designs into pro
 If any MCP call fails because Figma MCP is not connected, pause and set it up:
 
 1. Add the Figma MCP:
-   - `aria mcp add figma --url https://mcp.figma.com/mcp`
+    - `aria mcp add figma --url https://mcp.figma.com/mcp`
 2. Enable remote MCP client:
-   - Set `[features].rmcp_client = true` in `config.toml` **or** run `aria --enable rmcp_client`
+    - Set `[features].rmcp_client = true` in `config.toml` **or** run `aria --enable rmcp_client`
 3. Log in with OAuth:
-   - `aria mcp login figma`
+    - `aria mcp login figma`
 
 After successful login, the user will have to restart aria. You should finish your answer and tell them so when they try again they can continue with Step 1.
 

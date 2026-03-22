@@ -27,16 +27,16 @@ Use `$openai-docs` first whenever building or changing a ChatGPT Apps SDK app.
 
 1. Invoke `$openai-docs` (preferred) or call the OpenAI docs MCP server directly.
 2. Fetch current Apps SDK docs before writing code, especially (baseline pages):
-   - `apps-sdk/build/mcp-server`
-   - `apps-sdk/build/chatgpt-ui`
-   - `apps-sdk/build/examples`
-   - `apps-sdk/plan/tools`
-   - `apps-sdk/reference`
+    - `apps-sdk/build/mcp-server`
+    - `apps-sdk/build/chatgpt-ui`
+    - `apps-sdk/build/examples`
+    - `apps-sdk/plan/tools`
+    - `apps-sdk/reference`
 3. Fetch `apps-sdk/quickstart` when scaffolding a new app or generating a first-pass implementation, and check the official examples repo/page before inventing a scaffold from scratch.
 4. Fetch deployment/submission docs when the task includes local ChatGPT testing, hosting, or public launch:
-   - `apps-sdk/deploy`
-   - `apps-sdk/deploy/submission`
-   - `apps-sdk/app-submission-guidelines`
+    - `apps-sdk/deploy`
+    - `apps-sdk/deploy/submission`
+    - `apps-sdk/app-submission-guidelines`
 5. Cite the docs URLs you used when explaining design choices or generated scaffolds.
 6. Prefer current docs guidance over older repo patterns when they differ, and call out compatibility aliases explicitly.
 7. If doc search times out or returns poor matches, fetch the canonical Apps SDK pages directly by URL and continue; do not let search failure block scaffolding.
@@ -230,14 +230,14 @@ Read `references/repo-contract-and-validation.md` for the detailed checklist and
 Validate against the minimum working repo contract, not just “did files get created.”
 
 - Run the lowest-cost checks first:
-  - static contract review
-  - syntax or compile checks when feasible
-  - local `/mcp` health check when feasible
+    - static contract review
+    - syntax or compile checks when feasible
+    - local `/mcp` health check when feasible
 - Then move up to runtime checks:
-  - verify tool descriptors and widget rendering in MCP Inspector
-  - test the app in ChatGPT developer mode through HTTPS tunneling
-  - exercise retries and repeated tool calls to confirm idempotent behavior
-  - check widget updates after host events and follow-up tool calls
+    - verify tool descriptors and widget rendering in MCP Inspector
+    - test the app in ChatGPT developer mode through HTTPS tunneling
+    - exercise retries and repeated tool calls to confirm idempotent behavior
+    - check widget updates after host events and follow-up tool calls
 - If you are only delivering a scaffold and are not installing dependencies, still run low-cost checks and say exactly what you did not run.
 
 Read `references/repo-contract-and-validation.md` for the validation ladder.

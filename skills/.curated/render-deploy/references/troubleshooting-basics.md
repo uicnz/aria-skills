@@ -12,16 +12,19 @@ Keep fixes minimal and redeploy after each change.
 ## 2) Quick checks by class
 
 **Build failure**
+
 - Confirm the build command is correct for the runtime.
 - Ensure required dependencies are present in `package.json`, `requirements.txt`, etc.
 - Check for missing build-time env vars.
 
 **Startup failure**
+
 - Confirm the start command and working directory.
 - Ensure port binding is `0.0.0.0:$PORT`.
 - Check for missing runtime env vars (secrets, DB URLs).
 
 **Runtime/health failure**
+
 - Verify the health endpoint path and response.
 - Confirm the app is actually listening on `$PORT`.
 - Check database connectivity and migrations.

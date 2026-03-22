@@ -14,34 +14,34 @@ Upgrade with the narrowest safe change set:
 ## Upgrade workflow
 
 1. Inventory current model usage.
-   - Search for model strings, client calls, and prompt-bearing files.
-   - Include inline prompts, prompt templates, YAML or JSON configs, Markdown docs, and saved prompts when they are clearly tied to a model usage site.
+    - Search for model strings, client calls, and prompt-bearing files.
+    - Include inline prompts, prompt templates, YAML or JSON configs, Markdown docs, and saved prompts when they are clearly tied to a model usage site.
 2. Pair each model usage with its prompt surface.
-   - Prefer the closest prompt surface first: inline system or developer text, then adjacent prompt files, then shared templates.
-   - If you cannot confidently tie a prompt to the model usage, say so instead of guessing.
+    - Prefer the closest prompt surface first: inline system or developer text, then adjacent prompt files, then shared templates.
+    - If you cannot confidently tie a prompt to the model usage, say so instead of guessing.
 3. Classify the source model family.
-   - Common buckets: `gpt-4o` or `gpt-4.1`, `o1` or `o3` or `o4-mini`, early `gpt-5`, later `gpt-5.x`, or mixed and unclear.
+    - Common buckets: `gpt-4o` or `gpt-4.1`, `o1` or `o3` or `o4-mini`, early `gpt-5`, later `gpt-5.x`, or mixed and unclear.
 4. Decide the upgrade class.
-   - `model string only`
-   - `model string + light prompt rewrite`
-   - `blocked without code changes`
+    - `model string only`
+    - `model string + light prompt rewrite`
+    - `blocked without code changes`
 5. Run the no-code compatibility gate.
-   - Check whether the current integration can accept `gpt-5.4` without API-surface changes or implementation changes.
-   - For long-running Responses or tool-heavy agents, check whether `phase` is already preserved or round-tripped when the host replays assistant items or uses preambles.
-   - If compatibility depends on code changes, return `blocked`.
-   - If compatibility is unclear, return `unknown` rather than improvising.
+    - Check whether the current integration can accept `gpt-5.4` without API-surface changes or implementation changes.
+    - For long-running Responses or tool-heavy agents, check whether `phase` is already preserved or round-tripped when the host replays assistant items or uses preambles.
+    - If compatibility depends on code changes, return `blocked`.
+    - If compatibility is unclear, return `unknown` rather than improvising.
 6. Recommend the upgrade.
-   - Default replacement string: `gpt-5.4`
-   - Keep the intervention small and behavior-preserving.
+    - Default replacement string: `gpt-5.4`
+    - Keep the intervention small and behavior-preserving.
 7. Deliver a structured recommendation.
-   - `Current model usage`
-   - `Recommended model-string updates`
-   - `Starting reasoning recommendation`
-   - `Prompt updates`
-   - `Phase assessment` when the flow is long-running, replayed, or tool-heavy
-   - `No-code compatibility check`
-   - `Validation plan`
-   - `Launch-day refresh items`
+    - `Current model usage`
+    - `Recommended model-string updates`
+    - `Starting reasoning recommendation`
+    - `Prompt updates`
+    - `Phase assessment` when the flow is long-running, replayed, or tool-heavy
+    - `No-code compatibility check`
+    - `Validation plan`
+    - `Launch-day refresh items`
 
 Output rule:
 

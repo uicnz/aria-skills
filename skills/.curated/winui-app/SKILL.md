@@ -11,29 +11,30 @@ Use this skill for WinUI 3 and Windows App SDK work that needs grounded setup gu
 
 1. Classify the task as environment/setup, new-app bootstrap, design, implementation, review, or troubleshooting.
 2. If the task is about preparing a machine for WinUI, auditing readiness, or creating a brand new app, start with the bundled setup-and-scaffold flow in this skill before broader design, implementation, or troubleshooting work:
-   - Pick the app name when the request is for a new app.
-   - Use the exact name the user gave when it is already a safe folder name.
-   - If the user did not give a name, derive a short PascalCase name from the request and state what you chose.
-   - Create the project in the user's current workspace unless they asked for another location.
-   - Do not use `--force` unless the user explicitly asked to overwrite existing files.
-   - Run the bundled WinGet configuration from the skill directory so the relative path stays exactly `config.yaml`:
+    - Pick the app name when the request is for a new app.
+    - Use the exact name the user gave when it is already a safe folder name.
+    - If the user did not give a name, derive a short PascalCase name from the request and state what you chose.
+    - Create the project in the user's current workspace unless they asked for another location.
+    - Do not use `--force` unless the user explicitly asked to overwrite existing files.
+    - Run the bundled WinGet configuration from the skill directory so the relative path stays exactly `config.yaml`:
 
 ```powershell
 winget configure -f config.yaml --accept-configuration-agreements --disable-interactivity
 ```
 
-   - Treat the configuration as intended to enable Developer Mode, install or update Visual Studio Community 2026, and install the Managed Desktop, Universal, and Windows App SDK C# components needed for WinUI development.
-   - Assess the configuration result before continuing. Continue on success. If it fails, inspect the output instead of guessing. If the `winui` template is already available and the toolchain is usable, note the partial failure and continue. If prerequisites are still missing, stop and report the blocker clearly.
-   - Verify the template is available before scaffolding:
+- Treat the configuration as intended to enable Developer Mode, install or update Visual Studio Community 2026, and install the Managed Desktop, Universal, and Windows App SDK C# components needed for WinUI development.
+- Assess the configuration result before continuing. Continue on success. If it fails, inspect the output instead of guessing. If the `winui` template is already available and the toolchain is usable, note the partial failure and continue. If prerequisites are still missing, stop and report the blocker clearly.
+- Verify the template is available before scaffolding:
 
 ```powershell
 dotnet new list winui
 ```
 
-   - For diagnostics-only environment requests, explain that the bundled bootstrap may change the machine and get confirmation before running it. If the user declines changes, use the manual verification guidance in `references/foundation-environment-audit-and-remediation.md` and summarize readiness under `present`, `missing`, `uncertain`, and `recommended optional tools`.
-   - For a brand new app, scaffold with `dotnet new winui -o <name>`. Add template options only when the user asked for them. Supported options: `-f|--framework net10.0|net9.0|net8.0`, `-slnx|--use-slnx`, `-cpm|--central-pkg-mgmt`, `-mvvm|--use-mvvm`, `-imt|--include-mvvm-toolkit`, `-un|--unpackaged`, `-nsf|--no-solution-file`, `--force`. Do not invent unsupported flags. If the user asks for packaged behavior, pass `--unpackaged false`. Otherwise keep the template default.
-   - Verify a new scaffold by confirming the expected project file exists and running `dotnet build` against the generated `.csproj`.
-   - Launch a newly scaffolded app through the correct path for its actual packaging model and confirm there is a real top-level window instead of relying only on the launcher process exit code.
+- For diagnostics-only environment requests, explain that the bundled bootstrap may change the machine and get confirmation before running it. If the user declines changes, use the manual verification guidance in `references/foundation-environment-audit-and-remediation.md` and summarize readiness under `present`, `missing`, `uncertain`, and `recommended optional tools`.
+- For a brand new app, scaffold with `dotnet new winui -o <name>`. Add template options only when the user asked for them. Supported options: `-f|--framework net10.0|net9.0|net8.0`, `-slnx|--use-slnx`, `-cpm|--central-pkg-mgmt`, `-mvvm|--use-mvvm`, `-imt|--include-mvvm-toolkit`, `-un|--unpackaged`, `-nsf|--no-solution-file`, `--force`. Do not invent unsupported flags. If the user asks for packaged behavior, pass `--unpackaged false`. Otherwise keep the template default.
+- Verify a new scaffold by confirming the expected project file exists and running `dotnet build` against the generated `.csproj`.
+- Launch a newly scaffolded app through the correct path for its actual packaging model and confirm there is a real top-level window instead of relying only on the launcher process exit code.
+
 3. Read `references/_sections.md`, then load only the reference files that match the task.
 4. Make the packaging model explicit before creating or refactoring the app. Default to packaged for Store-like product workflows and Visual Studio deploy/F5 flows. Default to unpackaged when the user expects repeatable CLI build-and-run loops or direct `.exe` launches after each change.
 5. When the task is an opaque XAML compiler failure such as `MSB3073` or `XamlCompiler.exe`, read `references/foundation-template-first-recovery.md` and simplify back toward the current `dotnet new winui` scaffold for the chosen packaging model before inventing custom recovery structure.
@@ -55,22 +56,22 @@ dotnet new list winui
 
 ## Common Routes
 
-| Request | Read first |
-| --- | --- |
-| Check whether this PC can build WinUI apps | `references/foundation-environment-audit-and-remediation.md` |
-| Install missing WinUI prerequisites | `references/foundation-environment-audit-and-remediation.md` |
-| Start a new packaged or unpackaged app | `references/foundation-setup-and-project-selection.md` |
-| Recover from opaque XAML compiler or startup failures while staying anchored to the template scaffold | `references/foundation-template-first-recovery.md` |
-| Build, run, or verify that a WinUI app actually launched | `references/build-run-and-launch-verification.md` |
-| Review app structure, pages, resources, and bindings | `references/foundation-winui-app-structure.md` |
-| Choose shell, navigation, title bar, or multi-window patterns | `references/shell-navigation-and-windowing.md` |
-| Choose controls or responsive layout patterns | `references/controls-layout-and-adaptive-ui.md` |
-| Apply Mica, theming, typography, icons, or Fluent styling | `references/styling-theming-materials-and-icons.md` |
-| Improve accessibility, keyboarding, or localization | `references/accessibility-input-and-localization.md` |
-| Diagnose responsiveness or UI-thread performance | `references/performance-diagnostics-and-responsiveness.md` |
-| Decide whether to use CommunityToolkit | `references/community-toolkit-controls-and-helpers.md` |
-| Handle lifecycle, notifications, or deployment | `references/windows-app-sdk-lifecycle-notifications-and-deployment.md` |
-| Run a review checklist | `references/testing-debugging-and-review-checklists.md` |
+| Request                                                                                               | Read first                                                             |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Check whether this PC can build WinUI apps                                                            | `references/foundation-environment-audit-and-remediation.md`           |
+| Install missing WinUI prerequisites                                                                   | `references/foundation-environment-audit-and-remediation.md`           |
+| Start a new packaged or unpackaged app                                                                | `references/foundation-setup-and-project-selection.md`                 |
+| Recover from opaque XAML compiler or startup failures while staying anchored to the template scaffold | `references/foundation-template-first-recovery.md`                     |
+| Build, run, or verify that a WinUI app actually launched                                              | `references/build-run-and-launch-verification.md`                      |
+| Review app structure, pages, resources, and bindings                                                  | `references/foundation-winui-app-structure.md`                         |
+| Choose shell, navigation, title bar, or multi-window patterns                                         | `references/shell-navigation-and-windowing.md`                         |
+| Choose controls or responsive layout patterns                                                         | `references/controls-layout-and-adaptive-ui.md`                        |
+| Apply Mica, theming, typography, icons, or Fluent styling                                             | `references/styling-theming-materials-and-icons.md`                    |
+| Improve accessibility, keyboarding, or localization                                                   | `references/accessibility-input-and-localization.md`                   |
+| Diagnose responsiveness or UI-thread performance                                                      | `references/performance-diagnostics-and-responsiveness.md`             |
+| Decide whether to use CommunityToolkit                                                                | `references/community-toolkit-controls-and-helpers.md`                 |
+| Handle lifecycle, notifications, or deployment                                                        | `references/windows-app-sdk-lifecycle-notifications-and-deployment.md` |
+| Run a review checklist                                                                                | `references/testing-debugging-and-review-checklists.md`                |
 
 ## Environment Rules
 

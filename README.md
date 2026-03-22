@@ -5,6 +5,7 @@ Agent Skills are folders of instructions, scripts, and resources that AI agents 
 Aria uses skills to help package capabilities that teams and individuals can use to complete specific tasks in a repeatable way. This repository catalogs skills for use and distribution with Aria.
 
 Learn more:
+
 - [Agent Skills open standard](https://agentskills.io)
 
 ## Installing a skill

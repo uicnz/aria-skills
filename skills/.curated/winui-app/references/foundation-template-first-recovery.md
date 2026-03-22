@@ -3,10 +3,10 @@ title: Template-First Recovery for Startup and XAML Failures
 priority: CRITICAL
 tags: template, recovery, xaml-compiler, msb3073, startup
 sources:
-  - https://learn.microsoft.com/windows/apps/get-started/start-here
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-packaged-apps
-  - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
-  - https://github.com/microsoft/WinUI-Gallery
+    - https://learn.microsoft.com/windows/apps/get-started/start-here
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-packaged-apps
+    - https://learn.microsoft.com/windows/apps/windows-app-sdk/deploy-unpackaged-apps
+    - https://github.com/microsoft/WinUI-Gallery
 ---
 
 ## What This Reference Is For
@@ -32,17 +32,17 @@ Use this file when a new app should stay close to the `dotnet new winui` scaffol
 
 1. Confirm the intended packaging model and launch path.
 2. If the current startup shape is unclear, scaffold a temporary comparison app with the same packaging choice. Example:
-   - `dotnet new winui -n RecoveryReference -o RecoveryReference --use-slnx false --no-solution-file false`
-   - Add `--unpackaged true` when the target app is unpackaged.
+    - `dotnet new winui -n RecoveryReference -o RecoveryReference --use-slnx false --no-solution-file false`
+    - Add `--unpackaged true` when the target app is unpackaged.
 3. Diff only the startup and shared-resource areas against that comparison scaffold:
-   - `App.xaml`
-   - `App.xaml.cs`
-   - `MainWindow.xaml` / `MainWindow.xaml.cs` or the app's actual shell entry point
-   - merged resource dictionaries
-   - startup-related project properties
+    - `App.xaml`
+    - `App.xaml.cs`
+    - `MainWindow.xaml` / `MainWindow.xaml.cs` or the app's actual shell entry point
+    - merged resource dictionaries
+    - startup-related project properties
 4. Revert the suspect area toward the template-generated shape until the app builds cleanly again.
 5. Build explicitly for a concrete architecture. Example:
-   - `dotnet build MyApp.sln -c Debug -p:Platform=x64`
+    - `dotnet build MyApp.sln -c Debug -p:Platform=x64`
 6. Launch using the correct packaged or unpackaged path and confirm objective startup signals.
 7. Reapply custom changes in small slices, building and running after each meaningful edit.
 

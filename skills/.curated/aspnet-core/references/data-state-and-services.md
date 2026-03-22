@@ -1,6 +1,7 @@
 # Data, State, And Services
 
 Primary docs:
+
 - https://learn.microsoft.com/aspnet/core/data/
 - https://learn.microsoft.com/aspnet/core/fundamentals/dependency-injection
 - https://learn.microsoft.com/aspnet/core/fundamentals/http-requests

@@ -1,14 +1,14 @@
 ---
-name: "transcribe"
-description: "Transcribe audio files to text with optional diarization and known-speaker hints. Use when a user asks to transcribe speech from audio/video, extract text from recordings, or label speakers in interviews or meetings."
+name: 'transcribe'
+description: 'Transcribe audio files to text with optional diarization and known-speaker hints. Use when a user asks to transcribe speech from audio/video, extract text from recordings, or label speakers in interviews or meetings.'
 ---
-
 
 # Audio Transcribe
 
 Transcribe audio using OpenAI, with optional speaker diarization when requested. Prefer the bundled CLI for deterministic, repeatable runs.
 
 ## Workflow
+
 1. Collect inputs: audio file path(s), desired response format (text/json/diarized_json), optional language hint, and any known speaker references.
 2. Verify `OPENAI_API_KEY` is set. If missing, ask the user to set it locally (do not ask them to paste the key).
 3. Run the bundled `transcribe_diarize.py` CLI with sensible defaults (fast text transcription).
@@ -16,27 +16,33 @@ Transcribe audio using OpenAI, with optional speaker diarization when requested.
 5. Save outputs under `output/transcribe/` when working in this repo.
 
 ## Decision rules
+
 - Default to `gpt-4o-mini-transcribe` with `--response-format text` for fast transcription.
 - If the user wants speaker labels or diarization, use `--model gpt-4o-transcribe-diarize --response-format diarized_json`.
 - If audio is longer than ~30 seconds, keep `--chunking-strategy auto`.
 - Prompting is not supported for `gpt-4o-transcribe-diarize`.
 
 ## Output conventions
+
 - Use `output/transcribe/<job-id>/` for evaluation runs.
 - Use `--out-dir` for multiple files to avoid overwriting.
 
 ## Dependencies (install if missing)
+
 Prefer `uv` for dependency management.
 
 ```
 uv pip install openai
 ```
+
 If `uv` is unavailable:
+
 ```
 python3 -m pip install openai
 ```
 
 ## Environment
+
 - `OPENAI_API_KEY` must be set for live API calls.
 - If the key is missing, instruct the user to create one in the OpenAI platform UI and export it in their shell.
 - Never ask the user to paste the full key in chat.
@@ -51,7 +57,9 @@ export TRANSCRIBE_CLI="$ARIA_HOME/skills/transcribe/scripts/transcribe_diarize.p
 User-scoped skills install under `$ARIA_HOME/skills` (default: `~/.aria/skills`).
 
 ## CLI quick start
+
 Single file (fast text default):
+
 ```
 python3 "$TRANSCRIBE_CLI" \
   path/to/audio.wav \
@@ -59,6 +67,7 @@ python3 "$TRANSCRIBE_CLI" \
 ```
 
 Diarization with known speakers (up to 4):
+
 ```
 python3 "$TRANSCRIBE_CLI" \
   meeting.m4a \
@@ -70,6 +79,7 @@ python3 "$TRANSCRIBE_CLI" \
 ```
 
 Plain text output (explicit):
+
 ```
 python3 "$TRANSCRIBE_CLI" \
   interview.mp3 \
@@ -78,4 +88,5 @@ python3 "$TRANSCRIBE_CLI" \
 ```
 
 ## Reference map
+
 - `references/api.md`: supported formats, limits, response formats, and known-speaker notes.

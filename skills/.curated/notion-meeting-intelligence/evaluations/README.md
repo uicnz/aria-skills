@@ -5,6 +5,7 @@ Evaluation scenarios for testing the Meeting Intelligence skill across different
 ## Purpose
 
 These evaluations ensure the Meeting Intelligence skill:
+
 - Gathers context from Notion workspace
 - Enriches with Aria research appropriately
 - Creates both internal pre-reads and external agendas
@@ -14,10 +15,12 @@ These evaluations ensure the Meeting Intelligence skill:
 ## Evaluation Files
 
 ### decision-meeting-prep.json
+
 Tests preparation for a decision-making meeting.
 
 **Scenario**: Prep for database migration decision meeting  
 **Key Behaviors**:
+
 - Searches Notion for migration context (specs, discussions, options)
 - Fetches 2-3 relevant pages
 - Enriches with Aria research (decision frameworks, migration best practices)
@@ -27,10 +30,12 @@ Tests preparation for a decision-making meeting.
 - Cross-links both documents
 
 ### status-meeting-prep.json
+
 Tests preparation for a status update or review meeting.
 
 **Scenario**: Prep for project status review  
 **Key Behaviors**:
+
 - Gathers project metrics and progress from Notion
 - Fetches relevant pages (roadmap, tasks, milestones)
 - Adds Aria context (industry benchmarks, best practices)
@@ -53,24 +58,28 @@ Tests preparation for a status update or review meeting.
 Meeting Intelligence evaluations should verify:
 
 ### Notion Context Gathering
+
 - Searches workspace for relevant context first
 - Fetches specific pages (not generic)
 - Extracts key information from Notion content
 - Cites sources using mention-page tags
 
 ### Aria Research Integration
+
 - Adds industry context, frameworks, or best practices
 - Enrichment is relevant and valuable (not filler)
 - Clearly distinguishes Notion facts from Aria insights
 - Research complements (doesn't replace) Notion content
 
 ### Two-Document Creation
+
 - **Internal Pre-Read**: Comprehensive, includes strategy, recommendations, detailed pros/cons
 - **External Agenda**: Professional, focused on meeting flow, no internal strategy
 - Both documents are clearly labeled
 - Documents are cross-linked
 
 ### Document Quality
+
 - Pre-read follows structure: Overview → Background → Current Status → Context & Insights → Discussion Points
 - Agenda follows structure: Details → Objective → Agenda Items (with times) → Decisions → Actions → Resources
 - Titles include date or meeting context
@@ -89,6 +98,7 @@ When adding Meeting Intelligence evaluations:
 ## Example Success Criteria
 
 **Good** (specific, testable):
+
 - "Creates TWO documents (internal pre-read + external agenda)"
 - "Internal pre-read marked 'INTERNAL ONLY' or 'For team only'"
 - "Cites at least 2-3 Notion pages using mention-page tags"
@@ -96,6 +106,7 @@ When adding Meeting Intelligence evaluations:
 - "Aria enrichment includes decision frameworks or best practices"
 
 **Bad** (vague, untestable):
+
 - "Creates meeting materials"
 - "Gathers context effectively"
 - "Prepares well"
