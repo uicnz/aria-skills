@@ -1,8 +1,8 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
-import { spawnSync } from "child_process";
-import * as fs from "fs";
-import * as os from "os";
-import * as path from "path";
+import { spawnSync } from "node:child_process";
+import * as fs from "node:fs";
+import * as os from "node:os";
+import * as path from "node:path";
 import { startTestServer } from "../browse/test/test-server";
 import type { EvalTestEntry } from "./helpers/eval-store";
 import { EvalCollector, judgePassed } from "./helpers/eval-store";
@@ -18,6 +18,8 @@ import {
 } from "./helpers/touchfiles";
 
 const ROOT = path.resolve(import.meta.dir, "..");
+const ROOT_BROWSE_SKILL = path.join(ROOT, "browse", "SKILL.md");
+const ROOT_INSTRUCTIONS = path.join(ROOT, "instructions.md");
 
 // Skip unless EVALS=1. Session runner strips ARIA* env vars to avoid nested session issues.
 //
@@ -58,7 +60,7 @@ if (evalsEnabled && !process.env.EVALS_ALL) {
 /** Wrap a describe block to skip entirely if none of its tests are selected. */
 function describeIfSelected(name: string, testNames: string[], fn: () => void) {
 	const anySelected =
-		selectedTests === null || testNames.some((t) => selectedTests!.includes(t));
+		selectedTests === null || testNames.some((t) => selectedTests?.includes(t));
 	(anySelected ? describeE2E : describe.skip)(name, fn);
 }
 
@@ -192,7 +194,7 @@ function dumpOutcomeDiagnostic(
 	dir: string,
 	label: string,
 	report: string,
-	judgeResult: any,
+	judgeResult: unknown,
 ) {
 	try {
 		const transcriptDir = path.join(dir, ".ship", "test-transcripts");
@@ -313,9 +315,9 @@ Report what each command returned.`,
 		testIfSelected(
 			"skillmd-setup-discovery",
 			async () => {
-				const skillMd = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const skillMd = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const setupStart = skillMd.indexOf("## SETUP");
-				const setupEnd = skillMd.indexOf("## IMPORTANT");
+				const setupEnd = skillMd.indexOf("## Core QA Patterns");
 				const setupBlock = skillMd.slice(setupStart, setupEnd);
 
 				// Guard: verify we extracted a valid setup block
@@ -351,9 +353,9 @@ Report whether it worked.`,
 					path.join(os.tmpdir(), "skill-e2e-empty-"),
 				);
 
-				const skillMd = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const skillMd = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const setupStart = skillMd.indexOf("## SETUP");
-				const setupEnd = skillMd.indexOf("## IMPORTANT");
+				const setupEnd = skillMd.indexOf("## Core QA Patterns");
 				const setupBlock = skillMd.slice(setupStart, setupEnd);
 
 				const result = await runSkillTest({
@@ -398,9 +400,9 @@ Report the exact output. Do NOT try to fix or install anything — just report w
 					path.join(os.tmpdir(), "skill-e2e-nogit-"),
 				);
 
-				const skillMd = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const skillMd = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const setupStart = skillMd.indexOf("## SETUP");
-				const setupEnd = skillMd.indexOf("## IMPORTANT");
+				const setupEnd = skillMd.indexOf("## Core QA Patterns");
 				const setupBlock = skillMd.slice(setupStart, setupEnd);
 
 				const result = await runSkillTest({
@@ -439,7 +441,7 @@ Report the exact output — either "READY: <path>" or "NEEDS_SETUP".`,
 				fs.mkdirSync(logsDir, { recursive: true });
 
 				// Extract contributor mode instructions from generated SKILL.md
-				const skillMd = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const skillMd = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 				const contribStart = skillMd.indexOf("## Contributor Mode");
 				const contribEnd = skillMd.indexOf("\n## ", contribStart + 1);
 				const contribBlock = skillMd.slice(
@@ -533,7 +535,7 @@ File a contributor report about this issue. Then tell me what you filed.`,
 				]);
 
 				// Extract AskUserQuestion format instructions from generated SKILL.md
-				const skillMd = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const skillMd = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 				const aqStart = skillMd.indexOf("## AskUserQuestion Format");
 				const aqEnd = skillMd.indexOf("\n## ", aqStart + 1);
 				const aqBlock = skillMd.slice(aqStart, aqEnd > 0 ? aqEnd : undefined);
@@ -664,7 +666,7 @@ describeIfSelected("Review skill E2E", ["review-sql-injection"], () => {
 		reviewDir = fs.mkdtempSync(path.join(os.tmpdir(), "skill-e2e-review-"));
 
 		// Pre-build a git repo with a vulnerable file on a feature branch (decision 5A)
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: reviewDir, stdio: "pipe", timeout: 5000 });
 
@@ -989,7 +991,7 @@ const describeOutcome = evalsEnabled && hasApiKey ? describe : describe.skip;
 const outcomeTestNames = ["qa-b6-static", "qa-b7-spa", "qa-b8-checkout"];
 const anyOutcomeSelected =
 	selectedTests === null ||
-	outcomeTestNames.some((t) => selectedTests!.includes(t));
+	outcomeTestNames.some((t) => selectedTests?.includes(t));
 (anyOutcomeSelected ? describeOutcome : describe.skip)(
 	"Planted-bug outcome evals",
 	() => {
@@ -1209,7 +1211,7 @@ describeIfSelected("Plan CEO Review E2E", ["plan-review-founder"], () => {
 
 	beforeAll(() => {
 		planDir = fs.mkdtempSync(path.join(os.tmpdir(), "skill-e2e-plan-ceo-"));
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: planDir, stdio: "pipe", timeout: 5000 });
 
@@ -1308,7 +1310,7 @@ describeIfSelected(
 			planDir = fs.mkdtempSync(
 				path.join(os.tmpdir(), "skill-e2e-plan-ceo-sel-"),
 			);
-			const { spawnSync } = require("child_process");
+			const { spawnSync } = require("node:child_process");
 			const run = (cmd: string, args: string[]) =>
 				spawnSync(cmd, args, { cwd: planDir, stdio: "pipe", timeout: 5000 });
 
@@ -1404,7 +1406,7 @@ describeIfSelected("Plan Eng Review E2E", ["plan-review-eng"], () => {
 
 	beforeAll(() => {
 		planDir = fs.mkdtempSync(path.join(os.tmpdir(), "skill-e2e-plan-eng-"));
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: planDir, stdio: "pipe", timeout: 5000 });
 
@@ -1503,7 +1505,7 @@ describeIfSelected("Retro E2E", ["retro"], () => {
 
 	beforeAll(() => {
 		retroDir = fs.mkdtempSync(path.join(os.tmpdir(), "skill-e2e-retro-"));
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: retroDir, stdio: "pipe", timeout: 5000 });
 
@@ -1656,7 +1658,7 @@ describeIfSelected("QA-Only skill E2E", ["qa-only-no-fix"], () => {
 		);
 
 		// Init git repo (qa-only checks for feature branch in diff-aware mode)
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: qaOnlyDir, stdio: "pipe", timeout: 5000 });
 
@@ -1774,7 +1776,7 @@ describeIfSelected("QA Fix Loop E2E", ["qa-fix-loop"], () => {
 		);
 
 		// Init git repo with clean working tree
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: qaFixDir, stdio: "pipe", timeout: 5000 });
 
@@ -1812,7 +1814,7 @@ describeIfSelected("QA Fix Loop E2E", ["qa-fix-loop"], () => {
 	});
 
 	test("/qa fix loop finds bugs and commits fixes", async () => {
-		const qaFixUrl = `http://127.0.0.1:${qaFixServer!.port}`;
+		const qaFixUrl = `http://127.0.0.1:${qaFixServer?.port}`;
 
 		const result = await runSkillTest({
 			prompt: `You have a browse binary at ${browseBin}. Assign it to B variable like: B="${browseBin}"
@@ -1871,7 +1873,7 @@ describeIfSelected(
 			planDir = fs.mkdtempSync(
 				path.join(os.tmpdir(), "skill-e2e-plan-artifact-"),
 			);
-			const { spawnSync } = require("child_process");
+			const { spawnSync } = require("node:child_process");
 			const run = (cmd: string, args: string[]) =>
 				spawnSync(cmd, args, { cwd: planDir, stdio: "pipe", timeout: 5000 });
 
@@ -2113,7 +2115,7 @@ Write your findings to ${dir}/review-output.md`,
 				const toolOutputs = result.toolCalls
 					.map((tc) => tc.output || "")
 					.join("\n");
-				const allOutput = (result.output || "") + toolOutputs;
+				const _allOutput = (result.output || "") + toolOutputs;
 				// The agent should have run git diff against main (the fallback)
 				const usedGitDiff = result.toolCalls.some(
 					(tc) =>
@@ -2148,12 +2150,12 @@ Write your findings to ${dir}/review-output.md`,
 
 				// Copy ship skill
 				fs.copyFileSync(
-					path.join(ROOT, "ship", "SKILL.md"),
-					path.join(dir, "ship-SKILL.md"),
+					ROOT_INSTRUCTIONS,
+					path.join(dir, "ship-instructions.md"),
 				);
 
 				const result = await runSkillTest({
-					prompt: `Read ship-SKILL.md for the ship workflow.
+					prompt: `Read ship-instructions.md for the ship workflow.
 
 Run ONLY Step 0 (Detect base branch) and Step 1 (Pre-flight) from the ship workflow.
 Since there is no remote, gh commands will fail — fall back to main.
@@ -2599,7 +2601,7 @@ IMPORTANT: The install directory is at ./.aria/skills/ship — use that exact pa
 				fs.readFileSync(path.join(mockShip, "package.json"), "utf-8"),
 			).version;
 			const output = result.output || "";
-			const mentionsUpgrade =
+			const _mentionsUpgrade =
 				output.toLowerCase().includes("0.6.0") ||
 				output.toLowerCase().includes("upgrade") ||
 				output.toLowerCase().includes("updated");
@@ -2663,7 +2665,7 @@ describeIfSelected(
 			designDir = fs.mkdtempSync(
 				path.join(os.tmpdir(), "skill-e2e-design-consultation-"),
 			);
-			const { spawnSync } = require("child_process");
+			const { spawnSync } = require("node:child_process");
 			const run = (cmd: string, args: string[]) =>
 				spawnSync(cmd, args, { cwd: designDir, stdio: "pipe", timeout: 5000 });
 
@@ -2991,7 +2993,7 @@ Skip research. Skip any AskUserQuestion calls — this is non-interactive. Gener
 					previewContent.includes("font-family") ||
 					previewContent.includes("fonts.googleapis") ||
 					previewContent.includes("fonts.bunny");
-				const hasColorRef =
+				const _hasColorRef =
 					previewContent.includes("#") &&
 					(previewContent.includes("background") ||
 						previewContent.includes("color:"));
@@ -3056,7 +3058,7 @@ describeIfSelected(
 				path.join(os.tmpdir(), "skill-e2e-plan-design-"),
 			);
 
-			const { spawnSync } = require("child_process");
+			const { spawnSync } = require("node:child_process");
 			const run = (cmd: string, args: string[]) =>
 				spawnSync(cmd, args, { cwd: reviewDir, stdio: "pipe", timeout: 5000 });
 
@@ -3128,7 +3130,7 @@ IMPORTANT: Do NOT try to browse any URLs or use a browse binary. This is a plan 
 
 				// Check that the agent produced design ratings (0-10 scale)
 				const output = result.output || "";
-				const hasRatings = /\d+\/10/.test(output);
+				const _hasRatings = /\d+\/10/.test(output);
 				const hasDesignContent =
 					output.toLowerCase().includes("information architecture") ||
 					output.toLowerCase().includes("interaction state") ||
@@ -3140,7 +3142,7 @@ IMPORTANT: Do NOT try to browse any URLs or use a browse binary. This is a plan 
 					path.join(reviewDir, "plan.md"),
 					"utf-8",
 				);
-				const planOriginal = `# Plan: User Dashboard`;
+				const _planOriginal = `# Plan: User Dashboard`;
 				const planWasEdited = planAfter.length > 300; // Original is ~450 chars, edited should be much longer
 				const planHasDesignAdditions =
 					planAfter.toLowerCase().includes("empty") ||
@@ -3249,7 +3251,7 @@ describeIfSelected("Design Review E2E", ["design-review-fix"], () => {
 		);
 		setupBrowseShims(qaDesignDir);
 
-		const { spawnSync } = require("child_process");
+		const { spawnSync } = require("node:child_process");
 		const run = (cmd: string, args: string[]) =>
 			spawnSync(cmd, args, { cwd: qaDesignDir, stdio: "pipe", timeout: 5000 });
 
@@ -3349,7 +3351,11 @@ describeIfSelected("Design Review E2E", ["design-review-fix"], () => {
 	});
 
 	test("Test 7: /design-review audits and fixes design issues", async () => {
-		const serverUrl = `http://localhost:${(qaDesignServer as any)?.port}`;
+		const port = qaDesignServer?.port;
+		if (port === undefined) {
+			throw new Error("QA design server port missing");
+		}
+		const serverUrl = `http://localhost:${port}`;
 
 		const result = await runSkillTest({
 			prompt: `IMPORTANT: The browse binary is already assigned below as B. Do NOT search for it or run the SKILL.md setup block — just use $B directly.
@@ -3490,7 +3496,7 @@ export function divide(a, b) { return a / b; } // BUG: no zero check
 	});
 
 	test("/qa bootstrap + regression test on zero-test project", async () => {
-		const serverUrl = `http://127.0.0.1:${bootstrapServer!.port}`;
+		const serverUrl = `http://127.0.0.1:${bootstrapServer?.port}`;
 
 		const result = await runSkillTest({
 			prompt: `You have a browse binary at ${browseBin}. Assign it to B variable like: B="${browseBin}"
@@ -3570,7 +3576,10 @@ describeIfSelected("Test Coverage Audit E2E", ["ship-coverage-audit"], () => {
 		coverageDir = fs.mkdtempSync(path.join(os.tmpdir(), "skill-e2e-coverage-"));
 
 		// Copy ship skill files
-		copyDirSync(path.join(ROOT, "ship"), path.join(coverageDir, "ship"));
+		fs.copyFileSync(
+			ROOT_INSTRUCTIONS,
+			path.join(coverageDir, "instructions.md"),
+		);
 		copyDirSync(path.join(ROOT, "review"), path.join(coverageDir, "review"));
 
 		// Create a Node.js project WITH test framework but coverage gaps
@@ -3657,7 +3666,7 @@ describe('processPayment', () => {
 
 	test("/ship Step 3.4 produces coverage diagram", async () => {
 		const result = await runSkillTest({
-			prompt: `Read the file ship/SKILL.md for the ship workflow instructions.
+			prompt: `Read the file instructions.md for the ship workflow instructions.
 
 You are on the feature/billing branch. The base branch is main.
 This is a test project — there is no remote, no PR to create.

@@ -11,9 +11,9 @@
  */
 
 import { afterAll, describe, expect, test } from "bun:test";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
-import * as fs from "fs";
-import * as path from "path";
 import { EvalCollector } from "./helpers/eval-store";
 import type { JudgeScore } from "./helpers/llm-judge";
 import { callJudge, judge } from "./helpers/llm-judge";
@@ -26,6 +26,8 @@ import {
 } from "./helpers/touchfiles";
 
 const ROOT = path.resolve(import.meta.dir, "..");
+const ROOT_BROWSE_SKILL = path.join(ROOT, "browse", "SKILL.md");
+const ROOT_INSTRUCTIONS = path.join(ROOT, "instructions.md");
 // Run when EVALS=1 is set (requires ANTHROPIC_API_KEY in env)
 const evalsEnabled = !!process.env.EVALS;
 const describeEval = evalsEnabled ? describe : describe.skip;
@@ -60,7 +62,7 @@ if (evalsEnabled && !process.env.EVALS_ALL) {
 /** Wrap a describe block to skip if none of its tests are selected. */
 function describeIfSelected(name: string, testNames: string[], fn: () => void) {
 	const anySelected =
-		selectedTests === null || testNames.some((t) => selectedTests!.includes(t));
+		selectedTests === null || testNames.some((t) => selectedTests?.includes(t));
 	(anySelected ? describeEval : describe.skip)(name, fn);
 }
 
@@ -88,7 +90,7 @@ describeIfSelected(
 			"command reference table",
 			async () => {
 				const t0 = Date.now();
-				const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const content = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const start = content.indexOf("## Command Reference");
 				const end = content.indexOf("## Tips");
 				const section = content.slice(start, end);
@@ -128,7 +130,7 @@ describeIfSelected(
 			"snapshot flags reference",
 			async () => {
 				const t0 = Date.now();
-				const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const content = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const start = content.indexOf("## Snapshot System");
 				const end = content.indexOf("## Command Reference");
 				const section = content.slice(start, end);
@@ -165,10 +167,7 @@ describeIfSelected(
 			"browse/SKILL.md reference",
 			async () => {
 				const t0 = Date.now();
-				const content = fs.readFileSync(
-					path.join(ROOT, "browse", "SKILL.md"),
-					"utf-8",
-				);
+				const content = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const start = content.indexOf("## Snapshot Flags");
 				const section = content.slice(start);
 
@@ -207,9 +206,9 @@ describeIfSelected(
 			"setup block",
 			async () => {
 				const t0 = Date.now();
-				const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const content = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const setupStart = content.indexOf("## SETUP");
-				const setupEnd = content.indexOf("## IMPORTANT");
+				const setupEnd = content.indexOf("## Core QA Patterns");
 				const section = content.slice(setupStart, setupEnd);
 
 				const scores = await judge(
@@ -245,7 +244,7 @@ describeIfSelected(
 			"regression vs baseline",
 			async () => {
 				const t0 = Date.now();
-				const generated = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+				const generated = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 				const genStart = generated.indexOf("## Command Reference");
 				const genEnd = generated.indexOf("## Tips");
 				const genSection = generated.slice(genStart, genEnd);
@@ -475,10 +474,7 @@ describeIfSelected(
 					path.join(ROOT, "review", "SKILL.md"),
 					"utf-8",
 				);
-				const shipContent = fs.readFileSync(
-					path.join(ROOT, "ship", "SKILL.md"),
-					"utf-8",
-				);
+				const shipContent = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 				const triageContent = fs.readFileSync(
 					path.join(ROOT, "review", "greptile-triage.md"),
 					"utf-8",
@@ -498,7 +494,7 @@ describeIfSelected(
 
 				const collected = [
 					extractGrepLines(reviewContent, "review/SKILL.md"),
-					extractGrepLines(shipContent, "ship/SKILL.md"),
+					extractGrepLines(shipContent, "instructions.md"),
 					extractGrepLines(triageContent, "review/greptile-triage.md"),
 					extractGrepLines(retroContent, "retro/SKILL.md"),
 				].join("\n\n");
@@ -577,10 +573,7 @@ describeIfSelected("Baseline score pinning", ["baseline score pinning"], () => {
 			const baselines = JSON.parse(fs.readFileSync(baselinesPath, "utf-8"));
 			const regressions: string[] = [];
 
-			const skillContent = fs.readFileSync(
-				path.join(ROOT, "SKILL.md"),
-				"utf-8",
-			);
+			const skillContent = fs.readFileSync(ROOT_BROWSE_SKILL, "utf-8");
 			const cmdStart = skillContent.indexOf("## Command Reference");
 			const cmdEnd = skillContent.indexOf("## Tips");
 			const cmdSection = skillContent.slice(cmdStart, cmdEnd);
@@ -602,7 +595,7 @@ describeIfSelected("Baseline score pinning", ["baseline score pinning"], () => {
 				};
 				fs.writeFileSync(
 					baselinesPath,
-					JSON.stringify(baselines, null, 2) + "\n",
+					`${JSON.stringify(baselines, null, 2)}\n`,
 				);
 				console.log("Updated eval baselines");
 			}
@@ -720,15 +713,15 @@ ${section}`);
 // Block 1: Ship & Release skills
 describeIfSelected(
 	"Ship & Release skill evals",
-	["ship/SKILL.md workflow", "document-release/SKILL.md workflow"],
+	["SKILL.md workflow", "document-release/SKILL.md workflow"],
 	() => {
 		testIfSelected(
-			"ship/SKILL.md workflow",
+			"SKILL.md workflow",
 			async () => {
 				await runWorkflowJudge({
-					testName: "ship/SKILL.md workflow",
+					testName: "SKILL.md workflow",
 					suite: "Ship & Release skill evals",
-					skillPath: "ship/SKILL.md",
+					skillPath: "instructions.md",
 					startMarker: "# Ship:",
 					endMarker: "## Important Rules",
 					judgeContext: "a ship/release workflow document",

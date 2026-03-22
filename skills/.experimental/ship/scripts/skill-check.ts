@@ -9,20 +9,33 @@
  *   - Freshness check (generated files match committed files)
  */
 
-import { execSync } from "child_process";
-import * as fs from "fs";
-import * as path from "path";
+import { execSync } from "node:child_process";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { validateSkill } from "../test/helpers/skill-parser";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 
-// Find all SKILL.md files
-const SKILL_FILES = [
-	"SKILL.md",
+function getExecStdout(err: unknown): string {
+	if (typeof err === "object" && err !== null && "stdout" in err) {
+		const stdout = err.stdout;
+		if (typeof stdout === "string") {
+			return stdout;
+		}
+		if (stdout instanceof Buffer) {
+			return stdout.toString();
+		}
+	}
+
+	return "";
+}
+
+// Find all instruction files that may contain operational command content
+const VALIDATION_FILES = [
+	"instructions.md",
 	"browse/SKILL.md",
 	"qa/SKILL.md",
 	"qa-only/SKILL.md",
-	"ship/SKILL.md",
 	"review/SKILL.md",
 	"retro/SKILL.md",
 	"plan-review-founder/SKILL.md",
@@ -38,8 +51,8 @@ let hasErrors = false;
 
 // ─── Skills ─────────────────────────────────────────────────
 
-console.log("  Skills:");
-for (const file of SKILL_FILES) {
+console.log("  Instructions:");
+for (const file of VALIDATION_FILES) {
 	const fullPath = path.join(ROOT, file);
 	const result = validateSkill(fullPath);
 
@@ -77,6 +90,7 @@ for (const file of SKILL_FILES) {
 console.log("\n  Templates:");
 const TEMPLATES = [
 	{ tmpl: "SKILL.md.tmpl", output: "SKILL.md" },
+	{ tmpl: "instructions.md.tmpl", output: "instructions.md" },
 	{ tmpl: "browse/SKILL.md.tmpl", output: "browse/SKILL.md" },
 ];
 
@@ -98,8 +112,8 @@ for (const { tmpl, output } of TEMPLATES) {
 }
 
 // Skills without templates
-for (const file of SKILL_FILES) {
-	const tmplPath = path.join(ROOT, file + ".tmpl");
+for (const file of VALIDATION_FILES) {
+	const tmplPath = path.join(ROOT, `${file}.tmpl`);
 	if (!fs.existsSync(tmplPath) && !TEMPLATES.some((t) => t.output === file)) {
 		console.log(
 			`  \u26a0\ufe0f  ${file.padEnd(30)} — no template (OK if no $B commands)`,
@@ -116,9 +130,9 @@ try {
 		stdio: "pipe",
 	});
 	console.log("  \u2705 All generated files are fresh");
-} catch (err: any) {
+} catch (err: unknown) {
 	hasErrors = true;
-	const output = err.stdout?.toString() || "";
+	const output = getExecStdout(err);
 	console.log("  \u274c Generated files are stale:");
 	for (const line of output
 		.split("\n")

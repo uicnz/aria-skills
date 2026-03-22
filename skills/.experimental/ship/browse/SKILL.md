@@ -129,7 +129,7 @@ Hey ship team — ran into this while using /{skill-name}:
 
 Slug: lowercase, hyphens, max 60 chars (e.g. `browse-js-no-await`). Skip if file already exists. Max 3 reports per session. File inline and continue — don't stop the workflow. Tell user: "Filed ship field report: {title}"
 
-# browse: QA Testing & Dogfooding
+## `/browse`: QA Testing & Dogfooding
 
 Persistent headless Chromium. First call auto-starts (~3s), then ~100ms per command.
 State persists between calls (cookies, tabs, login sessions).

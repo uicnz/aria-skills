@@ -1,10 +1,13 @@
 import { describe, expect, test } from "bun:test";
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { COMMAND_DESCRIPTIONS } from "../browse/src/commands";
 import { SNAPSHOT_FLAGS } from "../browse/src/snapshot";
 
 const ROOT = path.resolve(import.meta.dir, "..");
+const ROOT_SKILL = path.join(ROOT, "SKILL.md");
+const ROOT_INSTRUCTIONS = path.join(ROOT, "instructions.md");
+const ROOT_ARIA = path.join(ROOT, "agents", "aria.yaml");
 
 function expectedTitleFromName(name: string): string {
 	const acronymMap: Record<string, string> = { qa: "QA" };
@@ -20,7 +23,10 @@ function expectedTitleFromName(name: string): string {
 
 describe("gen-skill-docs", () => {
 	test("generated SKILL.md contains all command categories", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(
+			path.join(ROOT, "browse", "SKILL.md"),
+			"utf-8",
+		);
 		const categories = new Set(
 			Object.values(COMMAND_DESCRIPTIONS).map((d) => d.category),
 		);
@@ -30,7 +36,10 @@ describe("gen-skill-docs", () => {
 	});
 
 	test("generated SKILL.md contains all commands", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(
+			path.join(ROOT, "browse", "SKILL.md"),
+			"utf-8",
+		);
 		for (const [cmd, meta] of Object.entries(COMMAND_DESCRIPTIONS)) {
 			const display = meta.usage || cmd;
 			expect(content).toContain(display);
@@ -38,13 +47,16 @@ describe("gen-skill-docs", () => {
 	});
 
 	test("command table is sorted alphabetically within categories", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(
+			path.join(ROOT, "browse", "SKILL.md"),
+			"utf-8",
+		);
 		// Extract command names from the Navigation section as a test
 		const navSection = content.match(
 			/### Navigation\n\|.*\n\|.*\n([\s\S]*?)(?=\n###|\n## )/,
 		);
 		expect(navSection).not.toBeNull();
-		const rows = navSection![1].trim().split("\n");
+		const rows = navSection?.[1].trim().split("\n");
 		const commands = rows
 			.map((r) => {
 				const match = r.match(/\| `(\w+)/);
@@ -56,8 +68,14 @@ describe("gen-skill-docs", () => {
 	});
 
 	test("generated header is present in SKILL.md", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_SKILL, "utf-8");
 		expect(content).toContain("AUTO-GENERATED from SKILL.md.tmpl");
+		expect(content).toContain("Regenerate: bun run gen:skill-docs");
+	});
+
+	test("generated header is present in instructions.md", () => {
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
+		expect(content).toContain("AUTO-GENERATED from instructions.md.tmpl");
 		expect(content).toContain("Regenerate: bun run gen:skill-docs");
 	});
 
@@ -70,7 +88,10 @@ describe("gen-skill-docs", () => {
 	});
 
 	test("snapshot flags section contains all flags", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(
+			path.join(ROOT, "browse", "SKILL.md"),
+			"utf-8",
+		);
 		for (const flag of SNAPSHOT_FLAGS) {
 			expect(content).toContain(flag.short);
 			expect(content).toContain(flag.description);
@@ -84,7 +105,6 @@ describe("gen-skill-docs", () => {
 		{ dir: "qa", name: "qa" },
 		{ dir: "qa-only", name: "qa-only" },
 		{ dir: "review", name: "review" },
-		{ dir: "ship", name: "ship" },
 		{ dir: "plan-review-founder", name: "plan-review-founder" },
 		{ dir: "plan-review-eng", name: "plan-review-eng" },
 		{ dir: "retro", name: "retro" },
@@ -132,8 +152,8 @@ describe("gen-skill-docs", () => {
 			);
 			const nameMatch = content.match(/^name:\s*(.+)$/m);
 			expect(nameMatch).not.toBeNull();
-			const title = expectedTitleFromName(nameMatch![1].trim());
-			const expectedPrefix = `---\nname: ${nameMatch![1].trim()}`;
+			const title = expectedTitleFromName(nameMatch?.[1].trim());
+			const expectedPrefix = `---\nname: ${nameMatch?.[1].trim()}`;
 			expect(content.startsWith(expectedPrefix)).toBe(true);
 			expect(content).toContain(
 				`\n---\n\n# ${title}\n\n<!-- AUTO-GENERATED from SKILL.md.tmpl — do not edit directly -->\n<!-- Regenerate: bun run gen:skill-docs -->\n`,
@@ -157,6 +177,7 @@ describe("gen-skill-docs", () => {
 			const file = skill.dir === "." ? "SKILL.md" : `${skill.dir}/SKILL.md`;
 			expect(output).toContain(`FRESH: ${file}`);
 		}
+		expect(output).toContain("FRESH: instructions.md");
 		expect(output).not.toContain("STALE");
 	});
 
@@ -173,9 +194,16 @@ describe("gen-skill-docs", () => {
 
 	test("templates contain placeholders", () => {
 		const rootTmpl = fs.readFileSync(path.join(ROOT, "SKILL.md.tmpl"), "utf-8");
-		expect(rootTmpl).toContain("{{COMMAND_REFERENCE}}");
-		expect(rootTmpl).toContain("{{SNAPSHOT_FLAGS}}");
-		expect(rootTmpl).toContain("{{PREAMBLE}}");
+		expect(rootTmpl).not.toContain("{{");
+
+		const instructionsTmpl = fs.readFileSync(
+			path.join(ROOT, "instructions.md.tmpl"),
+			"utf-8",
+		);
+		expect(instructionsTmpl).toContain("{{PREAMBLE}}");
+		expect(instructionsTmpl).toContain("{{BASE_BRANCH_DETECT}}");
+		expect(instructionsTmpl).toContain("{{REVIEW_DASHBOARD}}");
+		expect(instructionsTmpl).toContain("{{TEST_BOOTSTRAP}}");
 
 		const browseTmpl = fs.readFileSync(
 			path.join(ROOT, "browse", "SKILL.md.tmpl"),
@@ -187,28 +215,48 @@ describe("gen-skill-docs", () => {
 	});
 
 	test("generated SKILL.md contains contributor mode check", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 		expect(content).toContain("Contributor Mode");
 		expect(content).toContain("ship_contributor");
 		expect(content).toContain("contributor-logs");
 	});
 
 	test("generated SKILL.md contains session awareness", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 		expect(content).toContain("_SESSIONS");
 		expect(content).toContain("RECOMMENDATION");
 	});
 
 	test("generated SKILL.md contains branch detection", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 		expect(content).toContain("_BRANCH");
 		expect(content).toContain("git branch --show-current");
 	});
 
 	test("generated SKILL.md contains ELI16 simplification rules", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 		expect(content).toContain("No raw function names");
 		expect(content).toContain("plain English");
+	});
+
+	test("root entrypoint frontmatter stays minimal", () => {
+		const content = fs.readFileSync(ROOT_SKILL, "utf-8");
+		const frontmatter = content.match(/^---\n([\s\S]*?)\n---/);
+		expect(frontmatter).not.toBeNull();
+		expect(frontmatter?.[1]).toContain("name:");
+		expect(frontmatter?.[1]).toContain("version:");
+		expect(frontmatter?.[1]).toContain("description:");
+		expect(frontmatter?.[1]).not.toContain("allowed-tools");
+		expect(frontmatter?.[1]).not.toContain("metadata:");
+	});
+
+	test("aria sidecar declares root instructions and child skills", () => {
+		const content = fs.readFileSync(ROOT_ARIA, "utf-8");
+		expect(content).toContain("instructions:");
+		expect(content).toContain('    - "./instructions.md"');
+		expect(content).toContain("relationships:");
+		expect(content).toContain('    - path: "./browse"');
+		expect(content).toContain('    - path: "./review"');
 	});
 
 	test("qa and qa-only templates use QA_METHODOLOGY placeholder", () => {
@@ -287,10 +335,7 @@ describe("gen-skill-docs", () => {
 
 describe("BASE_BRANCH_DETECT resolver", () => {
 	// Find a generated SKILL.md that uses the placeholder (ship is guaranteed to)
-	const shipContent = fs.readFileSync(
-		path.join(ROOT, "ship", "SKILL.md"),
-		"utf-8",
-	);
+	const shipContent = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 
 	test("resolver output contains PR base detection command", () => {
 		expect(shipContent).toContain("gh pr view --json baseRefName");
@@ -319,7 +364,10 @@ describe("BASE_BRANCH_DETECT resolver", () => {
 describe("description quality evals", () => {
 	// Regression: snapshot flags lost value hints (-d <N>, -s <sel>, -o <path>)
 	test("snapshot flags with values include value hints in output", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(
+			path.join(ROOT, "browse", "SKILL.md"),
+			"utf-8",
+		);
 		for (const flag of SNAPSHOT_FLAGS) {
 			if (flag.takesValue) {
 				expect(flag.valueHint).toBeDefined();
@@ -330,7 +378,7 @@ describe("description quality evals", () => {
 
 	// Regression: "is" lost the valid states enum
 	test("is command lists valid state values", () => {
-		const desc = COMMAND_DESCRIPTIONS["is"].description;
+		const desc = COMMAND_DESCRIPTIONS.is.description;
 		for (const state of [
 			"visible",
 			"hidden",
@@ -346,7 +394,7 @@ describe("description quality evals", () => {
 
 	// Regression: "press" lost common key examples
 	test("press command lists example keys", () => {
-		const desc = COMMAND_DESCRIPTIONS["press"].description;
+		const desc = COMMAND_DESCRIPTIONS.press.description;
 		expect(desc).toContain("Enter");
 		expect(desc).toContain("Tab");
 		expect(desc).toContain("Escape");
@@ -354,25 +402,33 @@ describe("description quality evals", () => {
 
 	// Regression: "console" lost --errors filter note
 	test("console command describes --errors behavior", () => {
-		const desc = COMMAND_DESCRIPTIONS["console"].description;
+		const desc = COMMAND_DESCRIPTIONS.console.description;
 		expect(desc).toContain("--errors");
 	});
 
 	// Regression: snapshot -i lost "@e refs" context
 	test("snapshot -i mentions @e refs", () => {
-		const flag = SNAPSHOT_FLAGS.find((f) => f.short === "-i")!;
+		const flag = SNAPSHOT_FLAGS.find((f) => f.short === "-i");
+		expect(flag).toBeDefined();
+		if (!flag) {
+			throw new Error("Missing -i snapshot flag");
+		}
 		expect(flag.description).toContain("@e");
 	});
 
 	// Regression: snapshot -C lost "@c refs" context
 	test("snapshot -C mentions @c refs", () => {
-		const flag = SNAPSHOT_FLAGS.find((f) => f.short === "-C")!;
+		const flag = SNAPSHOT_FLAGS.find((f) => f.short === "-C");
+		expect(flag).toBeDefined();
+		if (!flag) {
+			throw new Error("Missing -C snapshot flag");
+		}
 		expect(flag.description).toContain("@c");
 	});
 
 	// Guard: every description must be at least 8 chars (catches empty or stub descriptions)
 	test("all command descriptions have meaningful length", () => {
-		for (const [cmd, meta] of Object.entries(COMMAND_DESCRIPTIONS)) {
+		for (const [_cmd, meta] of Object.entries(COMMAND_DESCRIPTIONS)) {
 			expect(meta.description.length).toBeGreaterThanOrEqual(8);
 		}
 	});
@@ -387,18 +443,23 @@ describe("description quality evals", () => {
 	// Guard: descriptions must not contain pipe (breaks markdown table cells)
 	// Usage strings are backtick-wrapped in the table so pipes there are safe.
 	test("no command description contains pipe character", () => {
-		for (const [cmd, meta] of Object.entries(COMMAND_DESCRIPTIONS)) {
+		for (const [_cmd, meta] of Object.entries(COMMAND_DESCRIPTIONS)) {
 			expect(meta.description).not.toContain("|");
 		}
 	});
 
 	// Guard: generated output uses → not ->
 	test("generated SKILL.md uses unicode arrows", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
-		// Check the Tips section specifically (where we regressed -> from →)
-		const tipsSection = content.slice(content.indexOf("## Tips"));
-		expect(tipsSection).toContain("→");
-		expect(tipsSection).not.toContain("->");
+		const content = fs.readFileSync(
+			path.join(ROOT, "browse", "SKILL.md"),
+			"utf-8",
+		);
+		expect(content).toContain("→");
+		const bodyWithoutGeneratedHeader = content
+			.split("\n")
+			.filter((line) => !line.startsWith("<!--"))
+			.join("\n");
+		expect(bodyWithoutGeneratedHeader).not.toContain("->");
 	});
 });
 
@@ -421,10 +482,7 @@ describe("REVIEW_DASHBOARD resolver", () => {
 	}
 
 	test("review dashboard appears in ship generated file", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS, "utf-8");
 		expect(content).toContain("reviews.jsonl");
 		expect(content).toContain("REVIEW READINESS DASHBOARD");
 	});

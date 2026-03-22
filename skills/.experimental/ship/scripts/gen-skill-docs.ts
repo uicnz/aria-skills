@@ -10,8 +10,8 @@
  * Used by skill:check and CI freshness checks.
  */
 
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { COMMAND_DESCRIPTIONS } from "../browse/src/commands";
 import { SNAPSHOT_FLAGS } from "../browse/src/snapshot";
 
@@ -153,6 +153,7 @@ Only run \`open\` if the user says yes. Always run \`touch\` to mark as seen. Th
 ## AskUserQuestion Format
 
 **ALWAYS follow this structure for every AskUserQuestion call:**
+
 1. **Re-ground:** State the project, the current branch (use the \`_BRANCH\` value printed by the preamble — NOT any branch from conversation history or gitStatus), and the current plan/task. (1-2 sentences)
 2. **Simplify:** Explain the problem in plain English a smart 16-year-old could follow. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
 3. **Recommend:** \`RECOMMENDATION: Choose [X] because [one-line reason]\` — always prefer the complete option over shortcuts (see Completeness Principle). Include \`Completeness: X/10\` for each option. Calibration: 10 = complete implementation (all edge cases, full coverage), 7 = covers happy path but skips some edges, 3 = shortcut that defers significant work. If both options are 8+, pick the higher; if one is ≤5, flag it.
@@ -321,12 +322,15 @@ This is the **primary mode** for developers verifying their work. When the user 
 **If the user provides a URL with diff-aware mode:** Use that URL as the base but still scope testing to the changed files.
 
 ### Full (default when URL is provided)
+
 Systematic exploration. Visit every reachable page. Document 5-10 well-evidenced issues. Produce health score. Takes 5-15 minutes depending on app size.
 
 ### Quick (\`--quick\`)
+
 30-second smoke test. Visit homepage + top 5 navigation targets. Check: page loads? Console errors? Broken links? Produce health score. No detailed issue documentation.
 
 ### Regression (\`--regression <baseline>\`)
+
 Run full mode, then load \`baseline.json\` from a previous run. Diff: which issues are fixed? Which are new? What's the score delta? Append regression section to report.
 
 ---
@@ -515,7 +519,7 @@ Minimum 0 per category.
 
 ### Final Score
 
-\`score = Σ (category_score × weight)\`
+\`score = Σ (category_score x weight)\`
 
 ---
 
@@ -650,18 +654,23 @@ Extract the actual design system the site uses (not what a DESIGN.md says, but w
 
 \`\`\`sh
 # Fonts in use (capped at 500 elements to avoid timeout)
+
 $B js "JSON.stringify([...new Set([...document.querySelectorAll('*')].slice(0,500).map(e => getComputedStyle(e).fontFamily))])"
 
 # Color palette in use
+
 $B js "JSON.stringify([...new Set([...document.querySelectorAll('*')].slice(0,500).flatMap(e => [getComputedStyle(e).color, getComputedStyle(e).backgroundColor]).filter(c => c !== 'rgba(0, 0, 0, 0)'))])"
 
 # Heading hierarchy
+
 $B js "JSON.stringify([...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(h => ({tag:h.tagName, text:h.textContent.trim().slice(0,50), size:getComputedStyle(h).fontSize, weight:getComputedStyle(h).fontWeight})))"
 
 # Touch target audit (find undersized interactive elements)
+
 $B js "JSON.stringify([...document.querySelectorAll('a,button,input,[role=button]')].filter(e => {const r=e.getBoundingClientRect(); return r.width>0 && (r.width<44||r.height<44)}).map(e => ({tag:e.tagName, text:(e.textContent||'').trim().slice(0,30), w:Math.round(e.getBoundingClientRect().width), h:Math.round(e.getBoundingClientRect().height)})).slice(0,20))"
 
 # Performance baseline
+
 $B perf
 \`\`\`
 
@@ -879,12 +888,12 @@ Write to: \`~/.ship/projects/{slug}/{user}-{branch}-design-audit-{datetime}.md\`
 
 \`\`\`json
 {
-  "date": "YYYY-MM-DD",
-  "url": "<target>",
-  "designScore": "B",
-  "aiSlopScore": "C",
-  "categoryGrades": { "hierarchy": "A", "typography": "B", ... },
-  "findings": [{ "id": "FINDING-001", "title": "...", "impact": "high", "category": "typography" }]
+    "date": "YYYY-MM-DD",
+    "url": "<target>",
+    "designScore": "B",
+    "aiSlopScore": "C",
+    "categoryGrades": { "hierarchy": "A", "typography": "B", ... },
+    "findings": [{ "id": "FINDING-001", "title": "...", "impact": "high", "category": "typography" }]
 }
 \`\`\`
 
@@ -1070,10 +1079,13 @@ If WebSearch is unavailable, use this built-in knowledge table:
 ### B3. Framework selection
 
 Use AskUserQuestion:
+
 "I detected this is a [Runtime/Framework] project with no test framework. I researched current best practices. Here are the options:
-A) [Primary] — [rationale]. Includes: [packages]. Supports: unit, integration, smoke, e2e
-B) [Alternative] — [rationale]. Includes: [packages]
-C) Skip — don't set up testing right now
+
+- A) [Primary] — [rationale]. Includes: [packages]. Supports: unit, integration, smoke, e2e
+- B) [Alternative] — [rationale]. Includes: [packages]
+- C) Skip — don't set up testing right now
+
 RECOMMENDATION: Choose A because [reason based on project context]"
 
 If user picks C → write \`.ship/no-test-bootstrap\`. Tell user: "If you change your mind later, delete \`.ship/no-test-bootstrap\` and re-run." Continue without tests.
@@ -1209,7 +1221,7 @@ function processTemplate(tmplPath: string): {
 	const outputPath = tmplPath.replace(/\.tmpl$/, "");
 
 	// Replace placeholders
-	let content = tmplContent.replace(/\{\{(\w+)\}\}/g, (match, name) => {
+	let content = tmplContent.replace(/\{\{(\w+)\}\}/g, (_match, name) => {
 		const resolver = RESOLVERS[name];
 		if (!resolver)
 			throw new Error(`Unknown placeholder {{${name}}} in ${relTmplPath}`);
@@ -1229,8 +1241,11 @@ function processTemplate(tmplPath: string): {
 		"{{SOURCE}}",
 		path.basename(tmplPath),
 	);
-	const fmEnd = content.indexOf("---", content.indexOf("---") + 3);
-	if (fmEnd !== -1) {
+	const hasFrontmatter = content.startsWith("---\n");
+	const fmEnd = hasFrontmatter
+		? content.indexOf("---", content.indexOf("---") + 3)
+		: -1;
+	if (hasFrontmatter && fmEnd !== -1) {
 		const insertAt = content.indexOf("\n", fmEnd) + 1;
 		const frontmatter = content.slice(0, insertAt).replace(/\s*$/, "");
 		const body = content.slice(insertAt).replace(/^\n*/, "");
@@ -1253,11 +1268,11 @@ function findTemplates(): string[] {
 	const templates: string[] = [];
 	const candidates = [
 		path.join(ROOT, "SKILL.md.tmpl"),
+		path.join(ROOT, "instructions.md.tmpl"),
 		path.join(ROOT, "browse", "SKILL.md.tmpl"),
 		path.join(ROOT, "qa", "SKILL.md.tmpl"),
 		path.join(ROOT, "qa-only", "SKILL.md.tmpl"),
 		path.join(ROOT, "setup-browser-cookies", "SKILL.md.tmpl"),
-		path.join(ROOT, "ship", "SKILL.md.tmpl"),
 		path.join(ROOT, "review", "SKILL.md.tmpl"),
 		path.join(ROOT, "plan-review-founder", "SKILL.md.tmpl"),
 		path.join(ROOT, "plan-review-eng", "SKILL.md.tmpl"),

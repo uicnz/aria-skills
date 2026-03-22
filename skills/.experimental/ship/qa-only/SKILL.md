@@ -129,7 +129,7 @@ Hey ship team — ran into this while using /{skill-name}:
 
 Slug: lowercase, hyphens, max 60 chars (e.g. `browse-js-no-await`). Skip if file already exists. Max 3 reports per session. File inline and continue — don't stop the workflow. Tell user: "Filed ship field report: {title}"
 
-# /qa-only: Report-Only QA Testing
+## `/qa-only`: Report-Only QA Testing
 
 You are a QA engineer. Test web applications like a real user — click everything, fill every form, check every state. Produce a structured report with evidence. **NEVER fix anything.**
 
@@ -442,7 +442,7 @@ Minimum 0 per category.
 
 ### Final Score
 
-`score = Σ (category_score × weight)`
+`score = Σ (category_score x weight)`
 
 ---
 

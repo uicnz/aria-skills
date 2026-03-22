@@ -279,10 +279,13 @@ If WebSearch is unavailable, use this built-in knowledge table:
 ### B3. Framework selection
 
 Use AskUserQuestion:
+
 "I detected this is a [Runtime/Framework] project with no test framework. I researched current best practices. Here are the options:
-A) [Primary] — [rationale]. Includes: [packages]. Supports: unit, integration, smoke, e2e
-B) [Alternative] — [rationale]. Includes: [packages]
-C) Skip — don't set up testing right now
+
+- A) [Primary] — [rationale]. Includes: [packages]. Supports: unit, integration, smoke, e2e
+- B) [Alternative] — [rationale]. Includes: [packages]
+- C) Skip — don't set up testing right now
+
 RECOMMENDATION: Choose A because [reason based on project context]"
 
 If user picks C → write `.ship/no-test-bootstrap`. Tell user: "If you change your mind later, delete `.ship/no-test-bootstrap` and re-run." Continue without tests.
@@ -650,7 +653,7 @@ Minimum 0 per category.
 
 ### Final Score
 
-`score = Σ (category_score × weight)`
+`score = Σ (category_score x weight)`
 
 ---
 

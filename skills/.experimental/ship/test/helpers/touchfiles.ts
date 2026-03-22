@@ -6,7 +6,7 @@
  * dependencies were modified. Override with EVALS_ALL=1 to run everything.
  */
 
-import { spawnSync } from "child_process";
+import { spawnSync } from "node:child_process";
 
 // --- Glob matching ---
 
@@ -36,12 +36,42 @@ export const E2E_TOUCHFILES: Record<string, string[]> = {
 	"browse-basic": ["browse/src/**"],
 	"browse-snapshot": ["browse/src/**"],
 
-	// SKILL.md setup + preamble (depend on ROOT SKILL.md only)
-	"skillmd-setup-discovery": ["SKILL.md", "SKILL.md.tmpl"],
-	"skillmd-no-local-binary": ["SKILL.md", "SKILL.md.tmpl"],
-	"skillmd-outside-git": ["SKILL.md", "SKILL.md.tmpl"],
-	"contributor-mode": ["SKILL.md", "SKILL.md.tmpl"],
-	"session-awareness": ["SKILL.md", "SKILL.md.tmpl"],
+	// Root ship entrypoint + operational playbook
+	"skillmd-setup-discovery": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
+	"skillmd-no-local-binary": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
+	"skillmd-outside-git": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
+	"contributor-mode": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
+	"session-awareness": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
 
 	// QA
 	"qa-quick": ["qa/**", "browse/src/**"],
@@ -85,7 +115,13 @@ export const E2E_TOUCHFILES: Record<string, string[]> = {
 	"plan-review-eng-artifact": ["plan-review-eng/**"],
 
 	// Ship
-	"ship-base-branch": ["ship/**"],
+	"ship-base-branch": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
 
 	// Retro
 	retro: ["retro/**"],
@@ -95,10 +131,24 @@ export const E2E_TOUCHFILES: Record<string, string[]> = {
 	"document-release": ["document-release/**"],
 
 	// QA bootstrap
-	"qa-bootstrap": ["qa/**", "browse/src/**", "ship/**"],
+	"qa-bootstrap": [
+		"qa/**",
+		"browse/src/**",
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
 
 	// Ship coverage audit
-	"ship-coverage-audit": ["ship/**"],
+	"ship-coverage-audit": [
+		"SKILL.md",
+		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
 
 	// Design
 	"design-consultation-core": ["design-consultation/**"],
@@ -118,13 +168,13 @@ export const E2E_TOUCHFILES: Record<string, string[]> = {
  */
 export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
 	"command reference table": [
-		"SKILL.md",
-		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
 		"browse/src/commands.ts",
 	],
 	"snapshot flags reference": [
-		"SKILL.md",
-		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
 		"browse/src/snapshot.ts",
 	],
 	"browse/SKILL.md reference": [
@@ -132,10 +182,14 @@ export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
 		"browse/SKILL.md.tmpl",
 		"browse/src/**",
 	],
-	"setup block": ["SKILL.md", "SKILL.md.tmpl"],
+	"setup block": [
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
 	"regression vs baseline": [
-		"SKILL.md",
-		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
 		"browse/src/commands.ts",
 		"test/fixtures/eval-baselines.json",
 	],
@@ -144,20 +198,24 @@ export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
 	"cross-skill greptile consistency": [
 		"review/SKILL.md",
 		"review/SKILL.md.tmpl",
-		"ship/SKILL.md",
-		"ship/SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
 		"review/greptile-triage.md",
 		"retro/SKILL.md",
 		"retro/SKILL.md.tmpl",
 	],
 	"baseline score pinning": [
-		"SKILL.md",
-		"SKILL.md.tmpl",
+		"instructions.md",
+		"instructions.md.tmpl",
 		"test/fixtures/eval-baselines.json",
 	],
 
 	// Ship & Release
-	"ship/SKILL.md workflow": ["ship/SKILL.md", "ship/SKILL.md.tmpl"],
+	"SKILL.md workflow": [
+		"instructions.md",
+		"instructions.md.tmpl",
+		"agents/aria.yaml",
+	],
 	"document-release/SKILL.md workflow": [
 		"document-release/SKILL.md",
 		"document-release/SKILL.md.tmpl",

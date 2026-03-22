@@ -133,7 +133,7 @@ Hey ship team — ran into this while using /{skill-name}:
 
 Slug: lowercase, hyphens, max 60 chars (e.g. `browse-js-no-await`). Skip if file already exists. Max 3 reports per session. File inline and continue — don't stop the workflow. Tell user: "Filed ship field report: {title}"
 
-# /design-review: Design Audit → Fix → Verify
+## `/design-review`: Design Audit → Fix → Verify
 
 You are a senior product designer AND a frontend engineer. Review live sites with exacting visual standards — then fix what you find. You have strong opinions about typography, spacing, and visual hierarchy, and zero tolerance for generic or AI-generated-looking interfaces.
 
@@ -256,10 +256,13 @@ If WebSearch is unavailable, use this built-in knowledge table:
 ### B3. Framework selection
 
 Use AskUserQuestion:
+
 "I detected this is a [Runtime/Framework] project with no test framework. I researched current best practices. Here are the options:
-A) [Primary] — [rationale]. Includes: [packages]. Supports: unit, integration, smoke, e2e
-B) [Alternative] — [rationale]. Includes: [packages]
-C) Skip — don't set up testing right now
+
+- A) [Primary] — [rationale]. Includes: [packages]. Supports: unit, integration, smoke, e2e
+- B) [Alternative] — [rationale]. Includes: [packages]
+- C) Skip — don't set up testing right now
+
 RECOMMENDATION: Choose A because [reason based on project context]"
 
 If user picks C → write `.ship/no-test-bootstrap`. Tell user: "If you change your mind later, delete `.ship/no-test-bootstrap` and re-run." Continue without tests.
@@ -415,18 +418,23 @@ Extract the actual design system the site uses (not what a DESIGN.md says, but w
 
 ```sh
 # Fonts in use (capped at 500 elements to avoid timeout)
+
 $B js "JSON.stringify([...new Set([...document.querySelectorAll('*')].slice(0,500).map(e => getComputedStyle(e).fontFamily))])"
 
 # Color palette in use
+
 $B js "JSON.stringify([...new Set([...document.querySelectorAll('*')].slice(0,500).flatMap(e => [getComputedStyle(e).color, getComputedStyle(e).backgroundColor]).filter(c => c !== 'rgba(0, 0, 0, 0)'))])"
 
 # Heading hierarchy
+
 $B js "JSON.stringify([...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(h => ({tag:h.tagName, text:h.textContent.trim().slice(0,50), size:getComputedStyle(h).fontSize, weight:getComputedStyle(h).fontWeight})))"
 
 # Touch target audit (find undersized interactive elements)
+
 $B js "JSON.stringify([...document.querySelectorAll('a,button,input,[role=button]')].filter(e => {const r=e.getBoundingClientRect(); return r.width>0 && (r.width<44||r.height<44)}).map(e => ({tag:e.tagName, text:(e.textContent||'').trim().slice(0,30), w:Math.round(e.getBoundingClientRect().width), h:Math.round(e.getBoundingClientRect().height)})).slice(0,20))"
 
 # Performance baseline
+
 $B perf
 ```
 
@@ -644,12 +652,12 @@ Write to: `~/.ship/projects/{slug}/{user}-{branch}-design-audit-{datetime}.md`
 
 ```json
 {
-  "date": "YYYY-MM-DD",
-  "url": "<target>",
-  "designScore": "B",
-  "aiSlopScore": "C",
-  "categoryGrades": { "hierarchy": "A", "typography": "B", ... },
-  "findings": [{ "id": "FINDING-001", "title": "...", "impact": "high", "category": "typography" }]
+    "date": "YYYY-MM-DD",
+    "url": "<target>",
+    "designScore": "B",
+    "aiSlopScore": "C",
+    "categoryGrades": { "hierarchy": "A", "typography": "B", ... },
+    "findings": [{ "id": "FINDING-001", "title": "...", "impact": "high", "category": "typography" }]
 }
 ```
 
@@ -730,7 +738,7 @@ Record baseline design score and AI slop score at end of Phase 6.
 
 ## Output Structure
 
-```
+```tree
 .ship/design-reports/
 ├── design-audit-{domain}-{YYYY-MM-DD}.md    # Structured report
 ├── screenshots/
@@ -828,12 +836,12 @@ Every 5 fixes (or after any revert), compute the design-fix risk level:
 
 ```
 DESIGN-FIX RISK:
-  Start at 0%
-  Each revert:                        +15%
-  Each CSS-only file change:          +0%   (safe — styling only)
-  Each JSX/TSX/component file change: +5%   per file
-  After fix 10:                       +1%   per additional fix
-  Touching unrelated files:           +20%
+    Start at 0%
+    Each revert:                        +15%
+    Each CSS-only file change:          +0%   (safe — styling only)
+    Each JSX/TSX/component file change: +5%   per file
+    After fix 10:                       +1%   per additional fix
+    Touching unrelated files:           +20%
 ```
 
 **If risk > 20%:** STOP immediately. Show the user what you've done so far. Ask whether to continue.

@@ -7,36 +7,61 @@
  * validates all $B commands immediately.
  */
 
-import { execSync } from "child_process";
-import * as fs from "fs";
-import * as path from "path";
+import { execSync } from "node:child_process";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { validateSkill } from "../test/helpers/skill-parser";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 
-const TEMPLATES = [
+const WATCHED_TEMPLATES = [
 	{ tmpl: path.join(ROOT, "SKILL.md.tmpl"), output: "SKILL.md" },
+	{ tmpl: path.join(ROOT, "instructions.md.tmpl"), output: "instructions.md" },
 	{
 		tmpl: path.join(ROOT, "browse", "SKILL.md.tmpl"),
 		output: "browse/SKILL.md",
 	},
 ];
 
+const VALIDATED_FILES = [
+	path.join(ROOT, "instructions.md"),
+	path.join(ROOT, "browse", "SKILL.md"),
+];
+
+function formatExecError(err: unknown): string {
+	if (typeof err === "object" && err !== null) {
+		const stderr = "stderr" in err ? err.stderr : undefined;
+		if (typeof stderr === "string" && stderr.trim().length > 0) {
+			return stderr.trim();
+		}
+		if (stderr instanceof Buffer) {
+			const output = stderr.toString().trim();
+			if (output.length > 0) {
+				return output;
+			}
+		}
+	}
+
+	if (err instanceof Error) {
+		return err.message;
+	}
+
+	return String(err);
+}
+
 function regenerateAndValidate() {
 	// Regenerate
 	try {
 		execSync("bun run scripts/gen-skill-docs.ts", { cwd: ROOT, stdio: "pipe" });
-	} catch (err: any) {
-		console.log(
-			`  [gen]   ERROR: ${err.stderr?.toString().trim() || err.message}`,
-		);
+	} catch (err: unknown) {
+		console.log(`  [gen]   ERROR: ${formatExecError(err)}`);
 		return;
 	}
 
 	// Validate each generated file
-	for (const { output } of TEMPLATES) {
-		const fullPath = path.join(ROOT, output);
+	for (const fullPath of VALIDATED_FILES) {
 		if (!fs.existsSync(fullPath)) continue;
+		const output = path.relative(ROOT, fullPath);
 
 		const result = validateSkill(fullPath);
 		const totalValid = result.valid.length;
@@ -66,7 +91,7 @@ console.log("  [watch] Watching *.md.tmpl files...");
 regenerateAndValidate();
 
 // Watch for changes
-for (const { tmpl } of TEMPLATES) {
+for (const { tmpl } of WATCHED_TEMPLATES) {
 	if (!fs.existsSync(tmpl)) continue;
 	fs.watch(tmpl, () => {
 		console.log(`\n  [watch] ${path.relative(ROOT, tmpl)} changed`);

@@ -14,7 +14,8 @@ bun install                    # install dependencies
 bin/dev-setup                  # activate dev mode
 ```
 
-Now edit any `SKILL.md`, invoke it in Aria (e.g. `/review`), and see your changes live. When you're done developing:
+Now edit any skill artifact (`SKILL.md`, `instructions.md`, or `agents/aria.yaml`),
+invoke it in Aria (e.g. `/review`), and see your changes live. When you're done developing:
 
 ```sh
 bin/dev-teardown               # deactivate — back to your global install
@@ -72,12 +73,13 @@ ship/                          <- your working tree
 ├── .aria/skills/              <- created by dev-setup (gitignored)
 │   ├── ship -> ../../         <- symlink back to repo root
 │   ├── review -> ship/review
-│   ├── ship -> ship/ship
 │   └── ...                      <- one symlink per skill
+├── agents/
+│   └── aria.yaml               <- Aria-native ship contract
+├── instructions.md             <- generated root ship playbook
 ├── review/
 │   └── SKILL.md                 <- edit this, test with /review
-├── ship/
-│   └── SKILL.md
+├── SKILL.md                     <- lightweight ship entrypoint
 ├── browse/
 │   ├── src/                     <- TypeScript source
 │   └── dist/                    <- compiled binary (gitignored)
@@ -120,12 +122,12 @@ Bun auto-loads `.env` — no extra config. Conductor workspaces inherit `.env` f
 
 ### Test tiers
 
-| Tier         | Command              | Cost              | What it tests                                                                                            |
-| ------------ | -------------------- | ----------------- | -------------------------------------------------------------------------------------------------------- |
-| 1 — Static   | `bun test`           | Free              | Command validation, snapshot flags, SKILL.md correctness, TODOS-format.md refs, observability unit tests |
-| 2 — E2E      | `bun run test:e2e`   | ~$3.85            | Full skill execution via `aria -p` subprocess                                                            |
-| 3 — LLM eval | `bun run test:evals` | ~$0.15 standalone | LLM-as-judge scoring of generated SKILL.md docs                                                          |
-| 2+3          | `bun run test:evals` | ~$4 combined      | E2E + LLM-as-judge (runs both)                                                                           |
+| Tier         | Command              | Cost              | What it tests                                                                                                           |
+| ------------ | -------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 1 — Static   | `bun test`           | Free              | Command validation, snapshot flags, entrypoint/instructions correctness, TODOS-format.md refs, observability unit tests |
+| 2 — E2E      | `bun run test:e2e`   | ~$3.85            | Full skill execution via `aria -p` subprocess                                                                           |
+| 3 — LLM eval | `bun run test:evals` | ~$0.15 standalone | LLM-as-judge scoring of generated SKILL.md docs                                                                         |
+| 2+3          | `bun run test:evals` | ~$4 combined      | E2E + LLM-as-judge (runs both)                                                                                          |
 
 ```sh
 bun test                     # Tier 1 only (runs on every commit, <5s)
@@ -297,4 +299,4 @@ When you're happy with your skill edits:
 /ship
 ```
 
-This runs tests, reviews the diff, triages Greptile comments (with 2-tier escalation), manages TODOS.md, bumps the version, and opens a PR. See `ship/SKILL.md` for the full workflow.
+This runs tests, reviews the diff, triages Greptile comments (with 2-tier escalation), manages TODOS.md, bumps the version, and opens a PR. See `SKILL.md` for the full workflow.

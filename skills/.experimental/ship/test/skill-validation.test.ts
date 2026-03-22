@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import {
 	ALL_COMMANDS,
 	COMMAND_DESCRIPTIONS,
@@ -16,17 +16,24 @@ import {
 } from "./helpers/skill-parser";
 
 const ROOT = path.resolve(import.meta.dir, "..");
+const ROOT_SKILL_PATH = path.join(ROOT, "SKILL.md");
+const ROOT_INSTRUCTIONS_PATH = path.join(ROOT, "instructions.md");
+const ROOT_ARIA_PATH = path.join(ROOT, "agents", "aria.yaml");
 
 describe("SKILL.md command validation", () => {
-	test("all $B commands in SKILL.md are valid browse commands", () => {
-		const result = validateSkill(path.join(ROOT, "SKILL.md"));
-		expect(result.invalid).toHaveLength(0);
-		expect(result.valid.length).toBeGreaterThan(0);
+	test("root entrypoint remains lightweight", () => {
+		const content = fs.readFileSync(ROOT_SKILL_PATH, "utf-8");
+		expect(content).toContain("instructions.md");
+		expect(content).not.toContain("allowed-tools");
+		expect(content).not.toContain("## Step 1: Pre-flight");
 	});
 
-	test("all snapshot flags in SKILL.md are valid", () => {
-		const result = validateSkill(path.join(ROOT, "SKILL.md"));
-		expect(result.snapshotFlagErrors).toHaveLength(0);
+	test("aria sidecar points to instructions.md and declares allowed tools", () => {
+		const content = fs.readFileSync(ROOT_ARIA_PATH, "utf-8");
+		expect(content).toContain("instructions:");
+		expect(content).toContain('    - "./instructions.md"');
+		expect(content).toContain("allowedTools:");
+		expect(content).toContain("WebSearch");
 	});
 
 	test("all $B commands in browse/SKILL.md are valid browse commands", () => {
@@ -193,8 +200,7 @@ describe("Usage string consistency", () => {
 
 		for (const file of implFiles) {
 			const content = fs.readFileSync(file, "utf-8");
-			let match;
-			while ((match = usagePattern.exec(content)) !== null) {
+			for (const match of content.matchAll(usagePattern)) {
 				const usage = match[1].split("\\n")[0].trim();
 				const cmd = usage.split(/\s/)[0];
 				implUsages.set(cmd, usage);
@@ -222,7 +228,13 @@ describe("Usage string consistency", () => {
 
 describe("Generated SKILL.md freshness", () => {
 	test("no unresolved {{placeholders}} in generated SKILL.md", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_SKILL_PATH, "utf-8");
+		const unresolved = content.match(/\{\{\w+\}\}/g);
+		expect(unresolved).toBeNull();
+	});
+
+	test("no unresolved {{placeholders}} in generated instructions.md", () => {
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		const unresolved = content.match(/\{\{\w+\}\}/g);
 		expect(unresolved).toBeNull();
 	});
@@ -237,7 +249,7 @@ describe("Generated SKILL.md freshness", () => {
 	});
 
 	test("generated SKILL.md has AUTO-GENERATED header", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_SKILL_PATH, "utf-8");
 		expect(content).toContain("AUTO-GENERATED");
 	});
 });
@@ -246,12 +258,11 @@ describe("Generated SKILL.md freshness", () => {
 
 describe("Update check preamble", () => {
 	const skillsWithUpdateCheck = [
-		"SKILL.md",
+		"instructions.md",
 		"browse/SKILL.md",
 		"qa/SKILL.md",
 		"qa-only/SKILL.md",
 		"setup-browser-cookies/SKILL.md",
-		"ship/SKILL.md",
 		"review/SKILL.md",
 		"plan-review-founder/SKILL.md",
 		"plan-review-eng/SKILL.md",
@@ -269,13 +280,13 @@ describe("Update check preamble", () => {
 			// to avoid exit code 1 when _UPD is empty (up to date)
 			const match = content.match(/\[ -n "\$_UPD" \].*$/m);
 			expect(match).not.toBeNull();
-			expect(match![0]).toContain("|| true");
+			expect(match?.[0]).toContain("|| true");
 		});
 	}
 
 	test("all skills with update check are generated from .tmpl", () => {
 		for (const skill of skillsWithUpdateCheck) {
-			const tmplPath = path.join(ROOT, skill + ".tmpl");
+			const tmplPath = path.join(ROOT, `${skill}.tmpl`);
 			expect(fs.existsSync(tmplPath)).toBe(true);
 		}
 	});
@@ -337,7 +348,7 @@ describe("Cross-skill path consistency", () => {
 	test("all greptile-history write references specify both per-project and global paths", () => {
 		const filesToCheck = [
 			"review/SKILL.md",
-			"ship/SKILL.md",
+			"instructions.md",
 			"review/greptile-triage.md",
 		];
 
@@ -492,10 +503,7 @@ describe("Greptile history format consistency", () => {
 			path.join(ROOT, "review", "SKILL.md"),
 			"utf-8",
 		);
-		const shipContent = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const shipContent = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 
 		expect(reviewContent.toLowerCase()).toContain("greptile-triage.md");
 		expect(shipContent.toLowerCase()).toContain("greptile-triage.md");
@@ -527,7 +535,7 @@ describe("Greptile history format consistency", () => {
 
 describe("No hardcoded branch names in SKILL templates", () => {
 	const tmplFiles = [
-		"ship/SKILL.md.tmpl",
+		"SKILL.md.tmpl",
 		"review/SKILL.md.tmpl",
 		"qa/SKILL.md.tmpl",
 		"plan-review-founder/SKILL.md.tmpl",
@@ -600,10 +608,7 @@ describe("TODOS-format.md reference consistency", () => {
 	});
 
 	test("skills that write TODOs reference TODOS-format.md", () => {
-		const shipContent = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const shipContent = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		const ceoPlanContent = fs.readFileSync(
 			path.join(ROOT, "plan-review-founder", "SKILL.md"),
 			"utf-8",
@@ -623,12 +628,11 @@ describe("TODOS-format.md reference consistency", () => {
 
 describe("v0.4.1 preamble features", () => {
 	const skillsWithPreamble = [
-		"SKILL.md",
+		"instructions.md",
 		"browse/SKILL.md",
 		"qa/SKILL.md",
 		"qa-only/SKILL.md",
 		"setup-browser-cookies/SKILL.md",
-		"ship/SKILL.md",
 		"review/SKILL.md",
 		"plan-review-founder/SKILL.md",
 		"plan-review-eng/SKILL.md",
@@ -658,12 +662,11 @@ describe("v0.4.1 preamble features", () => {
 
 describe("Contributor mode preamble structure", () => {
 	const skillsWithPreamble = [
-		"SKILL.md",
+		"instructions.md",
 		"browse/SKILL.md",
 		"qa/SKILL.md",
 		"qa-only/SKILL.md",
 		"setup-browser-cookies/SKILL.md",
-		"ship/SKILL.md",
 		"review/SKILL.md",
 		"plan-review-founder/SKILL.md",
 		"plan-review-eng/SKILL.md",
@@ -737,8 +740,8 @@ describe("Enum & Value Completeness in review checklist", () => {
 		expect(enumLine).toBeDefined();
 		// It's on the left (CRITICAL) side — starts with ├─ or └─
 		expect(
-			enumLine!.trimStart().startsWith("├─") ||
-				enumLine!.trimStart().startsWith("└─"),
+			enumLine?.trimStart().startsWith("├─") ||
+				enumLine?.trimStart().startsWith("└─"),
 		).toBe(true);
 	});
 
@@ -751,10 +754,7 @@ describe("Enum & Value Completeness in review checklist", () => {
 			path.join(ROOT, "review/SKILL.md"),
 			"utf-8",
 		);
-		const shipSkill = fs.readFileSync(
-			path.join(ROOT, "ship/SKILL.md"),
-			"utf-8",
-		);
+		const shipSkill = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(reviewSkill).toContain("AUTO-FIX");
 		expect(reviewSkill).toContain("[AUTO-FIXED]");
 		expect(shipSkill).toContain("AUTO-FIX");
@@ -766,12 +766,11 @@ describe("Enum & Value Completeness in review checklist", () => {
 
 describe("Completeness Principle in generated SKILL.md files", () => {
 	const skillsWithPreamble = [
-		"SKILL.md",
+		"instructions.md",
 		"browse/SKILL.md",
 		"qa/SKILL.md",
 		"qa-only/SKILL.md",
 		"setup-browser-cookies/SKILL.md",
-		"ship/SKILL.md",
 		"review/SKILL.md",
 		"plan-review-founder/SKILL.md",
 		"plan-review-eng/SKILL.md",
@@ -791,13 +790,13 @@ describe("Completeness Principle in generated SKILL.md files", () => {
 	}
 
 	test("Completeness Principle includes compression table", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("CC+ship");
 		expect(content).toContain("Compression");
 	});
 
 	test("Completeness Principle includes anti-patterns", () => {
-		const content = fs.readFileSync(path.join(ROOT, "SKILL.md"), "utf-8");
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("BAD:");
 		expect(content).toContain("Anti-patterns");
 	});
@@ -991,11 +990,8 @@ describe("Test Bootstrap ({{TEST_BOOTSTRAP}}) integration", () => {
 		expect(content).toContain("ARIA.md");
 	});
 
-	test("TEST_BOOTSTRAP appears in ship/SKILL.md", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+	test("TEST_BOOTSTRAP appears in ship instructions", () => {
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("Test Framework Bootstrap");
 		expect(content).toContain("Step 2.5");
 	});
@@ -1050,7 +1046,7 @@ describe("Test Bootstrap ({{TEST_BOOTSTRAP}}) integration", () => {
 
 	test("WebSearch is in allowed-tools for qa, ship, design-review", () => {
 		const qa = fs.readFileSync(path.join(ROOT, "qa", "SKILL.md"), "utf-8");
-		const ship = fs.readFileSync(path.join(ROOT, "ship", "SKILL.md"), "utf-8");
+		const ship = fs.readFileSync(ROOT_ARIA_PATH, "utf-8");
 		const qaDesign = fs.readFileSync(
 			path.join(ROOT, "design-review", "SKILL.md"),
 			"utf-8",
@@ -1107,19 +1103,13 @@ describe("Phase 8e.5 regression test generation", () => {
 
 describe("Step 3.4 test coverage audit", () => {
 	test("ship/SKILL.md contains Step 3.4", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("Step 3.4: Test Coverage Audit");
 		expect(content).toContain("CODE PATH COVERAGE");
 	});
 
 	test("Step 3.4 includes quality scoring rubric", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("★★★");
 		expect(content).toContain("★★");
 		expect(content).toContain("edge cases AND error paths");
@@ -1127,54 +1117,36 @@ describe("Step 3.4 test coverage audit", () => {
 	});
 
 	test("Step 3.4 includes before/after test count", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("Count test files before");
 		expect(content).toContain("Count test files after");
 	});
 
 	test("ship PR body includes Test Coverage section", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("## Test Coverage");
 	});
 
 	test("ship rules include test generation rule", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("Step 3.4 generates coverage tests");
 		expect(content).toContain("Never commit failing tests");
 	});
 
 	test("Step 3.4 includes vibe coding philosophy", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("vibe coding becomes yolo coding");
 	});
 
 	test("Step 3.4 traces actual codepaths, not just syntax", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("Trace every codepath");
 		expect(content).toContain("Trace data flow");
 		expect(content).toContain("Diagram the execution");
 	});
 
 	test("Step 3.4 maps user flows and interaction edge cases", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("Map user flows");
 		expect(content).toContain("Interaction edge cases");
 		expect(content).toContain("Double-click");
@@ -1184,10 +1156,7 @@ describe("Step 3.4 test coverage audit", () => {
 	});
 
 	test("Step 3.4 diagram includes USER FLOW COVERAGE section", () => {
-		const content = fs.readFileSync(
-			path.join(ROOT, "ship", "SKILL.md"),
-			"utf-8",
-		);
+		const content = fs.readFileSync(ROOT_INSTRUCTIONS_PATH, "utf-8");
 		expect(content).toContain("USER FLOW COVERAGE");
 		expect(content).toContain("Code paths:");
 		expect(content).toContain("User flows:");
