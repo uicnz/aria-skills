@@ -145,13 +145,17 @@ At the end of your work, leave TODOs and suggestions for the next agent in `prog
 
 - Prefer a local `playwright` dependency if the project already has it.
 - If unsure whether Playwright is available, check for `npx`:
+
     ```
     command -v npx >/dev/null 2>&1
     ```
+
 - If `npx` is missing, install Node/npm and then install Playwright globally:
+
     ```
     npm install -g @playwright/mcp@latest
     ```
+
 - Do not switch to `@playwright/test` unless explicitly asked; stick to the client script.
 
 ## Scripts

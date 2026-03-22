@@ -137,12 +137,14 @@ npx netlify deploy --dir=. --prod
 
 1. Navigate to project subdirectory: `cd packages/frontend`
 2. Or set base in netlify.toml:
+
     ```toml
     [build]
       base = "packages/frontend"
       command = "npm run build"
       publish = "dist"
     ```
+
 3. Deploy normally: `npx netlify deploy --prod`
 
 ## Scenario 6: Environment Variables
@@ -153,10 +155,12 @@ npx netlify deploy --dir=. --prod
 
 1. Never commit secrets to Git
 2. Set in Netlify dashboard or CLI:
+
     ```bash
     npx netlify env:set API_KEY "secret_value"
     npx netlify env:set NODE_ENV "production"
     ```
+
 3. Access in code: `process.env.API_KEY`
 4. Deploy: `npx netlify deploy --prod`
 
@@ -168,10 +172,12 @@ npx netlify deploy --dir=. --prod
 
 1. Deploy site first: `npx netlify deploy --prod`
 2. Add domain via dashboard or CLI:
+
     ```bash
     npx netlify open:admin
     # Navigate to Domain settings
     ```
+
 3. Update DNS records as instructed by Netlify
 4. Wait for DNS propagation (can take up to 48 hours)
 
@@ -314,6 +320,6 @@ npx netlify init
 
 ## Resources
 
-- Netlify CLI Documentation: https://docs.netlify.com/cli/get-started/
-- Framework Integration Guides: https://docs.netlify.com/frameworks/
-- Build Configuration: https://docs.netlify.com/configure-builds/
+- Netlify CLI Documentation: <https://docs.netlify.com/cli/get-started/>
+- Framework Integration Guides: <https://docs.netlify.com/frameworks/>
+- Build Configuration: <https://docs.netlify.com/configure-builds/>

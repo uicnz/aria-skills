@@ -659,4 +659,4 @@ routes:
 - Blueprint Specification: [blueprint-spec.md](blueprint-spec.md)
 - Service Types: [service-types.md](service-types.md)
 - Runtimes: [runtimes.md](runtimes.md)
-- Official Render Docs: https://render.com/docs
+- Official Render Docs: <https://render.com/docs>

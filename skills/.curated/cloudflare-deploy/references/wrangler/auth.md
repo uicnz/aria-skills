@@ -26,7 +26,7 @@ Credentials stored locally. Works for all subsequent commands.
 
 For automated pipelines or environments without browser access:
 
-1. Go to: **https://dash.cloudflare.com/profile/api-tokens**
+1. Go to: **<https://dash.cloudflare.com/profile/api-tokens>**
 2. Click **Create Token**
 3. Use template: **"Edit Cloudflare Workers"** (covers Workers, Pages, KV, D1, R2)
 4. Copy the token (shown only once)

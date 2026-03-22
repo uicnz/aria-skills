@@ -2,8 +2,8 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/razor-pages/
-- https://learn.microsoft.com/aspnet/core/tutorials/razor-pages/
+- <https://learn.microsoft.com/aspnet/core/razor-pages/>
+- <https://learn.microsoft.com/aspnet/core/tutorials/razor-pages/>
 
 ## Choose Razor Pages For Page-Centered Apps
 

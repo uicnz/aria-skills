@@ -81,9 +81,9 @@ async tail(events: TraceItem[], env: Env, ctx: ExecutionContext): Promise<void>
 
 ## Resources
 
-**Docs**: https://developers.cloudflare.com/workers/  
-**Examples**: https://developers.cloudflare.com/workers/examples/  
-**Runtime APIs**: https://developers.cloudflare.com/workers/runtime-apis/
+**Docs**: <https://developers.cloudflare.com/workers/>  
+**Examples**: <https://developers.cloudflare.com/workers/examples/>  
+**Runtime APIs**: <https://developers.cloudflare.com/workers/runtime-apis/>
 
 ## In This Reference
 

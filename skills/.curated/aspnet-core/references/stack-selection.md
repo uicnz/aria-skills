@@ -2,12 +2,12 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/
-- https://learn.microsoft.com/aspnet/core/blazor/
-- https://learn.microsoft.com/aspnet/core/razor-pages/
-- https://learn.microsoft.com/aspnet/core/mvc/overview
-- https://learn.microsoft.com/aspnet/core/web-api/
-- https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis
+- <https://learn.microsoft.com/aspnet/core/>
+- <https://learn.microsoft.com/aspnet/core/blazor/>
+- <https://learn.microsoft.com/aspnet/core/razor-pages/>
+- <https://learn.microsoft.com/aspnet/core/mvc/overview>
+- <https://learn.microsoft.com/aspnet/core/web-api/>
+- <https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis>
 
 ## Default Version Choice
 

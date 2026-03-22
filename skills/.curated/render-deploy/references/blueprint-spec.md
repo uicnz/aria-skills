@@ -751,6 +751,6 @@ render blueprint validate
 
 ## Additional Resources
 
-- Official Blueprint Specification: https://render.com/docs/blueprint-spec
-- Render CLI Documentation: https://render.com/docs/cli
-- Environment Variables Guide: https://render.com/docs/environment-variables
+- Official Blueprint Specification: <https://render.com/docs/blueprint-spec>
+- Render CLI Documentation: <https://render.com/docs/cli>
+- Environment Variables Guide: <https://render.com/docs/environment-variables>

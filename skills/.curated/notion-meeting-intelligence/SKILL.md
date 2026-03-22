@@ -19,7 +19,7 @@ Prep meetings by pulling Notion context, tailoring agendas/pre-reads, and enrich
 
 ## Workflow
 
-### 0) If any MCP call fails because Notion MCP is not connected, pause and set it up:
+### 0) If any MCP call fails because Notion MCP is not connected, pause and set it up
 
 1. Add the Notion MCP:
     - `aria mcp add notion --url https://mcp.notion.com/mcp`

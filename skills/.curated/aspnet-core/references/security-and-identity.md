@@ -2,9 +2,9 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/security/
-- https://learn.microsoft.com/aspnet/core/security/authentication/identity
-- https://learn.microsoft.com/aspnet/core/security/authorization/introduction
+- <https://learn.microsoft.com/aspnet/core/security/>
+- <https://learn.microsoft.com/aspnet/core/security/authentication/identity>
+- <https://learn.microsoft.com/aspnet/core/security/authorization/introduction>
 
 ## Security Defaults
 

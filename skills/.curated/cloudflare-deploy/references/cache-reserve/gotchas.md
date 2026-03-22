@@ -5,7 +5,7 @@
 ### "Assets Not Being Cached in Cache Reserve"
 
 **Cause:** Asset is not cacheable, TTL < 10 hours, Content-Length header missing, or blocking headers present (Set-Cookie, Vary: _)  
-**Solution:** Ensure minimum TTL of 10+ hours (`Cache-Control: public, max-age=36000`), add Content-Length header, remove Set-Cookie header, and set `Vary: Accept-Encoding` (not _)
+**Solution:** Ensure minimum TTL of 10+ hours (`Cache-Control: public, max-age=36000`), add Content-Length header, remove Set-Cookie header, and set `Vary: Accept-Encoding` (not_)
 
 ### "Range Requests Not Working" (Video Seeking Fails)
 
@@ -78,13 +78,13 @@
 
 ## Additional Resources
 
-- **Official Docs**: https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/
-- **API Reference**: https://developers.cloudflare.com/api/resources/cache/subresources/cache_reserve/
-- **Cache Rules**: https://developers.cloudflare.com/cache/how-to/cache-rules/
-- **Workers Cache API**: https://developers.cloudflare.com/workers/runtime-apis/cache/
-- **R2 Documentation**: https://developers.cloudflare.com/r2/
-- **Smart Shield**: https://developers.cloudflare.com/smart-shield/
-- **Tiered Cache**: https://developers.cloudflare.com/cache/how-to/tiered-cache/
+- **Official Docs**: <https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/>
+- **API Reference**: <https://developers.cloudflare.com/api/resources/cache/subresources/cache_reserve/>
+- **Cache Rules**: <https://developers.cloudflare.com/cache/how-to/cache-rules/>
+- **Workers Cache API**: <https://developers.cloudflare.com/workers/runtime-apis/cache/>
+- **R2 Documentation**: <https://developers.cloudflare.com/r2/>
+- **Smart Shield**: <https://developers.cloudflare.com/smart-shield/>
+- **Tiered Cache**: <https://developers.cloudflare.com/cache/how-to/tiered-cache/>
 
 ## Troubleshooting Flowchart
 

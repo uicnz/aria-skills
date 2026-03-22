@@ -219,7 +219,7 @@ If `render whoami` fails or returns empty data, the CLI is not authenticated. Th
 
 If neither is configured, ask user which method they prefer:
 
-- **API Key (CLI)**: `export RENDER_API_KEY="rnd_xxxxx"` (Get from https://dashboard.render.com/u/*/settings#api-keys)
+- **API Key (CLI)**: `export RENDER_API_KEY="rnd_xxxxx"` (Get from <https://dashboard.render.com/u/*/settings#api-keys>)
 - **Login**: `render login` (Opens browser for OAuth)
 
 **6. Check Workspace Context**

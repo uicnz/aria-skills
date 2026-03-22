@@ -255,5 +255,5 @@ npx netlify build --dry
 
 ## Resources
 
-- Full configuration reference: https://docs.netlify.com/configure-builds/file-based-configuration/
-- Framework-specific guides: https://docs.netlify.com/frameworks/
+- Full configuration reference: <https://docs.netlify.com/configure-builds/file-based-configuration/>
+- Framework-specific guides: <https://docs.netlify.com/frameworks/>

@@ -169,7 +169,7 @@ Before marking complete, validate the final UI against the Figma screenshot.
 
 ### Example 1: Implementing a Button Component
 
-User says: "Implement this Figma button component: https://figma.com/design/kL9xQn2VwM8pYrTb4ZcHjF/DesignSystem?node-id=42-15"
+User says: "Implement this Figma button component: <https://figma.com/design/kL9xQn2VwM8pYrTb4ZcHjF/DesignSystem?node-id=42-15>"
 
 **Actions:**
 
@@ -186,7 +186,7 @@ User says: "Implement this Figma button component: https://figma.com/design/kL9x
 
 ### Example 2: Building a Dashboard Layout
 
-User says: "Build this dashboard: https://figma.com/design/pR8mNv5KqXzGwY2JtCfL4D/Dashboard?node-id=10-5"
+User says: "Build this dashboard: <https://figma.com/design/pR8mNv5KqXzGwY2JtCfL4D/Dashboard?node-id=10-5>"
 
 **Actions:**
 

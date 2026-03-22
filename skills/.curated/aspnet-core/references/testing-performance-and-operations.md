@@ -2,10 +2,10 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/test/integration-tests
-- https://learn.microsoft.com/aspnet/core/host-and-deploy/
-- https://learn.microsoft.com/aspnet/core/host-and-deploy/health-checks
-- https://learn.microsoft.com/aspnet/core/performance/
+- <https://learn.microsoft.com/aspnet/core/test/integration-tests>
+- <https://learn.microsoft.com/aspnet/core/host-and-deploy/>
+- <https://learn.microsoft.com/aspnet/core/host-and-deploy/health-checks>
+- <https://learn.microsoft.com/aspnet/core/performance/>
 
 ## Testing Strategy
 

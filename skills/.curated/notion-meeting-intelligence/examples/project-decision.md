@@ -298,13 +298,13 @@ We successfully migrated from Redis to Memcached in 2023, which took 6 weeks. Ke
 
 _[To be filled during meeting]_
 
-**Selected Option**: ********\_\_\_********
+**Selected Option**: **\*\*\*\***\_\_\_**\*\*\*\***
 
 **Rationale**:
 
 **Timeline**:
 
-**Owner**: ********\_\_\_********
+**Owner**: **\*\*\*\***\_\_\_**\*\*\*\***
 
 **Success Criteria**:
 

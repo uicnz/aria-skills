@@ -2,9 +2,9 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/mvc/overview
-- https://learn.microsoft.com/aspnet/core/mvc/controllers/
-- https://learn.microsoft.com/aspnet/core/mvc/views/
+- <https://learn.microsoft.com/aspnet/core/mvc/overview>
+- <https://learn.microsoft.com/aspnet/core/mvc/controllers/>
+- <https://learn.microsoft.com/aspnet/core/mvc/views/>
 
 ## Choose MVC When Actions And Views Matter
 

@@ -190,7 +190,7 @@ Token changes on each expose operation, preventing unauthorized access.
 
 ## Production Guide
 
-See: https://developers.cloudflare.com/sandbox/guides/production-deployment/
+See: <https://developers.cloudflare.com/sandbox/guides/production-deployment/>
 
 ## Resources
 

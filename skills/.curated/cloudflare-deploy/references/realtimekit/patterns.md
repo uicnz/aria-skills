@@ -41,7 +41,7 @@ RealtimeKit provides 133+ pre-built Stencil.js Web Components with framework wra
 - `<RtkAudioGrid>` - Audio-only mode
 - `<RtkPaginatedGrid>` - Paginated layout
 
-**See full catalog**: https://docs.realtime.cloudflare.com/ui-kit
+**See full catalog**: <https://docs.realtime.cloudflare.com/ui-kit>
 
 ## Core SDK Patterns
 

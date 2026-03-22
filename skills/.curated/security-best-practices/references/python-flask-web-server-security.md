@@ -291,7 +291,7 @@ Required:
 - MAY use additional defenses (Origin/Referer checking, SameSite cookies, Fetch Metadata headers, custom headers for AJAX/API), but tokens remain the primary defense for cookie-authenticated apps.
   If tokens are impractical, or for small applications:
 
-* MUST at a minimum require a custom header to be set and set the session cookie SESSION_COOKIE_SAMESITE=lax, as this is the strongest method besides requiring a form token, and may be much easier to implement.
+- MUST at a minimum require a custom header to be set and set the session cookie SESSION_COOKIE_SAMESITE=lax, as this is the strongest method besides requiring a form token, and may be much easier to implement.
 
 Insecure patterns:
 
@@ -798,38 +798,38 @@ Always try to confirm:
 
 Primary framework documentation:
 
-- Flask Docs: Deploying to Production — https://flask.palletsprojects.com/en/stable/deploying/
-- Flask Docs: Debugging Application Errors — https://flask.palletsprojects.com/en/stable/debugging/
-- Flask Docs: Configuration Handling — https://flask.palletsprojects.com/en/stable/config/
-- Flask Docs: Security Considerations — https://flask.palletsprojects.com/en/stable/web-security/
-- Flask Docs: Tell Flask it is Behind a Proxy — https://flask.palletsprojects.com/en/stable/deploying/proxy_fix/
-- Flask API Docs: Sessions — https://flask.palletsprojects.com/en/stable/api/#sessions
+- Flask Docs: Deploying to Production — <https://flask.palletsprojects.com/en/stable/deploying/>
+- Flask Docs: Debugging Application Errors — <https://flask.palletsprojects.com/en/stable/debugging/>
+- Flask Docs: Configuration Handling — <https://flask.palletsprojects.com/en/stable/config/>
+- Flask Docs: Security Considerations — <https://flask.palletsprojects.com/en/stable/web-security/>
+- Flask Docs: Tell Flask it is Behind a Proxy — <https://flask.palletsprojects.com/en/stable/deploying/proxy_fix/>
+- Flask API Docs: Sessions — <https://flask.palletsprojects.com/en/stable/api/#sessions>
 
 Werkzeug documentation & advisories:
 
-- Werkzeug Docs: Utilities (send_file / send_from_directory / safe_join / secure_filename / password hashing) — https://werkzeug.palletsprojects.com/en/stable/utils/
-- GitHub Advisory: CVE-2025-66221 (Werkzeug safe_join Windows device names) — https://github.com/advisories/GHSA-hgf8-39gv-g3f2
+- Werkzeug Docs: Utilities (send_file / send_from_directory / safe_join / secure_filename / password hashing) — <https://werkzeug.palletsprojects.com/en/stable/utils/>
+- GitHub Advisory: CVE-2025-66221 (Werkzeug safe_join Windows device names) — <https://github.com/advisories/GHSA-hgf8-39gv-g3f2>
 
 OWASP Cheat Sheet Series:
 
-- Session Management — https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
-- CSRF Prevention — https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html
-- XSS Prevention — https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-- Input Validation — https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
-- SQL Injection Prevention — https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
-- Injection Prevention — https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html
-- OS Command Injection Defense — https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html
-- SSRF Prevention — https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html
-- File Upload — https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
-- Unvalidated Redirects — https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html
-- HTTP Headers — https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html
+- Session Management — <https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html>
+- CSRF Prevention — <https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html>
+- XSS Prevention — <https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html>
+- Input Validation — <https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html>
+- SQL Injection Prevention — <https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html>
+- Injection Prevention — <https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html>
+- OS Command Injection Defense — <https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html>
+- SSRF Prevention — <https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html>
+- File Upload — <https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html>
+- Unvalidated Redirects — <https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html>
+- HTTP Headers — <https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html>
 
 Template safety references:
 
-- Jinja: Sandbox (rendering untrusted templates) — https://jinja.palletsprojects.com/en/stable/sandbox/
-- OWASP WSTG: Testing for Server-Side Template Injection — https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/07-Input_Validation_Testing/18-Testing_for_Server_Side_Template_Injection
-- PortSwigger Web Security Academy: Server-side template injection — https://portswigger.net/web-security/server-side-template-injection
+- Jinja: Sandbox (rendering untrusted templates) — <https://jinja.palletsprojects.com/en/stable/sandbox/>
+- OWASP WSTG: Testing for Server-Side Template Injection — <https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/07-Input_Validation_Testing/18-Testing_for_Server_Side_Template_Injection>
+- PortSwigger Web Security Academy: Server-side template injection — <https://portswigger.net/web-security/server-side-template-injection>
 
 HTTP semantics:
 
-- RFC 9110: HTTP Semantics (safe methods) — https://www.rfc-editor.org/rfc/rfc9110
+- RFC 9110: HTTP Semantics (safe methods) — <https://www.rfc-editor.org/rfc/rfc9110>

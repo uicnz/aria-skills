@@ -4,9 +4,9 @@ This skill is synthesized from the official ASP.NET Core documentation tree and 
 
 Core sources:
 
-- https://learn.microsoft.com/aspnet/core/
-- https://raw.githubusercontent.com/dotnet/AspNetCore.Docs/main/aspnetcore/toc.yml
-- https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore
+- <https://learn.microsoft.com/aspnet/core/>
+- <https://raw.githubusercontent.com/dotnet/AspNetCore.Docs/main/aspnetcore/toc.yml>
+- <https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore>
 
 ## Documentation Tree Mapping
 

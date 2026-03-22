@@ -15,7 +15,7 @@ description: 'Use when the user asks to inspect Sentry issues or events, summari
 
 If the token is missing, give the user these steps:
 
-1. Create a Sentry auth token: https://sentry.io/settings/account/api/auth-tokens/
+1. Create a Sentry auth token: <https://sentry.io/settings/account/api/auth-tokens/>
 2. Create a token with read-only scopes such as `project:read`, `event:read`, and `org:read`.
 3. Set `SENTRY_AUTH_TOKEN` as an environment variable in their system.
 4. Offer to guide them through setting the environment variable for their OS/shell if needed.

@@ -176,9 +176,9 @@ npx wrangler deploy           # Deploy + auto-apply migrations
 
 ## Resources
 
-**Docs**: https://developers.cloudflare.com/durable-objects/  
-**API Reference**: https://developers.cloudflare.com/durable-objects/api/  
-**Examples**: https://developers.cloudflare.com/durable-objects/examples/
+**Docs**: <https://developers.cloudflare.com/durable-objects/>  
+**API Reference**: <https://developers.cloudflare.com/durable-objects/api/>  
+**Examples**: <https://developers.cloudflare.com/durable-objects/examples/>
 
 ## In This Reference
 

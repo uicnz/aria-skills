@@ -2,9 +2,9 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis
-- https://learn.microsoft.com/aspnet/core/web-api/
-- https://learn.microsoft.com/aspnet/core/fundamentals/error-handling-api
+- <https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis>
+- <https://learn.microsoft.com/aspnet/core/web-api/>
+- <https://learn.microsoft.com/aspnet/core/fundamentals/error-handling-api>
 
 ## First Decision
 

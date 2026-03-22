@@ -53,7 +53,7 @@ Use SFU directly when you need custom signaling or non-React framework. Use Real
 
 ## Setup
 
-Dashboard: https://dash.cloudflare.com/?to=/:account/calls
+Dashboard: <https://dash.cloudflare.com/?to=/:account/calls>
 
 Get `CALLS_APP_ID` and `CALLS_APP_SECRET` from dashboard, then see configuration.md for deployment.
 

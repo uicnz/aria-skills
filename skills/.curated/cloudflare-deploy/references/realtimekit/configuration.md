@@ -94,7 +94,7 @@ await meeting.join();
 
 ### Create App & Credentials
 
-**Dashboard**: https://dash.cloudflare.com/?to=/:account/realtime/kit
+**Dashboard**: <https://dash.cloudflare.com/?to=/:account/realtime/kit>
 
 **API**:
 

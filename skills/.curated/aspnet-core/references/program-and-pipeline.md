@@ -2,10 +2,10 @@
 
 Primary docs:
 
-- https://learn.microsoft.com/aspnet/core/fundamentals/
-- https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/webapplication
-- https://learn.microsoft.com/aspnet/core/fundamentals/middleware/
-- https://learn.microsoft.com/aspnet/core/fundamentals/configuration/
+- <https://learn.microsoft.com/aspnet/core/fundamentals/>
+- <https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis/webapplication>
+- <https://learn.microsoft.com/aspnet/core/fundamentals/middleware/>
+- <https://learn.microsoft.com/aspnet/core/fundamentals/configuration/>
 
 ## Startup Shape
 

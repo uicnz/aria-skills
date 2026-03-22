@@ -711,7 +711,6 @@ DOM clobbering:
 [6]: https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html 'https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html'
 [7]: https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html 'https://cheatsheetseries.owasp.org/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.html'
 [8]: https://cheatsheetseries.owasp.org/cheatsheets/DOM_Clobbering_Prevention_Cheat_Sheet.html 'https://cheatsheetseries.owasp.org/cheatsheets/DOM_Clobbering_Prevention_Cheat_Sheet.html'
-[9]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/noopener 'https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/noopener'
 [10]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP'
 [11]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for'
 [12]: https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity 'https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity'

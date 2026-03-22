@@ -94,9 +94,9 @@ curl -X POST \
 
 ## Resources
 
-- Dashboard: https://dash.cloudflare.com/?to=/:account/stream
-- API Docs: https://developers.cloudflare.com/api/resources/stream/
-- Stream Docs: https://developers.cloudflare.com/stream/
+- Dashboard: <https://dash.cloudflare.com/?to=/:account/stream>
+- API Docs: <https://developers.cloudflare.com/api/resources/stream/>
+- Stream Docs: <https://developers.cloudflare.com/stream/>
 
 ## Reading Order
 

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-**API Token**: Create at https://dash.cloudflare.com/profile/api-tokens
+**API Token**: Create at <https://dash.cloudflare.com/profile/api-tokens>
 
 - Permission: `Zone.WAF Edit` or `Zone.Firewall Services Edit`
 - Zone Resources: Include specific zones or all zones

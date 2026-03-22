@@ -158,5 +158,5 @@ npx netlify status --verbose
 
 ## Resources
 
-- Full CLI documentation: https://docs.netlify.com/cli/get-started/
-- CLI GitHub repository: https://github.com/netlify/cli
+- Full CLI documentation: <https://docs.netlify.com/cli/get-started/>
+- CLI GitHub repository: <https://github.com/netlify/cli>

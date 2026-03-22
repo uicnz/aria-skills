@@ -68,7 +68,7 @@ If browser authentication isn't available, users can set:
 export NETLIFY_AUTH_TOKEN=your_token_here
 ```
 
-Tokens can be generated at: https://app.netlify.com/user/applications#personal-access-tokens
+Tokens can be generated at: <https://app.netlify.com/user/applications#personal-access-tokens>
 
 ### 2. Detect Site Link Status
 
@@ -246,8 +246,8 @@ For secrets and configuration:
 
 ## Reference
 
-- Netlify CLI Docs: https://docs.netlify.com/cli/get-started/
-- netlify.toml Reference: https://docs.netlify.com/configure-builds/file-based-configuration/
+- Netlify CLI Docs: <https://docs.netlify.com/cli/get-started/>
+- netlify.toml Reference: <https://docs.netlify.com/configure-builds/file-based-configuration/>
 
 ## Bundled References (Load As Needed)
 
