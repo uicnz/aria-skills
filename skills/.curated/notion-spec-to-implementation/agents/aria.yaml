@@ -1,14 +1,14 @@
 interface:
-  display_name: "Notion Spec to Implementation"
-  short_description: "Turn Notion specs into implementation plans, tasks, and progress tracking"
-  icon_small: "./assets/notion-small.svg"
-  icon_large: "./assets/notion.png"
-  default_prompt: "Turn this Notion spec into an implementation plan with milestones, tasks, and dependencies."
+  display-name: "Notion Spec to Implementation"
+  short-description: "Turn Notion specs into implementation plans, tasks, and progress tracking"
+  icon-small: "./assets/notion-small.svg"
+  icon-large: "./assets/notion.png"
+  default-prompt: "Turn this Notion spec into an implementation plan with milestones, tasks, and dependencies."
 
 dependencies:
   tools:
     - type: "mcp"
       value: "notion"
       description: "Notion MCP server"
-      transport: "streamable_http"
+      transport: "streamable-http"
       url: "https://mcp.notion.com/mcp"

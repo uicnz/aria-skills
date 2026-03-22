@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-OpenAI YAML Generator - Creates agents/openai.yaml for a skill folder.
+OpenAI YAML Generator - Creates agents/aria.yaml for a skill folder.
 
 Usage:
     generate_openai_yaml.py <skill_dir> [--name <skill_name>] [--interface key=value]
@@ -40,12 +40,12 @@ BRANDS = {
 SMALL_WORDS = {"and", "or", "to", "up", "with"}
 
 ALLOWED_INTERFACE_KEYS = {
-    "display_name",
-    "short_description",
-    "icon_small",
-    "icon_large",
+    "display-name",
+    "short-description",
+    "icon-small",
+    "icon-large",
     "brand_color",
-    "default_prompt",
+    "default-prompt",
 }
 
 
@@ -54,7 +54,7 @@ def yaml_quote(value):
     return f'"{escaped}"'
 
 
-def format_display_name(skill_name):
+def format_display-name(skill_name):
     words = [word for word in skill_name.split("-") if word]
     formatted = []
     for index, word in enumerate(words):
@@ -73,23 +73,23 @@ def format_display_name(skill_name):
     return " ".join(formatted)
 
 
-def generate_short_description(display_name):
-    description = f"Help with {display_name} tasks"
+def generate_short-description(display-name):
+    description = f"Help with {display-name} tasks"
 
     if len(description) < 25:
-        description = f"Help with {display_name} tasks and workflows"
+        description = f"Help with {display-name} tasks and workflows"
     if len(description) < 25:
-        description = f"Help with {display_name} tasks with guidance"
+        description = f"Help with {display-name} tasks with guidance"
     if len(description) > 64:
-        description = f"Help with {display_name}"
+        description = f"Help with {display-name}"
     if len(description) > 64:
-        description = f"{display_name} helper"
+        description = f"{display-name} helper"
     if len(description) > 64:
-        description = f"{display_name} tools"
+        description = f"{display-name} tools"
     if len(description) > 64:
         suffix = " helper"
         max_name_length = 64 - len(suffix)
-        trimmed = display_name[:max_name_length].rstrip()
+        trimmed = display-name[:max_name_length].rstrip()
         description = f"{trimmed}{suffix}"
     if len(description) > 64:
         description = description[:64].rstrip()
@@ -146,7 +146,7 @@ def parse_interface_overrides(raw_overrides):
             print(f"[ERROR] Unknown interface field '{key}'. Allowed: {allowed}")
             return None, None
         overrides[key] = value
-        if key not in ("display_name", "short_description") and key not in optional_order:
+        if key not in ("display-name", "short-description") and key not in optional_order:
             optional_order.append(key)
     return overrides, optional_order
 
@@ -156,20 +156,20 @@ def write_openai_yaml(skill_dir, skill_name, raw_overrides):
     if overrides is None:
         return None
 
-    display_name = overrides.get("display_name") or format_display_name(skill_name)
-    short_description = overrides.get("short_description") or generate_short_description(display_name)
+    display-name = overrides.get("display-name") or format_display-name(skill_name)
+    short-description = overrides.get("short-description") or generate_short-description(display-name)
 
-    if not (25 <= len(short_description) <= 64):
+    if not (25 <= len(short-description) <= 64):
         print(
-            "[ERROR] short_description must be 25-64 characters "
-            f"(got {len(short_description)})."
+            "[ERROR] short-description must be 25-64 characters "
+            f"(got {len(short-description)})."
         )
         return None
 
     interface_lines = [
         "interface:",
-        f"  display_name: {yaml_quote(display_name)}",
-        f"  short_description: {yaml_quote(short_description)}",
+        f"  display-name: {yaml_quote(display-name)}",
+        f"  short-description: {yaml_quote(short-description)}",
     ]
 
     for key in optional_order:
@@ -179,15 +179,15 @@ def write_openai_yaml(skill_dir, skill_name, raw_overrides):
 
     agents_dir = Path(skill_dir) / "agents"
     agents_dir.mkdir(parents=True, exist_ok=True)
-    output_path = agents_dir / "openai.yaml"
+    output_path = agents_dir / "aria.yaml"
     output_path.write_text("\n".join(interface_lines) + "\n")
-    print(f"[OK] Created agents/openai.yaml")
+    print(f"[OK] Created agents/aria.yaml")
     return output_path
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Create agents/openai.yaml for a skill directory.",
+        description="Create agents/aria.yaml for a skill directory.",
     )
     parser.add_argument("skill_dir", help="Path to the skill directory")
     parser.add_argument(

@@ -10,7 +10,7 @@ Examples:
     init_skill.py my-new-skill --path skills/public --resources scripts,references
     init_skill.py my-api-helper --path skills/private --resources scripts --examples
     init_skill.py custom-skill --path /custom/location
-    init_skill.py my-skill --path skills/public --interface short_description="Short UI label"
+    init_skill.py my-skill --path skills/public --interface short-description="Short UI label"
 """
 
 import argparse
@@ -296,13 +296,13 @@ def init_skill(skill_name, path, resources, include_examples, interface_override
         print(f"[ERROR] Error creating SKILL.md: {e}")
         return None
 
-    # Create agents/openai.yaml
+    # Create agents/aria.yaml
     try:
         result = write_openai_yaml(skill_dir, skill_name, interface_overrides)
         if not result:
             return None
     except Exception as e:
-        print(f"[ERROR] Error creating agents/openai.yaml: {e}")
+        print(f"[ERROR] Error creating agents/aria.yaml: {e}")
         return None
 
     # Create resource directories if requested
@@ -324,7 +324,7 @@ def init_skill(skill_name, path, resources, include_examples, interface_override
             print("2. Add resources to scripts/, references/, and assets/ as needed")
     else:
         print("2. Create resource directories only if needed (scripts/, references/, assets/)")
-    print("3. Update agents/openai.yaml if the UI metadata should differ")
+    print("3. Update agents/aria.yaml if the UI metadata should differ")
     print("4. Run the validator when ready to check the skill structure")
 
     return skill_dir
