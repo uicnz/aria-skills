@@ -31,13 +31,13 @@ Transcribe audio using OpenAI, with optional speaker diarization when requested.
 
 Prefer `uv` for dependency management.
 
-```
+```sh
 uv pip install openai
 ```
 
 If `uv` is unavailable:
 
-```
+```sh
 python3 -m pip install openai
 ```
 
@@ -60,7 +60,7 @@ User-scoped skills install under `$ARIA_HOME/skills` (default: `~/.aria/skills`)
 
 Single file (fast text default):
 
-```
+```sh
 python3 "$TRANSCRIBE_CLI" \
   path/to/audio.wav \
   --out transcript.txt
@@ -68,7 +68,7 @@ python3 "$TRANSCRIBE_CLI" \
 
 Diarization with known speakers (up to 4):
 
-```
+```sh
 python3 "$TRANSCRIBE_CLI" \
   meeting.m4a \
   --model gpt-4o-transcribe-diarize \
@@ -80,7 +80,7 @@ python3 "$TRANSCRIBE_CLI" \
 
 Plain text output (explicit):
 
-```
+```sh
 python3 "$TRANSCRIBE_CLI" \
   interview.mp3 \
   --response-format text \

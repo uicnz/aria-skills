@@ -73,7 +73,7 @@ startCommand: npm start
 
 Option 1 - `runtime.txt`:
 
-```
+```sh
 python-3.11.5
 ```
 

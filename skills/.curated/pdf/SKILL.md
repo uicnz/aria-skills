@@ -32,13 +32,13 @@ Prefer `uv` for dependency management.
 
 Python packages:
 
-```
+```sh
 uv pip install reportlab pdfplumber pypdf
 ```
 
 If `uv` is unavailable:
 
-```
+```sh
 python3 -m pip install reportlab pdfplumber pypdf
 ```
 
@@ -60,7 +60,7 @@ No required environment variables.
 
 ## Rendering command
 
-```
+```sh
 pdftoppm -png $INPUT_PDF $OUTPUT_PREFIX
 ```
 

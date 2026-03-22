@@ -40,13 +40,13 @@ Prefer `uv` for dependency management.
 
 Python packages:
 
-```
+```sh
 uv pip install openai
 ```
 
 If `uv` is unavailable:
 
-```
+```sh
 python3 -m pip install openai
 ```
 

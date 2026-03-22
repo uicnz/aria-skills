@@ -58,25 +58,25 @@ Prefer `uv` for dependency management.
 
 Python packages:
 
-```
+```sh
 uv pip install openpyxl pandas
 ```
 
 If `uv` is unavailable:
 
-```
+```sh
 python3 -m pip install openpyxl pandas
 ```
 
 Optional:
 
-```
+```sh
 uv pip install matplotlib
 ```
 
 If `uv` is unavailable:
 
-```
+```sh
 python3 -m pip install matplotlib
 ```
 

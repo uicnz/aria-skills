@@ -34,13 +34,13 @@ Prefer `uv` for dependency management.
 
 Python packages:
 
-```
+```sh
 uv pip install python-docx pdf2image
 ```
 
 If `uv` is unavailable:
 
-```
+```sh
 python3 -m pip install python-docx pdf2image
 ```
 
@@ -70,13 +70,13 @@ soffice -env:UserInstallation=file:///tmp/lo_profile_$$ --headless --convert-to 
 
 PDF -> PNGs:
 
-```
+```sh
 pdftoppm -png $OUTDIR/$BASENAME.pdf $OUTDIR/$BASENAME
 ```
 
 Bundled helper:
 
-```
+```sh
 python3 scripts/render_docx.py /path/to/file.docx --output_dir /tmp/docx_pages
 ```
 

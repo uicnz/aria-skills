@@ -21,13 +21,13 @@ export TTS_GEN="$ARIA_HOME/skills/speech/scripts/text_to_speech.py"
 
 Dry-run (no API call; no network required; does not require the `openai` package):
 
-```
+```sh
 python "$TTS_GEN" speak --input "Test" --dry-run
 ```
 
 Generate (requires `OPENAI_API_KEY` + network):
 
-```
+```sh
 uv run --with openai python "$TTS_GEN" speak \
   --input "Today is a wonderful day to build something people love!" \
   --voice cedar \
@@ -38,7 +38,7 @@ uv run --with openai python "$TTS_GEN" speak \
 
 No `uv` installed? Use your active Python env:
 
-```
+```sh
 python "$TTS_GEN" speak --input "Hello" --voice cedar --out speech.mp3
 ```
 
@@ -70,13 +70,13 @@ python "$TTS_GEN" speak --input "Hello" --voice cedar --out speech.mp3
 
 List voices:
 
-```
+```sh
 python "$TTS_GEN" list-voices
 ```
 
 Generate with explicit pacing:
 
-```
+```sh
 python "$TTS_GEN" speak \
   --input "Welcome to the demo. We'll show how it works." \
   --instructions "Tone: friendly and confident. Pacing: steady and moderate." \

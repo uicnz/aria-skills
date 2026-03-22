@@ -21,19 +21,19 @@ export IMAGE_GEN="$ARIA_HOME/skills/imagegen/scripts/image_gen.py"
 
 Dry-run (no API call; no network required; does not require the `openai` package):
 
-```
+```sh
 python "$IMAGE_GEN" generate --prompt "Test" --dry-run
 ```
 
 Generate (requires `OPENAI_API_KEY` + network):
 
-```
+```sh
 uv run --with openai python "$IMAGE_GEN" generate --prompt "A cozy alpine cabin at dawn" --size 1024x1024
 ```
 
 No `uv` installed? Use your active Python env:
 
-```
+```sh
 python "$IMAGE_GEN" generate --prompt "A cozy alpine cabin at dawn" --size 1024x1024
 ```
 
@@ -58,7 +58,7 @@ python "$IMAGE_GEN" generate --prompt "A cozy alpine cabin at dawn" --size 1024x
 
 Example:
 
-```
+```sh
 python "$IMAGE_GEN" edit --image input.png --prompt "Change only the background" --quality high --input-fidelity high
 ```
 
@@ -72,7 +72,7 @@ python "$IMAGE_GEN" edit --image input.png --prompt "Change only the background"
 
 Prefer `uv run --with ...` for an out-of-the-box run without changing the current project env; otherwise install into your active env:
 
-```
+```sh
 uv pip install openai
 ```
 
@@ -80,7 +80,7 @@ uv pip install openai
 
 Generate + also write a downscaled copy for fast web loading:
 
-```
+```sh
 uv run --with openai --with pillow python "$IMAGE_GEN" generate \
   --prompt "A cozy alpine cabin at dawn" \
   --size 1024x1024 \
@@ -94,7 +94,7 @@ Notes:
 
 Generate with augmentation fields:
 
-```
+```sh
 python "$IMAGE_GEN" generate \
   --prompt "A minimal hero image of a ceramic coffee mug" \
   --use-case "landing page hero" \
@@ -127,7 +127,7 @@ Notes:
 
 Edit:
 
-```
+```sh
 python "$IMAGE_GEN" edit --image input.png --mask mask.png --prompt "Replace the background with a warm sunset"
 ```
 

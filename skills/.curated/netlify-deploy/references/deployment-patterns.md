@@ -4,7 +4,7 @@ Common deployment scenarios and best practices for the Netlify skill.
 
 ## Deployment Decision Tree
 
-```
+```tree
 Is user authenticated?
 ├─ No → Run `netlify login`
 └─ Yes → Is site linked?
