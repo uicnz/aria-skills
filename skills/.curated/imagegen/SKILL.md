@@ -114,7 +114,7 @@ Quick clarification (augmentation vs invention):
 
 Template (include only relevant lines):
 
-```
+```txt
 Use case: <taxonomy slug>
 Asset type: <where the asset will be used>
 Primary request: <user's main prompt>
@@ -144,7 +144,7 @@ Augmentation rules:
 
 ### Generation example (hero image)
 
-```
+```txt
 Use case: stylized-concept
 Asset type: landing page hero
 Primary request: a minimal hero image of a ceramic coffee mug
@@ -156,7 +156,7 @@ Constraints: no logos, no text, no watermark
 
 ### Edit example (invariants)
 
-```
+```txt
 Use case: precise-object-edit
 Asset type: product photo background replacement
 Primary request: replace the background with a warm sunset gradient
