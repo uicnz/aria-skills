@@ -6,15 +6,6 @@ description: |
     complete design system (aesthetic, typography, color, layout, spacing, motion), and
     generates font+color preview pages. Creates DESIGN.md as your project's design source
     of truth. For existing sites, use /plan-review-design to infer the system instead.
-allowed-tools:
-    - Bash
-    - Read
-    - Write
-    - Edit
-    - Glob
-    - Grep
-    - AskUserQuestion
-    - WebSearch
 ---
 
 # Design Consultation

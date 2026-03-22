@@ -1,5 +1,5 @@
 interface:
-  display-name: "ASP.NET Core"
-  short-description: "[Windows only] Build and review ASP.NET Core web apps"
-  icon-large: "./assets/dotnet-logo.png"
-  default-prompt: "Create a new $aspnet-core website for me."
+  displayName: "ASP.NET Core"
+  shortDescription: "[Windows only] Build and review ASP.NET Core web apps"
+  iconLarge: "./assets/dotnet-logo.png"
+  defaultPrompt: "Create a new $aspnet-core website for me."

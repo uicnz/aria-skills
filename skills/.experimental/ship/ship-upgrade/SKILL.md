@@ -4,11 +4,6 @@ version: 1.1.0
 description: |
     Upgrade ship to the latest version. Detects global vs vendored install,
     runs the upgrade, and shows what's new.
-allowed-tools:
-    - Bash
-    - Read
-    - Write
-    - AskUserQuestion
 ---
 
 # Ship Upgrade

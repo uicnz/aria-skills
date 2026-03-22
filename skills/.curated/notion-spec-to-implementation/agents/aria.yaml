@@ -1,9 +1,9 @@
 interface:
-  display-name: "Notion Spec to Implementation"
-  short-description: "Turn Notion specs into implementation plans, tasks, and progress tracking"
-  icon-small: "./assets/notion-small.svg"
-  icon-large: "./assets/notion.png"
-  default-prompt: "Turn this Notion spec into an implementation plan with milestones, tasks, and dependencies."
+  displayName: "Notion Spec to Implementation"
+  shortDescription: "Turn Notion specs into implementation plans, tasks, and progress tracking"
+  iconSmall: "./assets/notion-small.svg"
+  iconLarge: "./assets/notion.png"
+  defaultPrompt: "Turn this Notion spec into an implementation plan with milestones, tasks, and dependencies."
 
 dependencies:
   tools:

@@ -1,5 +1,0 @@
-interface:
-  display-name: "Skill Installer"
-  short-description: "Install curated skills from openai/skills or other repos"
-  icon-small: "./assets/skill-installer-small.svg"
-  icon-large: "./assets/skill-installer.png"

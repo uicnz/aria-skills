@@ -29,7 +29,7 @@ Not authenticated? → `references/wrangler/auth.md`
 
 ### "I need to run code"
 
-```
+```tree
 Need to run code?
 ├─ Serverless functions at the edge → workers/
 ├─ Full-stack web app with Git deploys → pages/
@@ -45,7 +45,7 @@ Need to run code?
 
 ### "I need to store data"
 
-```
+```tree
 Need storage?
 ├─ Key-value (config, sessions, cache) → kv/
 ├─ Relational SQL → d1/ (SQLite) or hyperdrive/ (existing Postgres/MySQL)
@@ -60,7 +60,7 @@ Need storage?
 
 ### "I need AI/ML"
 
-```
+```tree
 Need AI?
 ├─ Run inference (LLMs, embeddings, images) → workers-ai/
 ├─ Vector database for RAG/search → vectorize/
@@ -71,7 +71,7 @@ Need AI?
 
 ### "I need networking/connectivity"
 
-```
+```tree
 Need networking?
 ├─ Expose local service to internet → tunnel/
 ├─ TCP/UDP proxy (non-HTTP) → spectrum/
@@ -84,7 +84,7 @@ Need networking?
 
 ### "I need security"
 
-```
+```tree
 Need security?
 ├─ Web Application Firewall → waf/
 ├─ DDoS protection → ddos/
@@ -96,7 +96,7 @@ Need security?
 
 ### "I need media/content"
 
-```
+```tree
 Need media?
 ├─ Image optimization/transformation → images/
 ├─ Video streaming/encoding → stream/
@@ -106,7 +106,7 @@ Need media?
 
 ### "I need infrastructure-as-code"
 
-```
+```txt
 Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 ```
 
@@ -230,6 +230,6 @@ If deployment fails due to network issues (timeouts, DNS errors, connection rese
 
 Example guidance to the user:
 
-```
+```txt
 The deploy needs escalated network access to deploy to Cloudflare. I can rerun the command with escalated permissions—want me to proceed?
 ```

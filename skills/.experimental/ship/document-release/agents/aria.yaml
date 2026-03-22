@@ -1,0 +1,16 @@
+interface:
+  displayName: "Document Release"
+  shortDescription: "Post-ship documentation update across project docs and release notes."
+  defaultPrompt: "Use /ship/document-release to update the project documentation and release notes after shipping."
+
+policy:
+  userInvokable: true
+  allowImplicitInvocation: false
+  allowedTools:
+    - Bash
+    - Read
+    - Write
+    - Edit
+    - Grep
+    - Glob
+    - AskUserQuestion

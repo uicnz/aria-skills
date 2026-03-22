@@ -1,9 +1,9 @@
 interface:
-  display-name: "Notion Knowledge Capture"
-  short-description: "Capture conversations into structured Notion pages"
-  icon-small: "./assets/notion-small.svg"
-  icon-large: "./assets/notion.png"
-  default-prompt: "Capture this conversation into structured Notion pages with decisions, action items, and owners when known."
+  displayName: "Notion Knowledge Capture"
+  shortDescription: "Capture conversations into structured Notion pages"
+  iconSmall: "./assets/notion-small.svg"
+  iconLarge: "./assets/notion.png"
+  defaultPrompt: "Capture this conversation into structured Notion pages with decisions, action items, and owners when known."
 
 dependencies:
   tools:

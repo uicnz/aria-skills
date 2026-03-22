@@ -1,6 +1,6 @@
 interface:
-  display-name: "Speech Generation Skill"
-  short-description: "Generate narrated audio from text"
-  icon-small: "./assets/speech-small.svg"
-  icon-large: "./assets/speech.png"
-  default-prompt: "Generate spoken audio for this text with the right voice style, pacing, and output format."
+  displayName: "Speech Generation Skill"
+  shortDescription: "Generate narrated audio from text"
+  iconSmall: "./assets/speech-small.svg"
+  iconLarge: "./assets/speech.png"
+  defaultPrompt: "Generate spoken audio for this text with the right voice style, pacing, and output format."

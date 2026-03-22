@@ -1,5 +1,5 @@
 interface:
-  display-name: "PDF Skill"
-  short-description: "Create, edit, and review PDFs"
-  icon-large: "./assets/pdf.png"
-  default-prompt: "Create, edit, or review this PDF and summarize the key output or changes."
+  displayName: "PDF Skill"
+  shortDescription: "Create, edit, and review PDFs"
+  iconLarge: "./assets/pdf.png"
+  defaultPrompt: "Create, edit, or review this PDF and summarize the key output or changes."

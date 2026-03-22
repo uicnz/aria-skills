@@ -1,6 +1,6 @@
 interface:
-  display-name: "Jupyter Notebooks"
-  short-description: "Create Jupyter notebooks for experiments and tutorials"
-  icon-small: "./assets/jupyter-small.svg"
-  icon-large: "./assets/jupyter.png"
-  default-prompt: "Create a Jupyter notebook for this task with clear sections, runnable cells, and concise takeaways."
+  displayName: "Jupyter Notebooks"
+  shortDescription: "Create Jupyter notebooks for experiments and tutorials"
+  iconSmall: "./assets/jupyter-small.svg"
+  iconLarge: "./assets/jupyter.png"
+  defaultPrompt: "Create a Jupyter notebook for this task with clear sections, runnable cells, and concise takeaways."

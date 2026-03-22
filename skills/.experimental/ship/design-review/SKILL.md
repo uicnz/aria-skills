@@ -6,15 +6,6 @@ description: |
     AI slop patterns, and slow interactions — then fixes them. Iteratively fixes issues
     in source code, committing each fix atomically and re-verifying with before/after
     screenshots. For plan-mode design review (before implementation), use /plan-review-design.
-allowed-tools:
-    - Bash
-    - Read
-    - Write
-    - Edit
-    - Glob
-    - Grep
-    - AskUserQuestion
-    - WebSearch
 ---
 
 # Design Review

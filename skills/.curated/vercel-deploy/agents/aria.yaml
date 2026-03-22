@@ -1,6 +1,6 @@
 interface:
-  display-name: "Vercel Deploy"
-  short-description: "Deploy apps and agents with zero configuration on Vercel. No account required."
-  icon-small: "./assets/vercel-small.svg"
-  icon-large: "./assets/vercel.png"
-  default-prompt: "Create a Vercel deployment for this project and share the URL."
+  displayName: "Vercel Deploy"
+  shortDescription: "Deploy apps and agents with zero configuration on Vercel. No account required."
+  iconSmall: "./assets/vercel-small.svg"
+  iconLarge: "./assets/vercel.png"
+  defaultPrompt: "Create a Vercel deployment for this project and share the URL."

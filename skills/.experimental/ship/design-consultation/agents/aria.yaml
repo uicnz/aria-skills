@@ -1,0 +1,17 @@
+interface:
+  displayName: "Design Consultation"
+  shortDescription: "Design consultation that proposes a complete design system and writes DESIGN.md."
+  defaultPrompt: "Use /ship/design-consultation to research the landscape, define the design system, and write DESIGN.md."
+
+policy:
+  userInvokable: true
+  allowImplicitInvocation: false
+  allowedTools:
+    - Bash
+    - Read
+    - Write
+    - Edit
+    - Glob
+    - Grep
+    - AskUserQuestion
+    - WebSearch

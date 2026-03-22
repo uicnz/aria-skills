@@ -1,6 +1,6 @@
 interface:
-  display-name: "Cloudflare Deploy"
-  short-description: "Deploy Workers, Pages, and platform services on Cloudflare"
-  icon-small: "./assets/cloudflare-small.svg"
-  icon-large: "./assets/cloudflare.png"
-  default-prompt: "Deploy this app to Cloudflare (Workers or Pages) and return URL, config, and required env vars."
+  displayName: "Cloudflare Deploy"
+  shortDescription: "Deploy Workers, Pages, and platform services on Cloudflare"
+  iconSmall: "./assets/cloudflare-small.svg"
+  iconLarge: "./assets/cloudflare.png"
+  defaultPrompt: "Deploy this app to Cloudflare (Workers or Pages) and return URL, config, and required env vars."

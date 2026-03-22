@@ -20,6 +20,16 @@ const ROOT_SKILL_PATH = path.join(ROOT, "SKILL.md");
 const ROOT_INSTRUCTIONS_PATH = path.join(ROOT, "instructions.md");
 const ROOT_ARIA_PATH = path.join(ROOT, "agents", "aria.yaml");
 
+function skillAriaPath(dir: string): string {
+	return dir === "."
+		? ROOT_ARIA_PATH
+		: path.join(ROOT, dir, "agents", "aria.yaml");
+}
+
+function readSkillAria(dir: string): string {
+	return fs.readFileSync(skillAriaPath(dir), "utf-8");
+}
+
 describe("SKILL.md command validation", () => {
 	test("root entrypoint remains lightweight", () => {
 		const content = fs.readFileSync(ROOT_SKILL_PATH, "utf-8");
@@ -29,7 +39,7 @@ describe("SKILL.md command validation", () => {
 	});
 
 	test("aria sidecar points to instructions.md and declares allowed tools", () => {
-		const content = fs.readFileSync(ROOT_ARIA_PATH, "utf-8");
+		const content = readSkillAria(".");
 		expect(content).toContain("instructions:");
 		expect(content).toContain('    - "./instructions.md"');
 		expect(content).toContain("allowedTools:");
@@ -1045,12 +1055,9 @@ describe("Test Bootstrap ({{TEST_BOOTSTRAP}}) integration", () => {
 	});
 
 	test("WebSearch is in allowed-tools for qa, ship, design-review", () => {
-		const qa = fs.readFileSync(path.join(ROOT, "qa", "SKILL.md"), "utf-8");
-		const ship = fs.readFileSync(ROOT_ARIA_PATH, "utf-8");
-		const qaDesign = fs.readFileSync(
-			path.join(ROOT, "design-review", "SKILL.md"),
-			"utf-8",
-		);
+		const qa = readSkillAria("qa");
+		const ship = readSkillAria(".");
+		const qaDesign = readSkillAria("design-review");
 		expect(qa).toContain("WebSearch");
 		expect(ship).toContain("WebSearch");
 		expect(qaDesign).toContain("WebSearch");

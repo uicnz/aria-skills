@@ -1,4 +1,4 @@
 interface:
-  display-name: "Security Best Practices"
-  short-description: "Security reviews and secure-by-default guidance"
-  default-prompt: "Review this codebase for security best practices and suggest secure-by-default improvements."
+  displayName: "Security Best Practices"
+  shortDescription: "Security reviews and secure-by-default guidance"
+  defaultPrompt: "Review this codebase for security best practices and suggest secure-by-default improvements."

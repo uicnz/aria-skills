@@ -8,15 +8,6 @@ description: |
     "test and fix", or "fix what's broken". Three tiers: Quick (critical/high only),
     Standard (+ medium), Exhaustive (+ cosmetic). Produces before/after health scores,
     fix evidence, and a ship-readiness summary. For report-only mode, use /qa-only.
-allowed-tools:
-    - Bash
-    - Read
-    - Write
-    - Edit
-    - Glob
-    - Grep
-    - AskUserQuestion
-    - WebSearch
 ---
 
 # QA

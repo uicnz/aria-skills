@@ -1,9 +1,9 @@
 interface:
-  display-name: "Figma Implement Design"
-  short-description: "Turn Figma designs into production-ready code"
-  icon-small: "./assets/figma-small.svg"
-  icon-large: "./assets/figma.png"
-  default-prompt: "Implement this Figma design in this codebase, matching layout, states, and responsive behavior."
+  displayName: "Figma Implement Design"
+  shortDescription: "Turn Figma designs into production-ready code"
+  iconSmall: "./assets/figma-small.svg"
+  iconLarge: "./assets/figma.png"
+  defaultPrompt: "Implement this Figma design in this codebase, matching layout, states, and responsive behavior."
 
 dependencies:
   tools:

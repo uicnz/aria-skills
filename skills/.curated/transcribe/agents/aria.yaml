@@ -1,6 +1,6 @@
 interface:
-  display-name: "Audio Transcribe"
-  short-description: "Transcribe audio using OpenAI, with optional speaker diarization when requested. Prefer the bundled CLI for deterministic, repeatable runs."
-  icon-small: "./assets/transcribe-small.svg"
-  icon-large: "./assets/transcribe.png"
-  default-prompt: "Transcribe this audio or video, include speaker labels when possible, and provide a clean summary."
+  displayName: "Audio Transcribe"
+  shortDescription: "Transcribe audio using OpenAI, with optional speaker diarization when requested. Prefer the bundled CLI for deterministic, repeatable runs."
+  iconSmall: "./assets/transcribe-small.svg"
+  iconLarge: "./assets/transcribe.png"
+  defaultPrompt: "Transcribe this audio or video, include speaker labels when possible, and provide a clean summary."

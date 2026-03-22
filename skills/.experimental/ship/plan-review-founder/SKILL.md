@@ -6,12 +6,6 @@ description: |
     challenge premises, expand scope when it creates a better product. Four modes:
     SCOPE EXPANSION (dream big), SELECTIVE EXPANSION (hold scope + cherry-pick
     expansions), HOLD SCOPE (maximum rigor), SCOPE REDUCTION (strip to essentials).
-allowed-tools:
-    - Read
-    - Grep
-    - Glob
-    - Bash
-    - AskUserQuestion
 ---
 
 # Plan Review Founder

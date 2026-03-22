@@ -1,9 +1,9 @@
 interface:
-  display-name: "Figma"
-  short-description: "Use Figma MCP for design-to-code work"
-  icon-small: "./assets/figma-small.svg"
-  icon-large: "./assets/figma.png"
-  default-prompt: "Use Figma MCP to inspect the target design and translate it into implementable UI decisions."
+  displayName: "Figma"
+  shortDescription: "Use Figma MCP for design-to-code work"
+  iconSmall: "./assets/figma-small.svg"
+  iconLarge: "./assets/figma.png"
+  defaultPrompt: "Use Figma MCP to inspect the target design and translate it into implementable UI decisions."
 
 dependencies:
   tools:

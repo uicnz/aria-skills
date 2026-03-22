@@ -9,6 +9,10 @@ const ROOT_SKILL = path.join(ROOT, "SKILL.md");
 const ROOT_INSTRUCTIONS = path.join(ROOT, "instructions.md");
 const ROOT_ARIA = path.join(ROOT, "agents", "aria.yaml");
 
+function skillAriaPath(dir: string): string {
+	return dir === "." ? ROOT_ARIA : path.join(ROOT, dir, "agents", "aria.yaml");
+}
+
 function expectedTitleFromName(name: string): string {
 	const acronymMap: Record<string, string> = { qa: "QA" };
 	return name
@@ -107,6 +111,7 @@ describe("gen-skill-docs", () => {
 		{ dir: "review", name: "review" },
 		{ dir: "plan-review-founder", name: "plan-review-founder" },
 		{ dir: "plan-review-eng", name: "plan-review-eng" },
+		{ dir: "document-release", name: "document-release" },
 		{ dir: "retro", name: "retro" },
 		{ dir: "setup-browser-cookies", name: "setup-browser-cookies" },
 		{ dir: "ship-upgrade", name: "ship-upgrade" },
@@ -119,6 +124,12 @@ describe("gen-skill-docs", () => {
 		for (const skill of ALL_SKILLS) {
 			const tmplPath = path.join(ROOT, skill.dir, "SKILL.md.tmpl");
 			expect(fs.existsSync(tmplPath)).toBe(true);
+		}
+	});
+
+	test("every skill has an agents/aria.yaml sidecar", () => {
+		for (const skill of ALL_SKILLS) {
+			expect(fs.existsSync(skillAriaPath(skill.dir))).toBe(true);
 		}
 	});
 
@@ -239,15 +250,20 @@ describe("gen-skill-docs", () => {
 		expect(content).toContain("plain English");
 	});
 
-	test("root entrypoint frontmatter stays minimal", () => {
-		const content = fs.readFileSync(ROOT_SKILL, "utf-8");
-		const frontmatter = content.match(/^---\n([\s\S]*?)\n---/);
-		expect(frontmatter).not.toBeNull();
-		expect(frontmatter?.[1]).toContain("name:");
-		expect(frontmatter?.[1]).toContain("version:");
-		expect(frontmatter?.[1]).toContain("description:");
-		expect(frontmatter?.[1]).not.toContain("allowed-tools");
-		expect(frontmatter?.[1]).not.toContain("metadata:");
+	test("every managed ship skill frontmatter stays minimal", () => {
+		for (const skill of ALL_SKILLS) {
+			const content = fs.readFileSync(
+				path.join(ROOT, skill.dir, "SKILL.md"),
+				"utf-8",
+			);
+			const frontmatter = content.match(/^---\n([\s\S]*?)\n---/);
+			expect(frontmatter).not.toBeNull();
+			expect(frontmatter?.[1]).toContain("name:");
+			expect(frontmatter?.[1]).toContain("version:");
+			expect(frontmatter?.[1]).toContain("description:");
+			expect(frontmatter?.[1]).not.toContain("allowed-tools");
+			expect(frontmatter?.[1]).not.toContain("metadata:");
+		}
 	});
 
 	test("aria sidecar declares root instructions and child skills", () => {
@@ -307,12 +323,15 @@ describe("gen-skill-docs", () => {
 			path.join(ROOT, "qa-only", "SKILL.md"),
 			"utf-8",
 		);
+		const qaOnlyAria = fs.readFileSync(
+			path.join(ROOT, "qa-only", "agents", "aria.yaml"),
+			"utf-8",
+		);
 		expect(qaOnlyContent).toContain("Never fix bugs");
 		expect(qaOnlyContent).toContain("NEVER fix anything");
-		// Should not have Edit, Glob, or Grep in allowed-tools
-		expect(qaOnlyContent).not.toMatch(/allowed-tools:[\s\S]*?Edit/);
-		expect(qaOnlyContent).not.toMatch(/allowed-tools:[\s\S]*?Glob/);
-		expect(qaOnlyContent).not.toMatch(/allowed-tools:[\s\S]*?Grep/);
+		expect(qaOnlyAria).not.toContain("Edit");
+		expect(qaOnlyAria).not.toContain("Glob");
+		expect(qaOnlyAria).not.toContain("Grep");
 	});
 
 	test("qa has fix-loop tools and phases", () => {
@@ -320,10 +339,13 @@ describe("gen-skill-docs", () => {
 			path.join(ROOT, "qa", "SKILL.md"),
 			"utf-8",
 		);
-		// Should have Edit, Glob, Grep in allowed-tools
-		expect(qaContent).toContain("Edit");
-		expect(qaContent).toContain("Glob");
-		expect(qaContent).toContain("Grep");
+		const qaAria = fs.readFileSync(
+			path.join(ROOT, "qa", "agents", "aria.yaml"),
+			"utf-8",
+		);
+		expect(qaAria).toContain("Edit");
+		expect(qaAria).toContain("Glob");
+		expect(qaAria).toContain("Grep");
 		// Should have fix-loop phases
 		expect(qaContent).toContain("Phase 7");
 		expect(qaContent).toContain("Phase 8");

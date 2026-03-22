@@ -180,6 +180,7 @@ export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
 	"browse/SKILL.md reference": [
 		"browse/SKILL.md",
 		"browse/SKILL.md.tmpl",
+		"browse/agents/aria.yaml",
 		"browse/src/**",
 	],
 	"setup block": [
@@ -193,16 +194,26 @@ export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
 		"browse/src/commands.ts",
 		"test/fixtures/eval-baselines.json",
 	],
-	"qa/SKILL.md workflow": ["qa/SKILL.md", "qa/SKILL.md.tmpl"],
-	"qa/SKILL.md health rubric": ["qa/SKILL.md", "qa/SKILL.md.tmpl"],
+	"qa/SKILL.md workflow": [
+		"qa/SKILL.md",
+		"qa/SKILL.md.tmpl",
+		"qa/agents/aria.yaml",
+	],
+	"qa/SKILL.md health rubric": [
+		"qa/SKILL.md",
+		"qa/SKILL.md.tmpl",
+		"qa/agents/aria.yaml",
+	],
 	"cross-skill greptile consistency": [
 		"review/SKILL.md",
 		"review/SKILL.md.tmpl",
+		"review/agents/aria.yaml",
 		"instructions.md",
 		"instructions.md.tmpl",
 		"review/greptile-triage.md",
 		"retro/SKILL.md",
 		"retro/SKILL.md.tmpl",
+		"retro/agents/aria.yaml",
 	],
 	"baseline score pinning": [
 		"instructions.md",
@@ -219,38 +230,53 @@ export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
 	"document-release/SKILL.md workflow": [
 		"document-release/SKILL.md",
 		"document-release/SKILL.md.tmpl",
+		"document-release/agents/aria.yaml",
 	],
 
 	// Plan Reviews
 	"plan-review-founder/SKILL.md modes": [
 		"plan-review-founder/SKILL.md",
 		"plan-review-founder/SKILL.md.tmpl",
+		"plan-review-founder/agents/aria.yaml",
 	],
 	"plan-review-eng/SKILL.md sections": [
 		"plan-review-eng/SKILL.md",
 		"plan-review-eng/SKILL.md.tmpl",
+		"plan-review-eng/agents/aria.yaml",
 	],
 	"plan-review-design/SKILL.md passes": [
 		"plan-review-design/SKILL.md",
 		"plan-review-design/SKILL.md.tmpl",
+		"plan-review-design/agents/aria.yaml",
 	],
 
 	// Design skills
 	"design-review/SKILL.md fix loop": [
 		"design-review/SKILL.md",
 		"design-review/SKILL.md.tmpl",
+		"design-review/agents/aria.yaml",
 	],
 	"design-consultation/SKILL.md research": [
 		"design-consultation/SKILL.md",
 		"design-consultation/SKILL.md.tmpl",
+		"design-consultation/agents/aria.yaml",
 	],
 
 	// Other skills
-	"retro/SKILL.md instructions": ["retro/SKILL.md", "retro/SKILL.md.tmpl"],
-	"qa-only/SKILL.md workflow": ["qa-only/SKILL.md", "qa-only/SKILL.md.tmpl"],
+	"retro/SKILL.md instructions": [
+		"retro/SKILL.md",
+		"retro/SKILL.md.tmpl",
+		"retro/agents/aria.yaml",
+	],
+	"qa-only/SKILL.md workflow": [
+		"qa-only/SKILL.md",
+		"qa-only/SKILL.md.tmpl",
+		"qa-only/agents/aria.yaml",
+	],
 	"ship-upgrade/SKILL.md upgrade flow": [
 		"ship-upgrade/SKILL.md",
 		"ship-upgrade/SKILL.md.tmpl",
+		"ship-upgrade/agents/aria.yaml",
 	],
 };
 

@@ -8,28 +8,12 @@ Learn more:
 
 - [Agent Skills open standard](https://agentskills.io)
 
-## Installing a skill
+## Catalog status
 
-Skills in [`.system`](skills/.system/) are automatically installed in the latest version of Aria.
+This repository is being normalized to Aria's canonical skill shape.
 
-To install [curated](skills/.curated/) or [experimental](skills/.experimental/) skills, you can use the `$skill-installer` inside Aria.
+- [`.system`](skills/.system/) is reserved for future Aria-managed system skills. Those skills will return after the runtime primitive and install surface are implemented in-product.
+- [`.curated`](skills/.curated/) contains managed skills that Aria intends to ship and maintain.
+- [`.experimental`](skills/.experimental/) contains managed skills that are intentionally less stable while the primitive is still evolving.
 
-Curated skills can be installed by name (defaults to `skills/.curated`):
-
-```sh
-/skill-installer gh-address-comments
-```
-
-For experimental skills, specify the skill folder. For example:
-
-```sh
-/skill-installer install the create-plan skill from the .experimental folder
-```
-
-Or provide the GitHub directory URL:
-
-```sh
-/skill-installer install https://github.com/openai/skills/tree/main/skills/.experimental/create-plan
-```
-
-After installing a skill, restart Aria to pick up new skills.
+For now, treat this repository as the source catalog and working corpus for Aria-managed skills. Managed install and update flows are intentionally deferred while the primitive is implemented.

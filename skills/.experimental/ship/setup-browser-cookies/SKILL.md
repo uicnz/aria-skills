@@ -5,10 +5,6 @@ description: |
     Import cookies from your real browser (Comet, Chrome, Arc, Brave, Edge) into the
     headless browse session. Opens an interactive picker UI where you select which
     cookie domains to import. Use before QA testing authenticated pages.
-allowed-tools:
-    - Bash
-    - Read
-    - AskUserQuestion
 ---
 
 # Setup Browser Cookies

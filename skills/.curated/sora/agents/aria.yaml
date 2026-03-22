@@ -1,6 +1,6 @@
 interface:
-  display-name: "Sora Video Generation Skill"
-  short-description: "Generate, edit, extend, and manage Sora videos"
-  icon-small: "./assets/sora-small.svg"
-  icon-large: "./assets/sora.png"
-  default-prompt: "Plan the right Sora workflow for this request, then generate, edit, extend, or manage the video with concrete prompt iterations."
+  displayName: "Sora Video Generation Skill"
+  shortDescription: "Generate, edit, extend, and manage Sora videos"
+  iconSmall: "./assets/sora-small.svg"
+  iconLarge: "./assets/sora.png"
+  defaultPrompt: "Plan the right Sora workflow for this request, then generate, edit, extend, or manage the video with concrete prompt iterations."

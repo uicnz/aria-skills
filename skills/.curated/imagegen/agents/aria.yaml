@@ -1,6 +1,6 @@
 interface:
-  display-name: "Image Gen"
-  short-description: "Generate and edit images using OpenAI"
-  icon-small: "./assets/imagegen-small.svg"
-  icon-large: "./assets/imagegen.png"
-  default-prompt: "Generate or edit images for this task and return the final prompt plus selected outputs."
+  displayName: "Image Gen"
+  shortDescription: "Generate and edit images using OpenAI"
+  iconSmall: "./assets/imagegen-small.svg"
+  iconLarge: "./assets/imagegen.png"
+  defaultPrompt: "Generate or edit images for this task and return the final prompt plus selected outputs."

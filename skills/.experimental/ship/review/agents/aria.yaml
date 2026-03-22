@@ -1,0 +1,16 @@
+interface:
+  displayName: "Review"
+  shortDescription: "Pre-landing PR review for structural, safety, and diff-aware issues."
+  defaultPrompt: "Use /ship/review to analyze the current diff for structural issues before landing the branch."
+
+policy:
+  userInvokable: true
+  allowImplicitInvocation: false
+  allowedTools:
+    - Bash
+    - Read
+    - Edit
+    - Write
+    - Grep
+    - Glob
+    - AskUserQuestion

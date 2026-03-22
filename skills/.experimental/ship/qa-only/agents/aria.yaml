@@ -1,0 +1,13 @@
+interface:
+  displayName: "QA Only"
+  shortDescription: "Report-only QA pass with health score, screenshots, and repro steps."
+  defaultPrompt: "Use /ship/qa-only to test the target app and produce a report without changing the code."
+
+policy:
+  userInvokable: true
+  allowImplicitInvocation: false
+  allowedTools:
+    - Bash
+    - Read
+    - Write
+    - AskUserQuestion
