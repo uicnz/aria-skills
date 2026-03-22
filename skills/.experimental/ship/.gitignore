@@ -1,0 +1,13 @@
+.env
+node_modules/
+browse/dist/
+.ship/
+.aria/skills/
+/tmp/
+*.log
+bun.lock
+*.bun-build
+.env
+.env.local
+.env.*
+!.env.example

@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# ship setup — build browser binary + register all skills with Aria
+set -e
+
+SHIP_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_DIR="$(dirname "$SHIP_DIR")"
+BROWSE_BIN="$SHIP_DIR/browse/dist/browse"
+
+ensure_playwright_browser() {
+  (
+    cd "$SHIP_DIR"
+    bun --eval 'import { chromium } from "playwright"; const browser = await chromium.launch(); await browser.close();'
+  ) >/dev/null 2>&1
+}
+
+# 1. Build browse binary if needed (smart rebuild: stale sources, package.json, lock)
+NEEDS_BUILD=0
+if [ ! -x "$BROWSE_BIN" ]; then
+  NEEDS_BUILD=1
+elif [ -n "$(find "$SHIP_DIR/browse/src" -type f -newer "$BROWSE_BIN" -print -quit 2>/dev/null)" ]; then
+  NEEDS_BUILD=1
+elif [ "$SHIP_DIR/package.json" -nt "$BROWSE_BIN" ]; then
+  NEEDS_BUILD=1
+elif [ -f "$SHIP_DIR/bun.lock" ] && [ "$SHIP_DIR/bun.lock" -nt "$BROWSE_BIN" ]; then
+  NEEDS_BUILD=1
+fi
+
+if [ "$NEEDS_BUILD" -eq 1 ]; then
+  echo "Building browse binary..."
+  (
+    cd "$SHIP_DIR"
+    bun install
+    bun run build
+  )
+  # Safety net: write .version if build script didn't (e.g., git not available during build)
+  if [ ! -f "$SHIP_DIR/browse/dist/.version" ]; then
+    git -C "$SHIP_DIR" rev-parse HEAD > "$SHIP_DIR/browse/dist/.version" 2>/dev/null || true
+  fi
+fi
+
+if [ ! -x "$BROWSE_BIN" ]; then
+  echo "ship setup failed: browse binary missing at $BROWSE_BIN" >&2
+  exit 1
+fi
+
+# 2. Ensure Playwright's Chromium is available
+if ! ensure_playwright_browser; then
+  echo "Installing Playwright Chromium..."
+  (
+    cd "$SHIP_DIR"
+    bunx playwright install chromium
+  )
+fi
+
+if ! ensure_playwright_browser; then
+  echo "ship setup failed: Playwright Chromium could not be launched" >&2
+  exit 1
+fi
+
+# 3. Ensure ~/.ship global state directory exists
+mkdir -p "$HOME/.ship/projects"
+
+# 4. Only create skill symlinks if we're inside a .aria/skills directory
+SKILLS_BASENAME="$(basename "$SKILLS_DIR")"
+if [ "$SKILLS_BASENAME" = "skills" ]; then
+  linked=()
+  for skill_dir in "$SHIP_DIR"/*/; do
+    if [ -f "$skill_dir/SKILL.md" ]; then
+      skill_name="$(basename "$skill_dir")"
+      # Skip node_modules
+      [ "$skill_name" = "node_modules" ] && continue
+      target="$SKILLS_DIR/$skill_name"
+      # Create or update symlink; skip if a real file/directory exists
+      if [ -L "$target" ] || [ ! -e "$target" ]; then
+        ln -snf "ship/$skill_name" "$target"
+        linked+=("$skill_name")
+      fi
+    fi
+  done
+
+  echo "ship ready."
+  echo "  browse: $BROWSE_BIN"
+  if [ ${#linked[@]} -gt 0 ]; then
+    echo "  linked skills: ${linked[*]}"
+  fi
+else
+  echo "ship ready."
+  echo "  browse: $BROWSE_BIN"
+  echo "  (skipped skill symlinks — not inside .aria/skills/)"
+fi
+
+# 4. First-time welcome
+if [ ! -d "$HOME/.ship" ]; then
+  mkdir -p "$HOME/.ship"
+  echo "  Welcome! Run /ship-upgrade anytime to stay current."
+fi

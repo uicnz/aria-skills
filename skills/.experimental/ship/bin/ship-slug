@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# ship-slug — output project slug and sanitized branch name
+# Usage: eval $(ship-slug)  → sets SLUG and BRANCH variables
+# Or:    ship-slug           → prints SLUG=... and BRANCH=... lines
+set -euo pipefail
+
+REMOTE_URL="$(git remote get-url origin 2>/dev/null || true)"
+if [ -n "$REMOTE_URL" ]; then
+  SLUG="$(printf '%s' "$REMOTE_URL" | sed 's|.*[:/]\([^/]*/[^/]*\)\.git$|\1|;s|.*[:/]\([^/]*/[^/]*\)$|\1|' | tr '/' '-')"
+else
+  ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+  SLUG="$(basename "$ROOT_DIR" | tr '/' '-')"
+fi
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)"
+[ -z "$BRANCH" ] && BRANCH="unknown"
+BRANCH="$(printf '%s' "$BRANCH" | tr '/' '-')"
+
+echo "SLUG=$SLUG"
+echo "BRANCH=$BRANCH"
