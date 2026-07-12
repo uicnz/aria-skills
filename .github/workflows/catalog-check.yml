@@ -1,0 +1,36 @@
+name: Catalog check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out skills catalog
+        uses: actions/checkout@v4
+        with:
+          path: aria-skills
+
+      - name: Check out Aria catalog tooling
+        uses: actions/checkout@v4
+        with:
+          repository: uicnz/aria
+          path: aria
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install Aria tooling dependencies
+        run: bun install --frozen-lockfile
+        working-directory: aria
+
+      - name: Inspect every tier and release unit
+        run: bun scripts/skills/catalog-check.ts --repo ../aria-skills
+        working-directory: aria

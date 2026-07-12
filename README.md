@@ -2,7 +2,7 @@
 
 Agent Skills are folders of instructions, scripts, and resources that AI agents can discover and use to perform at specific tasks. Write once, use everywhere.
 
-Aria uses skills to help package capabilities that teams and individuals can use to complete specific tasks in a repeatable way. This repository catalogs skills for use and distribution with Aria.
+Aria uses skills to package capabilities that teams and individuals can use to complete specific tasks in a repeatable way. This repository is Aria's official remote source catalog. Aria ships no skill packages in its application or binary.
 
 Learn more:
 
@@ -10,10 +10,12 @@ Learn more:
 
 ## Catalog status
 
-This repository is being normalized to Aria's canonical skill shape.
+The three source tiers are authority-qualified catalog classifications:
 
-- [`.system`](skills/.system/) is reserved for future Aria-managed system skills. Those skills will return after the runtime primitive and install surface are implemented in-product.
-- [`.curated`](skills/.curated/) contains managed skills that Aria intends to ship and maintain.
-- [`.experimental`](skills/.experimental/) contains managed skills that are intentionally less stable while the primitive is still evolving.
+- [`.system`](skills/.system/) contains Aria-managed system-tier release units.
+- [`.curated`](skills/.curated/) contains Aria-curated release units.
+- [`.experimental`](skills/.experimental/) contains opt-in release units whose contracts may still evolve.
 
-For now, treat this repository as the source catalog and working corpus for Aria-managed skills. Managed install and update flows are intentionally deferred while the primitive is implemented.
+Every immediate child of a tier is one atomic downloadable release unit. Aria derives its identity from the entrypoint skill metadata and includes only child skills explicitly declared by that entrypoint. Capability domains and categories are separate catalog/settings metadata; directory names do not define them.
+
+Published GitHub releases contain one tracked-source archive per release unit plus a signed `catalog.json`. Aria verifies catalog authority, delegated signatures, receipts, archive digests, and complete package inventories before installation. The GitHub URL is transport, not trust.
