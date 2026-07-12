@@ -4,6 +4,46 @@ import { parse as parseYaml } from 'yaml';
 
 const tiers = ['system', 'curated', 'experimental'] as const;
 const skillNamePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*(?:\/[a-z0-9]+(?:-[a-z0-9]+)*)*$/;
+const taxonomySegmentPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function object(value: unknown, label: string): Record<string, unknown> {
+	if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`${label} must be an object.`);
+	return value as Record<string, unknown>;
+}
+
+function validateCatalogTaxonomy(catalogPath: string, skillIds: ReadonlySet<string>): void {
+	const source = object(parseYaml(readFileSync(catalogPath, 'utf8')), 'catalog-source.yaml');
+	const domains = object(source.domains, 'catalog-source.yaml domains');
+	const assignments = object(source.assignments, 'catalog-source.yaml assignments');
+	for (const [domainId, rawDomain] of Object.entries(domains)) {
+		if (!taxonomySegmentPattern.test(domainId)) throw new Error(`Invalid catalog domain ID: ${domainId}`);
+		const domain = object(rawDomain, `catalog domain ${domainId}`);
+		const categories = object(domain.categories, `catalog domain ${domainId} categories`);
+		for (const categoryId of Object.keys(categories)) {
+			if (!taxonomySegmentPattern.test(categoryId)) throw new Error(`Invalid catalog category ID: ${categoryId}`);
+		}
+	}
+	for (const [skillId, rawAssignment] of Object.entries(assignments)) {
+		if (!skillNamePattern.test(skillId)) throw new Error(`Invalid assigned Skill ID: ${skillId}`);
+		const assignment = object(rawAssignment, `catalog assignment ${skillId}`);
+		const domainId = assignment.domain;
+		const categoryId = assignment.category;
+		if (typeof domainId !== 'string' || typeof categoryId !== 'string') {
+			throw new Error(`Catalog assignment must declare domain and category: ${skillId}`);
+		}
+		const domain = object(domains[domainId], `catalog assignment domain ${domainId}`);
+		const categories = object(domain.categories, `catalog assignment domain ${domainId} categories`);
+		if (!categories[categoryId]) throw new Error(`Unknown catalog category for ${skillId}: ${domainId}/${categoryId}`);
+	}
+	const assignmentIds = new Set(Object.keys(assignments));
+	const missing = [...skillIds].filter(id => !assignmentIds.has(id)).sort();
+	const unknown = [...assignmentIds].filter(id => !skillIds.has(id)).sort();
+	if (missing.length > 0 || unknown.length > 0) {
+		throw new Error(
+			`Catalog taxonomy coverage mismatch. Missing: ${missing.join(', ') || 'none'}. Unknown: ${unknown.join(', ') || 'none'}.`
+		);
+	}
+}
 
 function skillName(root: string): string {
 	const raw = readFileSync(path.join(root, 'SKILL.md'), 'utf8');
@@ -71,8 +111,9 @@ for (const tier of tiers) {
 		if (!entry.isDirectory()) continue;
 		if (!existsSync(path.join(unitRoot, 'SKILL.md'))) throw new Error(`Release unit has no SKILL.md: ${unitRoot}`);
 		const declared = new Set<string>();
-		const visit = (root: string): void => {
-			const identity = skillName(root);
+		const visit = (root: string, parentIdentity?: string): void => {
+			const localName = skillName(root);
+			const identity = parentIdentity ? `${parentIdentity}/${localName}` : localName;
 			if (identities.has(identity)) throw new Error(`Skill identity occurs more than once: ${identity}`);
 			identities.add(identity);
 			declared.add(path.resolve(root));
@@ -82,7 +123,7 @@ for (const tier of tiers) {
 				if (!childRoot.startsWith(`${path.resolve(root)}${path.sep}`) || !existsSync(path.join(childRoot, 'SKILL.md'))) {
 					throw new Error(`Declared child skill is invalid: ${root}:${child}`);
 				}
-				visit(childRoot);
+				visit(childRoot, identity);
 			}
 		};
 		visit(unitRoot);
@@ -94,4 +135,5 @@ for (const tier of tiers) {
 	skills += tierSkills;
 	roots.push({ tier, present: true, releaseUnits: tierUnits, skills: tierSkills });
 }
+validateCatalogTaxonomy(path.join(skillsRoot, '..', 'catalog-source.yaml'), identities);
 process.stdout.write(`${JSON.stringify({ roots, totals: { releaseUnits, skills } }, null, 2)}\n`);

@@ -17,6 +17,6 @@ Do not add package-name branches to catalog tooling. Tier roots are enumerated g
 
 ## Publication
 
-`catalog-source.yaml` contains public source and authority metadata. Private signing keys remain outside this repository. Aria's catalog release builder creates one archive per release unit and a signed `catalog.json` checkpoint for a GitHub release.
+`catalog-source.yaml` contains public source and authority metadata plus the curated domain, category, assignment, and search-tag catalog projection. This is human-authored catalog policy, not identity inferred from paths or package-name logic in Aria. Every tracked Skill identity must have exactly one assignment and every assignment must reference a declared domain/category. Private signing keys remain outside this repository. Aria's catalog release builder creates one archive per release unit and a signed `catalog.json` checkpoint for a GitHub release.
 
 The catalog URL is a replaceable Aria default. Repository location does not establish trust; Aria verifies the configured authority and embedded root key before accepting delegated catalog, receipt, or archive evidence.
