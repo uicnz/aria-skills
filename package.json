@@ -1,0 +1,8 @@
+{
+  "name": "aria-skills-catalog",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "yaml": "^2.8.1"
+  }
+}

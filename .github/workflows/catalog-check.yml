@@ -15,22 +15,12 @@ jobs:
     steps:
       - name: Check out skills catalog
         uses: actions/checkout@v4
-        with:
-          path: aria-skills
-
-      - name: Check out Aria catalog tooling
-        uses: actions/checkout@v4
-        with:
-          repository: uicnz/aria
-          path: aria
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Install Aria tooling dependencies
+      - name: Install catalog dependencies
         run: bun install --frozen-lockfile
-        working-directory: aria
 
       - name: Inspect every tier and release unit
-        run: bun scripts/skills/catalog-check.ts --repo ../aria-skills
-        working-directory: aria
+        run: bun scripts/catalog-check.ts skills
