@@ -1,6 +1,6 @@
 # Aria Skills
 
-Agent Skills are folders of instructions, scripts, and resources that AI agents can discover and use to perform at specific tasks. Write once, use everywhere.
+Aria Skills are folders of instructions, scripts, and resources that AI agents can discover and use to perform at specific tasks. Write once, use everywhere.
 
 Aria uses skills to package capabilities that teams and individuals can use to complete specific tasks in a repeatable way. This repository is Aria's official remote source catalog. Aria ships no skill packages in its application or binary.
 
