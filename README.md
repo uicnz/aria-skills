@@ -1,4 +1,4 @@
-# Agent Skills
+# Aria Skills
 
 Agent Skills are folders of instructions, scripts, and resources that AI agents can discover and use to perform at specific tasks. Write once, use everywhere.
 
