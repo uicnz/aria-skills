@@ -30,6 +30,7 @@ function flag(name: string): boolean {
 
 function parseOptions(): Options {
 	const skillsRoot = path.resolve(argument('skills-root') ?? path.join(import.meta.dir, '..', '..'));
+	const managedTier = /^\.(system|curated|experimental)$/u.exec(path.basename(skillsRoot))?.[1] ?? null;
 	const ariaSourceValue = argument('aria-source') ?? process.env.ARIA_SOURCE_ROOT;
 	if (!ariaSourceValue) throw new Error('Pass --aria-source or set ARIA_SOURCE_ROOT.');
 	const ariaSource = path.resolve(ariaSourceValue);
@@ -45,10 +46,13 @@ function parseOptions(): Options {
 	return {
 		apply: flag('apply'),
 		ariaSource,
-		authorityId: argument('authority-id') ?? (authorityKindValue === 'home' ? 'home' : path.basename(skillsRoot)),
+		authorityId:
+			argument('authority-id') ??
+			(authorityKindValue === 'home' ? (managedTier ? `aria-${managedTier}` : 'home') : path.basename(skillsRoot)),
 		authorityKind: authorityKindValue,
 		generationsRoot: path.resolve(
-			argument('generations-root') ?? path.join(path.dirname(skillsRoot), 'state', 'skills', 'generations')
+			argument('generations-root') ??
+				path.join(managedTier ? path.dirname(path.dirname(skillsRoot)) : path.dirname(skillsRoot), 'state', 'skills', 'generations')
 		),
 		outputPath: path.resolve(argument('output') ?? path.join(skillsRoot, 'manifest.yaml')),
 		revision,

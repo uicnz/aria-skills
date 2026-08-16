@@ -89,6 +89,18 @@ function nestedSkillRoots(root: string): string[] {
 	return output;
 }
 
+function validateSharedAssets(root: string): void {
+	const walk = (directory: string): void => {
+		for (const entry of readdirSync(directory, { withFileTypes: true })) {
+			const pathname = path.join(directory, entry.name);
+			if (entry.isSymbolicLink()) throw new Error(`Shared catalog assets contain a link: ${pathname}`);
+			if (entry.isDirectory()) walk(pathname);
+			else if (!entry.isFile()) throw new Error(`Shared catalog assets contain a non-regular file: ${pathname}`);
+		}
+	};
+	walk(root);
+}
+
 const skillsRoot = path.resolve(process.argv[2] ?? 'skills');
 let releaseUnits = 0;
 let skills = 0;
@@ -109,6 +121,10 @@ for (const tier of tiers) {
 		const unitRoot = path.join(tierRoot, entry.name);
 		if (entry.isSymbolicLink()) throw new Error(`Tier contains a link: ${unitRoot}`);
 		if (!entry.isDirectory()) continue;
+		if (entry.name === '_assets') {
+			validateSharedAssets(unitRoot);
+			continue;
+		}
 		if (!existsSync(path.join(unitRoot, 'SKILL.md'))) throw new Error(`Release unit has no SKILL.md: ${unitRoot}`);
 		const declared = new Set<string>();
 		const visit = (root: string, parentIdentity?: string): void => {

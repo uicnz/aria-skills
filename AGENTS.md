@@ -13,6 +13,8 @@ skills/
 
 Every immediate child of a tier is one atomic release unit. Its canonical identity comes from the inspected entrypoint `SKILL.md`, never from its directory name. An Aria sidecar may declare child skills; the entrypoint and its declared children are archived, signed, installed, updated, rolled back, and removed together.
 
+The reserved `_assets/` child is the sole non-Skill exception. It contains tracked tier-level shared authoring assets, must contain only regular files and directories, and is never counted as a Skill identity or release unit. A tier-level `manifest.yaml` is the hashed registry for the materialized source collection.
+
 Do not add package-name branches to catalog tooling. Tier roots are enumerated generically, and ignored or untracked files must never enter release archives.
 
 ## Publication

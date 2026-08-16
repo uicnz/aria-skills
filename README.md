@@ -16,6 +16,6 @@ The three source tiers are authority-qualified catalog classifications:
 - [`.curated`](skills/.curated/) contains Aria-curated release units.
 - [`.experimental`](skills/.experimental/) contains opt-in release units whose contracts may still evolve.
 
-Every immediate child of a tier is one atomic downloadable release unit. Aria derives its identity from the entrypoint skill metadata and includes only child skills explicitly declared by that entrypoint. Capability domains, categories, assignments, and search tags are curated in `catalog-source.yaml`; directory names do not define them.
+Every immediate child of a tier is one atomic downloadable release unit, except the reserved `_assets/` directory of tracked shared authoring assets. Aria derives Skill identity from entrypoint metadata and includes only child skills explicitly declared by that entrypoint. Each populated tier carries its own hashed `manifest.yaml`. Capability domains, categories, assignments, and search tags are curated in `catalog-source.yaml`; directory names do not define them.
 
 Published GitHub releases contain one tracked-source archive per release unit plus a signed `catalog.json`. Aria verifies catalog authority, delegated signatures, receipts, archive digests, and complete package inventories before installation. The GitHub URL is transport, not trust.

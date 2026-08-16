@@ -1,0 +1,1379 @@
+schema: aria.skills.manifest/v1
+revision: 3
+contentHash: sha256:4f5fd278b993a061da25bdb625aec16785fd22775e39b5f42224ac7347a15d5a
+authority:
+  kind: home
+  id: aria-curated
+skills:
+  aspnet-core:
+    sourcePath: aspnet-core
+    currentGeneration: sha256:d49001129214dba34189c367f28d514d3ee18c00f1f54baab670d367f46ec6df
+    version: null
+    interface:
+      displayName: ASP.NET Core
+      shortDescription: Build and review ASP.NET Core applications on Windows
+      defaultPrompt: Use $aspnet-core to create, review, or improve an ASP.NET Core application.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: aspnet-core
+      sourceDigest: sha256:baf5dcb9e56121cb3e17a60aaa44b8ba889cca76dedf739122e75bd57a4ac3c6
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:63e868e86af2a4db102f7d2d920eb61e48436486671eeee97aa152f96f1c9dda
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  audio-transcription:
+    sourcePath: audio-transcription
+    currentGeneration: sha256:244970ee338cb1ae75de950260b9890eaee1407db87e48e22678b3afe7f510eb
+    version: null
+    interface:
+      displayName: Audio Transcription
+      shortDescription: Transcribe recordings with speaker labels and diarization
+      defaultPrompt: Use $audio-transcription to transcribe this audio or video with speaker labels when possible.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: audio-transcription
+      sourceDigest: sha256:fe452839e0ce3131848cb8ff6ac2881c15933d861200583971aed9762d080974
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:bb7a0aab07f1cc26f1aadf7f0d2a22e6a96edd7452a9c91cdc53c0f3e1fae468
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  cloudflare-deploy:
+    sourcePath: cloudflare-deploy
+    currentGeneration: sha256:8067a1c0112747e60e18520f29bf302b3694736615a67ee6d20442210bac9d20
+    version: null
+    interface:
+      displayName: Cloudflare Deploy
+      shortDescription: Deploy applications and infrastructure services to Cloudflare
+      defaultPrompt: Use $cloudflare-deploy to deploy or configure this application on Cloudflare.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: cloudflare-deploy
+      sourceDigest: sha256:f28af124f3af60b59dfda7bb8cd9908c511c084be9cac22b96ff2d41053d0e11
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:4c1a57a021186df47a0b09a34868c967033544af9b2fe31710d31b04fa115ba6
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  color-expert:
+    sourcePath: color-expert
+    currentGeneration: sha256:36d613c7798583da1af26800f2bd572a720d1e71b634f4b6f9c7e894c39c6124
+    version: null
+    interface:
+      displayName: Color Expert
+      shortDescription: Guide color theory, accessibility, palettes, and conversions
+      defaultPrompt: Use $color-expert to solve this color question or implementation task, stating relevant assumptions and validating accessibility, gamut, or conversion constraints when applicable.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: color-expert
+      sourceDigest: sha256:970dfb48983609721378f94733488781981b507bd29c4aa09ea0a3a065d607ec
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:3914025ad8b94233378f0f277e3adf7e48e6e76348ea5d01a460ae1c8be195f0
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  docx-editor:
+    sourcePath: docx-editor
+    currentGeneration: sha256:adcace1d63f659478e8b264086709e7dd96d58f187d94ba7d70a9bdf14f4bad6
+    version: null
+    interface:
+      displayName: DOCX Editor
+      shortDescription: Create, edit, and review DOCX documents with layout fidelity
+      defaultPrompt: Use $docx-editor to create, edit, or review this DOCX document while preserving layout fidelity.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: docx-editor
+      sourceDigest: sha256:0b25d1fda683b46d0cb59662ba5b6687ad70e640ccd3ecbf4efde95cb85d98d1
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:441d2b5ff47fff8feac0db7a20af71f28e1c20998da22f5cd6d2b0abbda28e80
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  figma-implementation:
+    sourcePath: figma-implementation
+    currentGeneration: sha256:20f6cfc556f1e0a0114b6136ee6f43f486e3f0a0b4588a7ab616ddb3d383317c
+    version: null
+    interface:
+      displayName: Figma Implementation
+      shortDescription: Translate Figma designs into production code with high fidelity
+      defaultPrompt: Use $figma-implementation to implement this Figma design in production code with precise visual fidelity.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: figma
+          description: Figma MCP server
+          transport: streamable-http
+          url: https://mcp.figma.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: figma-implementation
+      sourceDigest: sha256:8e2eb78eee871373f8a28c01e3713649fd57ff7a64f06dbdcc93f08e323092cb
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:bde175f63747eaac8a3b43d8f7f23a6222b82a501b50616a43c3e1235bd8c9c6
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  figma-mcp:
+    sourcePath: figma-mcp
+    currentGeneration: sha256:274f0827e18b3353a31b6086a47eea1940c7ae54524cc12fc466daf9e54564b2
+    version: null
+    interface:
+      displayName: Figma MCP
+      shortDescription: Inspect Figma designs, context, and assets through MCP
+      defaultPrompt: Use $figma-mcp to inspect this Figma design and translate its context and assets into implementation decisions.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: figma
+          description: Figma MCP server
+          transport: streamable-http
+          url: https://mcp.figma.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: figma-mcp
+      sourceDigest: sha256:44859ec913a44a1d8a3acca42fd23e90fa54ace30ecbd5d0091ce343088a7830
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:f4f21d4139a581376d551435c423e997ef3053315898f35382d1d811b27e9cd4
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  frontend-design:
+    sourcePath: frontend-design
+    currentGeneration: sha256:41f3180afb151893c4e0e5a8f88f3a0400466e89834741c0e6ea6fc4601803ac
+    version: null
+    interface:
+      displayName: Frontend Design
+      shortDescription: Design distinctive websites, apps, prototypes, and interfaces
+      defaultPrompt: Use $frontend-design to establish the visual, content, and interaction direction before building this interface.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: frontend-design
+      sourceDigest: sha256:0b2445ede1918c2e00eb46b259420e41b5592e0f138bbdd0bd53673838f052e7
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:185c1398eee695a8c1c70237a1f45b80527a821086f812c98851cd0d7bdc953c
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  github-ci:
+    sourcePath: github-ci
+    currentGeneration: sha256:8e74061ebc381efe93596a244c620002126ee944ed4934a9ca29e87e9171b4d1
+    version: null
+    interface:
+      displayName: GitHub CI
+      shortDescription: Diagnose and fix failing GitHub Actions pull-request checks
+      defaultPrompt: Use $github-ci to investigate failing GitHub Actions checks and propose or implement a focused fix.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: github-ci
+      sourceDigest: sha256:3cfe5f226e87bac11ccdeac4dc03dcf732286d0cedd1bfb80676d5ff00d78fcf
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:915983091fa70a19e0d018e98a2fc24a7ad5f4b14f47b1038b78eb6e8a07838e
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  github-comments:
+    sourcePath: github-comments
+    currentGeneration: sha256:2ec01496f62f19b202066885edb28a1c74ec1f7e87584428a12930ac858c51e6
+    version: null
+    interface:
+      displayName: GitHub Comments
+      shortDescription: Address actionable GitHub pull-request comments and threads
+      defaultPrompt: Use $github-comments to address the actionable review threads or issue comments on this pull request.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: github-comments
+      sourceDigest: sha256:a32f2e0cfb79c0661bd02cc63c12678cd0f5c009c0e6cff445d7e46837329038
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:b9612903996925d1e4ca82eeca2c680d3cfa714d2724a86e230daf6342b83a88
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  github-pr:
+    sourcePath: github-pr
+    currentGeneration: sha256:f2891a0a6fa6f5b6f458d600a3ea96a14ffc4c1537033179d444a888ddcdbd9e
+    version: null
+    interface:
+      displayName: GitHub PR
+      shortDescription: Stage, commit, push, and open a GitHub pull request
+      defaultPrompt: Use $github-pr to stage the intended changes, commit them, push the branch, and open a GitHub pull request.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: github-pr
+      sourceDigest: sha256:78a883db4e1074ff202fa8bd6e8de620eadca3014754d2356f1e8a5ddddb3f2d
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:e48713aad9515f3663383945d27d8c72835528f1657e6f432589c7e352fee9e9
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  image-generation:
+    sourcePath: image-generation
+    currentGeneration: sha256:961e7d8925961426c5def38a89cb8356bf9d751b357a3a0aba18f9015b3be241
+    version: null
+    interface:
+      displayName: Image Generation
+      shortDescription: Generate and edit raster images with the OpenAI Image API
+      defaultPrompt: Use $image-generation to generate or edit the requested image and return the selected output.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: image-generation
+      sourceDigest: sha256:caee09b6bd3128b148537e202dd662ee496cc96d2cb9afc1f5b7a963384e34e0
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:81a2b61d85481ced76a96df86f5569233f6b02c63f258ec71747c6e9b5b0e3f8
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  jupyter-notebook:
+    sourcePath: jupyter-notebook
+    currentGeneration: sha256:ca3e6e8298ce07d3b5c44e8c7eeca7ccd96c3097773c068c832fd97f6094dc25
+    version: null
+    interface:
+      displayName: Jupyter Notebook
+      shortDescription: Create and refine Jupyter notebooks for analysis and tutorials
+      defaultPrompt: Use $jupyter-notebook to create or update this notebook with clear, runnable cells and concise takeaways.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: jupyter-notebook
+      sourceDigest: sha256:23c19835e43ad6945b0224bd821e0960c230aee1853e0ac84ad67fb59fc86fa8
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:8ab593de2f99f39922ef2d897f34589dc6625a91cd4582110a59b227ac07a240
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  linear-workflows:
+    sourcePath: linear-workflows
+    currentGeneration: sha256:4f1651cbd7831543449fd67658289857f17f349138c3569b9c2a35a0c08d3e03
+    version: null
+    interface:
+      displayName: Linear Workflows
+      shortDescription: Manage Linear issues, projects, and team workflows
+      defaultPrompt: Use $linear-workflows to read, create, or organize the relevant Linear issues and projects.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: linear
+          description: Linear MCP server
+          transport: streamable-http
+          url: https://mcp.linear.app/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: linear-workflows
+      sourceDigest: sha256:d6d496d2e68a5f95319911e254e3938c26e2ec3dc17f0797939d65351ca2f255
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:5b12517347c55fbdc3058050f9e0eace1e76a7db06398b1ac6a07e791f0fa751
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  netlify-deploy:
+    sourcePath: netlify-deploy
+    currentGeneration: sha256:b5a98e6634848ba26a28407205e444cf1853e3893827b5c3a5eda784f719b9fe
+    version: null
+    interface:
+      displayName: Netlify Deploy
+      shortDescription: Deploy and publish web projects through the Netlify CLI
+      defaultPrompt: Use $netlify-deploy to deploy this project and return the preview URL, build settings, and required fixes.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: netlify-deploy
+      sourceDigest: sha256:81e3eaf5fd40dc7a59ad2b672d78c78fb921c0f8bd1dd1592651813db083d012
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:6d6c57e148f60f91da25e3ee875d48a235de00c895bb373f3a427a4c1e7dcd59
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  notion-briefing:
+    sourcePath: notion-briefing
+    currentGeneration: sha256:aff630a0803cc6169c3c504d168a83e9990ac7459ac110ffbd4b35c9e8def4aa
+    version: null
+    interface:
+      displayName: Notion Briefing
+      shortDescription: Prepare Notion agendas and pre-reads from meeting context
+      defaultPrompt: Use $notion-briefing to prepare this meeting from Notion context with an agenda, pre-read, and open questions.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: notion
+          description: Notion MCP server
+          transport: streamable-http
+          url: https://mcp.notion.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: notion-briefing
+      sourceDigest: sha256:7c636b1c4d63340e7bb74309f9b5a82241941b902db67659eb01eadb588d0ed6
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:5d27b286b6d710ca6f52b22c8a734e45f83155d44c8675f738b41430c008fb31
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  notion-capture:
+    sourcePath: notion-capture
+    currentGeneration: sha256:ef9ad75e0706235fda26dd61747c7facc84c48dae18fdd14be53e3d331616f61
+    version: null
+    interface:
+      displayName: Notion Capture
+      shortDescription: Capture conversations and decisions as linked Notion knowledge
+      defaultPrompt: Use $notion-capture to turn this conversation into structured Notion knowledge with decisions and action items.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: notion
+          description: Notion MCP server
+          transport: streamable-http
+          url: https://mcp.notion.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: notion-capture
+      sourceDigest: sha256:99bc1c87891a1f33e25cb7ee9f12dffb143312f605b9069ec4b09ed8b32e56d5
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:2487daef4d8934928c3f4f4f654a822789905c3f4f4832ff86943974f44e69ba
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  notion-planning:
+    sourcePath: notion-planning
+    currentGeneration: sha256:093488f05940ccf0617cdade6634e31baac27b31014fb9c59ebafc40e01aade5
+    version: null
+    interface:
+      displayName: Notion Planning
+      shortDescription: Convert Notion specs into plans, tasks, and progress tracking
+      defaultPrompt: Use $notion-planning to turn this Notion specification into an implementation plan, linked tasks, and progress tracking.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: notion
+          description: Notion MCP server
+          transport: streamable-http
+          url: https://mcp.notion.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: notion-planning
+      sourceDigest: sha256:3f6d2cd9cf326e0efc05840794508cf28f6df9e56a4c1a170ff3362a39f20837
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:4e3be8b0ddadf1f799936f457f15210babf5b84aa501d1eaaa39719efd0b83cd
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  notion-research:
+    sourcePath: notion-research
+    currentGeneration: sha256:64b71827e83ce22a379515eb09f487d1134df5f56280463af765b8653f94cc43
+    version: null
+    interface:
+      displayName: Notion Research
+      shortDescription: Synthesize Notion sources into cited briefs and reports
+      defaultPrompt: Use $notion-research to synthesize the relevant Notion sources into a cited brief or report.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: notion
+          description: Notion MCP server
+          transport: streamable-http
+          url: https://mcp.notion.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: notion-research
+      sourceDigest: sha256:7f2c556e67b118f01822c9a29eedea1e3f0ab131c3bdc4d46c0d4219dddd4a8b
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:5493f80f1c8e2993095684079dbf6f84023f1018837955c4f54b9b6e3192eddb
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  pdf-editor:
+    sourcePath: pdf-editor
+    currentGeneration: sha256:eb474b5d60ac574753a8618039fcd6f736b9f3bb7e8181a82ad92376375f90ba
+    version: null
+    interface:
+      displayName: PDF Editor
+      shortDescription: Create, edit, and review PDFs with rendering fidelity
+      defaultPrompt: Use $pdf-editor to create, edit, or review this PDF while preserving rendering and layout fidelity.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: pdf-editor
+      sourceDigest: sha256:3f79e1fb1c1b78d06a2dc70d6a12e04a4f96e5ef413c02b16b729762719072a5
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:349231b72aa5a284b0074212e9c17a9ee06c8d312e0fae15076189ddda5690ec
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  playwright-automation:
+    sourcePath: playwright-automation
+    currentGeneration: sha256:82184d3231a8492c056dc7f1665585aea8a43b221290b6dfc0207e1f9f3acbd1
+    version: null
+    interface:
+      displayName: Playwright Automation
+      shortDescription: Automate browser navigation, forms, screenshots, and extraction
+      defaultPrompt: Use $playwright-automation to automate this browser workflow from the terminal and capture reliable evidence.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: playwright-automation
+      sourceDigest: sha256:10a820d4c2bc507042de6a65ff66a6df88c4db706e64c5de284865231036b1f6
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:5482b99dd294dd69e0b0cb1d79facdab620e1695e464c9e04dead6dccb03d072
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  playwright-debugging:
+    sourcePath: playwright-debugging
+    currentGeneration: sha256:fd68ea7277dcccfc2b473b0a53fd7014d369759e8ec8ec8e198f9b08e700ac3f
+    version: null
+    interface:
+      displayName: Playwright Debugging
+      shortDescription: Debug and visually validate local web and Electron interfaces
+      defaultPrompt: Use $playwright-debugging to iteratively debug and visually validate this local web or Electron interface.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: playwright-debugging
+      sourceDigest: sha256:b7eecf96acccfb21d9929ff12f33cd93d7443847aa5a2a1f586d8c2743bc012f
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:8c4eb2dcd7d1212ef58cbfb0850184ceab152336f09d20806b7d7b3bdb6f8620
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  pptx-editor:
+    sourcePath: pptx-editor
+    currentGeneration: sha256:6bd810c72f6dc7077793faa0af6207036d70be27be64075aa916e81bf99db23f
+    version: null
+    interface:
+      displayName: PPTX Editor
+      shortDescription: Create, edit, and visually validate PowerPoint slide decks
+      defaultPrompt: Use $pptx-editor to create or update this PowerPoint deck and validate its layout.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: pptx-editor
+      sourceDigest: sha256:c0768de698495594719cf72098787a9d2f5e57ec72da0da166580d77ed2b54cd
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:540761a9b34b080b66bdc1fa94e096a502f67587b50c74f1855e4ee4dbf55c7e
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  render-deploy:
+    sourcePath: render-deploy
+    currentGeneration: sha256:fe1c73a01e7812e787a471632c9528d9c4e8002a2db566df2638b704cde66c56
+    version: null
+    interface:
+      displayName: Render Deploy
+      shortDescription: Deploy applications and managed resources to Render
+      defaultPrompt: Use $render-deploy to deploy or configure this application on Render and report the resulting service details.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools:
+        - type: mcp
+          value: render
+          description: Render MCP server
+          transport: streamable-http
+          url: https://mcp.render.com/mcp
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: render-deploy
+      sourceDigest: sha256:c0caeb2323e7eea088d894918551976be6c627d01bee0563b2a08fd8d50a6353
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:5e87765c323b7af74127a87cae4606c3d54bd60033d6b463d89504b90913780e
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  screen-capture:
+    sourcePath: screen-capture
+    currentGeneration: sha256:fd58ef81f5d1e38fc37cceba6343cc995fd8f118b7256caa9b845b2aeb00b10e
+    version: null
+    interface:
+      displayName: Screen Capture
+      shortDescription: Capture system screenshots of screens, windows, apps, or regions
+      defaultPrompt: Use $screen-capture to capture the requested screen, application, window, or region.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: screen-capture
+      sourceDigest: sha256:81c1758c55827e75ef096a81fe557553806b3e6a267153f90d702d5e303064ca
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:9cff6cf8194dbc4977fb75b27daf0bd2261255f2628f17471eb5f2ff8e01b7b8
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  security-ownership:
+    sourcePath: security-ownership
+    currentGeneration: sha256:40d87997f604aada5d943ed62ed70160e87771892aa9c7a5a5c6d23d9d8aec27
+    version: null
+    interface:
+      displayName: Security Ownership
+      shortDescription: Map sensitive-code ownership, maintainers, and bus-factor risks
+      defaultPrompt: Use $security-ownership to map maintainers, bus-factor risks, and sensitive-code ownership from git history.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: security-ownership
+      sourceDigest: sha256:92b14a044271118ea0fc8723250e950eaa1950461312ac0231be23b51198a9df
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:1e1950b7563b56947aa235055b1ef7efc087940cd3dd7b50cb6d1fc95eb1b227
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  security-review:
+    sourcePath: security-review
+    currentGeneration: sha256:d041a315a9b9348b545f9171458dea8749ee3887489b1b6a15305a347711ef83
+    version: null
+    interface:
+      displayName: Security Review
+      shortDescription: Review code for security risks and secure defaults
+      defaultPrompt: Use $security-review to review this codebase and provide secure-by-default recommendations.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: security-review
+      sourceDigest: sha256:2ada1c87675e344f841f58cb13c3c13f54674ce85e0d1f8a581d86122e31400d
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:218a78a0d0469876fa31988d959863508fbe7d8b451ec7e1bf95c700792a9279
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  sentry-observability:
+    sourcePath: sentry-observability
+    currentGeneration: sha256:aca7f97deced263a1c24f152068a4ada0d00a491b3cbbdb631b7d687f3ba790a
+    version: null
+    interface:
+      displayName: Sentry Observability
+      shortDescription: Inspect Sentry errors, events, and production health data
+      defaultPrompt: Use $sentry-observability to inspect read-only Sentry data and summarize likely cause, impact, and next steps.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: sentry-observability
+      sourceDigest: sha256:0e69a948ed2ff55b9b64c27ace937489233275b78b892b60d9ef7fbcbb30b1f3
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:f1d59c8ff4b29ff311921da1d356eec83dd06a677cfd02f70834e8f427d08ab4
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  skill-creator:
+    sourcePath: skill-creator
+    currentGeneration: sha256:16af6fb9f43430dc831c03ef90b06b97058baa889edaadf7ec7a42f7b0bac5da
+    version: null
+    interface:
+      displayName: Skill Creator
+      shortDescription: Create and update reusable, well-structured Aria skills
+      defaultPrompt: Use $skill-creator to create or update an Aria skill.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: skill-creator
+      sourceDigest: sha256:c889fc9ebe333de57fb0674303702d42189b90dc113cc99422880c4d84c5479e
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:e306a7cc82ca378630abe6234908228705b892c5b9cb7fa4bca232055708be20
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  skill-normalizer:
+    sourcePath: skill-normalizer
+    currentGeneration: sha256:d5916d679e8fd6c7f98256d8750ade6284cde5a8b9ec2332a29d1dba992add41
+    version: null
+    interface:
+      displayName: Skill Normalizer
+      shortDescription: Audit and normalize skills for current Aria taxonomy compliance
+      defaultPrompt: Use $skill-normalizer to audit and normalize this Aria skill.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: skill-normalizer
+      sourceDigest: sha256:705fd30a874b9c99713707824641d2e957c3fffdabe882e11036c1b631f1914c
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:2d50975b252089533ef828b71a655ffb25c7102b374587a6a91756c434fdf319
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  sora-video:
+    sourcePath: sora-video
+    currentGeneration: sha256:6216b9106bd61f83a39a6d1fc24650eae4b69167508b0aa9958375dd62325dfe
+    version: null
+    interface:
+      displayName: Sora Video
+      shortDescription: Generate, edit, extend, and manage videos with Sora
+      defaultPrompt: Use $sora-video to plan, generate, edit, extend, or manage this Sora video workflow.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: sora-video
+      sourceDigest: sha256:52c44eddeb83aa34b3ca35b469773e97f4b4c6cf0ac579986c0d63a085bdf38f
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:ca020bd98e9e1fe92446dec9cf5384d43a3ed684622f132dfa2c342e004498eb
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  speech-generation:
+    sourcePath: speech-generation
+    currentGeneration: sha256:e6eda2bbdcd5e6ed8e6c60d1e3e79baf37a0df7f75d3a837211946fb833d88c3
+    version: null
+    interface:
+      displayName: Speech Generation
+      shortDescription: Generate narrated speech, voiceovers, and audio from text
+      defaultPrompt: Use $speech-generation to generate spoken audio with the requested voice style, pacing, and format.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: speech-generation
+      sourceDigest: sha256:bef7286525e619d37be3111ce3105dd03b3c8372f504ce533a4c68cb683136ef
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:02dc3e6244ad93d7432288bd2207a819b9633f4a2b9cbffa668522fe397b4073
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  spreadsheet-editor:
+    sourcePath: spreadsheet-editor
+    currentGeneration: sha256:af9736d8ed0151734cc3bb60157de03df9977e0871307dae7dceebee90fe0e4e
+    version: null
+    interface:
+      displayName: Spreadsheet Editor
+      shortDescription: Create, edit, analyze, and visually review spreadsheets
+      defaultPrompt: Use $spreadsheet-editor to create, edit, or analyze this spreadsheet with appropriate formulas and formatting.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: spreadsheet-editor
+      sourceDigest: sha256:5d0267bddbea82252f2f526d24a7b072cce587df5e1d39155820a07c0f577df8
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:4139c11fa3e905d80f09bb18c86262c0990939e6f9a352aaad4c9a31ff13d616
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  threat-modeling:
+    sourcePath: threat-modeling
+    currentGeneration: sha256:67c2893f607e2cdcaef0610c65003655290dbc41fd1ba6e19494b3f8be78fd26
+    version: null
+    interface:
+      displayName: Threat Modeling
+      shortDescription: Model repository threats, abuse paths, risks, and mitigations
+      defaultPrompt: Use $threat-modeling to produce a repository-grounded threat model with prioritized abuse paths and mitigations.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: threat-modeling
+      sourceDigest: sha256:6496d5d14bd4bb22486ad5a05d644b7eb9c5ff924c13dc622bd001a2eac8f3d9
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:50fa0382f01a7bf6e05031b5e29efd597efd3d4d2ff2710d0e3cbd6a7f5219c7
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  vercel-deploy:
+    sourcePath: vercel-deploy
+    currentGeneration: sha256:d1228fd74b32dd679f73dfcd7cd3d796280038a3fe2ecc8c485a2cfaa2fb9f5c
+    version: null
+    interface:
+      displayName: Vercel Deploy
+      shortDescription: Deploy applications and websites to Vercel with live URLs
+      defaultPrompt: Use $vercel-deploy to deploy this application to Vercel and return its live URL.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: vercel-deploy
+      sourceDigest: sha256:83ade2afa90e8afe69d81b53a15f65219aee6f3661ccfd635a721a8304f96f47
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:91c776e4ab5577329bd4044acdaea46632f4dfe92dad30781e20bd162bb1ba82
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  web-game:
+    sourcePath: web-game
+    currentGeneration: sha256:4d80f9a99ee01b337d5439c59f35164459b2b18b09a543a85304e5913dd3cd8e
+    version: null
+    interface:
+      displayName: Web Game
+      shortDescription: Build and iteratively test playable HTML and JavaScript games
+      defaultPrompt: Use $web-game to build and iterate a playable browser game with a Playwright validation loop.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: web-game
+      sourceDigest: sha256:4a2fcfa0e7f8a5a7b46601709a64a63b3301a9466be7867b3018b212d1596982
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:0c4d1b7a5bff65aad54436764eac7cb513bd20f60c20b314fa3d90944b94951b
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
+  winui-app:
+    sourcePath: winui-app
+    currentGeneration: sha256:991d41e6e06c79f0988192ba2fec9a57222909fd987c10598be0449b69062881
+    version: null
+    interface:
+      displayName: WinUI App
+      shortDescription: Build and review native WinUI 3 desktop applications
+      defaultPrompt: Use $winui-app to create, review, troubleshoot, or improve this WinUI 3 desktop application.
+    invocation:
+      context: null
+      agent: null
+    instructions:
+      load: []
+    dependencies:
+      tools: []
+    policy:
+      allowImplicitInvocation: false
+      userInvokable: true
+    relationships:
+      childSkillIds: []
+    source:
+      adapterId: aria-skill-package
+      sourceIdentity: winui-app
+      sourceDigest: sha256:5a67eda3827f9a7f7f6a8d37016ae067200c1f94b578888fcc4c9bc3973118a1
+      sourceRepository: null
+      sourceRef: null
+      provenance:
+        normalizationDigest: sha256:52759f562cd356d1f12e37834d17687e9cf936bebe7561a6bd769c9594a9c965
+        evidencePaths:
+          - agents/aria.yaml
+          - SKILL.md
+        acquisition:
+          kind: release
+    distribution: null
+    verificationState: userInstalled
+    derivedFrom: null
