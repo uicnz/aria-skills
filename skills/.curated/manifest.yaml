@@ -1,6 +1,6 @@
 schema: aria.skills.manifest/v1
-revision: 3
-contentHash: sha256:4f5fd278b993a061da25bdb625aec16785fd22775e39b5f42224ac7347a15d5a
+revision: 4
+contentHash: sha256:307ad8eed789d9eb147562378d3c51167b074aa8409b968a2d617cc5d0a870dc
 authority:
   kind: home
   id: aria-curated
