@@ -1,0 +1,6 @@
+interface:
+  displayName: "Security Ownership"
+  shortDescription: "Map sensitive-code ownership, maintainers, and bus-factor risks"
+  iconSmall: "./assets/security-ownership.svg"
+  iconLarge: "./assets/security-ownership.png"
+  defaultPrompt: "Use $security-ownership to map maintainers, bus-factor risks, and sensitive-code ownership from git history."

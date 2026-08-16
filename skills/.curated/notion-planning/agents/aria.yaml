@@ -1,0 +1,13 @@
+interface:
+  displayName: "Notion Planning"
+  shortDescription: "Convert Notion specs into plans, tasks, and progress tracking"
+  iconSmall: "./assets/notion-planning.svg"
+  iconLarge: "./assets/notion-planning.png"
+  defaultPrompt: "Use $notion-planning to turn this Notion specification into an implementation plan, linked tasks, and progress tracking."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "notion"
+      description: "Notion MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.notion.com/mcp"

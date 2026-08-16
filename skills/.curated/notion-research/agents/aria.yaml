@@ -1,0 +1,13 @@
+interface:
+  displayName: "Notion Research"
+  shortDescription: "Synthesize Notion sources into cited briefs and reports"
+  iconSmall: "./assets/notion-research.svg"
+  iconLarge: "./assets/notion-research.png"
+  defaultPrompt: "Use $notion-research to synthesize the relevant Notion sources into a cited brief or report."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "notion"
+      description: "Notion MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.notion.com/mcp"

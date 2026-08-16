@@ -1,0 +1,6 @@
+interface:
+  displayName: "Sentry Observability"
+  shortDescription: "Inspect Sentry errors, events, and production health data"
+  iconSmall: "./assets/sentry-observability.svg"
+  iconLarge: "./assets/sentry-observability.png"
+  defaultPrompt: "Use $sentry-observability to inspect read-only Sentry data and summarize likely cause, impact, and next steps."

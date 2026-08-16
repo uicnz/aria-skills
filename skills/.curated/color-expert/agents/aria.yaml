@@ -1,0 +1,6 @@
+interface:
+  displayName: "Color Expert"
+  shortDescription: "Guide color theory, accessibility, palettes, and conversions"
+  iconSmall: "./assets/color-expert.svg"
+  iconLarge: "./assets/color-expert.png"
+  defaultPrompt: "Use $color-expert to solve this color question or implementation task, stating relevant assumptions and validating accessibility, gamut, or conversion constraints when applicable."

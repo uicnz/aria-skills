@@ -1,0 +1,6 @@
+interface:
+  displayName: "GitHub CI"
+  shortDescription: "Diagnose and fix failing GitHub Actions pull-request checks"
+  iconSmall: "./assets/github-ci.svg"
+  iconLarge: "./assets/github-ci.png"
+  defaultPrompt: "Use $github-ci to investigate failing GitHub Actions checks and propose or implement a focused fix."

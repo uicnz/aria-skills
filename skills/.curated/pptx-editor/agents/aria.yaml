@@ -1,0 +1,6 @@
+interface:
+  displayName: "PPTX Editor"
+  shortDescription: "Create, edit, and visually validate PowerPoint slide decks"
+  iconSmall: "./assets/pptx-editor.svg"
+  iconLarge: "./assets/pptx-editor.png"
+  defaultPrompt: "Use $pptx-editor to create or update this PowerPoint deck and validate its layout."

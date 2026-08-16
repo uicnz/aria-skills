@@ -1,6 +1,0 @@
-interface:
-  displayName: "GitHub Address Comments"
-  shortDescription: "Address comments in a GitHub PR review"
-  iconSmall: "./assets/github-small.svg"
-  iconLarge: "./assets/github.png"
-  defaultPrompt: "Address all actionable GitHub PR review comments in this branch and summarize the updates."

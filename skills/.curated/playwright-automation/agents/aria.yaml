@@ -1,0 +1,6 @@
+interface:
+  displayName: "Playwright Automation"
+  shortDescription: "Automate browser navigation, forms, screenshots, and extraction"
+  iconSmall: "./assets/playwright-automation.svg"
+  iconLarge: "./assets/playwright-automation.png"
+  defaultPrompt: "Use $playwright-automation to automate this browser workflow from the terminal and capture reliable evidence."

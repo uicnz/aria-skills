@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Approved glyph: _assets/svg/windows.svg -->
+  <circle cx="50" cy="50" r="49" fill="#000"/>
+  <svg x="17" y="17" width="66" height="66" viewBox="-10 0 313 300" preserveAspectRatio="xMidYMid meet">
+<path fill="#fff"
+d="M206 91q13 0 22 9t9 22v112q0 13 -9 22t-22 9h-168q-13 0 -22 -9t-9 -22v-112q0 -13 9 -22t22 -9h168zM38 115q-3 0 -5.5 2t-2.5 5v112q0 3 2.5 5t4.5 2h169q3 0 5 -2t2 -5v-112q0 -3 -2 -5t-5 -2h-168zM263 35q12 0 21 9t9 22v131q0 5 -3.5 8.5t-8.5 3.5t-8 -3.5
+t-3 -8.5v-131q0 -3 -2.5 -5t-4.5 -2h-188q-5 0 -8.5 -3.5t-3.5 -8.5t3.5 -8.5t8.5 -3.5h188z" />
+  </svg>
+</svg>

@@ -1,0 +1,6 @@
+interface:
+  displayName: "Web Game"
+  shortDescription: "Build and iteratively test playable HTML and JavaScript games"
+  iconSmall: "./assets/web-game.svg"
+  iconLarge: "./assets/web-game.png"
+  defaultPrompt: "Use $web-game to build and iterate a playable browser game with a Playwright validation loop."

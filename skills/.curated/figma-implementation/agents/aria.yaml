@@ -1,0 +1,13 @@
+interface:
+  displayName: "Figma Implementation"
+  shortDescription: "Translate Figma designs into production code with high fidelity"
+  iconSmall: "./assets/figma-implementation.svg"
+  iconLarge: "./assets/figma-implementation.png"
+  defaultPrompt: "Use $figma-implementation to implement this Figma design in production code with precise visual fidelity."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "figma"
+      description: "Figma MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.figma.com/mcp"

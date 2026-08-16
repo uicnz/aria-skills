@@ -1,0 +1,6 @@
+interface:
+  displayName: "Spreadsheet Editor"
+  shortDescription: "Create, edit, analyze, and visually review spreadsheets"
+  iconSmall: "./assets/spreadsheet-editor.svg"
+  iconLarge: "./assets/spreadsheet-editor.png"
+  defaultPrompt: "Use $spreadsheet-editor to create, edit, or analyze this spreadsheet with appropriate formulas and formatting."

@@ -1,0 +1,6 @@
+interface:
+  displayName: "Skill Creator"
+  shortDescription: "Create and update reusable, well-structured Aria skills"
+  iconSmall: "./assets/skill-creator.svg"
+  iconLarge: "./assets/skill-creator.png"
+  defaultPrompt: "Use $skill-creator to create or update an Aria skill."

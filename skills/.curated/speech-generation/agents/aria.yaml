@@ -1,0 +1,6 @@
+interface:
+  displayName: "Speech Generation"
+  shortDescription: "Generate narrated speech, voiceovers, and audio from text"
+  iconSmall: "./assets/speech-generation.svg"
+  iconLarge: "./assets/speech-generation.png"
+  defaultPrompt: "Use $speech-generation to generate spoken audio with the requested voice style, pacing, and format."

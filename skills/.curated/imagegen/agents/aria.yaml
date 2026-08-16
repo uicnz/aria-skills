@@ -1,6 +1,0 @@
-interface:
-  displayName: "Image Gen"
-  shortDescription: "Generate and edit images using OpenAI"
-  iconSmall: "./assets/imagegen-small.svg"
-  iconLarge: "./assets/imagegen.png"
-  defaultPrompt: "Generate or edit images for this task and return the final prompt plus selected outputs."

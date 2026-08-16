@@ -1,6 +1,0 @@
-interface:
-  displayName: "Playwright CLI Skill"
-  shortDescription: "Automate real browsers from the terminal"
-  iconSmall: "./assets/playwright-small.svg"
-  iconLarge: "./assets/playwright.png"
-  defaultPrompt: "Automate this browser workflow with Playwright and produce a reliable script with run steps."

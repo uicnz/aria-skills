@@ -1,0 +1,6 @@
+interface:
+  displayName: "Skill Normalizer"
+  shortDescription: "Audit and normalize skills for current Aria taxonomy compliance"
+  iconSmall: "./assets/skill-normalizer.svg"
+  iconLarge: "./assets/skill-normalizer.png"
+  defaultPrompt: "Use $skill-normalizer to audit and normalize this Aria skill."

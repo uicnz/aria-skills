@@ -1,5 +1,6 @@
 interface:
   displayName: "WinUI App"
-  shortDescription: "[Windows only] Build native WinUI 3 apps"
-  iconLarge: "./assets/winui.png"
-  defaultPrompt: "Create a new $winui-app desktop app for me."
+  shortDescription: "Build and review native WinUI 3 desktop applications"
+  iconSmall: "./assets/winui-app.svg"
+  iconLarge: "./assets/winui-app.png"
+  defaultPrompt: "Use $winui-app to create, review, troubleshoot, or improve this WinUI 3 desktop application."

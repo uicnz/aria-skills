@@ -1,0 +1,6 @@
+interface:
+  displayName: "GitHub PR"
+  shortDescription: "Stage, commit, push, and open a GitHub pull request"
+  iconSmall: "./assets/github-pr.svg"
+  iconLarge: "./assets/github-pr.png"
+  defaultPrompt: "Use $github-pr to stage the intended changes, commit them, push the branch, and open a GitHub pull request."

@@ -1,0 +1,6 @@
+interface:
+  displayName: "DOCX Editor"
+  shortDescription: "Create, edit, and review DOCX documents with layout fidelity"
+  iconSmall: "./assets/docx-editor.svg"
+  iconLarge: "./assets/docx-editor.png"
+  defaultPrompt: "Use $docx-editor to create, edit, or review this DOCX document while preserving layout fidelity."

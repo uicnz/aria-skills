@@ -1,6 +1,6 @@
 interface:
   displayName: "Netlify Deploy"
-  shortDescription: "Deploy web projects to Netlify with the Netlify CLI"
-  iconSmall: "./assets/netlify-small.svg"
-  iconLarge: "./assets/netlify.png"
-  defaultPrompt: "Deploy this project to Netlify and return the preview URL, build settings, and any required fixes."
+  shortDescription: "Deploy and publish web projects through the Netlify CLI"
+  iconSmall: "./assets/netlify-deploy.svg"
+  iconLarge: "./assets/netlify-deploy.png"
+  defaultPrompt: "Use $netlify-deploy to deploy this project and return the preview URL, build settings, and required fixes."

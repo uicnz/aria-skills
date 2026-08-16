@@ -1,6 +1,0 @@
-interface:
-  displayName: "Screenshot Capture"
-  shortDescription: "Capture screenshots"
-  iconSmall: "./assets/screenshot-small.svg"
-  iconLarge: "./assets/screenshot.png"
-  defaultPrompt: "Capture the right screenshot for this task (target, area, and output path)."

@@ -1,0 +1,13 @@
+interface:
+  displayName: "Notion Briefing"
+  shortDescription: "Prepare Notion agendas and pre-reads from meeting context"
+  iconSmall: "./assets/notion-briefing.svg"
+  iconLarge: "./assets/notion-briefing.png"
+  defaultPrompt: "Use $notion-briefing to prepare this meeting from Notion context with an agenda, pre-read, and open questions."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "notion"
+      description: "Notion MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.notion.com/mcp"

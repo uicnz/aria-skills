@@ -1,0 +1,6 @@
+interface:
+  displayName: "PDF Editor"
+  shortDescription: "Create, edit, and review PDFs with rendering fidelity"
+  iconSmall: "./assets/pdf-editor.svg"
+  iconLarge: "./assets/pdf-editor.png"
+  defaultPrompt: "Use $pdf-editor to create, edit, or review this PDF while preserving rendering and layout fidelity."

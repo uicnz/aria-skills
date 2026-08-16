@@ -8,176 +8,151 @@ distributor: aria
 channel: stable
 rootKeyId: aria-skills-root-1
 delegatedKeyId: aria-skills-release-1
+
 domains:
-  software-engineering:
-    label: Software engineering
-    description: Build, test, review, document, and maintain software systems.
-    order: 0
+  development:
+    label: Software Development
+    description: Build, test, and maintain software and developer tooling.
+    order: 10
     categories:
-      application-development:
-        label: Application development
-        description: Build and maintain application frameworks, services, and platform-specific software.
-        order: 0
-      code-quality:
-        label: Code quality
-        description: Review, diagnose, refactor, and improve software quality and maintainability.
-        order: 1
-      technical-documentation:
-        label: Technical documentation
-        description: Research and apply authoritative technical product and API documentation.
-        order: 2
-      testing-automation:
-        label: Testing and automation
-        description: Test software behavior and automate browser, quality-assurance, and verification workflows.
-        order: 3
-      web-development:
-        label: Web development
-        description: Build and iterate on browser-based applications, experiences, and games.
-        order: 4
-  operations-security:
-    label: Operations and security
-    description: Deploy, observe, secure, and operate applications and infrastructure.
-    order: 1
+      applications:
+        label: Applications
+        description: Build applications, services, and browser games.
+        order: 10
+      automation:
+        label: Automation
+        description: Automate, test, and debug browser and Electron interfaces.
+        order: 20
+      github:
+        label: GitHub
+        description: Manage continuous integration, review feedback, and pull requests.
+        order: 30
+      skills:
+        label: Skills
+        description: Create, migrate, audit, and normalize Aria skills.
+        order: 40
+
+  design:
+    label: Design and Interfaces
+    description: Design visual systems and translate design intent into interfaces.
+    order: 20
     categories:
-      application-security:
-        label: Application security
-        description: Assess secure implementation, ownership, threats, and application risk.
-        order: 0
-      deployment-hosting:
-        label: Deployment and hosting
-        description: Deploy and operate applications on managed hosting and edge platforms.
-        order: 1
+      visual:
+        label: Visual
+        description: Define visual direction, interface design, and color systems.
+        order: 10
+      figma:
+        label: Figma
+        description: Inspect Figma designs and translate them into production code.
+        order: 20
+
+  operations:
+    label: Delivery and Operations
+    description: Deploy, observe, and operate production software.
+    order: 30
+    categories:
+      deployment:
+        label: Deployment
+        description: Publish and configure applications on hosting platforms.
+        order: 10
       observability:
         label: Observability
-        description: Inspect telemetry, incidents, errors, and operational health.
-        order: 2
-  design-media:
-    label: Design and media
-    description: Design interfaces and create or analyze visual, motion, image, and audio media.
-    order: 2
+        description: Inspect production errors, events, and operational health.
+        order: 20
+
+  security:
+    label: Security
+    description: Assess software risk, ownership, and abuse paths.
+    order: 40
     categories:
-      audio-production:
-        label: Audio production
-        description: Generate, transcribe, and work with speech and audio media.
-        order: 0
-      design-review:
-        label: Design review
-        description: Review design plans, interfaces, and visual decisions.
-        order: 1
-      image-creation-capture:
-        label: Image creation and capture
-        description: Generate images and capture visual state from screens and applications.
-        order: 2
-      interface-design:
-        label: Interface design
-        description: Design and implement user interfaces from product and design-system context.
-        order: 3
-      motion-video:
-        label: Motion and video
-        description: Create, review, and improve animation, motion, and video experiences.
-        order: 4
-  documents-data:
-    label: Documents and data
-    description: Create, inspect, and transform documents, presentations, spreadsheets, and notebooks.
-    order: 3
+      appsec:
+        label: AppSec
+        description: Review secure implementation, ownership risk, and threat exposure.
+        order: 10
+
+  content:
+    label: Content and Media
+    description: Create, transform, and inspect documents, data, images, video, and audio.
+    order: 50
     categories:
-      documents-pdf:
-        label: Documents and PDF
-        description: Create, edit, inspect, and transform document and PDF artifacts.
-        order: 0
-      notebooks:
-        label: Notebooks
-        description: Create and maintain computational notebook artifacts.
-        order: 1
+      documents:
+        label: Documents
+        description: Create, edit, and review text documents and PDFs.
+        order: 10
       presentations:
         label: Presentations
-        description: Create, edit, and review presentation artifacts.
-        order: 2
+        description: Create, edit, and diagnose presentation decks.
+        order: 20
       spreadsheets:
         label: Spreadsheets
-        description: Create, analyze, and transform spreadsheet data and workbooks.
-        order: 3
-  collaboration-delivery:
-    label: Collaboration and delivery
-    description: Coordinate source control, issues, knowledge, planning, team process, and releases.
-    order: 4
+        description: Create, edit, analyze, and review structured tabular data.
+        order: 30
+      notebooks:
+        label: Notebooks
+        description: Create and maintain computational notebooks and tutorials.
+        order: 40
+      visual:
+        label: Visual
+        description: Generate, edit, manage, and capture images and video.
+        order: 50
+      audio:
+        label: Audio
+        description: Transcribe recordings and generate spoken audio.
+        order: 60
+
+  productivity:
+    label: Knowledge and Planning
+    description: Capture knowledge, plan work, and coordinate projects.
+    order: 60
     categories:
-      issue-project-management:
-        label: Issue and project management
-        description: Coordinate specifications, issues, plans, and project delivery state.
-        order: 0
-      knowledge-management:
-        label: Knowledge management
-        description: Capture, organize, research, and maintain collaborative knowledge.
-        order: 1
-      meeting-workflows:
-        label: Meeting workflows
-        description: Prepare, capture, and apply meeting context and outcomes.
-        order: 2
-      product-planning:
-        label: Product planning
-        description: Review product direction, founder context, and delivery plans.
-        order: 3
-      release-coordination:
-        label: Release coordination
-        description: Coordinate complete and supporting software release workflows.
-        order: 4
-      source-control-ci:
-        label: Source control and CI
-        description: Work with pull requests, reviews, continuous integration, and source-control delivery.
-        order: 5
-      team-process:
-        label: Team process
-        description: Review team execution, retrospectives, and process improvement.
-        order: 6
+      knowledge:
+        label: Knowledge
+        description: Capture and synthesize structured organizational knowledge.
+        order: 10
+      planning:
+        label: Planning
+        description: Prepare meetings and turn specifications into actionable plans.
+        order: 20
+      projects:
+        label: Projects
+        description: Organize issues, projects, and team workflows.
+        order: 30
+
 assignments:
-  aspnet-core: { domain: software-engineering, category: application-development, tags: [applications, dotnet] }
-  chatgpt-apps: { domain: software-engineering, category: application-development, tags: [applications, openai] }
-  cloudflare-deploy: { domain: operations-security, category: deployment-hosting, tags: [cloudflare, deployment] }
-  develop-web-game: { domain: software-engineering, category: web-development, tags: [games, web] }
-  doc: { domain: documents-data, category: documents-pdf, tags: [documents] }
-  figma: { domain: design-media, category: interface-design, tags: [design, figma] }
-  figma-implement-design: { domain: design-media, category: interface-design, tags: [design, figma, implementation] }
-  frontend-skill: { domain: design-media, category: interface-design, tags: [frontend, interfaces] }
-  gh-address-comments: { domain: collaboration-delivery, category: source-control-ci, tags: [github, review] }
-  gh-fix-ci: { domain: collaboration-delivery, category: source-control-ci, tags: [ci, github] }
-  imagegen: { domain: design-media, category: image-creation-capture, tags: [images, generation] }
-  jupyter-notebook: { domain: documents-data, category: notebooks, tags: [jupyter, notebooks] }
-  linear: { domain: collaboration-delivery, category: issue-project-management, tags: [issues, linear] }
-  netlify-deploy: { domain: operations-security, category: deployment-hosting, tags: [deployment, netlify] }
-  notion-knowledge-capture: { domain: collaboration-delivery, category: knowledge-management, tags: [knowledge, notion] }
-  notion-meeting-intelligence: { domain: collaboration-delivery, category: meeting-workflows, tags: [meetings, notion] }
-  notion-research-documentation: { domain: collaboration-delivery, category: knowledge-management, tags: [documentation, notion, research] }
-  notion-spec-to-implementation: { domain: collaboration-delivery, category: issue-project-management, tags: [notion, specifications] }
-  openai-docs: { domain: software-engineering, category: technical-documentation, tags: [documentation, openai] }
-  pdf: { domain: documents-data, category: documents-pdf, tags: [documents, pdf] }
-  playwright: { domain: software-engineering, category: testing-automation, tags: [browser, playwright, testing] }
-  playwright-interactive: { domain: software-engineering, category: testing-automation, tags: [browser, interactive, playwright] }
-  render-deploy: { domain: operations-security, category: deployment-hosting, tags: [deployment, render] }
-  screenshot: { domain: design-media, category: image-creation-capture, tags: [capture, screenshots] }
-  security-best-practices: { domain: operations-security, category: application-security, tags: [security] }
-  security-ownership-map: { domain: operations-security, category: application-security, tags: [ownership, security] }
-  security-threat-model: { domain: operations-security, category: application-security, tags: [security, threats] }
-  sentry: { domain: operations-security, category: observability, tags: [errors, observability, sentry] }
-  ship: { domain: collaboration-delivery, category: release-coordination, tags: [delivery, releases] }
-  ship/browse: { domain: software-engineering, category: testing-automation, tags: [browser, testing] }
-  ship/design-consultation: { domain: design-media, category: design-review, tags: [consultation, design] }
-  ship/design-review: { domain: design-media, category: design-review, tags: [design, review] }
-  ship/document-release: { domain: collaboration-delivery, category: release-coordination, tags: [documentation, releases] }
-  ship/plan-review-design: { domain: design-media, category: design-review, tags: [design, planning] }
-  ship/plan-review-eng: { domain: software-engineering, category: code-quality, tags: [engineering, planning] }
-  ship/plan-review-founder: { domain: collaboration-delivery, category: product-planning, tags: [planning, product] }
-  ship/qa: { domain: software-engineering, category: testing-automation, tags: [qa, testing] }
-  ship/qa-only: { domain: software-engineering, category: testing-automation, tags: [qa, testing] }
-  ship/retro: { domain: collaboration-delivery, category: team-process, tags: [retrospective, teams] }
-  ship/review: { domain: software-engineering, category: code-quality, tags: [code, review] }
-  ship/setup-browser-cookies: { domain: software-engineering, category: testing-automation, tags: [browser, cookies] }
-  ship/ship-upgrade: { domain: collaboration-delivery, category: release-coordination, tags: [releases, upgrades] }
-  slides: { domain: documents-data, category: presentations, tags: [presentations, slides] }
-  sora: { domain: design-media, category: motion-video, tags: [sora, video] }
-  speech: { domain: design-media, category: audio-production, tags: [audio, speech] }
-  spreadsheet: { domain: documents-data, category: spreadsheets, tags: [data, spreadsheets] }
-  transcribe: { domain: design-media, category: audio-production, tags: [audio, transcription] }
-  vercel-deploy: { domain: operations-security, category: deployment-hosting, tags: [deployment, vercel] }
-  winui-app: { domain: software-engineering, category: application-development, tags: [applications, windows] }
-  yeet: { domain: collaboration-delivery, category: source-control-ci, tags: [github, releases] }
+  aspnet-core: { domain: development, category: applications, tags: [applications, dotnet, windows] }
+  audio-transcription: { domain: content, category: audio, tags: [audio, diarization, transcription] }
+  cloudflare-deploy: { domain: operations, category: deployment, tags: [cloudflare, deployment, infrastructure] }
+  color-expert: { domain: design, category: visual, tags: [accessibility, color, design] }
+  docx-editor: { domain: content, category: documents, tags: [documents, docx, editing] }
+  figma-implementation: { domain: design, category: figma, tags: [figma, frontend, implementation] }
+  figma-mcp: { domain: design, category: figma, tags: [design, figma, mcp] }
+  frontend-design: { domain: design, category: visual, tags: [design, frontend, interfaces] }
+  github-ci: { domain: development, category: github, tags: [actions, ci, github] }
+  github-comments: { domain: development, category: github, tags: [comments, github, review] }
+  github-pr: { domain: development, category: github, tags: [delivery, github, pull-requests] }
+  image-generation: { domain: content, category: visual, tags: [generation, images, openai] }
+  jupyter-notebook: { domain: content, category: notebooks, tags: [analysis, jupyter, notebooks] }
+  linear-workflows: { domain: productivity, category: projects, tags: [issues, linear, projects] }
+  netlify-deploy: { domain: operations, category: deployment, tags: [deployment, hosting, netlify] }
+  notion-briefing: { domain: productivity, category: planning, tags: [agendas, meetings, notion] }
+  notion-capture: { domain: productivity, category: knowledge, tags: [decisions, knowledge, notion] }
+  notion-planning: { domain: productivity, category: planning, tags: [notion, planning, tasks] }
+  notion-research: { domain: productivity, category: knowledge, tags: [notion, reports, research] }
+  pdf-editor: { domain: content, category: documents, tags: [documents, editing, pdf] }
+  playwright-automation: { domain: development, category: automation, tags: [automation, browser, playwright] }
+  playwright-debugging: { domain: development, category: automation, tags: [debugging, electron, playwright] }
+  pptx-editor: { domain: content, category: presentations, tags: [editing, powerpoint, presentations] }
+  render-deploy: { domain: operations, category: deployment, tags: [deployment, hosting, render] }
+  screen-capture: { domain: content, category: visual, tags: [capture, screenshots, system] }
+  security-ownership: { domain: security, category: appsec, tags: [ownership, risk, security] }
+  security-review: { domain: security, category: appsec, tags: [appsec, review, security] }
+  sentry-observability: { domain: operations, category: observability, tags: [errors, observability, sentry] }
+  skill-creator: { domain: development, category: skills, tags: [aria, creation, skills] }
+  skill-normalizer: { domain: development, category: skills, tags: [aria, normalization, skills] }
+  sora-video: { domain: content, category: visual, tags: [generation, sora, video] }
+  speech-generation: { domain: content, category: audio, tags: [audio, generation, speech] }
+  spreadsheet-editor: { domain: content, category: spreadsheets, tags: [analysis, data, spreadsheets] }
+  threat-modeling: { domain: security, category: appsec, tags: [modeling, security, threats] }
+  vercel-deploy: { domain: operations, category: deployment, tags: [deployment, hosting, vercel] }
+  web-game: { domain: development, category: applications, tags: [games, testing, web] }
+  winui-app: { domain: development, category: applications, tags: [applications, windows, winui] }

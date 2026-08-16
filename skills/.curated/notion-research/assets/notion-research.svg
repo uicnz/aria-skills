@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Approved glyph: _assets/svg/magnifying-glass.svg -->
+  <circle cx="50" cy="50" r="49" fill="#000"/>
+  <svg x="17" y="17" width="66" height="66" viewBox="-10 0 310 300" preserveAspectRatio="xMidYMid meet">
+<path fill="#fff"
+d="M122 16q29 0 53 14.5t38 38.5t14 53q0 37 -23 66l67 66q3 4 3 8.5t-3.5 8t-8 3.5t-8.5 -3l-66 -67q-29 23 -66 23q-29 0 -53 -14t-38.5 -38t-14.5 -53t14.5 -53t38.5 -38.5t53 -14.5zM122 40q-22 0 -41 11t-30 30t-11 41t11 41t30 30t41 11t41 -11t30 -30t11 -41t-11 -41
+t-30 -30t-41 -11z" />
+  </svg>
+</svg>

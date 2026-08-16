@@ -1,0 +1,6 @@
+interface:
+  displayName: "Security Review"
+  shortDescription: "Review code for security risks and secure defaults"
+  iconSmall: "./assets/security-review.svg"
+  iconLarge: "./assets/security-review.png"
+  defaultPrompt: "Use $security-review to review this codebase and provide secure-by-default recommendations."

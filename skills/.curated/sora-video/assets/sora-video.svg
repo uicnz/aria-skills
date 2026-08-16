@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Approved glyph: _assets/svg/film-strip.svg -->
+  <circle cx="50" cy="50" r="49" fill="#000"/>
+  <svg x="17" y="17" width="66" height="66" viewBox="-10 0 310 300" preserveAspectRatio="xMidYMid meet">
+<path fill="#fff"
+d="M264 16h8q5 0 8.5 3.5t3.5 8.5v4.5v4.5v225v5.5v4.5q0 5 -3.5 8.5t-8.5 3.5h-244q-5 0 -8.5 -3.5t-3.5 -8.5v-4.5v-5.5v-225v-4.5v-4.5q0 -5 3.5 -8.5t8.5 -3.5h236zM101 260h98v-98h-98v98zM223 260h37v-58h-37v58zM40 202v58h37v-58h-37zM40 121v58h37v-58h-37z
+M223 179h37v-58h-37v58zM101 138h98v-98h-98v98zM40 40v58h37v-58h-37zM223 98h37v-58h-37v58z" />
+  </svg>
+</svg>

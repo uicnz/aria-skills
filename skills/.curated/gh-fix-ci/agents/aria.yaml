@@ -1,6 +1,0 @@
-interface:
-  displayName: "GitHub Fix CI"
-  shortDescription: "Debug failing GitHub Actions CI"
-  iconSmall: "./assets/github-small.svg"
-  iconLarge: "./assets/github.png"
-  defaultPrompt: "Inspect failing GitHub Actions checks in this repo, summarize root cause, and propose a focused fix plan."

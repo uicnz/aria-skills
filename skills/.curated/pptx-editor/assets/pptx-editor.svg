@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Approved glyph: _assets/svg/easel.svg -->
+  <circle cx="50" cy="50" r="49" fill="#000"/>
+  <svg x="17" y="17" width="66" height="66" viewBox="-10 0 310 300" preserveAspectRatio="xMidYMid meet">
+<path fill="#fff"
+d="M253 16q13 0 22 9t9 22v131q0 13 -9 22t-22 9h-51l42 56q3 4 2 8.5t-4.5 7.5t-8.5 2.5t-8 -4.5l-53 -70h-10v63q0 5 -3.5 8.5t-8.5 3.5t-8.5 -3.5t-3.5 -8.5v-63h-10l-53 70q-3 4 -8 4.5t-8.5 -2.5t-4.5 -7.5t2 -8.5l42 -56h-51q-13 0 -22 -9t-9 -22v-131q0 -13 9 -22
+t22 -9h206zM47 40q-3 0 -5 2t-2 5v131q0 3 2 5t5 2h206q3 0 5 -2t2 -5v-131q0 -3 -2 -5t-5 -2h-206z" />
+  </svg>
+</svg>

@@ -1,0 +1,6 @@
+interface:
+  displayName: "Threat Modeling"
+  shortDescription: "Model repository threats, abuse paths, risks, and mitigations"
+  iconSmall: "./assets/threat-modeling.svg"
+  iconLarge: "./assets/threat-modeling.png"
+  defaultPrompt: "Use $threat-modeling to produce a repository-grounded threat model with prioritized abuse paths and mitigations."

@@ -1,0 +1,6 @@
+interface:
+  displayName: "Playwright Debugging"
+  shortDescription: "Debug and visually validate local web and Electron interfaces"
+  iconSmall: "./assets/playwright-debugging.svg"
+  iconLarge: "./assets/playwright-debugging.png"
+  defaultPrompt: "Use $playwright-debugging to iteratively debug and visually validate this local web or Electron interface."

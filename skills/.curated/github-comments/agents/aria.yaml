@@ -1,0 +1,6 @@
+interface:
+  displayName: "GitHub Comments"
+  shortDescription: "Address actionable GitHub pull-request comments and threads"
+  iconSmall: "./assets/github-comments.svg"
+  iconLarge: "./assets/github-comments.png"
+  defaultPrompt: "Use $github-comments to address the actionable review threads or issue comments on this pull request."

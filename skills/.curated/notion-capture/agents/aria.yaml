@@ -1,0 +1,13 @@
+interface:
+  displayName: "Notion Capture"
+  shortDescription: "Capture conversations and decisions as linked Notion knowledge"
+  iconSmall: "./assets/notion-capture.svg"
+  iconLarge: "./assets/notion-capture.png"
+  defaultPrompt: "Use $notion-capture to turn this conversation into structured Notion knowledge with decisions and action items."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "notion"
+      description: "Notion MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.notion.com/mcp"

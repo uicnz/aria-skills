@@ -1,6 +1,6 @@
 ---
 name: aspnet-core
-description: Build, review, refactor, or architect ASP.NET Core web applications using current official guidance for .NET web development. Use when working on Blazor Web Apps, Razor Pages, MVC, Minimal APIs, controller-based Web APIs, SignalR, gRPC, middleware, dependency injection, configuration, authentication, authorization, testing, performance, deployment, or ASP.NET Core upgrades.
+description: Use when a task involves building, reviewing, refactoring, architecting, testing, deploying, or upgrading an ASP.NET Core application across Blazor, Razor Pages, MVC, APIs, SignalR, or gRPC.
 ---
 
 # ASP.NET Core

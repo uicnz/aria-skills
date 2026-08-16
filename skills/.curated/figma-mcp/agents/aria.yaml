@@ -1,0 +1,13 @@
+interface:
+  displayName: "Figma MCP"
+  shortDescription: "Inspect Figma designs, context, and assets through MCP"
+  iconSmall: "./assets/figma-mcp.svg"
+  iconLarge: "./assets/figma-mcp.png"
+  defaultPrompt: "Use $figma-mcp to inspect this Figma design and translate its context and assets into implementation decisions."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "figma"
+      description: "Figma MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.figma.com/mcp"

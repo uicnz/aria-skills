@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Approved glyph: _assets/svg/note.svg -->
+  <circle cx="50" cy="50" r="49" fill="#000"/>
+  <svg x="17" y="17" width="66" height="66" viewBox="-10 0 310 300" preserveAspectRatio="xMidYMid meet">
+<path fill="#fff"
+d="M244 16q16 0 28 12t12 28v78q0 21 -15 35l-100 100q-14 15 -35 15h-78q-16 0 -28 -12t-12 -28v-188q0 -16 12 -28t28 -12h188zM56 40q-7 0 -11.5 4.5t-4.5 11.5v188q0 7 4.5 11.5t11.5 4.5h75q3 0 5 -2t2 -5v-103q0 -5 3.5 -8.5t8.5 -3.5h103q3 0 5 -2t2 -5v-75
+q0 -7 -4.5 -11.5t-11.5 -4.5h-188zM162 162v82l82 -82h-82z" />
+  </svg>
+</svg>

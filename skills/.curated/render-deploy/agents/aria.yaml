@@ -1,10 +1,9 @@
 interface:
   displayName: "Render Deploy"
-  shortDescription: "Deploy applications to Render via Blueprints or MCP"
-  iconSmall: "./assets/render-small.svg"
-  iconLarge: "./assets/render.png"
-  defaultPrompt: "Deploy this application to Render and provide service URL, env vars, and next checks."
-
+  shortDescription: "Deploy applications and managed resources to Render"
+  iconSmall: "./assets/render-deploy.svg"
+  iconLarge: "./assets/render-deploy.png"
+  defaultPrompt: "Use $render-deploy to deploy or configure this application on Render and report the resulting service details."
 dependencies:
   tools:
     - type: "mcp"

@@ -1,6 +1,0 @@
-interface:
-  displayName: "Sentry (Read-only Observability)"
-  shortDescription: "Read-only Sentry observability"
-  iconSmall: "./assets/sentry-small.svg"
-  iconLarge: "./assets/sentry.png"
-  defaultPrompt: "Investigate this issue in read-only Sentry data and report likely root cause, impact, and next steps."

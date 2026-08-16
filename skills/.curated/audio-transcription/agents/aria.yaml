@@ -1,0 +1,6 @@
+interface:
+  displayName: "Audio Transcription"
+  shortDescription: "Transcribe recordings with speaker labels and diarization"
+  iconSmall: "./assets/audio-transcription.svg"
+  iconLarge: "./assets/audio-transcription.png"
+  defaultPrompt: "Use $audio-transcription to transcribe this audio or video with speaker labels when possible."

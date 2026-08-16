@@ -1,0 +1,13 @@
+interface:
+  displayName: "Linear Workflows"
+  shortDescription: "Manage Linear issues, projects, and team workflows"
+  iconSmall: "./assets/linear-workflows.svg"
+  iconLarge: "./assets/linear-workflows.png"
+  defaultPrompt: "Use $linear-workflows to read, create, or organize the relevant Linear issues and projects."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "linear"
+      description: "Linear MCP server"
+      transport: "streamable-http"
+      url: "https://mcp.linear.app/mcp"

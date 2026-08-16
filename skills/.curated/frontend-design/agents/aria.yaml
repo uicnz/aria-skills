@@ -1,0 +1,6 @@
+interface:
+  displayName: "Frontend Design"
+  shortDescription: "Design distinctive websites, apps, prototypes, and interfaces"
+  iconSmall: "./assets/frontend-design.svg"
+  iconLarge: "./assets/frontend-design.png"
+  defaultPrompt: "Use $frontend-design to establish the visual, content, and interaction direction before building this interface."

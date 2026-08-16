@@ -1,0 +1,6 @@
+interface:
+  displayName: "Image Generation"
+  shortDescription: "Generate and edit raster images with the OpenAI Image API"
+  iconSmall: "./assets/image-generation.svg"
+  iconLarge: "./assets/image-generation.png"
+  defaultPrompt: "Use $image-generation to generate or edit the requested image and return the selected output."

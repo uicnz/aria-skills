@@ -1,0 +1,6 @@
+interface:
+  displayName: "Sora Video"
+  shortDescription: "Generate, edit, extend, and manage videos with Sora"
+  iconSmall: "./assets/sora-video.svg"
+  iconLarge: "./assets/sora-video.png"
+  defaultPrompt: "Use $sora-video to plan, generate, edit, extend, or manage this Sora video workflow."

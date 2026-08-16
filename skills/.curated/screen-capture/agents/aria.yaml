@@ -1,0 +1,6 @@
+interface:
+  displayName: "Screen Capture"
+  shortDescription: "Capture system screenshots of screens, windows, apps, or regions"
+  iconSmall: "./assets/screen-capture.svg"
+  iconLarge: "./assets/screen-capture.png"
+  defaultPrompt: "Use $screen-capture to capture the requested screen, application, window, or region."
