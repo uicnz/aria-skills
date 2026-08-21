@@ -1,4 +1,4 @@
-name: Catalog check
+name: Source check
 
 on:
   pull_request:
@@ -13,14 +13,14 @@ jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out skills catalog
+      - name: Check out Skill Source
         uses: actions/checkout@v5
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Install catalog dependencies
+      - name: Install Source dependencies
         run: bun install --frozen-lockfile
 
       - name: Inspect every tier and release unit
-        run: bun scripts/catalog-check.ts skills
+        run: bun scripts/source-check.ts skills

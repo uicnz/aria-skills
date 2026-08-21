@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "aria-skills-catalog",
+      "name": "aria-skills-source",
       "devDependencies": {
         "yaml": "^2.8.1",
       },

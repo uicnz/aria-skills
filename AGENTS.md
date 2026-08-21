@@ -1,6 +1,6 @@
-# Aria Skills Catalog
+# Aria Skill Source
 
-This repository is the remotely published source catalog for Aria Skills. It is not copied into the Aria application or binary.
+This repository is the remotely published Source for Aria Skills. It is not copied into the Aria application or binary.
 
 ## Source taxonomy
 
@@ -15,12 +15,12 @@ Every immediate child of a tier is one atomic release unit. Its canonical identi
 
 The reserved `_assets/` child is the sole non-Skill exception. It contains tracked tier-level shared authoring assets, must contain only regular files and directories, and is never counted as a Skill identity or release unit. A tier-level `manifest.yaml` is the hashed registry for the materialized source collection.
 
-Do not add package-name branches to catalog tooling. Tier roots are enumerated generically, and ignored or untracked files must never enter release archives.
+Do not add package-name branches to Source tooling. Tier roots are enumerated generically, and ignored or untracked files must never enter release archives.
 
 ## Publication
 
-`catalog-source.yaml` contains public source and authority metadata plus the curated domain, category, assignment, and search-tag catalog projection. This is human-authored catalog policy, not identity inferred from paths or package-name logic in Aria. Every tracked Skill identity must have exactly one assignment and every assignment must reference a declared domain/category. Private signing keys remain outside this repository. Aria's catalog release builder creates one archive per release unit and a signed `catalog.json` checkpoint for a GitHub release.
+`source.yaml` contains public Source and authority metadata plus the curated domain, category, assignment, and search-tag projection. This is human-authored Source policy, not identity inferred from paths or package-name logic in Aria. Every tracked Skill identity must have exactly one assignment and every assignment must reference a declared domain/category. Private signing keys remain outside this repository. Aria's Source release builder creates one archive per release unit and a signed `source.json` checkpoint for a GitHub release.
 
 GitHub release retention is rolling: after a newly published release is verified as the latest checkpoint, remove every superseded GitHub release and its tag. Runtime rollback is owned by locally retained immutable generations and lifecycle receipts, not by an online release archive.
 
-The catalog URL is a replaceable Aria default. Repository location does not establish trust; Aria verifies the configured authority and embedded root key before accepting delegated catalog, receipt, or archive evidence.
+The Source URL is a replaceable Aria default. Repository location does not establish trust; Aria verifies the configured authority and embedded root key before accepting delegated index, receipt, or archive evidence.

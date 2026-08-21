@@ -1,13 +1,14 @@
-schema: aria.skills.catalog-source/v1
-catalogId: aria-official
+schema: aria.skill.source/v1
+sourceId: aria-official
 authorityId: aria-official
 sourceRepository: https://github.com/uicnz/aria-skills
 publisher: uicnz
 curator: aria
 distributor: aria
 channel: stable
-rootKeyId: aria-skills-root-1
-delegatedKeyId: aria-skills-release-1
+rootKeyId: aria-skill-root-1
+delegatedKeyId: aria-skill-release-1
+manifestRevision: 5
 
 domains:
   development:

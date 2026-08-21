@@ -1,14 +1,14 @@
-schema: aria.skills.manifest/v1
-revision: 4
-contentHash: sha256:307ad8eed789d9eb147562378d3c51167b074aa8409b968a2d617cc5d0a870dc
+schema: aria.skill.manifest/v1
+revision: 5
+contentHash: sha256:e1015e5b10835d6d37032f52d69531d2fa1e06d88e6a1532224e1310377e02d8
 authority:
   kind: home
   id: aria-curated
-skills:
+skillRecords:
   aspnet-core:
     sourcePath: aspnet-core
-    currentGeneration: sha256:d49001129214dba34189c367f28d514d3ee18c00f1f54baab670d367f46ec6df
-    version: null
+    currentGeneration: sha256:2450cc6c99d34ba3da0fc2d648b26b886abe7eed6d43c58711264f4e60874081
+    version: v2026.08.21.1
     interface:
       displayName: ASP.NET Core
       shortDescription: Build and review ASP.NET Core applications on Windows
@@ -29,8 +29,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: aspnet-core
       sourceDigest: sha256:baf5dcb9e56121cb3e17a60aaa44b8ba889cca76dedf739122e75bd57a4ac3c6
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:63e868e86af2a4db102f7d2d920eb61e48436486671eeee97aa152f96f1c9dda
         evidencePaths:
@@ -38,13 +38,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:1cc6d361d50d513447bfe2a895d04cc208a1c6f88cb197c47cab6ea91e424c9f
+    verificationState: curatedVerified
     derivedFrom: null
   audio-transcription:
     sourcePath: audio-transcription
-    currentGeneration: sha256:244970ee338cb1ae75de950260b9890eaee1407db87e48e22678b3afe7f510eb
-    version: null
+    currentGeneration: sha256:9c30078ef6b6e33f1c80cb9ad9dd317e71cb8ba259f5abd60fd74c4bceeba9d2
+    version: v2026.08.21.1
     interface:
       displayName: Audio Transcription
       shortDescription: Transcribe recordings with speaker labels and diarization
@@ -65,8 +74,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: audio-transcription
       sourceDigest: sha256:fe452839e0ce3131848cb8ff6ac2881c15933d861200583971aed9762d080974
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:bb7a0aab07f1cc26f1aadf7f0d2a22e6a96edd7452a9c91cdc53c0f3e1fae468
         evidencePaths:
@@ -74,13 +83,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:6f396f0d7fc9b7a05f4dc81112c9e79348c3cdb1fa61a98465dc0c4ae70b55c3
+    verificationState: curatedVerified
     derivedFrom: null
   cloudflare-deploy:
     sourcePath: cloudflare-deploy
-    currentGeneration: sha256:8067a1c0112747e60e18520f29bf302b3694736615a67ee6d20442210bac9d20
-    version: null
+    currentGeneration: sha256:5a4d9a2cca661b8d3146d1c2307cc134bb1509e98b22b9f916d261f043530733
+    version: v2026.08.21.1
     interface:
       displayName: Cloudflare Deploy
       shortDescription: Deploy applications and infrastructure services to Cloudflare
@@ -101,8 +119,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: cloudflare-deploy
       sourceDigest: sha256:f28af124f3af60b59dfda7bb8cd9908c511c084be9cac22b96ff2d41053d0e11
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:4c1a57a021186df47a0b09a34868c967033544af9b2fe31710d31b04fa115ba6
         evidencePaths:
@@ -110,13 +128,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:4b6e7291fa86d779f3f506a5c73f34c8cc054f25815b9492bdb5f7acecb04170
+    verificationState: curatedVerified
     derivedFrom: null
   color-expert:
     sourcePath: color-expert
-    currentGeneration: sha256:36d613c7798583da1af26800f2bd572a720d1e71b634f4b6f9c7e894c39c6124
-    version: null
+    currentGeneration: sha256:44cfed2e86745768bc01df79db3dcdf0472753b283f61a9bffd138ba1f4f0fa7
+    version: v2026.08.21.1
     interface:
       displayName: Color Expert
       shortDescription: Guide color theory, accessibility, palettes, and conversions
@@ -137,8 +164,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: color-expert
       sourceDigest: sha256:970dfb48983609721378f94733488781981b507bd29c4aa09ea0a3a065d607ec
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:3914025ad8b94233378f0f277e3adf7e48e6e76348ea5d01a460ae1c8be195f0
         evidencePaths:
@@ -146,13 +173,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:59758efc822ed3b71a0668e5c486d8b6db84d0cac008f94aa5baa07bc436bd5f
+    verificationState: curatedVerified
     derivedFrom: null
   docx-editor:
     sourcePath: docx-editor
-    currentGeneration: sha256:adcace1d63f659478e8b264086709e7dd96d58f187d94ba7d70a9bdf14f4bad6
-    version: null
+    currentGeneration: sha256:5ae9bbf4d7268acee39e2a88d34915752935de148f7a06d259668f380cade2d8
+    version: v2026.08.21.1
     interface:
       displayName: DOCX Editor
       shortDescription: Create, edit, and review DOCX documents with layout fidelity
@@ -173,8 +209,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: docx-editor
       sourceDigest: sha256:0b25d1fda683b46d0cb59662ba5b6687ad70e640ccd3ecbf4efde95cb85d98d1
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:441d2b5ff47fff8feac0db7a20af71f28e1c20998da22f5cd6d2b0abbda28e80
         evidencePaths:
@@ -182,13 +218,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:5a105fe824beee9ce672886a73cf98bda5f068888177dc08730986396325c7dc
+    verificationState: curatedVerified
     derivedFrom: null
   figma-implementation:
     sourcePath: figma-implementation
-    currentGeneration: sha256:20f6cfc556f1e0a0114b6136ee6f43f486e3f0a0b4588a7ab616ddb3d383317c
-    version: null
+    currentGeneration: sha256:9d6bb4636d4157807c6b96bc12a8e4a6d7e5d66c0bb5e47f65d7651f2580740f
+    version: v2026.08.21.1
     interface:
       displayName: Figma Implementation
       shortDescription: Translate Figma designs into production code with high fidelity
@@ -214,8 +259,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: figma-implementation
       sourceDigest: sha256:8e2eb78eee871373f8a28c01e3713649fd57ff7a64f06dbdcc93f08e323092cb
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:bde175f63747eaac8a3b43d8f7f23a6222b82a501b50616a43c3e1235bd8c9c6
         evidencePaths:
@@ -223,13 +268,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:dad79a333a1ccb7382fad75e8670ad925a40b51c5ae51221806c9fa1483a1f6c
+    verificationState: curatedVerified
     derivedFrom: null
   figma-mcp:
     sourcePath: figma-mcp
-    currentGeneration: sha256:274f0827e18b3353a31b6086a47eea1940c7ae54524cc12fc466daf9e54564b2
-    version: null
+    currentGeneration: sha256:96dc57ff3092d5e840ab267a2aecf867f1b1090350bc91cf45a98b6789a53bb6
+    version: v2026.08.21.1
     interface:
       displayName: Figma MCP
       shortDescription: Inspect Figma designs, context, and assets through MCP
@@ -255,8 +309,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: figma-mcp
       sourceDigest: sha256:44859ec913a44a1d8a3acca42fd23e90fa54ace30ecbd5d0091ce343088a7830
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:f4f21d4139a581376d551435c423e997ef3053315898f35382d1d811b27e9cd4
         evidencePaths:
@@ -264,13 +318,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:6082223e0f466546becb56adbcf9e06a70e33982f853de00e96d5705787f43e7
+    verificationState: curatedVerified
     derivedFrom: null
   frontend-design:
     sourcePath: frontend-design
-    currentGeneration: sha256:41f3180afb151893c4e0e5a8f88f3a0400466e89834741c0e6ea6fc4601803ac
-    version: null
+    currentGeneration: sha256:09231b12ac16949ac4bf042cda3a8ee28cc7bf580e376a94f7740887bc85a993
+    version: v2026.08.21.1
     interface:
       displayName: Frontend Design
       shortDescription: Design distinctive websites, apps, prototypes, and interfaces
@@ -291,8 +354,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: frontend-design
       sourceDigest: sha256:0b2445ede1918c2e00eb46b259420e41b5592e0f138bbdd0bd53673838f052e7
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:185c1398eee695a8c1c70237a1f45b80527a821086f812c98851cd0d7bdc953c
         evidencePaths:
@@ -300,13 +363,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:49cef7f65eda4a947ccd65cb726d6d912d19d5cefef4a38aa0c30a2a02aa604c
+    verificationState: curatedVerified
     derivedFrom: null
   github-ci:
     sourcePath: github-ci
-    currentGeneration: sha256:8e74061ebc381efe93596a244c620002126ee944ed4934a9ca29e87e9171b4d1
-    version: null
+    currentGeneration: sha256:bf09746e89342636b304890f999f2ad11662ca32e83c77ed00f4cd3074bb1832
+    version: v2026.08.21.1
     interface:
       displayName: GitHub CI
       shortDescription: Diagnose and fix failing GitHub Actions pull-request checks
@@ -327,8 +399,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: github-ci
       sourceDigest: sha256:3cfe5f226e87bac11ccdeac4dc03dcf732286d0cedd1bfb80676d5ff00d78fcf
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:915983091fa70a19e0d018e98a2fc24a7ad5f4b14f47b1038b78eb6e8a07838e
         evidencePaths:
@@ -336,13 +408,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:9df56e6f3bfa5554d080d26b5d450cacecc53188498c5bec1cf651b9d332cade
+    verificationState: curatedVerified
     derivedFrom: null
   github-comments:
     sourcePath: github-comments
-    currentGeneration: sha256:2ec01496f62f19b202066885edb28a1c74ec1f7e87584428a12930ac858c51e6
-    version: null
+    currentGeneration: sha256:a8f89809493553554f0483d6a4f4c2b92733fa882d44ec619152c463fe064b18
+    version: v2026.08.21.1
     interface:
       displayName: GitHub Comments
       shortDescription: Address actionable GitHub pull-request comments and threads
@@ -363,8 +444,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: github-comments
       sourceDigest: sha256:a32f2e0cfb79c0661bd02cc63c12678cd0f5c009c0e6cff445d7e46837329038
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:b9612903996925d1e4ca82eeca2c680d3cfa714d2724a86e230daf6342b83a88
         evidencePaths:
@@ -372,13 +453,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:ce0a27dc5708267e2df87bc0e98a46586e157fec0df954703301d40f91dd37e4
+    verificationState: curatedVerified
     derivedFrom: null
   github-pr:
     sourcePath: github-pr
-    currentGeneration: sha256:f2891a0a6fa6f5b6f458d600a3ea96a14ffc4c1537033179d444a888ddcdbd9e
-    version: null
+    currentGeneration: sha256:fbf6ac96e6c0befc0efccb035c0cc3fde00b90330bfe3b55ba780f5ff6879060
+    version: v2026.08.21.1
     interface:
       displayName: GitHub PR
       shortDescription: Stage, commit, push, and open a GitHub pull request
@@ -399,8 +489,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: github-pr
       sourceDigest: sha256:78a883db4e1074ff202fa8bd6e8de620eadca3014754d2356f1e8a5ddddb3f2d
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:e48713aad9515f3663383945d27d8c72835528f1657e6f432589c7e352fee9e9
         evidencePaths:
@@ -408,13 +498,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:0e92fd380beb84119b5e59adeca8c61ebd90a618e2f89f6878fc8d63e83ba899
+    verificationState: curatedVerified
     derivedFrom: null
   image-generation:
     sourcePath: image-generation
-    currentGeneration: sha256:961e7d8925961426c5def38a89cb8356bf9d751b357a3a0aba18f9015b3be241
-    version: null
+    currentGeneration: sha256:c11ce99a1f18c485dee4fa75e90648efeb6b34661a890ea519360595af7fca91
+    version: v2026.08.21.1
     interface:
       displayName: Image Generation
       shortDescription: Generate and edit raster images with the OpenAI Image API
@@ -435,8 +534,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: image-generation
       sourceDigest: sha256:caee09b6bd3128b148537e202dd662ee496cc96d2cb9afc1f5b7a963384e34e0
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:81a2b61d85481ced76a96df86f5569233f6b02c63f258ec71747c6e9b5b0e3f8
         evidencePaths:
@@ -444,13 +543,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:5b16788687839b78c57e309bfa7e283542e4549a0882a7712493f785afad1cec
+    verificationState: curatedVerified
     derivedFrom: null
   jupyter-notebook:
     sourcePath: jupyter-notebook
-    currentGeneration: sha256:ca3e6e8298ce07d3b5c44e8c7eeca7ccd96c3097773c068c832fd97f6094dc25
-    version: null
+    currentGeneration: sha256:fb5eba7a5ccf67bfb9a3801c1690f207e7923c0eb15832832582b771819361a6
+    version: v2026.08.21.1
     interface:
       displayName: Jupyter Notebook
       shortDescription: Create and refine Jupyter notebooks for analysis and tutorials
@@ -471,8 +579,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: jupyter-notebook
       sourceDigest: sha256:23c19835e43ad6945b0224bd821e0960c230aee1853e0ac84ad67fb59fc86fa8
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:8ab593de2f99f39922ef2d897f34589dc6625a91cd4582110a59b227ac07a240
         evidencePaths:
@@ -480,13 +588,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:39622982af9827984f49ccb36528081070bc6fc25ad734efa0993f64bf44696d
+    verificationState: curatedVerified
     derivedFrom: null
   linear-workflows:
     sourcePath: linear-workflows
-    currentGeneration: sha256:4f1651cbd7831543449fd67658289857f17f349138c3569b9c2a35a0c08d3e03
-    version: null
+    currentGeneration: sha256:70d528398f030068487e896230f699ecbaff8762689a65656a11f4d24c21c2b8
+    version: v2026.08.21.1
     interface:
       displayName: Linear Workflows
       shortDescription: Manage Linear issues, projects, and team workflows
@@ -512,8 +629,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: linear-workflows
       sourceDigest: sha256:d6d496d2e68a5f95319911e254e3938c26e2ec3dc17f0797939d65351ca2f255
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:5b12517347c55fbdc3058050f9e0eace1e76a7db06398b1ac6a07e791f0fa751
         evidencePaths:
@@ -521,13 +638,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:70b27e746e635579db79187e48a5f7c6a46b3731d83f140534285e08aee3b8c8
+    verificationState: curatedVerified
     derivedFrom: null
   netlify-deploy:
     sourcePath: netlify-deploy
-    currentGeneration: sha256:b5a98e6634848ba26a28407205e444cf1853e3893827b5c3a5eda784f719b9fe
-    version: null
+    currentGeneration: sha256:9b5e8d828478db12bf9e11439115f8a259ea875fe2de178f75cb84e5b3adf638
+    version: v2026.08.21.1
     interface:
       displayName: Netlify Deploy
       shortDescription: Deploy and publish web projects through the Netlify CLI
@@ -548,8 +674,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: netlify-deploy
       sourceDigest: sha256:81e3eaf5fd40dc7a59ad2b672d78c78fb921c0f8bd1dd1592651813db083d012
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:6d6c57e148f60f91da25e3ee875d48a235de00c895bb373f3a427a4c1e7dcd59
         evidencePaths:
@@ -557,13 +683,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:24b3278e9838e6444efadcce26ebb4e20e9c1799c6eaedfdb28269d61f4ac22d
+    verificationState: curatedVerified
     derivedFrom: null
   notion-briefing:
     sourcePath: notion-briefing
-    currentGeneration: sha256:aff630a0803cc6169c3c504d168a83e9990ac7459ac110ffbd4b35c9e8def4aa
-    version: null
+    currentGeneration: sha256:ccf9d4902baaa74cdf22d4ae0d458269b797c47001769f73ce769590590f6d94
+    version: v2026.08.21.1
     interface:
       displayName: Notion Briefing
       shortDescription: Prepare Notion agendas and pre-reads from meeting context
@@ -589,8 +724,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: notion-briefing
       sourceDigest: sha256:7c636b1c4d63340e7bb74309f9b5a82241941b902db67659eb01eadb588d0ed6
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:5d27b286b6d710ca6f52b22c8a734e45f83155d44c8675f738b41430c008fb31
         evidencePaths:
@@ -598,13 +733,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:8955f005a72d8c2311b76d3ec878fdd21d89be5747efffa082d8bb9ade60165b
+    verificationState: curatedVerified
     derivedFrom: null
   notion-capture:
     sourcePath: notion-capture
-    currentGeneration: sha256:ef9ad75e0706235fda26dd61747c7facc84c48dae18fdd14be53e3d331616f61
-    version: null
+    currentGeneration: sha256:6fbd1e9c0607a27e3a46bf15137a6b9b50c07c0b9ea3a3aa2b1859c37e424a51
+    version: v2026.08.21.1
     interface:
       displayName: Notion Capture
       shortDescription: Capture conversations and decisions as linked Notion knowledge
@@ -630,8 +774,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: notion-capture
       sourceDigest: sha256:99bc1c87891a1f33e25cb7ee9f12dffb143312f605b9069ec4b09ed8b32e56d5
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:2487daef4d8934928c3f4f4f654a822789905c3f4f4832ff86943974f44e69ba
         evidencePaths:
@@ -639,13 +783,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:9c60c947ced9f52fb403522235b514c0fff8a5588a7c52992165e92a56951bac
+    verificationState: curatedVerified
     derivedFrom: null
   notion-planning:
     sourcePath: notion-planning
-    currentGeneration: sha256:093488f05940ccf0617cdade6634e31baac27b31014fb9c59ebafc40e01aade5
-    version: null
+    currentGeneration: sha256:71f9046bdd178bf82286121403867b377d19599dcda6480f87e4fb8b672c488f
+    version: v2026.08.21.1
     interface:
       displayName: Notion Planning
       shortDescription: Convert Notion specs into plans, tasks, and progress tracking
@@ -671,8 +824,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: notion-planning
       sourceDigest: sha256:3f6d2cd9cf326e0efc05840794508cf28f6df9e56a4c1a170ff3362a39f20837
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:4e3be8b0ddadf1f799936f457f15210babf5b84aa501d1eaaa39719efd0b83cd
         evidencePaths:
@@ -680,13 +833,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:695bb97592f172a714663f9c8313f2be2daa843482ba6a46236a7f2a7c6a2506
+    verificationState: curatedVerified
     derivedFrom: null
   notion-research:
     sourcePath: notion-research
-    currentGeneration: sha256:64b71827e83ce22a379515eb09f487d1134df5f56280463af765b8653f94cc43
-    version: null
+    currentGeneration: sha256:ba0ea6862dcb65798a728eb3f73f2f923728f0eb452277c7866ac70cefdd14f5
+    version: v2026.08.21.1
     interface:
       displayName: Notion Research
       shortDescription: Synthesize Notion sources into cited briefs and reports
@@ -712,8 +874,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: notion-research
       sourceDigest: sha256:7f2c556e67b118f01822c9a29eedea1e3f0ab131c3bdc4d46c0d4219dddd4a8b
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:5493f80f1c8e2993095684079dbf6f84023f1018837955c4f54b9b6e3192eddb
         evidencePaths:
@@ -721,13 +883,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:6c73b801f2f7494e4dbd13e51f68b7e67c2d5779dd0c3aaf61e5cd07a1f97750
+    verificationState: curatedVerified
     derivedFrom: null
   pdf-editor:
     sourcePath: pdf-editor
-    currentGeneration: sha256:eb474b5d60ac574753a8618039fcd6f736b9f3bb7e8181a82ad92376375f90ba
-    version: null
+    currentGeneration: sha256:624c9f81c6919d5dd8396aa1ad7019c6f1c73ed693877af529aace168d4c8252
+    version: v2026.08.21.1
     interface:
       displayName: PDF Editor
       shortDescription: Create, edit, and review PDFs with rendering fidelity
@@ -748,8 +919,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: pdf-editor
       sourceDigest: sha256:3f79e1fb1c1b78d06a2dc70d6a12e04a4f96e5ef413c02b16b729762719072a5
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:349231b72aa5a284b0074212e9c17a9ee06c8d312e0fae15076189ddda5690ec
         evidencePaths:
@@ -757,13 +928,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:c463bcfa10fac52bf805872eef24db179de59370347004c50c62850a347ae987
+    verificationState: curatedVerified
     derivedFrom: null
   playwright-automation:
     sourcePath: playwright-automation
-    currentGeneration: sha256:82184d3231a8492c056dc7f1665585aea8a43b221290b6dfc0207e1f9f3acbd1
-    version: null
+    currentGeneration: sha256:a4300ae993cac2bde1fea8dbdeca38e008dcb32088c901c52631fd1c56e69129
+    version: v2026.08.21.1
     interface:
       displayName: Playwright Automation
       shortDescription: Automate browser navigation, forms, screenshots, and extraction
@@ -784,8 +964,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: playwright-automation
       sourceDigest: sha256:10a820d4c2bc507042de6a65ff66a6df88c4db706e64c5de284865231036b1f6
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:5482b99dd294dd69e0b0cb1d79facdab620e1695e464c9e04dead6dccb03d072
         evidencePaths:
@@ -793,13 +973,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:5e3a671d4ecf075277055dc85cb9078ce469eb553140bb6bea268e72af63ee01
+    verificationState: curatedVerified
     derivedFrom: null
   playwright-debugging:
     sourcePath: playwright-debugging
-    currentGeneration: sha256:fd68ea7277dcccfc2b473b0a53fd7014d369759e8ec8ec8e198f9b08e700ac3f
-    version: null
+    currentGeneration: sha256:16a9d767a71e035eac504f0619392f39ce9a4f0d5b34f2756984c18b30ec3bd9
+    version: v2026.08.21.1
     interface:
       displayName: Playwright Debugging
       shortDescription: Debug and visually validate local web and Electron interfaces
@@ -820,8 +1009,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: playwright-debugging
       sourceDigest: sha256:b7eecf96acccfb21d9929ff12f33cd93d7443847aa5a2a1f586d8c2743bc012f
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:8c4eb2dcd7d1212ef58cbfb0850184ceab152336f09d20806b7d7b3bdb6f8620
         evidencePaths:
@@ -829,13 +1018,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:aca6e658b6398175d27ff34982e31e34bf83966b415aa9c8670d96143f3b1338
+    verificationState: curatedVerified
     derivedFrom: null
   pptx-editor:
     sourcePath: pptx-editor
-    currentGeneration: sha256:6bd810c72f6dc7077793faa0af6207036d70be27be64075aa916e81bf99db23f
-    version: null
+    currentGeneration: sha256:cbcc5e404e994b66b6bc6628eddc0b8421192322933f4eb3b0049fc016bd4bf5
+    version: v2026.08.21.1
     interface:
       displayName: PPTX Editor
       shortDescription: Create, edit, and visually validate PowerPoint slide decks
@@ -856,8 +1054,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: pptx-editor
       sourceDigest: sha256:c0768de698495594719cf72098787a9d2f5e57ec72da0da166580d77ed2b54cd
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:540761a9b34b080b66bdc1fa94e096a502f67587b50c74f1855e4ee4dbf55c7e
         evidencePaths:
@@ -865,13 +1063,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:abe1dc01e9b4f163b4aa5abf4babcda561f601d9626ba440a08a6a3c1c941cf9
+    verificationState: curatedVerified
     derivedFrom: null
   render-deploy:
     sourcePath: render-deploy
-    currentGeneration: sha256:fe1c73a01e7812e787a471632c9528d9c4e8002a2db566df2638b704cde66c56
-    version: null
+    currentGeneration: sha256:044eebacab17cda385b34f2e41080d2c1156e911d2912ee34e5e5db341a85ee5
+    version: v2026.08.21.1
     interface:
       displayName: Render Deploy
       shortDescription: Deploy applications and managed resources to Render
@@ -897,8 +1104,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: render-deploy
       sourceDigest: sha256:c0caeb2323e7eea088d894918551976be6c627d01bee0563b2a08fd8d50a6353
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:5e87765c323b7af74127a87cae4606c3d54bd60033d6b463d89504b90913780e
         evidencePaths:
@@ -906,13 +1113,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:297e4d11994be30bf5582e22161ea9981f2caa9b8b65ddeb8f57d99d03adce0d
+    verificationState: curatedVerified
     derivedFrom: null
   screen-capture:
     sourcePath: screen-capture
-    currentGeneration: sha256:fd58ef81f5d1e38fc37cceba6343cc995fd8f118b7256caa9b845b2aeb00b10e
-    version: null
+    currentGeneration: sha256:406d0514127b1fac250b609a88ef704966b89b9489bb6eb500a4929a3b43cad2
+    version: v2026.08.21.1
     interface:
       displayName: Screen Capture
       shortDescription: Capture system screenshots of screens, windows, apps, or regions
@@ -933,8 +1149,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: screen-capture
       sourceDigest: sha256:81c1758c55827e75ef096a81fe557553806b3e6a267153f90d702d5e303064ca
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:9cff6cf8194dbc4977fb75b27daf0bd2261255f2628f17471eb5f2ff8e01b7b8
         evidencePaths:
@@ -942,13 +1158,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:839d27360f85e61c08e3325281259983e3bd16ab711a5f5eba20d25b234e5147
+    verificationState: curatedVerified
     derivedFrom: null
   security-ownership:
     sourcePath: security-ownership
-    currentGeneration: sha256:40d87997f604aada5d943ed62ed70160e87771892aa9c7a5a5c6d23d9d8aec27
-    version: null
+    currentGeneration: sha256:32cb4e84baebb2164dea72a526df0eb34c0646a8b48c2568ffb32c1d1744d2e6
+    version: v2026.08.21.1
     interface:
       displayName: Security Ownership
       shortDescription: Map sensitive-code ownership, maintainers, and bus-factor risks
@@ -969,8 +1194,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: security-ownership
       sourceDigest: sha256:92b14a044271118ea0fc8723250e950eaa1950461312ac0231be23b51198a9df
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:1e1950b7563b56947aa235055b1ef7efc087940cd3dd7b50cb6d1fc95eb1b227
         evidencePaths:
@@ -978,13 +1203,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:cfb3c293e16838c3e4dde1f8a460a12b9edfc5e71a22a4c7a5ee6f5bd2e6e6f4
+    verificationState: curatedVerified
     derivedFrom: null
   security-review:
     sourcePath: security-review
-    currentGeneration: sha256:d041a315a9b9348b545f9171458dea8749ee3887489b1b6a15305a347711ef83
-    version: null
+    currentGeneration: sha256:1a3f5327f7087c41497027e3c735060df12cce3e973fdcad76c09dacb5aab9bb
+    version: v2026.08.21.1
     interface:
       displayName: Security Review
       shortDescription: Review code for security risks and secure defaults
@@ -1005,8 +1239,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: security-review
       sourceDigest: sha256:2ada1c87675e344f841f58cb13c3c13f54674ce85e0d1f8a581d86122e31400d
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:218a78a0d0469876fa31988d959863508fbe7d8b451ec7e1bf95c700792a9279
         evidencePaths:
@@ -1014,13 +1248,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:e627548b71b1ccdb25caa08f9eda35476bf4515b0ff8c476e4ce6095e7c7ff9f
+    verificationState: curatedVerified
     derivedFrom: null
   sentry-observability:
     sourcePath: sentry-observability
-    currentGeneration: sha256:aca7f97deced263a1c24f152068a4ada0d00a491b3cbbdb631b7d687f3ba790a
-    version: null
+    currentGeneration: sha256:238260cd140f267d59b69320e4683637ea347547ed14d3380199dbec8e786de4
+    version: v2026.08.21.1
     interface:
       displayName: Sentry Observability
       shortDescription: Inspect Sentry errors, events, and production health data
@@ -1041,8 +1284,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: sentry-observability
       sourceDigest: sha256:0e69a948ed2ff55b9b64c27ace937489233275b78b892b60d9ef7fbcbb30b1f3
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:f1d59c8ff4b29ff311921da1d356eec83dd06a677cfd02f70834e8f427d08ab4
         evidencePaths:
@@ -1050,13 +1293,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:51d2caa7e43d3c853f41d0591585915a3f619398a062fe4e76b37d8da6688879
+    verificationState: curatedVerified
     derivedFrom: null
   skill-creator:
     sourcePath: skill-creator
-    currentGeneration: sha256:16af6fb9f43430dc831c03ef90b06b97058baa889edaadf7ec7a42f7b0bac5da
-    version: null
+    currentGeneration: sha256:00bf86e5c0f703e01b2e23b7b4fcbe4a6ae520245c5595261a568a87b1ba1694
+    version: v2026.08.21.1
     interface:
       displayName: Skill Creator
       shortDescription: Create and update reusable, well-structured Aria skills
@@ -1077,8 +1329,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: skill-creator
       sourceDigest: sha256:c889fc9ebe333de57fb0674303702d42189b90dc113cc99422880c4d84c5479e
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:e306a7cc82ca378630abe6234908228705b892c5b9cb7fa4bca232055708be20
         evidencePaths:
@@ -1086,13 +1338,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:a2bad60ae4347547cff78705f9debcf06d5f6e74ec92cef781a6982a52692109
+    verificationState: curatedVerified
     derivedFrom: null
   skill-normalizer:
     sourcePath: skill-normalizer
-    currentGeneration: sha256:d5916d679e8fd6c7f98256d8750ade6284cde5a8b9ec2332a29d1dba992add41
-    version: null
+    currentGeneration: sha256:8a5612f20261d638913d6f7589b74ad94ddaf7e7c502dabed3feb579ba7834cc
+    version: v2026.08.21.1
     interface:
       displayName: Skill Normalizer
       shortDescription: Audit and normalize skills for current Aria taxonomy compliance
@@ -1113,8 +1374,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: skill-normalizer
       sourceDigest: sha256:705fd30a874b9c99713707824641d2e957c3fffdabe882e11036c1b631f1914c
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:2d50975b252089533ef828b71a655ffb25c7102b374587a6a91756c434fdf319
         evidencePaths:
@@ -1122,13 +1383,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:8e556029ba3f261df349a35cf4596e4f82ee293129fa41c036829caf4ff5a18c
+    verificationState: curatedVerified
     derivedFrom: null
   sora-video:
     sourcePath: sora-video
-    currentGeneration: sha256:6216b9106bd61f83a39a6d1fc24650eae4b69167508b0aa9958375dd62325dfe
-    version: null
+    currentGeneration: sha256:722e93e5cb5550ff6900bdffbca55c1cedac43d14f6d90878a99eb4f8dddde9e
+    version: v2026.08.21.1
     interface:
       displayName: Sora Video
       shortDescription: Generate, edit, extend, and manage videos with Sora
@@ -1149,8 +1419,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: sora-video
       sourceDigest: sha256:52c44eddeb83aa34b3ca35b469773e97f4b4c6cf0ac579986c0d63a085bdf38f
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:ca020bd98e9e1fe92446dec9cf5384d43a3ed684622f132dfa2c342e004498eb
         evidencePaths:
@@ -1158,13 +1428,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:3a451ecac1e80b1c11da413a2f2e793bb8a96cd6cc6c1d00004a3e4876658a3a
+    verificationState: curatedVerified
     derivedFrom: null
   speech-generation:
     sourcePath: speech-generation
-    currentGeneration: sha256:e6eda2bbdcd5e6ed8e6c60d1e3e79baf37a0df7f75d3a837211946fb833d88c3
-    version: null
+    currentGeneration: sha256:393e8422cfb47df3a6fb4833e1e28a403b58d55200efb9f668dff67446359281
+    version: v2026.08.21.1
     interface:
       displayName: Speech Generation
       shortDescription: Generate narrated speech, voiceovers, and audio from text
@@ -1185,8 +1464,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: speech-generation
       sourceDigest: sha256:bef7286525e619d37be3111ce3105dd03b3c8372f504ce533a4c68cb683136ef
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:02dc3e6244ad93d7432288bd2207a819b9633f4a2b9cbffa668522fe397b4073
         evidencePaths:
@@ -1194,13 +1473,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:5d27b88446b81675a7b97ff98ef9ec459ed0149a345b05ff51343d707994d32b
+    verificationState: curatedVerified
     derivedFrom: null
   spreadsheet-editor:
     sourcePath: spreadsheet-editor
-    currentGeneration: sha256:af9736d8ed0151734cc3bb60157de03df9977e0871307dae7dceebee90fe0e4e
-    version: null
+    currentGeneration: sha256:004a33796a13fcd8f85eb44079521b28690b881f944c8a3f9d8ff9e7f00bdfbb
+    version: v2026.08.21.1
     interface:
       displayName: Spreadsheet Editor
       shortDescription: Create, edit, analyze, and visually review spreadsheets
@@ -1221,8 +1509,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: spreadsheet-editor
       sourceDigest: sha256:5d0267bddbea82252f2f526d24a7b072cce587df5e1d39155820a07c0f577df8
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:4139c11fa3e905d80f09bb18c86262c0990939e6f9a352aaad4c9a31ff13d616
         evidencePaths:
@@ -1230,13 +1518,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:fc89d30edbff56d3156a148d2e7ece033b2fc30534981084b498c11fb6e736af
+    verificationState: curatedVerified
     derivedFrom: null
   threat-modeling:
     sourcePath: threat-modeling
-    currentGeneration: sha256:67c2893f607e2cdcaef0610c65003655290dbc41fd1ba6e19494b3f8be78fd26
-    version: null
+    currentGeneration: sha256:ddba8f212cd420bb3010e6de5fb0161b9bd14d06ff3e74d2708324169dac27c9
+    version: v2026.08.21.1
     interface:
       displayName: Threat Modeling
       shortDescription: Model repository threats, abuse paths, risks, and mitigations
@@ -1257,8 +1554,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: threat-modeling
       sourceDigest: sha256:6496d5d14bd4bb22486ad5a05d644b7eb9c5ff924c13dc622bd001a2eac8f3d9
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:50fa0382f01a7bf6e05031b5e29efd597efd3d4d2ff2710d0e3cbd6a7f5219c7
         evidencePaths:
@@ -1266,13 +1563,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:cc11f0133539aae058efef34329b1c3f758599b65a133b0ebbdd475c9a17cd29
+    verificationState: curatedVerified
     derivedFrom: null
   vercel-deploy:
     sourcePath: vercel-deploy
-    currentGeneration: sha256:d1228fd74b32dd679f73dfcd7cd3d796280038a3fe2ecc8c485a2cfaa2fb9f5c
-    version: null
+    currentGeneration: sha256:7a18530912955cc9fa9061da5ea666fa875c69477a93f8a11037f04618c1ff3c
+    version: v2026.08.21.1
     interface:
       displayName: Vercel Deploy
       shortDescription: Deploy applications and websites to Vercel with live URLs
@@ -1293,8 +1599,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: vercel-deploy
       sourceDigest: sha256:83ade2afa90e8afe69d81b53a15f65219aee6f3661ccfd635a721a8304f96f47
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:91c776e4ab5577329bd4044acdaea46632f4dfe92dad30781e20bd162bb1ba82
         evidencePaths:
@@ -1302,13 +1608,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:beeb7e4020eb8c1cb1e978c0b51742a119077a3539cbb89dd18e7e5f4a878210
+    verificationState: curatedVerified
     derivedFrom: null
   web-game:
     sourcePath: web-game
-    currentGeneration: sha256:4d80f9a99ee01b337d5439c59f35164459b2b18b09a543a85304e5913dd3cd8e
-    version: null
+    currentGeneration: sha256:6fc86160b0831b7ac995d1fe95da0bacfe388244542d0e9ad918e0d990ab7181
+    version: v2026.08.21.1
     interface:
       displayName: Web Game
       shortDescription: Build and iteratively test playable HTML and JavaScript games
@@ -1329,8 +1644,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: web-game
       sourceDigest: sha256:4a2fcfa0e7f8a5a7b46601709a64a63b3301a9466be7867b3018b212d1596982
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:0c4d1b7a5bff65aad54436764eac7cb513bd20f60c20b314fa3d90944b94951b
         evidencePaths:
@@ -1338,13 +1653,22 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:a0d44750e15f3a597c31eb28cca5914e98970a285a6d339baece1dbefe843791
+    verificationState: curatedVerified
     derivedFrom: null
   winui-app:
     sourcePath: winui-app
-    currentGeneration: sha256:991d41e6e06c79f0988192ba2fec9a57222909fd987c10598be0449b69062881
-    version: null
+    currentGeneration: sha256:8703872111323c07b3ba49085c57cb91070bec37671d4532c025ba5c88903df3
+    version: v2026.08.21.1
     interface:
       displayName: WinUI App
       shortDescription: Build and review native WinUI 3 desktop applications
@@ -1365,8 +1689,8 @@ skills:
       adapterId: aria-skill-package
       sourceIdentity: winui-app
       sourceDigest: sha256:5a67eda3827f9a7f7f6a8d37016ae067200c1f94b578888fcc4c9bc3973118a1
-      sourceRepository: null
-      sourceRef: null
+      sourceRepository: https://github.com/uicnz/aria-skills
+      sourceRef: v2026.08.21.1
       provenance:
         normalizationDigest: sha256:52759f562cd356d1f12e37834d17687e9cf936bebe7561a6bd769c9594a9c965
         evidencePaths:
@@ -1374,6 +1698,15 @@ skills:
           - SKILL.md
         acquisition:
           kind: release
-    distribution: null
-    verificationState: userInstalled
+    distribution:
+      sourceId: aria-official
+      authorityId: aria-official
+      tier: curated
+      publisher: uicnz
+      curator: aria
+      distributor: aria
+      channel: stable
+      release: v2026.08.21.1
+      receiptDigest: sha256:97e342da1e50256e1469511463029c5ffe6a8ad1ae3f1c30e149a154120a75f7
+    verificationState: curatedVerified
     derivedFrom: null

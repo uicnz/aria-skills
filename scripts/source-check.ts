@@ -11,36 +11,40 @@ function object(value: unknown, label: string): Record<string, unknown> {
 	return value as Record<string, unknown>;
 }
 
-function validateCatalogTaxonomy(catalogPath: string, skillIds: ReadonlySet<string>): void {
-	const source = object(parseYaml(readFileSync(catalogPath, 'utf8')), 'catalog-source.yaml');
-	const domains = object(source.domains, 'catalog-source.yaml domains');
-	const assignments = object(source.assignments, 'catalog-source.yaml assignments');
+function validateSourceTaxonomy(sourcePath: string, skillIds: ReadonlySet<string>): void {
+	const source = object(parseYaml(readFileSync(sourcePath, 'utf8')), 'source.yaml');
+	if (source.schema !== 'aria.skill.source/v1') throw new Error('Invalid Skill Source schema.');
+	if (source.sourceId !== 'aria-official' || source.authorityId !== 'aria-official') {
+		throw new Error('Invalid Skill Source identity.');
+	}
+	const domains = object(source.domains, 'source.yaml domains');
+	const assignments = object(source.assignments, 'source.yaml assignments');
 	for (const [domainId, rawDomain] of Object.entries(domains)) {
-		if (!taxonomySegmentPattern.test(domainId)) throw new Error(`Invalid catalog domain ID: ${domainId}`);
-		const domain = object(rawDomain, `catalog domain ${domainId}`);
-		const categories = object(domain.categories, `catalog domain ${domainId} categories`);
+		if (!taxonomySegmentPattern.test(domainId)) throw new Error(`Invalid Source domain ID: ${domainId}`);
+		const domain = object(rawDomain, `Source domain ${domainId}`);
+		const categories = object(domain.categories, `Source domain ${domainId} categories`);
 		for (const categoryId of Object.keys(categories)) {
-			if (!taxonomySegmentPattern.test(categoryId)) throw new Error(`Invalid catalog category ID: ${categoryId}`);
+			if (!taxonomySegmentPattern.test(categoryId)) throw new Error(`Invalid Source category ID: ${categoryId}`);
 		}
 	}
 	for (const [skillId, rawAssignment] of Object.entries(assignments)) {
 		if (!skillNamePattern.test(skillId)) throw new Error(`Invalid assigned Skill ID: ${skillId}`);
-		const assignment = object(rawAssignment, `catalog assignment ${skillId}`);
+		const assignment = object(rawAssignment, `Source assignment ${skillId}`);
 		const domainId = assignment.domain;
 		const categoryId = assignment.category;
 		if (typeof domainId !== 'string' || typeof categoryId !== 'string') {
-			throw new Error(`Catalog assignment must declare domain and category: ${skillId}`);
+			throw new Error(`Source assignment must declare domain and category: ${skillId}`);
 		}
-		const domain = object(domains[domainId], `catalog assignment domain ${domainId}`);
-		const categories = object(domain.categories, `catalog assignment domain ${domainId} categories`);
-		if (!categories[categoryId]) throw new Error(`Unknown catalog category for ${skillId}: ${domainId}/${categoryId}`);
+		const domain = object(domains[domainId], `Source assignment domain ${domainId}`);
+		const categories = object(domain.categories, `Source assignment domain ${domainId} categories`);
+		if (!categories[categoryId]) throw new Error(`Unknown Source category for ${skillId}: ${domainId}/${categoryId}`);
 	}
 	const assignmentIds = new Set(Object.keys(assignments));
 	const missing = [...skillIds].filter(id => !assignmentIds.has(id)).sort();
 	const unknown = [...assignmentIds].filter(id => !skillIds.has(id)).sort();
 	if (missing.length > 0 || unknown.length > 0) {
 		throw new Error(
-			`Catalog taxonomy coverage mismatch. Missing: ${missing.join(', ') || 'none'}. Unknown: ${unknown.join(', ') || 'none'}.`
+			`Source taxonomy coverage mismatch. Missing: ${missing.join(', ') || 'none'}. Unknown: ${unknown.join(', ') || 'none'}.`
 		);
 	}
 }
@@ -79,7 +83,7 @@ function nestedSkillRoots(root: string): string[] {
 		for (const entry of readdirSync(directory, { withFileTypes: true })) {
 			if (entry.name === 'node_modules' || entry.name === '.git') continue;
 			const pathname = path.join(directory, entry.name);
-			if (entry.isSymbolicLink()) throw new Error(`Catalog source contains a link: ${pathname}`);
+			if (entry.isSymbolicLink()) throw new Error(`Skill Source contains a link: ${pathname}`);
 			if (!entry.isDirectory()) continue;
 			if (existsSync(path.join(pathname, 'SKILL.md'))) output.push(pathname);
 			walk(pathname);
@@ -93,23 +97,23 @@ function validateSharedAssets(root: string): void {
 	const walk = (directory: string): void => {
 		for (const entry of readdirSync(directory, { withFileTypes: true })) {
 			const pathname = path.join(directory, entry.name);
-			if (entry.isSymbolicLink()) throw new Error(`Shared catalog assets contain a link: ${pathname}`);
+			if (entry.isSymbolicLink()) throw new Error(`Shared Source assets contain a link: ${pathname}`);
 			if (entry.isDirectory()) walk(pathname);
-			else if (!entry.isFile()) throw new Error(`Shared catalog assets contain a non-regular file: ${pathname}`);
+			else if (!entry.isFile()) throw new Error(`Shared Source assets contain a non-regular file: ${pathname}`);
 		}
 	};
 	walk(root);
 }
 
 const skillsRoot = path.resolve(process.argv[2] ?? 'skills');
-let releaseUnits = 0;
-let skills = 0;
+let releaseUnitCount = 0;
+let skillCount = 0;
 const roots = [];
 const identities = new Set<string>();
 for (const tier of tiers) {
 	const tierRoot = path.join(skillsRoot, `.${tier}`);
 	if (!existsSync(tierRoot)) {
-		roots.push({ tier, present: false, releaseUnits: 0, skills: 0 });
+		roots.push({ tier, present: false, releaseUnitCount: 0, skillCount: 0 });
 		continue;
 	}
 	const stat = lstatSync(tierRoot);
@@ -147,9 +151,9 @@ for (const tier of tiers) {
 		if (undeclared.length > 0) throw new Error(`Release unit contains undeclared nested skills: ${undeclared.join(', ')}`);
 		tierUnits += 1;
 	}
-	releaseUnits += tierUnits;
-	skills += tierSkills;
-	roots.push({ tier, present: true, releaseUnits: tierUnits, skills: tierSkills });
+	releaseUnitCount += tierUnits;
+	skillCount += tierSkills;
+	roots.push({ tier, present: true, releaseUnitCount: tierUnits, skillCount: tierSkills });
 }
-validateCatalogTaxonomy(path.join(skillsRoot, '..', 'catalog-source.yaml'), identities);
-process.stdout.write(`${JSON.stringify({ roots, totals: { releaseUnits, skills } }, null, 2)}\n`);
+validateSourceTaxonomy(path.join(skillsRoot, '..', 'source.yaml'), identities);
+process.stdout.write(`${JSON.stringify({ roots, totals: { releaseUnitCount, skillCount } }, null, 2)}\n`);
