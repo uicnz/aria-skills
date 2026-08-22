@@ -17,9 +17,9 @@ function validateSourceTaxonomy(sourcePath: string, skillIds: ReadonlySet<string
 	if (source.sourceId !== 'aria-official' || source.authorityId !== 'aria-official') {
 		throw new Error('Invalid Skill Source identity.');
 	}
-	const domains = object(source.domains, 'source.yaml domains');
+	const domain = object(source.domain, 'source.yaml domain');
 	const assignments = object(source.assignments, 'source.yaml assignments');
-	for (const [domainId, rawDomain] of Object.entries(domains)) {
+	for (const [domainId, rawDomain] of Object.entries(domain)) {
 		if (!taxonomySegmentPattern.test(domainId)) throw new Error(`Invalid Source domain ID: ${domainId}`);
 		const domain = object(rawDomain, `Source domain ${domainId}`);
 		const categories = object(domain.categories, `Source domain ${domainId} categories`);
@@ -35,8 +35,8 @@ function validateSourceTaxonomy(sourcePath: string, skillIds: ReadonlySet<string
 		if (typeof domainId !== 'string' || typeof categoryId !== 'string') {
 			throw new Error(`Source assignment must declare domain and category: ${skillId}`);
 		}
-		const domain = object(domains[domainId], `Source assignment domain ${domainId}`);
-		const categories = object(domain.categories, `Source assignment domain ${domainId} categories`);
+		const domainDefinition = object(domain[domainId], `Source assignment domain ${domainId}`);
+		const categories = object(domainDefinition.categories, `Source assignment domain ${domainId} categories`);
 		if (!categories[categoryId]) throw new Error(`Unknown Source category for ${skillId}: ${domainId}/${categoryId}`);
 	}
 	const assignmentIds = new Set(Object.keys(assignments));

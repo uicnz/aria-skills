@@ -10,7 +10,7 @@ rootKeyId: aria-skill-root-1
 delegatedKeyId: aria-skill-release-1
 manifestRevision: 5
 
-domains:
+domain:
   development:
     label: Software Development
     description: Build, test, and maintain software and developer tooling.
